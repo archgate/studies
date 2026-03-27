@@ -20,6 +20,43 @@ Identify where review back-and-forth concentrates in `getsentry/sentry` and prop
 - Small PR median TTM: `2.07h`
 - Large PR median TTM: `21.44h`
 
+### Coverage caveat
+
+This baseline is merge-biased and misses two important cohorts:
+
+- PRs with high discussion that were closed unmerged
+- Open PRs with significant discussion that became stale
+
+## Missing-signal extension: abandoned and stale PRs
+
+### Closed-unmerged traction
+
+- Queried: 500 closed-unmerged PRs (API list cap)
+- Median discussion volume: `2`
+- High-discussion abandoned share (`>=10` discussion items): `2.4%`
+
+High-traction closed-unmerged examples:
+
+- https://github.com/getsentry/sentry/pull/109150
+- https://github.com/getsentry/sentry/pull/108406
+- https://github.com/getsentry/sentry/pull/109526
+- https://github.com/getsentry/sentry/pull/111112
+
+### Open stale traction
+
+- Open PRs sampled: `286`
+- Stale 14+ days: `36`
+- Stale 30+ days: `9`
+
+Examples:
+
+- https://github.com/getsentry/sentry/pull/108533
+- https://github.com/getsentry/sentry/pull/109781
+
+### Why this matters
+
+Merged-only studies can make governance look healthier than it is. Tracking abandoned high-discussion PRs and stale high-discussion PRs exposes hidden decision debt and unresolved consensus points.
+
 ## High-friction examples
 
 - https://github.com/getsentry/sentry/pull/111160

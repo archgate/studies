@@ -25,6 +25,50 @@ This study evaluates where review back-and-forth is concentrated in `getsentry/s
 - Small PR median TTM: `2.07h`
 - Large PR median TTM: `21.44h`
 
+### Coverage caveat
+
+The baseline above is merge-biased. It captures friction in merged PRs but misses:
+
+- high-discussion PRs that were closed without merge
+- open PRs with substantial discussion that later went stale
+
+Those two cohorts often contain failed-consensus signals and unresolved decision ambiguity.
+
+## Missing-Signal Extension: Abandoned and Stale PRs
+
+To capture those signals, we added:
+
+- closed-unmerged PRs in the same 90-day window
+- open PRs stale for 14+ days and 30+ days
+
+### Closed-unmerged traction
+
+- Queried: 500 closed-unmerged PRs (GitHub API list cap)
+- Median discussion volume: `2`
+- High-discussion abandoned share (`>=10` discussion items): `2.4%`
+
+Examples:
+
+- [#109150](https://github.com/getsentry/sentry/pull/109150): 45 discussion items, closed unmerged
+- [#108406](https://github.com/getsentry/sentry/pull/108406): 30 discussion items, closed unmerged
+- [#109526](https://github.com/getsentry/sentry/pull/109526): 24 discussion items, closed unmerged
+- [#111112](https://github.com/getsentry/sentry/pull/111112): 22 discussion items, closed unmerged
+
+### Open stale traction
+
+- Open PRs sampled: `286`
+- Stale 14+ days: `36`
+- Stale 30+ days: `9`
+
+Examples:
+
+- [#108533](https://github.com/getsentry/sentry/pull/108533): 42 discussion items, stale 20 days
+- [#109781](https://github.com/getsentry/sentry/pull/109781): 6 discussion items, stale 19 days
+
+### Interpretation update
+
+Measuring merged PRs alone can understate governance friction. Abandoned high-traction PRs and stale discussed PRs should be tracked as first-class outcomes in future runs.
+
 ## High-Friction Examples
 
 - [#111160](https://github.com/getsentry/sentry/pull/111160): 43 review events

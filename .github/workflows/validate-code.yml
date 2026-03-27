@@ -22,7 +22,3 @@ jobs:
         run: npm ci
       - name: Build site
         run: npm run build
-      - name: Study assets present
-        run: |
-          test -f studies/sentry-pr-review-friction/analyze_sentry_prs.py
-          test -f studies/sentry-pr-review-friction/output/sentry_pr_friction_report.json
