@@ -1,0 +1,188 @@
+/* ============================================================
+   Archgate Studies – Academic Journal Theme
+   Typography and layout refinements over Starlight defaults
+   ============================================================ */
+
+/* --- Typography & Base --- */
+
+:root {
+  /* Serif for body text (academic feel) */
+  --sl-font: "Charter", "Bitstream Charter", "Sitka Text", Cambria,
+    "Times New Roman", serif;
+  /* Sans-serif for headings and UI */
+  --sl-font-system: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Layout */
+  --sl-content-width: 52rem;
+  --sl-sidebar-width: 18rem;
+  --sl-text-2xl: 1.75rem;
+  --sl-text-3xl: 2rem;
+  --sl-text-4xl: 2.5rem;
+}
+
+/* --- Global text styling --- */
+
+.sl-markdown-content {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+}
+
+.sl-markdown-content p {
+  margin-block: 1em;
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* --- Headings --- */
+
+.sl-markdown-content h1 {
+  font-family: var(--sl-font-system);
+  font-size: var(--sl-text-4xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-block-start: 0;
+  margin-block-end: 0.5em;
+  padding-block-end: 0.4em;
+}
+
+.sl-markdown-content h2 {
+  font-family: var(--sl-font-system);
+  font-size: var(--sl-text-2xl);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-block-start: 2.5em;
+  margin-block-end: 0.75em;
+  padding-block-end: 0.3em;
+  border-bottom: 1px solid var(--sl-color-gray-3);
+}
+
+.sl-markdown-content h3 {
+  font-family: var(--sl-font-system);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-block-start: 2em;
+  margin-block-end: 0.5em;
+}
+
+/* --- Links --- */
+
+.sl-markdown-content a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+
+.sl-markdown-content a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* --- Lists --- */
+
+.sl-markdown-content ul,
+.sl-markdown-content ol {
+  margin-block: 0.75em;
+  padding-inline-start: 1.5em;
+}
+
+.sl-markdown-content li {
+  margin-block: 0.35em;
+  line-height: 1.65;
+}
+
+/* --- Inline code --- */
+
+.sl-markdown-content code:not(pre code) {
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+/* --- Block quotes --- */
+
+.sl-markdown-content blockquote {
+  margin-inline: 0;
+  margin-block: 1.5em;
+  padding: 1.25em 1.5em;
+  border-radius: 0 6px 6px 0;
+  font-style: normal;
+}
+
+.sl-markdown-content blockquote p {
+  text-align: left;
+  margin-block: 0.5em;
+}
+
+.sl-markdown-content blockquote p:first-child {
+  margin-block-start: 0;
+}
+
+.sl-markdown-content blockquote p:last-child {
+  margin-block-end: 0;
+}
+
+/* --- Tables --- */
+
+.sl-markdown-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-block: 1.5em;
+  font-size: 0.95rem;
+}
+
+.sl-markdown-content th {
+  padding: 0.6em 1em;
+  text-align: left;
+  font-family: var(--sl-font-system);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sl-markdown-content td {
+  padding: 0.6em 1em;
+  border-bottom: 1px solid var(--sl-color-gray-2);
+}
+
+/* --- Header / Site title --- */
+
+.site-title {
+  font-family: var(--sl-font-system) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em;
+}
+
+/* --- Sidebar --- */
+
+nav.sidebar {
+  font-family: var(--sl-font-system);
+}
+
+/* --- Horizontal rule --- */
+
+.sl-markdown-content hr {
+  border: none;
+  border-top: 1px solid var(--sl-color-gray-3);
+  margin-block: 2.5em;
+}
+
+/* --- Print styles --- */
+
+@media print {
+  .sl-markdown-content {
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  .sl-markdown-content h1 {
+    font-size: 18pt;
+  }
+
+  .sl-markdown-content h2 {
+    font-size: 14pt;
+  }
+}
