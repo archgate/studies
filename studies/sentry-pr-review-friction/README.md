@@ -5,8 +5,11 @@ This study analyzes 90 days of merged pull requests in `getsentry/sentry` to qua
 ## Included assets
 
 - `analyze_sentry_prs.py` - reproducible data collection and aggregation script
-- `report.md` - human-readable findings and proposed ADR pack
 - `output/` - generated JSON metrics snapshots
+
+Narrative publication is maintained in the website docs source:
+
+- `src/content/docs/studies/sentry-pr-review-friction.mdx`
 
 ## Run the methodology
 
