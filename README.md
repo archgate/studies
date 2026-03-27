@@ -23,7 +23,7 @@ npm run dev
 npm run build
 ```
 
-Site source lives in `src/content/docs/` and deployment is handled by `.github/workflows/deploy-pages.yml`.
+Site source lives in `src/content/docs/` and deployment is handled externally via Cloudflare.
 
 ## Studies
 
