@@ -13,7 +13,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Basic repository validation
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build site
+        run: npm run build
+      - name: Study assets present
         run: |
-          test -f README.md
           test -f studies/sentry-pr-review-friction/analyze_sentry_prs.py
+          test -f studies/sentry-pr-review-friction/output/sentry_pr_friction_report.json

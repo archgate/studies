@@ -1,0 +1,56 @@
+---
+title: Sentry PR Friction and ADR Standardization
+description: A 90-day pull request study of getsentry/sentry and a proposed ADR standardization pack.
+---
+
+# Sentry PR Friction and ADR Standardization
+
+## Abstract
+
+This study evaluates where review back-and-forth is concentrated in `getsentry/sentry` and identifies which Architecture Decision Records (ADRs) plus enforceable rules could reduce repeated discussion cycles.
+
+## Scope
+
+- Window: last 90 days
+- Sample: 500 merged PRs
+- Metrics: review events, merge latency, changed file count, churn
+- Deep dive: highest-friction PRs by review-event volume and merge latency
+
+## Baseline Findings
+
+- Median time-to-merge: `4.12h`
+- P75/P90 time-to-merge: `21.84h / 69.54h`
+- Median review events per PR: `2` (mean `3.19`)
+- Formal `CHANGES_REQUESTED`: `1%`
+- Small PR median TTM: `2.07h`
+- Large PR median TTM: `21.44h`
+
+## High-Friction Examples
+
+- [#111160](https://github.com/getsentry/sentry/pull/111160): 43 review events
+- [#111192](https://github.com/getsentry/sentry/pull/111192): 25 review events
+- [#111306](https://github.com/getsentry/sentry/pull/111306): 23 review events
+- [#111454](https://github.com/getsentry/sentry/pull/111454): 20 review events
+- [#110956](https://github.com/getsentry/sentry/pull/110956): 18 review events
+
+## Recurring Discussion Themes
+
+- API contract and compatibility semantics
+- Nullability/type safety and error paths
+- UX flow behavior invariants
+- Testing evidence expectations
+- Permission and reliability guardrails
+
+## Proposed ADR Pack
+
+1. PR Slice Boundaries and Risk Budget
+2. API Contract Evolution Protocol
+3. Test Evidence Matrix by Change Type
+4. UI/Flow Behavioral Invariants
+5. Permission and Reliability Guardrails
+
+## Reproducibility
+
+- Study folder: [studies/sentry-pr-review-friction](https://github.com/archgate/studies/tree/main/studies/sentry-pr-review-friction)
+- Method script: [analyze_sentry_prs.py](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/analyze_sentry_prs.py)
+- Metrics output: [sentry_pr_friction_report.json](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/output/sentry_pr_friction_report.json)

@@ -8,7 +8,22 @@ The studies website is published at:
 
 - https://studies.archgate.dev
 
-Static site sources are in `site/` and are deployed via GitHub Pages (`.github/workflows/deploy-pages.yml`).
+The site uses Astro + Starlight, so studies are written in Markdown/MDX instead of hand-crafted HTML.
+
+### Local development
+
+```bash
+npm install
+npm run dev
+```
+
+### Build
+
+```bash
+npm run build
+```
+
+Site source lives in `src/content/docs/` and deployment is handled by `.github/workflows/deploy-pages.yml`.
 
 ## Studies
 
