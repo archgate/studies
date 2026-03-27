@@ -1,0 +1,19 @@
+name: Validate Code
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    name: Validate Code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Basic repository validation
+        run: |
+          test -f README.md
+          test -f studies/sentry-pr-review-friction/analyze_sentry_prs.py
