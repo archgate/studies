@@ -1,23 +1,56 @@
 ---
 title: Archgate Studies
-description: Reproducible studies on software governance and ADR enforcement.
+description: Reproducible, peer-reviewable studies on software governance, review friction, and ADR enforcement.
+template: splash
+hero:
+  title: Archgate Studies
+  tagline: Empirical research on software governance and architecture decision enforcement.
+  actions:
+    - text: Browse studies
+      link: /studies/sentry-pr-review-friction/
+      icon: right-arrow
+      variant: primary
+    - text: Source repository
+      link: https://github.com/archgate/studies
+      icon: external
+      variant: minimal
 ---
 
-# Archgate Studies
+import { Card, CardGrid, LinkCard } from "@astrojs/starlight/components";
 
-This website publishes reproducible, peer-reviewable studies about software governance.
+## Mission
 
-Each study includes:
+Archgate Studies publishes **reproducible, peer-reviewable research** on how teams govern their software architectures in practice. Every study ships its method, assumptions, code, data artifacts, and interpretation so that results can be independently verified and extended.
 
-- method and assumptions
-- reproducible code
-- data artifacts
-- interpretation and ADR/rule proposals
+<CardGrid>
+  <Card title="Reproducible" icon="document">
+    Every study includes scripts, raw data, and methodology documentation so
+    results can be independently verified.
+  </Card>
+  <Card title="Evidence-Based" icon="magnifier">
+    Findings are grounded in real-world repository data — pull request activity,
+    review cycles, and merge latency from open-source projects.
+  </Card>
+  <Card title="Actionable" icon="rocket">
+    Each study concludes with concrete Architecture Decision Record (ADR)
+    proposals that teams can adopt directly.
+  </Card>
+  <Card title="Open" icon="github">
+    All code, data, and analysis live in a public GitHub repository. Peer review
+    and contributions are welcome.
+  </Card>
+</CardGrid>
 
-## First publication
+## Published studies
 
-- [Sentry PR Friction and ADR Standardization](/studies/sentry-pr-review-friction/)
+<LinkCard
+  title="Sentry PR Review Friction and ADR Standardization"
+  description="A 90-day pull request study of getsentry/sentry analyzing review friction, merge latency, abandoned PRs, and proposing an ADR standardization pack."
+  href="/studies/sentry-pr-review-friction/"
+/>
 
-## Source repository
+---
 
-- [archgate/studies](https://github.com/archgate/studies)
+<p class="citation">
+  <strong>Archgate Studies</strong> · <a href="https://studies.archgate.dev">studies.archgate.dev</a> · Source: <a href="https://github.com/archgate/studies">archgate/studies</a>
+</p>
