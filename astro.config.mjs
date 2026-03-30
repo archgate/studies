@@ -20,7 +20,18 @@ export default defineConfig({
           href: "https://github.com/archgate/studies",
         },
       ],
-      customCss: ["./src/styles/custom.css"],
+      customCss: [
+        "@fontsource/inter/400.css",
+        "@fontsource/inter/500.css",
+        "@fontsource/inter/600.css",
+        "@fontsource/inter/700.css",
+        "@fontsource/noto-serif/400.css",
+        "@fontsource/noto-serif/400-italic.css",
+        "@fontsource/noto-serif/500.css",
+        "@fontsource/noto-serif/600.css",
+        "@fontsource/noto-serif/700.css",
+        "./src/styles/custom.css",
+      ],
       sidebar: [
         {
           label: "Home",
