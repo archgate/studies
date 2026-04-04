@@ -1,0 +1,177 @@
+/* ============================================================
+   Archgate Studies – "The Digital Curator" Theme
+   Based on Stitch design system: High-End Editorial
+
+   Starlight color variable reference (both modes use same names):
+   - white/gray-1 = foreground (text)
+   - gray-5/gray-6/black = background
+   - Scale inverts between dark ↔ light mode automatically
+   ============================================================ */
+
+/* --- Design tokens --- */
+
+:root {
+  /* Body font: Noto Serif for scholarly reading (Starlight's intended override) */
+  --sl-font: "Noto Serif", "Charter", Cambria, Georgia, serif;
+
+  /* Layout */
+  --sl-content-width: 52rem;
+}
+
+/* --- Global text styling (manuscript body) --- */
+
+.sl-markdown-content {
+  line-height: 1.7;
+}
+
+.sl-markdown-content p {
+  margin-block: 1em;
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* --- Headings (Inter – editorial sans-serif) --- */
+
+.sl-markdown-content :is(h1, h2, h3, h4, h5) {
+  font-family: "Inter", var(--sl-font-system);
+}
+
+.sl-markdown-content h2 {
+  margin-block-start: 3.5rem;
+  margin-block-end: 1rem;
+  padding-block-end: 0.4em;
+  /* Signature editorial mark: short 40px underline instead of full-width */
+  border-bottom: 2px solid var(--sl-color-accent-low);
+  border-image: linear-gradient(
+      to right,
+      var(--sl-color-accent-low) 40px,
+      transparent 40px
+    )
+    1;
+}
+
+.sl-markdown-content h3 {
+  margin-block-start: 2.75rem;
+  margin-block-end: 0.5em;
+}
+
+/* --- Links --- */
+
+.sl-markdown-content a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--sl-color-gray-4);
+  transition: text-decoration-color 0.15s;
+}
+
+.sl-markdown-content a:hover {
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 1.5px;
+}
+
+/* --- Lists --- */
+
+.sl-markdown-content li {
+  margin-block: 0.4em;
+  line-height: 1.7;
+}
+
+/* --- Inline code --- */
+
+.sl-markdown-content code:not(pre code) {
+  border-radius: 2px;
+  font-size: 0.88em;
+}
+
+/* --- Blockquotes (editorial: italic, subtle background, no decorative marks) --- */
+/* Stitch: bg-surface-container-low, italic, rounded-lg, generous padding */
+
+.sl-markdown-content blockquote {
+  margin-inline: 0;
+  margin-block: 2em;
+  padding: 2em;
+  border-left: none;
+  border-radius: 0.5rem;
+  font-style: italic;
+  background: var(--sl-color-gray-6);
+}
+
+.sl-markdown-content blockquote p {
+  text-align: left;
+  margin-block: 0.5em;
+}
+
+.sl-markdown-content blockquote p:first-child {
+  margin-block-start: 0;
+}
+
+.sl-markdown-content blockquote p:last-child {
+  margin-block-end: 0;
+}
+
+/* --- Tables (no vertical lines, uppercase headers, zebra stripes) --- */
+/* Stitch: surface-container-highest header, 10px uppercase tracking-[0.2em],
+   surface-container-low zebra, outline-variant/10 row borders, Noto Serif body */
+
+.sl-markdown-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-block: 2em;
+  font-size: var(--sl-text-sm);
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+
+.sl-markdown-content th {
+  padding: 1em;
+  text-align: left;
+  font-family: "Inter", var(--sl-font-system);
+  font-weight: 600;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  /* gray-4: matches Stitch surface-container-highest in both modes */
+  background: var(--sl-color-gray-4);
+  border-bottom: none;
+}
+
+.sl-markdown-content td {
+  padding: 1em;
+  /* Ghost row border: Stitch uses outline-variant at 10% opacity */
+  border-bottom: 1px solid var(--sl-color-hairline-light);
+}
+
+/* Zebra striping: Stitch uses surface-container-low */
+.sl-markdown-content tr:nth-child(even) td {
+  background: var(--sl-color-gray-6);
+}
+
+/* --- Horizontal rule --- */
+
+.sl-markdown-content hr {
+  border: none;
+  border-top: 1px solid var(--sl-color-hairline-light);
+  margin-block: 3.5rem;
+}
+
+/* --- Strong text (label-like emphasis) --- */
+
+.sl-markdown-content strong {
+  font-weight: 600;
+}
+
+/* --- Sidebar --- */
+
+nav.sidebar {
+  font-family: "Inter", var(--sl-font-system);
+}
+
+/* --- Print styles --- */
+
+@media print {
+  .sl-markdown-content {
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+}
