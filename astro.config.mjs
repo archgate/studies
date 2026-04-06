@@ -19,6 +19,18 @@ export default defineConfig({
           href: "https://github.com/archgate/studies",
         },
       ],
+      sidebar: [
+        {
+          label: "Studies",
+          items: [
+            {
+              label: "Sentry PR Review Friction",
+              collapsed: false,
+              autogenerate: { directory: "studies/sentry-pr-review-friction" },
+            },
+          ],
+        },
+      ],
     }),
   ],
 });
