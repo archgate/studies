@@ -230,48 +230,77 @@ The `github` scope has the highest median reviews (5.5) largely because of secur
 
 ---
 
-## ADR 6: Automated Review Triage Protocol
+## ADR 6: Convert Recurring Bot Findings to Deterministic Rules
 
 ### Problem
 
-Bot reviewers (`sentry[bot]`, `sentry-warden[bot]`, `cursor[bot]`) generate **23.7%** of substantive review comments and appear in **68.3%** of high-friction PRs. Six PRs in our sample are bot-dominated (>50% of review comments from bots), and one PR ([#111689](https://github.com/getsentry/sentry/pull/111689)) had **100% bot reviews and zero human comments**. See the [Automated Review Friction page](./automated-review/) for full data.
+Bot reviewers (`sentry[bot]`, `sentry-warden[bot]`, `cursor[bot]`) account for **23.7% of substantive review comments** in our sample, with **68.3% of high-friction PRs** containing bot activity. The bots are not noise — they find real bugs (missing exception handlers, type system misuse, key mismatches, security holes).
 
-Bot reviews are not noise — they find real bugs (Pydantic errors, migration logic flaws, test correctness issues). But they also create friction that doesn't fit cleanly into the human review model:
+The problem is **not the bots**. The problem is that **the bots find the same kinds of bugs over and over again**. From the [Automated Review Friction page](./automated-review/), we identified at least 10 recurring bot finding patterns in our 60-PR sample alone, including:
 
-- **No clear ownership**: Who decides whether a bot finding is real or a false positive?
-- **No dismissal protocol**: Some developers respond to every finding; others silently ignore. Inconsistency creates ambiguity for the next reviewer.
-- **No escalation path**: A high-severity bot finding has the same visibility as a low-severity one.
-- **Bot becomes de facto blocker**: Even with no formal `CHANGES_REQUESTED`, a wall of unaddressed bot comments creates merge hesitation.
+- Missing `Model.DoesNotExist` handling on `.objects.get()` (≥3 PRs)
+- `.filter().first()` with unreachable `except DoesNotExist`
+- Direct dict access on external API responses
+- `str | None` UnionType used as a callable in serializers
+- Option key mismatch between writer and reader
+- Companion list updates missed (one PR had this finding **4 times** for 4 different lists)
+- High-cardinality metric tags
+- Form state not reset in error catch blocks
+
+Each pattern recurs across PRs. Each is detectable by a deterministic check (Ruff rule, Semgrep pattern, mypy strict mode, ESLint rule, schema validation, or refactor to a typed registry).
+
+**Running expensive agentic LLM review on every commit to catch a bug pattern that has already been identified is the wrong tool.** Agentic review is the right tool for *discovering* novel bug shapes. Once a pattern recurs, it should graduate to a cheap deterministic check that runs at edit time in the IDE — catching the bug before the PR is even opened.
 
 ### Decision
 
-PRs MUST follow an explicit triage protocol for automated review findings:
+Establish a **bot finding promotion workflow**:
 
-1. **Acknowledge or dismiss** every bot finding before merge. The author replies inline with one of:
-   - `Fixed in <commit-sha>` — code change applied
-   - `False positive: <reason>` — finding is incorrect, with brief explanation
-   - `Acknowledged, follow-up: <ticket>` — valid but deferred to a tracked issue
-   - `Acknowledged, won't fix: <reason>` — valid but intentional
+1. **Track bot finding categories.** Each substantive bot finding is tagged with a category label (manual or semi-automated) — e.g., `missing-doesnotexist-handler`, `direct-dict-access`, `companion-list-miss`.
 
-2. **Severity-aware handling**: High-severity bot findings (where the bot self-tags severity) MUST be addressed (Fixed) or escalated (require human reviewer acknowledgment). They cannot be silently dismissed.
+2. **Recurrence triggers promotion.** When a category accumulates **≥3 occurrences across distinct PRs within 90 days**, the team commits to evaluating it for promotion to a deterministic check. The recurrence threshold is the trigger — not "is it possible to write a check?" but "is it economically justified yet?"
 
-3. **Bot-dominated PRs require human review**: A PR cannot merge if bot review comments outnumber human review comments AND no human reviewer has approved. This prevents the "100% bot review" scenario where automated tooling becomes the only reviewer.
+3. **Promotion targets**, in order of preference:
+   - **Static type check** (mypy/pyright strict mode) if the pattern is type-system-detectable
+   - **AST lint rule** (Ruff custom rule, Semgrep pattern, ESLint rule) if the pattern is syntactically detectable
+   - **Schema/registry validation** (typed enum for option keys, single-source-of-truth for platform lists) if the pattern is data-driven
+   - **Test fixture** (assert that all writers and readers of an option key agree) if the pattern requires runtime introspection
+   - **ADR with PR description requirement** if the pattern is genuinely human-judgment-dependent
 
-4. **Aggregate triage**: For PRs with ≥5 bot findings, the author posts a triage summary in the PR description (Fixed: N, False positive: N, Follow-up: N, Won't fix: N) so reviewers can quickly verify the disposition.
+4. **Track the conversion.** When a pattern is promoted to a deterministic check, the corresponding bot finding category is suppressed in agentic review (or the bot is told to no longer report that category). This prevents double-flagging and frees the bot's attention budget for novel patterns.
+
+5. **Bots stay focused on novel cases.** The explicit goal is that the bot's findings should shift over time toward patterns that **don't yet have a deterministic check** — first-time pattern discovery, cross-file semantic reasoning, novel attack surfaces. As deterministic coverage grows, the bot's per-PR finding count should drop.
 
 ### Rules
 
-- CI check: warn when a PR has ≥3 unresolved bot review threads
-- Merge gate: block merge when bot comments > human comments AND human approvals == 0
-- PR template: include a "Bot Review Triage" section that's auto-populated when bot reviews exist
+- A category tracker (issue tracker label, spreadsheet, or lightweight database) records bot findings by category and counts recurrence
+- A monthly review meeting evaluates categories that crossed the recurrence threshold and assigns promotion owners
+- A `bot-finding-promotion` Linear/Jira project tracks in-progress promotions
+- When a deterministic check ships, the corresponding bot review category is suppressed via bot configuration
+
+### Pilot Promotions (Quick Wins from This Study)
+
+The following promotions are directly justified by findings in our sample:
+
+| Bot Finding Category | Promotion Target | Cost |
+|----------------------|------------------|------|
+| Missing `DoesNotExist` handling | Custom Ruff rule | Low |
+| `.filter().first()` + unreachable except | Custom Ruff rule | Trivial |
+| `UnionType` not callable in option registration | mypy strict on options module | Low |
+| Pydantic `Literal` mismatch | mypy strict on relevant modules | Trivial |
+| Option key mismatch (writer/reader) | Typed `OrgOptionKey` enum + test fixture | Medium |
+| High-cardinality metric tags | Custom Ruff rule + allowlist | Low |
+| Form state not reset on error | ESLint rule requiring `try/finally` | Trivial |
+| Platform companion list miss | Refactor to single platform registry | Medium |
+
+These eight promotions alone could eliminate the majority of recurring substantive bot findings in our sample — without removing the bots themselves.
 
 ### Evidence from Study
 
 - Bot share of substantive review: **23.7%** (139 of 587 substantive comments)
 - High-friction PRs with bot activity: **68.3%** (41 of 60)
-- Bot-dominated PRs in sample: **6** (10%)
-- 100%-bot PR in sample: **1** ([#111689](https://github.com/getsentry/sentry/pull/111689))
-- Bot comments in [abandoned PRs](./abandoned/) — bots invested 8-10 review comments each in [#109150](https://github.com/getsentry/sentry/pull/109150) and [#109526](https://github.com/getsentry/sentry/pull/109526), neither of which merged
+- Recurring patterns identified in sample: **10+** distinct categories
+- One PR ([#111522](https://github.com/getsentry/sentry/pull/111522)) had the same companion-list-miss finding **4 separate times** in a single review pass — exactly the case where a deterministic check is unambiguously cheaper
+- Bot-dominated PRs (≥50% bot reviews): **6**, including one PR ([#111689](https://github.com/getsentry/sentry/pull/111689)) with **100% bot reviews and zero human comments** — a signal that the deterministic-check coverage gap is currently filled entirely by agentic review
 
 ---
 
@@ -284,7 +313,7 @@ PRs MUST follow an explicit triage protocol for automated review findings:
 | 3. Test Evidence Matrix | Test evidence (38.3%) + Type safety (30.0%) | ~40% of high-friction PRs | Align reviewer expectations with explicit per-type matrix |
 | 4. Frontend Conventions | Component patterns (35.0%) + Naming (11.7%) | ~35% of high-friction PRs | Eliminate "inline style" comments with lint rule |
 | 5. Security Protocol | Security (20.0%) | ~20% of high-friction PRs | Front-load security discussion into PR description |
-| 6. Automated Review Triage | Bot review friction | 68.3% of high-friction PRs | Explicit protocol for acknowledging and dismissing bot findings |
+| 6. Promote Bot Findings to Rules | Recurring bot findings | 68.3% of high-friction PRs | Convert recurring agentic findings into deterministic checks (lint/types/schema) so the bot's attention shifts to novel cases |
 
 Combined, these five ADRs target discussion themes that appear in the majority of high-friction PRs. The overlap between themes means a single ADR often addresses multiple friction sources — for example, ADR 2 (API Contracts) addresses both the API design theme and the state management theme.
 
@@ -300,4 +329,4 @@ Combined, these five ADRs target discussion themes that appear in the majority o
 
 5. **ADR 5 (Security Protocol)** — Specialized but critical. Only affects ~20% of PRs but those PRs carry the highest risk of security oversight.
 
-6. **ADR 6 (Automated Review Triage)** — Highest reach (68.3% of high-friction PRs) but requires team workflow change. Worth piloting on a single team to refine the triage labels and aggregate summary format before broader rollout.
+6. **ADR 6 (Promote Bot Findings to Rules)** — Highest long-term leverage. The pilot promotions table includes several "trivial" and "low" cost wins that could ship in days and immediately reduce bot review volume on common patterns. The medium-cost promotions (typed option registry, platform single-source-of-truth) are larger refactors but eliminate entire bug classes permanently.

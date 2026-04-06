@@ -41,7 +41,7 @@ This study measures where code review friction concentrates in [`getsentry/sentr
    - **Security and permissions** — 20.0%
    - **Naming and consistency** — 11.7%
 
-4. **Automated review is a major friction source.** Bot reviewers (`sentry[bot]`, `sentry-warden[bot]`, `cursor[bot]`) account for **23.7%** of substantive review comments. **68.3%** of high-friction PRs have bot review activity. Six PRs are bot-dominated (>50% of reviews from bots), and one PR has **100% bot review** with zero human comments.
+4. **Automated reviewers find real bugs — but the same bug categories repeat across PRs.** Bot reviewers (`sentry[bot]`, `sentry-warden[bot]`, `cursor[bot]`) account for **23.7%** of substantive review comments and appear in **68.3%** of high-friction PRs. Reading the actual findings reveals **at least 10 recurring patterns** (missing `DoesNotExist` handlers, `.filter().first()` with unreachable except, direct dict access on API responses, option key mismatches, companion list misses, etc.) that should be promoted from expensive agentic review to cheap deterministic checks (Ruff/Semgrep rules, mypy strict mode, typed registries). One PR ([#111522](https://github.com/getsentry/sentry/pull/111522)) had the same pattern flagged **4 times in one review pass** — exactly the case where a single lint rule pays off forever.
 
 5. **Abandoned PRs signal unresolved decision ambiguity.** 12 closed-unmerged PRs (2.4%) had ≥10 discussion items. These abandoned PRs had **2x the median TTM** and **2.5x the median review events** compared to merged high-friction PRs.
 

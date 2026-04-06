@@ -1,135 +1,189 @@
 ---
 title: Automated Review Friction
-description: "How bot reviewers (Cursor, Sentry Warden, Sentry Bug Prediction) contribute to PR review friction."
+description: "Bot reviewers find real bugs — but the same bug categories repeat across PRs. Recurring patterns should become deterministic checks, not agentic review."
 sidebar:
   order: 5
 ---
 
 # Automated Review Friction
 
-Sentry has adopted automated review tooling aggressively. Three bot reviewers — `sentry[bot]`, `sentry-warden[bot]`, and `cursor[bot]` — produce a substantial share of PR review activity. These bots are **not noise**: they post substantive, line-level review comments that the developer must read, evaluate, and either address or dismiss.
+Sentry runs three automated reviewers on its PRs: `sentry[bot]` (bug prediction), `sentry-warden[bot]` (correctness/security checking), and `cursor[bot]` (Cursor's agentic review). Combined, they post **23.7% of all substantive review comments** in our high-friction sample, and **68.3% of high-friction PRs have bot review activity**.
 
-This page treats automated review as a first-class friction source, separate from human review.
+These bots **are not noise**. They find real bugs — Pydantic type errors, missing exception handlers, key mismatches, security holes. Every finding is something a developer must read, evaluate, and address.
 
-## Bot Review Volume
+But here is the central insight of this section:
 
-Across the 60 high-friction PRs in our deep comment sample:
+> **The same bug categories repeat across different PRs.** When the same agentic-review pattern fires on PR after PR, that pattern should be promoted from "expensive LLM review on every commit" to "cheap deterministic check on every commit."
+
+Agentic review is the right tool for *finding* a recurring pattern the first few times. It is the wrong tool for *enforcing* it once the pattern is known.
+
+## The Volume
 
 | Metric | Value |
 |--------|-------|
 | Total substantive bot review comments | **139** |
 | Total substantive human review comments | 448 |
-| **Bot share of substantive review** | **23.7%** |
+| Bot share of substantive review | **23.7%** |
 | PRs with bot review activity | 41 / 60 |
-| **Share of high-friction PRs with bots** | **68.3%** |
+| Share of high-friction PRs with bots | **68.3%** |
 | Average bot comment length | **1,565 characters** |
-
-For comparison, human review comments in our sample average roughly 150-300 characters. **Bot comments are 5-10x longer** than human comments — they contain detailed bug descriptions, code snippets, severity ratings, and suggested fixes. Each one requires meaningful developer attention.
-
-## Bot Reviewer Breakdown
 
 | Bot | Substantive Comments | Role |
 |-----|----------------------|------|
-| **`sentry[bot]`** | 81 | Sentry's internal bug prediction reviewer |
-| **`sentry-warden[bot]`** | 50 | Sentry's internal correctness/security checker |
-| `cursor[bot]` | 4 | Cursor Bugbot (most automated comments are template-filtered) |
-| `github-advanced-security[bot]` | 3 | GitHub's security advisor |
+| `sentry[bot]` | 81 | Internal bug prediction reviewer |
+| `sentry-warden[bot]` | 50 | Internal correctness/security checker |
+| `cursor[bot]` | 4 | Cursor agentic review (most filtered as templates) |
+| `github-advanced-security[bot]` | 3 | GitHub security advisor |
 | `getsentry-bot` | 1 | Internal automation |
 
-The two dominant bots — `sentry[bot]` and `sentry-warden[bot]` — are Sentry's own automated review tooling, accounting for **94% of substantive bot reviews**. Note that `cursor[bot]`'s template-style review summaries (BUGBOT_REVIEW markers) are filtered out as automated noise; only its substantive findings are counted.
+`sentry[bot]` and `sentry-warden[bot]` together account for **94% of substantive bot reviews**.
 
-## What Bot Reviews Actually Say
+## What the Bots Are Actually Catching
 
-Bot reviews are not generic warnings. They're specific bug findings tied to code lines. Examples from real PRs:
+When we read the actual bot findings, they cluster into a small number of recurring categories. The clusters below were identified by reading the 139 substantive bot comments in our sample. Each cluster includes the pattern, examples, and the kind of deterministic check that would replace the agentic review for that pattern.
 
-### From `sentry-warden[bot]` on [#111697](https://github.com/getsentry/sentry/pull/111697)
+### Pattern 1: Missing exception handling on model fetches
 
-> *"**Organization option key mismatch causes setting to have no effect**. The new option registers with key `sentry:default_automated_run_stopping_point` but the code that consumes this value (in `seer/similarity/utils.py:587` and `tasks/seer/autofix.py:249`) reads from key `sentry:default_stopping_point`."*
+> **`QuerySubscription.DoesNotExist not handled in get_metric_issue_context`** — `MetricIssueContext.from_group_event()` calls `QuerySubscription.objects.get(id=...)` without handling `DoesNotExist`. If the subscription is deleted between alert creation and notification rendering, this will crash.
+> — `sentry-warden[bot]` on [#111674](https://github.com/getsentry/sentry/pull/111674)
 
-This is a real bug — a typo causing the new setting to silently do nothing in production. The developer must acknowledge and fix it.
+> **`get_from_cache raises ValueError because DetectorGroup has no cache_fields defined`** — The base `BaseManager` has empty `cache_fields` by default, so `get_from_cache` will raise.
+> — `sentry-warden[bot]` on [#111714](https://github.com/getsentry/sentry/pull/111714)
 
-### From `cursor[bot]` on [#111697](https://github.com/getsentry/sentry/pull/111697)
+> **If `project_id` is `None` in `trigger_coding_agent_launch`, `Project.objects.get_from_cache` fails silently**
+> — `sentry[bot]` on [#111691](https://github.com/getsentry/sentry/pull/111691)
 
-> *"**Test asserts wrong default value for coding agent** (Medium Severity). `test_default_coding_agent_default` asserts `response.data["defaultCodingAgent"] is None`, but the serializer returns `SEER_DEFAULT_CODING_AGENT_DEFAULT` (`"seer"`) as the fallback when the org option is unset. This means the API contract test was passing the wrong assertion."*
+**Replace with**: A custom Ruff/Semgrep rule that flags `Model.objects.get(...)` and `Model.objects.get_from_cache(...)` calls inside functions that don't have a corresponding `except Model.DoesNotExist:` (or wrapping `try`). For `get_from_cache`, also check that the model defines `cache_fields`. This is a 30-line rule that catches the pattern forever.
 
-A test correctness finding — the test was passing for the wrong reason. Worth fixing, but takes developer time to verify and address.
+### Pattern 2: `.filter().first()` with unreachable `except DoesNotExist`
 
-### From `sentry[bot]` on [#111697](https://github.com/getsentry/sentry/pull/111697)
+> **`AttributeError on None when Group is not found`** — The function uses `.filter().first()` which returns `None` when no record exists, but the `except Group.DoesNotExist` handler is unreachable because `.filter().first()` never raises exceptions.
+> — `sentry-warden[bot]` on [#111724](https://github.com/getsentry/sentry/pull/111724)
 
-> *"**Bug:** The migration task `configure_seer_for_existing_org` skips projects with existing stopping points, preventing the new `automation_handoff` configuration from being applied to them. (Severity: HIGH)"*
+**Replace with**: A trivial AST lint: if a `try` block contains `.filter(...).first()` and the `except` clause catches `*.DoesNotExist`, flag as unreachable. This pattern is mechanical — no LLM needed.
 
-A migration logic finding tagged HIGH severity — exactly the kind of issue that historically required a security/correctness specialist to spot.
+### Pattern 3: Direct dict access on external API responses
 
-## Bot-Dominated PRs
+> **`KeyError when GitHub API response lacks 'installations' key`** — Line 908 uses direct dict access `installed_orgs["installations"]` on the GitHub API response. If the API returns an error or malformed response, this will raise `KeyError`.
+> — `sentry-warden[bot]` on [#111728](https://github.com/getsentry/sentry/pull/111728)
 
-A subset of PRs have **majority-bot review activity** — where bot comments outnumber human comments. These represent cases where automated tooling is doing more review work than humans:
+**Replace with**: An ADR that requires external API responses to be parsed through TypedDicts or Pydantic models with explicit field validation. A lint rule can flag direct `["key"]` access on variables that come from `requests.get(...).json()` or `gh_client.*` calls.
 
-| PR | Bot Comments | Human Comments | Bot Share | Top Bot |
-|----|--------------|-----------------|-----------|---------|
-| [#111689](https://github.com/getsentry/sentry/pull/111689) | 6 | 0 | **100%** | `sentry[bot]` |
-| [#111724](https://github.com/getsentry/sentry/pull/111724) | 4 | 1 | 80% | `sentry-warden[bot]` |
-| [#112007](https://github.com/getsentry/sentry/pull/112007) | 6 | 2 | 75% | `sentry[bot]` |
-| [#111892](https://github.com/getsentry/sentry/pull/111892) | 6 | 2 | 75% | `sentry-warden[bot]` |
-| [#111565](https://github.com/getsentry/sentry/pull/111565) | 8 | 5 | 62% | `sentry[bot]` |
+### Pattern 4: Type system misuse in serializers
 
-[#111689](https://github.com/getsentry/sentry/pull/111689) is striking: **6 substantive bot review comments and zero human comments**. Effectively, the entire review of this PR was performed by automated tooling. Whether the bot findings were addressed is invisible to the metric — but the developer had to read and respond to all 6.
+> **`TypeError when saving defaultCodingAgent: str | None union type is not callable`** — The `defaultCodingAgent` option tuple uses `str | None` as the type parameter. The code calls `type_(data[key])` to convert the value. However, `str | None` is a `types.UnionType` which cannot be called as a function.
+> — `sentry-warden[bot]` on [#111697](https://github.com/getsentry/sentry/pull/111697)
 
-## Top Bot Activity (Absolute Volume)
+> **`Pydantic validation error when coding_agent is 'seer' with integration_id`** — The code creates a `SeerAutomationHandoffConfiguration` with `target='seer'`. However, the Pydantic model's `target` field is `Literal['cursor_background_agent', 'claude_code_agent', ...]` which excludes `'seer'`.
+> — `sentry-warden[bot]` on [#111697](https://github.com/getsentry/sentry/pull/111697)
 
-| PR | Bot Comments | Human Comments | Bot Share |
-|----|--------------|-----------------|-----------|
-| [#109150](https://github.com/getsentry/sentry/pull/109150) | 10 | 20 | 33% |
-| [#111728](https://github.com/getsentry/sentry/pull/111728) | 8 | 42 | 16% |
-| [#111565](https://github.com/getsentry/sentry/pull/111565) | 8 | 5 | 62% |
-| [#109526](https://github.com/getsentry/sentry/pull/109526) | 8 | 14 | 36% |
-| [#111697](https://github.com/getsentry/sentry/pull/111697) | 7 | 25 | 22% |
-| [#111539](https://github.com/getsentry/sentry/pull/111539) | 6 | 19 | 24% |
+**Replace with**: Stricter mypy/pyright configuration in CI, plus a custom check that the type annotation passed to option registration is a concrete callable type, not a `UnionType`. The Pydantic `Literal` mismatch is caught by mypy if strict mode is enabled on the relevant module.
 
-Notably, [#109150](https://github.com/getsentry/sentry/pull/109150) and [#109526](https://github.com/getsentry/sentry/pull/109526) appear in both this list **and** the [abandoned PRs list](./abandoned/) — these are PRs where bots invested significant review effort that produced no merged outcome.
+### Pattern 5: Key/identifier mismatch between writer and reader
 
-## Why This Matters
+> **`Organization option key mismatch causes setting to have no effect`** — The new option registers with key `sentry:default_automated_run_stopping_point` but the code that consumes this value reads from key `sentry:default_stopping_point`. Any value set via the API will be stored but never read.
+> — `sentry-warden[bot]` on [#111697](https://github.com/getsentry/sentry/pull/111697)
 
-Bot reviews create real friction even when (especially when) they find real bugs:
+**Replace with**: This is one of the most valuable bot findings — and one of the easiest to convert to a check. Sentry already has a registry for organization options. A test fixture can assert that every key written through `OrganizationOption.objects.set_value(...)` corresponds to a registered key, and every read site (`get_value(...)`) uses a key that exists in the registry. Bonus: extract option keys into a typed enum so the type system catches the typo at edit time.
 
-### 1. Cognitive load is real, not synthetic
+### Pattern 6: Non-exhaustive if/elif blocks causing UnboundLocalError
 
-A 1,565-character bot comment with severity rating, code snippets, and suggested fixes takes the developer **as long to evaluate** as a human review comment of similar depth. In some ways longer, because the developer must judge both the finding's correctness AND whether the bot's understanding of context is right.
+> **The `if/elif` block checking the `data` type is not exhaustive. A new subclass of `BaseMetricAlertNotificationData` would cause an `UnboundLocalError` because `metric_issue_context` would not be assigned.**
+> — `sentry[bot]` on [#111674](https://github.com/getsentry/sentry/pull/111674)
 
-### 2. False positives are silent friction
+**Replace with**: Use Python 3.10+ structural pattern matching with explicit `case _:` exhaustiveness, OR use mypy's `assert_never()` pattern for tagged unions. Both are catchable by static analysis once the convention is in place.
 
-When a bot flags a non-issue, the developer must:
-- Read the full finding
-- Verify it doesn't apply
-- Either dismiss or respond explaining why
-- Potentially defend the dismissal in subsequent review
+### Pattern 7: Companion list updates missed
 
-This time cost is invisible in any metric except total comment count — and doesn't show up at all if the developer just silently ignores the comment.
+> **The `python-litestar` platform is missing from several product onboarding arrays in `platformCategories.tsx`**, which will prevent its onboarding documentation from loading for Logs, Metrics, Profiling, and Replay.
+> — `sentry[bot]` on [#111522](https://github.com/getsentry/sentry/pull/111522)
 
-### 3. Bots and humans aren't redundant — they compound
+> **The `python-litestar` platform is missing from the Python `platforms` set in `monitorQuickStartGuide.tsx`**, causing it to be miscategorized in the Crons monitor form.
+> — `sentry[bot]` on [#111522](https://github.com/getsentry/sentry/pull/111522)
 
-In our sample, **only 33% of high-friction PRs have either bot OR human review but not both**. The other **68% have both**. This means bot review is largely *additive* to human review, not a replacement. The total review effort per PR is now:
+In a single PR ([#111522](https://github.com/getsentry/sentry/pull/111522)), the bot found the **same kind of bug four separate times** — adding a platform to one list while forgetting the other lists.
 
-```
-Total review burden = human review + bot review + (time to dispatch bot findings)
-```
+**Replace with**: Refactor the platform registry into a single source of truth that derives all the companion lists from a typed registry. This is a one-time refactor that eliminates an entire bug class. Alternatively, a CODEOWNERS-style consistency check: when a PR modifies `platformCategories.tsx`, verify that any new platform identifier appears in all the relevant arrays.
 
-### 4. Bot findings shape merge timing
+### Pattern 8: High-cardinality metrics tags
 
-PRs with bot-dominated review activity ([#111689](https://github.com/getsentry/sentry/pull/111689), [#112007](https://github.com/getsentry/sentry/pull/112007)) often wait for the developer to respond to all bot findings before merge — even if no human reviewer has formally requested changes. The bot becomes a de facto blocker.
+> **The circuit breaker for Sentry App webhooks uses a per-app slug for its metrics key, creating high-cardinality data because a `metrics_key` override is not provided.**
+> — `sentry[bot]` on [#111723](https://github.com/getsentry/sentry/pull/111723)
+
+**Replace with**: A lint rule that flags `metrics.incr(name, tags={"slug": ...})` (or similar high-cardinality patterns) without an explicit `metrics_key` override or an allowlist comment. This is a known anti-pattern with a known fix.
+
+### Pattern 9: State not reset in catch blocks
+
+> **The form's saving state is not reset in the `catch` block on submission failure, leaving the submit button permanently busy and preventing retries.**
+> — `sentry[bot]` on [#111490](https://github.com/getsentry/sentry/pull/111490)
+
+**Replace with**: An ESLint rule (or React custom hook convention) that requires `try/finally` for any state setter inside an async submission handler — `setSaving(true)` in `try`, `setSaving(false)` in `finally`. The convention pre-empts the error path bug entirely.
+
+### Pattern 10: Truthiness checks removed → None saved as explicit value
+
+> **The removal of the truthiness check for `stopping_point` causes `None` to be explicitly saved as a project option, overriding the intended default value of `"code_changes"`.**
+> — `sentry[bot]` on [#111697](https://github.com/getsentry/sentry/pull/111697)
+
+**Replace with**: An ADR (and a lint rule) that says option setters must reject `None` unless the option's schema explicitly allows it. Combined with Pattern 4 (typed option registry), this becomes a static check.
+
+## The Pattern Recurrence Matrix
+
+| Pattern | PRs in Sample with Match | Bot(s) Reporting | Cost of Deterministic Check |
+|---------|--------------------------|-------------------|------------------------------|
+| Missing `DoesNotExist` handling | 3+ | warden, sentry-bot | **Low** — Ruff/Semgrep rule |
+| `.filter().first()` + unreachable except | 1+ | warden | **Trivial** — AST lint |
+| Direct dict access on API responses | 2+ | warden | **Medium** — TypedDict adoption + lint |
+| `UnionType` not callable | 1 | warden | **Low** — mypy strict mode |
+| Pydantic `Literal` mismatch | 1 | warden | **Trivial** — mypy strict mode |
+| Option key mismatch (writer/reader) | 1 | warden | **Low** — typed option registry |
+| Non-exhaustive if/elif | 1 | sentry-bot | **Medium** — `assert_never` convention |
+| Companion list miss (platform registry) | 1 (4 instances) | sentry-bot | **Medium** — refactor to single source |
+| High-cardinality metrics tag | 1 | sentry-bot | **Low** — lint rule |
+| Form state not reset on error | 1 | sentry-bot | **Trivial** — ESLint rule |
+| `None` saved as explicit value | 1 | sentry-bot | **Low** — schema validation |
+
+These 10 patterns alone account for the majority of substantive bot findings in our sample. Each has a deterministic-check replacement that costs vastly less than agentic review per-PR.
+
+## The Cost Argument
+
+Agentic review costs roughly:
+
+- **LLM inference**: A 1,500-character bot review comment implies hundreds of thousands of tokens of input (the diff + context) and meaningful output. At current model pricing, this is on the order of tens of cents per finding.
+- **Developer attention**: 1,565-char findings take 30-60 seconds to read and evaluate. Multiplied across 139 findings in 60 PRs, that's roughly **70-140 minutes of cumulative developer attention** in our sample alone. Extrapolated to Sentry's full PR volume, the time investment is substantial.
+- **Latency**: Agentic review runs after the PR is opened. A bug found post-open is more expensive than a bug caught at edit time by a type checker or lint rule.
+
+A deterministic check costs:
+
+- **CI runtime**: Microseconds to milliseconds per file.
+- **Developer attention at edit time**: Lint errors surface in the IDE before the PR is even opened. Catching the bug at edit time is roughly **100x cheaper** than catching it in PR review.
+- **Zero per-PR LLM inference cost.**
+
+The economic and ergonomic case is clear: every bot finding that recurs is a candidate for promotion to a deterministic check.
+
+## What Bots Should Continue Doing
+
+Agentic review still has a legitimate role:
+
+1. **First-time pattern discovery** — finding novel bug shapes that don't match any known rule yet
+2. **Cross-file reasoning** — bugs that span multiple files in ways that AST-level rules can't easily capture
+3. **Semantic correctness** — "this code does the wrong thing" findings that require understanding intent
+4. **Security review for novel attack surfaces** — where an attacker's mental model is needed
+
+The goal is not to eliminate bot review. The goal is to **continuously promote findings from agentic review to deterministic rules**, so that the bot's attention is freed up for the genuinely novel cases.
 
 ## Implications for ADR Proposals
 
-Bot review activity sharpens several of the [ADR proposals](./adr-proposals/):
+This insight reshapes [ADR 6](./adr-proposals/#adr-6-convert-recurring-bot-findings-to-deterministic-rules) — instead of a "triage protocol" for bot findings, the right ADR is a **promotion protocol**: a workflow for converting recurring bot findings into lint rules, type checks, or schema validations.
 
-- **PR Scope Boundaries (ADR 1)** is even more important when bots are reviewing — smaller PRs mean fewer bot findings to triage. A 12-file PR may generate 10+ bot findings; a 3-file PR may generate 1-2.
+It also strengthens several other ADRs:
 
-- **Test Evidence Matrix (ADR 3)** could short-circuit the test correctness findings (e.g., sentry-warden flagging assertion mismatches) by requiring authors to verify test expectations match implementation defaults.
-
-- A **new ADR may be warranted**: "Bot Review Triage Protocol" — establishing conventions for how to acknowledge, dismiss, or escalate bot findings. Without this, every bot finding triggers ad-hoc developer judgment.
+- **ADR 2 (API Contract Evolution)** — many bot findings (option key mismatch, `None` propagation, Pydantic Literal mismatches) are catchable if the API contract is typed and registry-driven
+- **ADR 3 (Test Evidence Matrix)** — bot test findings (assertion mismatches, missing edge cases) become test scaffold templates
+- **ADR 4 (Frontend Conventions)** — the form-state-not-reset bot finding becomes a React convention, not an ad-hoc review comment
 
 ## Caveats
 
-- **Sample bias**: This analysis is based on the top 60 friction PRs, not all 500. Bot activity in low-friction PRs may differ. Bot reviewers tend to comment more on complex PRs because complex PRs have more code surface to analyze.
-- **Substantive vs. noise filter**: We exclude template/marker comments (Cursor BUGBOT_REVIEW summaries, BACKEND_TEST_FAILURES) but count substantive line-level bot reviews. This excludes ~220 cursor[bot] template comments — those are noise, not review.
-- **Dismissed vs. addressed**: We count bot comments that were posted, not bot comments that resulted in code changes. Some findings are dismissed; some are addressed. Both consume developer time.
-- **Emergence effect**: Sentry's internal bot tooling (`sentry[bot]`, `sentry-warden[bot]`) is relatively new. The friction patterns documented here may evolve as the bots are tuned and developers adapt their workflows.
+- **Sample bias**: This analysis is based on the top 60 friction PRs, not all 500. Bot activity in low-friction PRs may differ.
+- **Pattern counts are minimums**: The "PRs in sample with match" column shows occurrences in our 60-PR deep sample. Across Sentry's full PR volume, each pattern likely recurs much more frequently. A formal recurrence analysis would require pattern-tagging the bot findings systematically.
+- **Substantive vs. noise filter**: We exclude template comments (BUGBOT_REVIEW summaries, BACKEND_TEST_FAILURES) but count substantive line-level bot reviews.
+- **Bots are evolving**: Sentry's internal bots (`sentry[bot]`, `sentry-warden[bot]`) are relatively new. As more recurring patterns are promoted to deterministic checks, the bots' findings should shift toward genuinely novel cases.
