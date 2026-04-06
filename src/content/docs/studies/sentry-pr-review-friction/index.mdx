@@ -41,9 +41,11 @@ This study measures where code review friction concentrates in [`getsentry/sentr
    - **Security and permissions** — 20.0%
    - **Naming and consistency** — 11.7%
 
-4. **Abandoned PRs signal unresolved decision ambiguity.** 12 closed-unmerged PRs (2.4%) had ≥10 discussion items. These abandoned PRs had **2x the median TTM** and **2.5x the median review events** compared to merged high-friction PRs.
+4. **Automated review is a major friction source.** Bot reviewers (`sentry[bot]`, `sentry-warden[bot]`, `cursor[bot]`) account for **23.7%** of substantive review comments. **68.3%** of high-friction PRs have bot review activity. Six PRs are bot-dominated (>50% of reviews from bots), and one PR has **100% bot review** with zero human comments.
 
-5. **92 open PRs are stale 14+ days**, with 33 stale 30+ days. The most-discussed stale PR has **55 review events** and has been open for over **760 hours**.
+5. **Abandoned PRs signal unresolved decision ambiguity.** 12 closed-unmerged PRs (2.4%) had ≥10 discussion items. These abandoned PRs had **2x the median TTM** and **2.5x the median review events** compared to merged high-friction PRs.
+
+6. **92 open PRs are stale 14+ days**, with 33 stale 30+ days. The most-discussed stale PR has **55 review events** and has been open for over **760 hours**.
 
 ## Study Structure
 
@@ -51,6 +53,7 @@ This study measures where code review friction concentrates in [`getsentry/sentr
 - [**Baseline Metrics**](./baseline/) — Aggregate metrics, percentiles, and size segmentation
 - [**Friction Map**](./friction-map/) — Domain and area friction breakdown
 - [**Discussion Themes**](./themes/) — Evidence-backed theme analysis from real comment threads
+- [**Automated Review Friction**](./automated-review/) — Bot reviewers as a first-class friction source
 - [**Abandoned PRs**](./abandoned/) — Patterns in closed-unmerged and stale PRs
 - [**ADR Proposals**](./adr-proposals/) — Detailed proposals grounded in evidence
 

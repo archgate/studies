@@ -2,7 +2,7 @@
 title: ADR Proposals
 description: "Five evidence-grounded ADR proposals to reduce review friction in getsentry/sentry."
 sidebar:
-  order: 6
+  order: 7
 ---
 
 # Proposed ADR Pack
@@ -228,6 +228,53 @@ The `github` scope has the highest median reviews (5.5) largely because of secur
 
 ---
 
+---
+
+## ADR 6: Automated Review Triage Protocol
+
+### Problem
+
+Bot reviewers (`sentry[bot]`, `sentry-warden[bot]`, `cursor[bot]`) generate **23.7%** of substantive review comments and appear in **68.3%** of high-friction PRs. Six PRs in our sample are bot-dominated (>50% of review comments from bots), and one PR ([#111689](https://github.com/getsentry/sentry/pull/111689)) had **100% bot reviews and zero human comments**. See the [Automated Review Friction page](./automated-review/) for full data.
+
+Bot reviews are not noise — they find real bugs (Pydantic errors, migration logic flaws, test correctness issues). But they also create friction that doesn't fit cleanly into the human review model:
+
+- **No clear ownership**: Who decides whether a bot finding is real or a false positive?
+- **No dismissal protocol**: Some developers respond to every finding; others silently ignore. Inconsistency creates ambiguity for the next reviewer.
+- **No escalation path**: A high-severity bot finding has the same visibility as a low-severity one.
+- **Bot becomes de facto blocker**: Even with no formal `CHANGES_REQUESTED`, a wall of unaddressed bot comments creates merge hesitation.
+
+### Decision
+
+PRs MUST follow an explicit triage protocol for automated review findings:
+
+1. **Acknowledge or dismiss** every bot finding before merge. The author replies inline with one of:
+   - `Fixed in <commit-sha>` — code change applied
+   - `False positive: <reason>` — finding is incorrect, with brief explanation
+   - `Acknowledged, follow-up: <ticket>` — valid but deferred to a tracked issue
+   - `Acknowledged, won't fix: <reason>` — valid but intentional
+
+2. **Severity-aware handling**: High-severity bot findings (where the bot self-tags severity) MUST be addressed (Fixed) or escalated (require human reviewer acknowledgment). They cannot be silently dismissed.
+
+3. **Bot-dominated PRs require human review**: A PR cannot merge if bot review comments outnumber human review comments AND no human reviewer has approved. This prevents the "100% bot review" scenario where automated tooling becomes the only reviewer.
+
+4. **Aggregate triage**: For PRs with ≥5 bot findings, the author posts a triage summary in the PR description (Fixed: N, False positive: N, Follow-up: N, Won't fix: N) so reviewers can quickly verify the disposition.
+
+### Rules
+
+- CI check: warn when a PR has ≥3 unresolved bot review threads
+- Merge gate: block merge when bot comments > human comments AND human approvals == 0
+- PR template: include a "Bot Review Triage" section that's auto-populated when bot reviews exist
+
+### Evidence from Study
+
+- Bot share of substantive review: **23.7%** (139 of 587 substantive comments)
+- High-friction PRs with bot activity: **68.3%** (41 of 60)
+- Bot-dominated PRs in sample: **6** (10%)
+- 100%-bot PR in sample: **1** ([#111689](https://github.com/getsentry/sentry/pull/111689))
+- Bot comments in [abandoned PRs](./abandoned/) — bots invested 8-10 review comments each in [#109150](https://github.com/getsentry/sentry/pull/109150) and [#109526](https://github.com/getsentry/sentry/pull/109526), neither of which merged
+
+---
+
 ## Impact Summary
 
 | ADR | Target Theme(s) | Frequency | Expected Mechanism |
@@ -237,6 +284,7 @@ The `github` scope has the highest median reviews (5.5) largely because of secur
 | 3. Test Evidence Matrix | Test evidence (38.3%) + Type safety (30.0%) | ~40% of high-friction PRs | Align reviewer expectations with explicit per-type matrix |
 | 4. Frontend Conventions | Component patterns (35.0%) + Naming (11.7%) | ~35% of high-friction PRs | Eliminate "inline style" comments with lint rule |
 | 5. Security Protocol | Security (20.0%) | ~20% of high-friction PRs | Front-load security discussion into PR description |
+| 6. Automated Review Triage | Bot review friction | 68.3% of high-friction PRs | Explicit protocol for acknowledging and dismissing bot findings |
 
 Combined, these five ADRs target discussion themes that appear in the majority of high-friction PRs. The overlap between themes means a single ADR often addresses multiple friction sources — for example, ADR 2 (API Contracts) addresses both the API design theme and the state management theme.
 
@@ -251,3 +299,5 @@ Combined, these five ADRs target discussion themes that appear in the majority o
 4. **ADR 2 (API Contract Evolution)** — Higher cost, high long-term impact. Requires team alignment on conventions but prevents the most time-consuming debates.
 
 5. **ADR 5 (Security Protocol)** — Specialized but critical. Only affects ~20% of PRs but those PRs carry the highest risk of security oversight.
+
+6. **ADR 6 (Automated Review Triage)** — Highest reach (68.3% of high-friction PRs) but requires team workflow change. Worth piloting on a single team to refine the triage labels and aggregate summary format before broader rollout.

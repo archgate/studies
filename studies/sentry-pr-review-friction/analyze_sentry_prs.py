@@ -631,9 +631,16 @@ def compute_domain_friction(rows: list[PrRow], min_count: int = 5) -> dict[str, 
 
 
 def compute_theme_coding(
-    deep_data: list[dict[str, Any]], theme_dict: dict[str, Any]
+    deep_data: list[dict[str, Any]],
+    theme_dict: dict[str, Any],
+    include_bots: bool = False,
 ) -> dict[str, Any]:
-    """Apply keyword-based theme classification to deep comments."""
+    """Apply keyword-based theme classification to deep comments.
+
+    If include_bots is False, only human comments are coded (default).
+    If True, bot review comments (cursor[bot], sentry[bot], etc.) are
+    included alongside humans — used for the combined analysis.
+    """
     theme_frequency: dict[str, int] = {t: 0 for t in theme_dict}
     pr_themes: list[dict[str, Any]] = []
 
@@ -641,7 +648,7 @@ def compute_theme_coding(
         non_bot_comments = [
             c
             for c in pr.get("comments", [])
-            if not c.get("is_bot", False)
+            if (include_bots or not c.get("is_bot", False))
             and not is_automated_comment(c.get("body", ""))
             and len(c.get("body", "")) >= 20
         ]
@@ -821,6 +828,135 @@ def compute_abandoned_analysis(
     }
 
 
+def compute_bot_review_analysis(
+    deep_data: list[dict[str, Any]], theme_dict: dict[str, Any]
+) -> dict[str, Any]:
+    """Analyze automated review activity as a distinct friction source.
+
+    Bot reviews from tools like cursor[bot], sentry[bot], sentry-warden[bot]
+    represent real review work the developer must address — they're not noise.
+    """
+    from collections import Counter
+
+    bot_authors: Counter = Counter()
+    bot_sources: Counter = Counter()
+    total_bot = 0
+    total_human = 0
+    prs_with_bots = 0
+    bot_comment_lengths: list[int] = []
+
+    # Per-PR bot vs human ratio
+    pr_bot_ratios: list[dict[str, Any]] = []
+
+    for pr in deep_data:
+        bot_count = 0
+        human_count = 0
+        pr_bot_authors: Counter = Counter()
+        for c in pr.get("comments", []):
+            if is_automated_comment(c.get("body", "")):
+                continue
+            if len(c.get("body", "")) < 20:
+                continue
+            if c.get("is_bot", False):
+                bot_count += 1
+                total_bot += 1
+                bot_authors[c["author"]] += 1
+                bot_sources[c["source"]] += 1
+                bot_comment_lengths.append(len(c.get("body", "")))
+                pr_bot_authors[c["author"]] += 1
+            else:
+                human_count += 1
+                total_human += 1
+
+        if bot_count > 0:
+            prs_with_bots += 1
+        pr_bot_ratios.append(
+            {
+                "pr_number": pr.get("pr_number"),
+                "pr_url": pr.get("pr_url", ""),
+                "pr_title": pr.get("pr_title", ""),
+                "bot_comments": bot_count,
+                "human_comments": human_count,
+                "bot_share": round(bot_count / (bot_count + human_count), 3)
+                if (bot_count + human_count) > 0
+                else 0.0,
+                "top_bot": pr_bot_authors.most_common(1)[0][0]
+                if pr_bot_authors
+                else None,
+            }
+        )
+
+    # PRs sorted by bot activity volume
+    top_bot_activity = sorted(
+        pr_bot_ratios, key=lambda x: x["bot_comments"], reverse=True
+    )[:15]
+
+    # PRs where bots dominate the discussion (bot_share >= 0.5)
+    bot_dominated = [p for p in pr_bot_ratios if p["bot_share"] >= 0.5 and p["bot_comments"] >= 3]
+
+    # Theme coding on bot comments only
+    bot_theme_frequency: dict[str, int] = {t: 0 for t in theme_dict}
+    for pr in deep_data:
+        bot_comments = [
+            c
+            for c in pr.get("comments", [])
+            if c.get("is_bot", False)
+            and not is_automated_comment(c.get("body", ""))
+            and len(c.get("body", "")) >= 20
+        ]
+        if not bot_comments:
+            continue
+
+        for theme_name, theme_info in theme_dict.items():
+            keywords = theme_info.get("keywords", [])
+            for comment in bot_comments:
+                body_lower = comment.get("body", "").lower()
+                if any(kw.lower() in body_lower for kw in keywords):
+                    bot_theme_frequency[theme_name] += 1
+                    break  # Count each PR once per theme
+
+    bot_theme_sorted = sorted(
+        bot_theme_frequency.items(), key=lambda x: x[1], reverse=True
+    )
+
+    return {
+        "total_bot_comments": total_bot,
+        "total_human_comments": total_human,
+        "bot_share_of_review": round(total_bot / (total_bot + total_human), 3)
+        if (total_bot + total_human) > 0
+        else 0.0,
+        "prs_with_bot_activity": prs_with_bots,
+        "prs_total": len(deep_data),
+        "prs_with_bot_share": round(prs_with_bots / len(deep_data), 3)
+        if deep_data
+        else 0.0,
+        "bot_authors": [
+            {"author": a, "count": c} for a, c in bot_authors.most_common()
+        ],
+        "bot_sources": dict(bot_sources),
+        "avg_bot_comment_length": round(
+            sum(bot_comment_lengths) / len(bot_comment_lengths)
+        )
+        if bot_comment_lengths
+        else 0,
+        "bot_dominated_prs": {
+            "count": len(bot_dominated),
+            "threshold": "bot_share >= 0.5 AND bot_comments >= 3",
+            "examples": sorted(bot_dominated, key=lambda x: x["bot_share"], reverse=True)[:10],
+        },
+        "top_bot_activity_prs": top_bot_activity,
+        "bot_theme_frequency": [
+            {
+                "theme": t,
+                "count": c,
+                "share": round(c / len(deep_data), 3) if deep_data else 0.0,
+                "description": theme_dict.get(t, {}).get("description", ""),
+            }
+            for t, c in bot_theme_sorted
+        ],
+    }
+
+
 def cmd_analyze(args: argparse.Namespace) -> None:
     """Analyze collected PR data."""
     print("Loading collected data...")
@@ -853,9 +989,11 @@ def cmd_analyze(args: argparse.Namespace) -> None:
     if THEME_DICT_PATH.exists():
         theme_dict = load_json(THEME_DICT_PATH)
         themes = compute_theme_coding(deep_data["prs"], theme_dict)
+        bot_review = compute_bot_review_analysis(deep_data["prs"], theme_dict)
     else:
         print(f"  Warning: {THEME_DICT_PATH} not found. Skipping theme analysis.")
         themes = {"theme_frequency": [], "pr_themes": []}
+        bot_review = {}
 
     # 4. Friction predictors
     print("Computing friction predictors...")
@@ -893,6 +1031,7 @@ def cmd_analyze(args: argparse.Namespace) -> None:
         "baseline": baseline,
         "domain_friction": domain_friction,
         "themes": themes,
+        "bot_review": bot_review,
         "friction_predictors": predictors,
         "abandoned": abandoned,
         "stale": {

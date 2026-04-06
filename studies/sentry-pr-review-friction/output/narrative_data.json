@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-04T10:30:45.192540+00:00",
+  "generated_at_utc": "2026-04-06T11:16:22.718457+00:00",
   "pages": {
     "index": {
       "repo": "getsentry/sentry",
@@ -24,7 +24,7 @@
       "repo": "getsentry/sentry",
       "window_days": 90,
       "query_limit": 500,
-      "generated_at_utc": "2026-04-04T10:30:45.049143+00:00",
+      "generated_at_utc": "2026-04-06T11:16:22.558239+00:00",
       "merged_sample": 500,
       "closed_sample": 500,
       "open_sample": 251,

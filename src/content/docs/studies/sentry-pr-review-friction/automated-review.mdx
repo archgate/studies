@@ -1,0 +1,135 @@
+---
+title: Automated Review Friction
+description: "How bot reviewers (Cursor, Sentry Warden, Sentry Bug Prediction) contribute to PR review friction."
+sidebar:
+  order: 5
+---
+
+# Automated Review Friction
+
+Sentry has adopted automated review tooling aggressively. Three bot reviewers — `sentry[bot]`, `sentry-warden[bot]`, and `cursor[bot]` — produce a substantial share of PR review activity. These bots are **not noise**: they post substantive, line-level review comments that the developer must read, evaluate, and either address or dismiss.
+
+This page treats automated review as a first-class friction source, separate from human review.
+
+## Bot Review Volume
+
+Across the 60 high-friction PRs in our deep comment sample:
+
+| Metric | Value |
+|--------|-------|
+| Total substantive bot review comments | **139** |
+| Total substantive human review comments | 448 |
+| **Bot share of substantive review** | **23.7%** |
+| PRs with bot review activity | 41 / 60 |
+| **Share of high-friction PRs with bots** | **68.3%** |
+| Average bot comment length | **1,565 characters** |
+
+For comparison, human review comments in our sample average roughly 150-300 characters. **Bot comments are 5-10x longer** than human comments — they contain detailed bug descriptions, code snippets, severity ratings, and suggested fixes. Each one requires meaningful developer attention.
+
+## Bot Reviewer Breakdown
+
+| Bot | Substantive Comments | Role |
+|-----|----------------------|------|
+| **`sentry[bot]`** | 81 | Sentry's internal bug prediction reviewer |
+| **`sentry-warden[bot]`** | 50 | Sentry's internal correctness/security checker |
+| `cursor[bot]` | 4 | Cursor Bugbot (most automated comments are template-filtered) |
+| `github-advanced-security[bot]` | 3 | GitHub's security advisor |
+| `getsentry-bot` | 1 | Internal automation |
+
+The two dominant bots — `sentry[bot]` and `sentry-warden[bot]` — are Sentry's own automated review tooling, accounting for **94% of substantive bot reviews**. Note that `cursor[bot]`'s template-style review summaries (BUGBOT_REVIEW markers) are filtered out as automated noise; only its substantive findings are counted.
+
+## What Bot Reviews Actually Say
+
+Bot reviews are not generic warnings. They're specific bug findings tied to code lines. Examples from real PRs:
+
+### From `sentry-warden[bot]` on [#111697](https://github.com/getsentry/sentry/pull/111697)
+
+> *"**Organization option key mismatch causes setting to have no effect**. The new option registers with key `sentry:default_automated_run_stopping_point` but the code that consumes this value (in `seer/similarity/utils.py:587` and `tasks/seer/autofix.py:249`) reads from key `sentry:default_stopping_point`."*
+
+This is a real bug — a typo causing the new setting to silently do nothing in production. The developer must acknowledge and fix it.
+
+### From `cursor[bot]` on [#111697](https://github.com/getsentry/sentry/pull/111697)
+
+> *"**Test asserts wrong default value for coding agent** (Medium Severity). `test_default_coding_agent_default` asserts `response.data["defaultCodingAgent"] is None`, but the serializer returns `SEER_DEFAULT_CODING_AGENT_DEFAULT` (`"seer"`) as the fallback when the org option is unset. This means the API contract test was passing the wrong assertion."*
+
+A test correctness finding — the test was passing for the wrong reason. Worth fixing, but takes developer time to verify and address.
+
+### From `sentry[bot]` on [#111697](https://github.com/getsentry/sentry/pull/111697)
+
+> *"**Bug:** The migration task `configure_seer_for_existing_org` skips projects with existing stopping points, preventing the new `automation_handoff` configuration from being applied to them. (Severity: HIGH)"*
+
+A migration logic finding tagged HIGH severity — exactly the kind of issue that historically required a security/correctness specialist to spot.
+
+## Bot-Dominated PRs
+
+A subset of PRs have **majority-bot review activity** — where bot comments outnumber human comments. These represent cases where automated tooling is doing more review work than humans:
+
+| PR | Bot Comments | Human Comments | Bot Share | Top Bot |
+|----|--------------|-----------------|-----------|---------|
+| [#111689](https://github.com/getsentry/sentry/pull/111689) | 6 | 0 | **100%** | `sentry[bot]` |
+| [#111724](https://github.com/getsentry/sentry/pull/111724) | 4 | 1 | 80% | `sentry-warden[bot]` |
+| [#112007](https://github.com/getsentry/sentry/pull/112007) | 6 | 2 | 75% | `sentry[bot]` |
+| [#111892](https://github.com/getsentry/sentry/pull/111892) | 6 | 2 | 75% | `sentry-warden[bot]` |
+| [#111565](https://github.com/getsentry/sentry/pull/111565) | 8 | 5 | 62% | `sentry[bot]` |
+
+[#111689](https://github.com/getsentry/sentry/pull/111689) is striking: **6 substantive bot review comments and zero human comments**. Effectively, the entire review of this PR was performed by automated tooling. Whether the bot findings were addressed is invisible to the metric — but the developer had to read and respond to all 6.
+
+## Top Bot Activity (Absolute Volume)
+
+| PR | Bot Comments | Human Comments | Bot Share |
+|----|--------------|-----------------|-----------|
+| [#109150](https://github.com/getsentry/sentry/pull/109150) | 10 | 20 | 33% |
+| [#111728](https://github.com/getsentry/sentry/pull/111728) | 8 | 42 | 16% |
+| [#111565](https://github.com/getsentry/sentry/pull/111565) | 8 | 5 | 62% |
+| [#109526](https://github.com/getsentry/sentry/pull/109526) | 8 | 14 | 36% |
+| [#111697](https://github.com/getsentry/sentry/pull/111697) | 7 | 25 | 22% |
+| [#111539](https://github.com/getsentry/sentry/pull/111539) | 6 | 19 | 24% |
+
+Notably, [#109150](https://github.com/getsentry/sentry/pull/109150) and [#109526](https://github.com/getsentry/sentry/pull/109526) appear in both this list **and** the [abandoned PRs list](./abandoned/) — these are PRs where bots invested significant review effort that produced no merged outcome.
+
+## Why This Matters
+
+Bot reviews create real friction even when (especially when) they find real bugs:
+
+### 1. Cognitive load is real, not synthetic
+
+A 1,565-character bot comment with severity rating, code snippets, and suggested fixes takes the developer **as long to evaluate** as a human review comment of similar depth. In some ways longer, because the developer must judge both the finding's correctness AND whether the bot's understanding of context is right.
+
+### 2. False positives are silent friction
+
+When a bot flags a non-issue, the developer must:
+- Read the full finding
+- Verify it doesn't apply
+- Either dismiss or respond explaining why
+- Potentially defend the dismissal in subsequent review
+
+This time cost is invisible in any metric except total comment count — and doesn't show up at all if the developer just silently ignores the comment.
+
+### 3. Bots and humans aren't redundant — they compound
+
+In our sample, **only 33% of high-friction PRs have either bot OR human review but not both**. The other **68% have both**. This means bot review is largely *additive* to human review, not a replacement. The total review effort per PR is now:
+
+```
+Total review burden = human review + bot review + (time to dispatch bot findings)
+```
+
+### 4. Bot findings shape merge timing
+
+PRs with bot-dominated review activity ([#111689](https://github.com/getsentry/sentry/pull/111689), [#112007](https://github.com/getsentry/sentry/pull/112007)) often wait for the developer to respond to all bot findings before merge — even if no human reviewer has formally requested changes. The bot becomes a de facto blocker.
+
+## Implications for ADR Proposals
+
+Bot review activity sharpens several of the [ADR proposals](./adr-proposals/):
+
+- **PR Scope Boundaries (ADR 1)** is even more important when bots are reviewing — smaller PRs mean fewer bot findings to triage. A 12-file PR may generate 10+ bot findings; a 3-file PR may generate 1-2.
+
+- **Test Evidence Matrix (ADR 3)** could short-circuit the test correctness findings (e.g., sentry-warden flagging assertion mismatches) by requiring authors to verify test expectations match implementation defaults.
+
+- A **new ADR may be warranted**: "Bot Review Triage Protocol" — establishing conventions for how to acknowledge, dismiss, or escalate bot findings. Without this, every bot finding triggers ad-hoc developer judgment.
+
+## Caveats
+
+- **Sample bias**: This analysis is based on the top 60 friction PRs, not all 500. Bot activity in low-friction PRs may differ. Bot reviewers tend to comment more on complex PRs because complex PRs have more code surface to analyze.
+- **Substantive vs. noise filter**: We exclude template/marker comments (Cursor BUGBOT_REVIEW summaries, BACKEND_TEST_FAILURES) but count substantive line-level bot reviews. This excludes ~220 cursor[bot] template comments — those are noise, not review.
+- **Dismissed vs. addressed**: We count bot comments that were posted, not bot comments that resulted in code changes. Some findings are dismissed; some are addressed. Both consume developer time.
+- **Emergence effect**: Sentry's internal bot tooling (`sentry[bot]`, `sentry-warden[bot]`) is relatively new. The friction patterns documented here may evolve as the bots are tuned and developers adapt their workflows.

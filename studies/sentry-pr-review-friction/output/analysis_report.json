@@ -3,7 +3,7 @@
     "repo": "getsentry/sentry",
     "window_days": 90,
     "query_limit": 500,
-    "generated_at_utc": "2026-04-04T10:30:45.049143+00:00",
+    "generated_at_utc": "2026-04-06T11:16:22.558239+00:00",
     "merged_sample": 500,
     "closed_sample": 500,
     "open_sample": 251,
@@ -1865,6 +1865,294 @@
             "> @cvxluo Sorry for the ping, would you be able to re-add the tag so the selective workflows properly trigger, and possibly auth the other stuff, this is my first PR so I'm not too sure how stuff goes here haha.\r\n> \r\n> Also apologies for the mess that this PR is, I've been trying to fix damn test is..."
           ]
         }
+      }
+    ]
+  },
+  "bot_review": {
+    "total_bot_comments": 139,
+    "total_human_comments": 448,
+    "bot_share_of_review": 0.237,
+    "prs_with_bot_activity": 41,
+    "prs_total": 60,
+    "prs_with_bot_share": 0.683,
+    "bot_authors": [
+      {
+        "author": "sentry[bot]",
+        "count": 81
+      },
+      {
+        "author": "sentry-warden[bot]",
+        "count": 50
+      },
+      {
+        "author": "cursor[bot]",
+        "count": 4
+      },
+      {
+        "author": "github-advanced-security[bot]",
+        "count": 3
+      },
+      {
+        "author": "getsentry-bot",
+        "count": 1
+      }
+    ],
+    "bot_sources": {
+      "review_comment": 138,
+      "issue_comment": 1
+    },
+    "avg_bot_comment_length": 1565,
+    "bot_dominated_prs": {
+      "count": 6,
+      "threshold": "bot_share >= 0.5 AND bot_comments >= 3",
+      "examples": [
+        {
+          "pr_number": 111689,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111689",
+          "pr_title": "fix(np): Updates IssueNotificationData, render logic to correctly extract action data",
+          "bot_comments": 6,
+          "human_comments": 0,
+          "bot_share": 1.0,
+          "top_bot": "sentry[bot]"
+        },
+        {
+          "pr_number": 111724,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111724",
+          "pr_title": "feat(explore): Add issue post processor on occurrences dataset",
+          "bot_comments": 4,
+          "human_comments": 1,
+          "bot_share": 0.8,
+          "top_bot": "sentry-warden[bot]"
+        },
+        {
+          "pr_number": 112007,
+          "pr_url": "https://github.com/getsentry/sentry/pull/112007",
+          "pr_title": "ref(cmdk) improve searching",
+          "bot_comments": 6,
+          "human_comments": 2,
+          "bot_share": 0.75,
+          "top_bot": "sentry[bot]"
+        },
+        {
+          "pr_number": 111892,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111892",
+          "pr_title": "fix(github): Add accessibleOnly param to scope repo search to installation repos",
+          "bot_comments": 6,
+          "human_comments": 2,
+          "bot_share": 0.75,
+          "top_bot": "sentry-warden[bot]"
+        },
+        {
+          "pr_number": 111565,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111565",
+          "pr_title": "feat(autofix): Handle PR creation in group ai autofix endpoint",
+          "bot_comments": 8,
+          "human_comments": 5,
+          "bot_share": 0.615,
+          "top_bot": "sentry[bot]"
+        },
+        {
+          "pr_number": 111667,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111667",
+          "pr_title": "feat(dashboards): Adds `dashboards-ai-generate` flag to Seer Explorer access list",
+          "bot_comments": 3,
+          "human_comments": 3,
+          "bot_share": 0.5,
+          "top_bot": "sentry[bot]"
+        }
+      ]
+    },
+    "top_bot_activity_prs": [
+      {
+        "pr_number": 109150,
+        "pr_url": "https://github.com/getsentry/sentry/pull/109150",
+        "pr_title": "feat(preprod): Add snapshot image comparison task with odiff",
+        "bot_comments": 10,
+        "human_comments": 20,
+        "bot_share": 0.333,
+        "top_bot": "sentry-warden[bot]"
+      },
+      {
+        "pr_number": 111728,
+        "pr_url": "https://github.com/getsentry/sentry/pull/111728",
+        "pr_title": "feat(github): Add API-driven GitHub integration setup",
+        "bot_comments": 8,
+        "human_comments": 42,
+        "bot_share": 0.16,
+        "top_bot": "sentry[bot]"
+      },
+      {
+        "pr_number": 111565,
+        "pr_url": "https://github.com/getsentry/sentry/pull/111565",
+        "pr_title": "feat(autofix): Handle PR creation in group ai autofix endpoint",
+        "bot_comments": 8,
+        "human_comments": 5,
+        "bot_share": 0.615,
+        "top_bot": "sentry[bot]"
+      },
+      {
+        "pr_number": 109526,
+        "pr_url": "https://github.com/getsentry/sentry/pull/109526",
+        "pr_title": "feat(seer): claude agent handoff integration",
+        "bot_comments": 8,
+        "human_comments": 14,
+        "bot_share": 0.364,
+        "top_bot": "sentry-warden[bot]"
+      },
+      {
+        "pr_number": 111697,
+        "pr_url": "https://github.com/getsentry/sentry/pull/111697",
+        "pr_title": "feat(seer): Add org-level default stopping point and wire coding agent defaults into project creation",
+        "bot_comments": 7,
+        "human_comments": 25,
+        "bot_share": 0.219,
+        "top_bot": "sentry[bot]"
+      },
+      {
+        "pr_number": 111539,
+        "pr_url": "https://github.com/getsentry/sentry/pull/111539",
+        "pr_title": "feat(pipeline): Add OrganizationPipelineEndpoint for API-driven pipelines",
+        "bot_comments": 6,
+        "human_comments": 19,
+        "bot_share": 0.24,
+        "top_bot": "sentry[bot]"
+      },
+      {
+        "pr_number": 111689,
+        "pr_url": "https://github.com/getsentry/sentry/pull/111689",
+        "pr_title": "fix(np): Updates IssueNotificationData, render logic to correctly extract action data",
+        "bot_comments": 6,
+        "human_comments": 0,
+        "bot_share": 1.0,
+        "top_bot": "sentry[bot]"
+      },
+      {
+        "pr_number": 112007,
+        "pr_url": "https://github.com/getsentry/sentry/pull/112007",
+        "pr_title": "ref(cmdk) improve searching",
+        "bot_comments": 6,
+        "human_comments": 2,
+        "bot_share": 0.75,
+        "top_bot": "sentry[bot]"
+      },
+      {
+        "pr_number": 111892,
+        "pr_url": "https://github.com/getsentry/sentry/pull/111892",
+        "pr_title": "fix(github): Add accessibleOnly param to scope repo search to installation repos",
+        "bot_comments": 6,
+        "human_comments": 2,
+        "bot_share": 0.75,
+        "top_bot": "sentry-warden[bot]"
+      },
+      {
+        "pr_number": 111723,
+        "pr_url": "https://github.com/getsentry/sentry/pull/111723",
+        "pr_title": "feat(sentry apps): Add circuit breaker into webhook code",
+        "bot_comments": 5,
+        "human_comments": 16,
+        "bot_share": 0.238,
+        "top_bot": "sentry[bot]"
+      },
+      {
+        "pr_number": 112032,
+        "pr_url": "https://github.com/getsentry/sentry/pull/112032",
+        "pr_title": "feat(scraps): Add slot component",
+        "bot_comments": 5,
+        "human_comments": 11,
+        "bot_share": 0.312,
+        "top_bot": "sentry[bot]"
+      },
+      {
+        "pr_number": 111407,
+        "pr_url": "https://github.com/getsentry/sentry/pull/111407",
+        "pr_title": "feat(github): Add fetching issue types from GitHub orgs",
+        "bot_comments": 5,
+        "human_comments": 7,
+        "bot_share": 0.417,
+        "top_bot": "sentry[bot]"
+      },
+      {
+        "pr_number": 111724,
+        "pr_url": "https://github.com/getsentry/sentry/pull/111724",
+        "pr_title": "feat(explore): Add issue post processor on occurrences dataset",
+        "bot_comments": 4,
+        "human_comments": 1,
+        "bot_share": 0.8,
+        "top_bot": "sentry-warden[bot]"
+      },
+      {
+        "pr_number": 111663,
+        "pr_url": "https://github.com/getsentry/sentry/pull/111663",
+        "pr_title": "feat(autofix): Update seer explorer autofix last triggered on completion",
+        "bot_comments": 4,
+        "human_comments": 5,
+        "bot_share": 0.444,
+        "top_bot": "sentry-warden[bot]"
+      },
+      {
+        "pr_number": 111976,
+        "pr_url": "https://github.com/getsentry/sentry/pull/111976",
+        "pr_title": "feat(preprod): Add approval API endpoint and approval info in snapshot response",
+        "bot_comments": 4,
+        "human_comments": 15,
+        "bot_share": 0.211,
+        "top_bot": "sentry[bot]"
+      }
+    ],
+    "bot_theme_frequency": [
+      {
+        "theme": "component_patterns_and_styling",
+        "count": 39,
+        "share": 0.65,
+        "description": "Frontend component usage patterns, styling approaches, design system compliance"
+      },
+      {
+        "theme": "test_evidence_and_coverage",
+        "count": 39,
+        "share": 0.65,
+        "description": "Requests for test evidence, coverage gaps, test methodology discussions"
+      },
+      {
+        "theme": "code_documentation",
+        "count": 37,
+        "share": 0.617,
+        "description": "Requests for code documentation, explanations of behavior, and clarifying intent"
+      },
+      {
+        "theme": "api_design_and_defaults",
+        "count": 34,
+        "share": 0.567,
+        "description": "Debates about API surface design, default values, nullability, and contract semantics"
+      },
+      {
+        "theme": "type_safety_and_error_handling",
+        "count": 33,
+        "share": 0.55,
+        "description": "Type correctness, type annotations, error handling patterns, and exception safety"
+      },
+      {
+        "theme": "state_management_and_data_flow",
+        "count": 22,
+        "share": 0.367,
+        "description": "State management, data flow between components/services, migration safety"
+      },
+      {
+        "theme": "security_and_permissions",
+        "count": 17,
+        "share": 0.283,
+        "description": "Security implications, permission models, authentication flows, and attack surface discussions"
+      },
+      {
+        "theme": "naming_and_consistency",
+        "count": 6,
+        "share": 0.1,
+        "description": "Naming choices, consistency between APIs, normalization of terminology"
+      },
+      {
+        "theme": "followup_and_scope_creep",
+        "count": 5,
+        "share": 0.083,
+        "description": "Discussions about deferring work, scope boundaries, and follow-up tracking"
       }
     ]
   },

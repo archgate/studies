@@ -39,6 +39,12 @@ For the top 50 merged PRs by friction score and top 10 closed-unmerged PRs by di
 
 Total collected: **965 comments** across 60 PRs, of which **604 are non-bot**.
 
+### Bot Comments as First-Class Signal
+
+Bot review comments are **not discarded**. Sentry uses automated review tooling extensively (`sentry[bot]`, `sentry-warden[bot]`, `cursor[bot]`), and these reviews cause real developer friction — they must be read, evaluated, and either addressed or dismissed. We analyze bot review activity as a separate dimension on the [Automated Review Friction page](./automated-review/).
+
+We do filter **automated noise** (CI failure reports, Linear linkback comments, Cursor BUGBOT_REVIEW template summaries) by content marker — these are non-substantive metadata, not review work. After filtering, the remaining bot comments are substantive line-level findings that the developer must address.
+
 ### Phase 3: Theme Coding
 
 Comments are classified using a keyword-based theme dictionary ([`theme_dictionary.json`](https://github.com/rhuanbarreto/archgate-studies/blob/main/studies/sentry-pr-review-friction/theme_dictionary.json)). This is a deterministic, auditable approach:
