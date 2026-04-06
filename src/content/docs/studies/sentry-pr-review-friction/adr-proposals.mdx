@@ -1,332 +1,168 @@
 ---
 title: ADR Proposals
-description: "Five evidence-grounded ADR proposals to reduce review friction in getsentry/sentry."
+description: "Six archgate-format ADRs grounded in study evidence — with companion .rules.ts files and custom lint rules ready to drop into a Sentry-style codebase."
 sidebar:
   order: 7
 ---
 
 # Proposed ADR Pack
 
-These proposals are grounded in the [theme analysis](./themes/) and [friction map](./friction-map/) data from this study. Each proposal targets a specific pattern of recurring review friction, references the evidence that motivates it, and suggests an enforcement approach.
+This page summarizes six [Architecture Decision Records](https://adr.github.io/) grounded in the study's findings. Each ADR is published as a complete artifact in the study repository, formatted to match the [archgate ADR convention](https://github.com/archgate/cli/blob/main/.archgate/adrs/) — frontmatter, sections, and (where applicable) a companion `.rules.ts` file that implements deterministic checks.
+
+## Why archgate format?
+
+Archgate is the project hosting this study. Its ADR convention is opinionated for a reason: every ADR has a parseable frontmatter (id, domain, scoped file globs), structured sections (Context with alternatives, Decision, Do's and Don'ts, Implementation Pattern, Consequences, Compliance and Enforcement), and an optional `.rules.ts` companion file that the `archgate check` engine can execute to enforce the rules automatically.
+
+By publishing the proposals in archgate format, the Sentry team (or any team running archgate) could literally drop these files into `.archgate/adrs/` and start enforcing them immediately.
+
+## The Files
+
+All ADR files live in [`studies/sentry-pr-review-friction/proposed-adrs/`](https://github.com/archgate/studies/tree/main/studies/sentry-pr-review-friction/proposed-adrs):
+
+| File | Domain | Has Rules |
+|------|--------|-----------|
+| [`GEN-001-pr-scope-boundaries.md`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/GEN-001-pr-scope-boundaries.md) + [`.rules.ts`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/GEN-001-pr-scope-boundaries.rules.ts) | general | Yes |
+| [`BE-001-api-contract-evolution.md`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/BE-001-api-contract-evolution.md) + [`.rules.ts`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/BE-001-api-contract-evolution.rules.ts) | backend | Yes |
+| [`GEN-002-test-evidence-matrix.md`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/GEN-002-test-evidence-matrix.md) + [`.rules.ts`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/GEN-002-test-evidence-matrix.rules.ts) | general | Yes |
+| [`FE-001-frontend-component-conventions.md`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/FE-001-frontend-component-conventions.md) + [`.rules.ts`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/FE-001-frontend-component-conventions.rules.ts) | frontend | Yes |
+| [`BE-002-security-review-protocol.md`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/BE-002-security-review-protocol.md) + [`.rules.ts`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/BE-002-security-review-protocol.rules.ts) | backend | Yes |
+| [`GEN-003-bot-finding-promotion.md`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/GEN-003-bot-finding-promotion.md) | general | No (workflow ADR) |
+
+Plus custom lint rules in [`proposed-lint-rules/`](https://github.com/archgate/studies/tree/main/studies/sentry-pr-review-friction/proposed-lint-rules):
+
+| File | Tool | Targets |
+|------|------|---------|
+| [`eslint-frontend-conventions.js`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-lint-rules/eslint-frontend-conventions.js) | ESLint | Inline styles, `Stack gap=0`, async state try/finally |
+| [`semgrep-doesnotexist.yaml`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-lint-rules/semgrep-doesnotexist.yaml) | Semgrep | Missing `Model.DoesNotExist` handling |
+| [`semgrep-filter-first-unreachable.yaml`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-lint-rules/semgrep-filter-first-unreachable.yaml) | Semgrep | `.filter().first()` with unreachable `except DoesNotExist` |
+| [`semgrep-high-cardinality-metrics.yaml`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-lint-rules/semgrep-high-cardinality-metrics.yaml) | Semgrep | High-cardinality metric tags |
+| [`semgrep-direct-dict-access-api.yaml`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-lint-rules/semgrep-direct-dict-access-api.yaml) | Semgrep | Direct dict access on external API responses |
+
+The lint rules are designed to be installed in `.archgate/lint/` per the [archgate lint folder convention](https://github.com/archgate/cli/blob/main/.archgate/lint/README.md).
+
+## Summary of Each ADR
+
+### [GEN-001 — PR Scope Boundaries and Size Budget](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/GEN-001-pr-scope-boundaries.md)
+
+**Problem**: Large PRs (≥10 files or ≥400 churn) hit the high-friction quartile **57.4%** of the time vs 9.8% for tiny PRs.
+
+**Decision**: Soft size limits (≤5 files, ≤200 churn) with mandatory "Scope Rationale" section in PR description for over-limit PRs. Hard threshold at the empirical large-PR cutoff.
+
+**Rules** ([`GEN-001-pr-scope-boundaries.rules.ts`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/GEN-001-pr-scope-boundaries.rules.ts)):
+- `pr-size-warning` — warns when soft or hard threshold is exceeded
+- `scope-rationale-required` — blocks merge if over-limit PR has no Scope Rationale section
 
 ---
 
-## ADR 1: PR Scope Boundaries and Size Budget
+### [BE-001 — API Contract and Configuration Evolution](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/BE-001-api-contract-evolution.md)
 
-### Problem
+**Problem**: API design and defaults is the top discussion theme (38.3% of high-friction PRs). Recurring bot findings include `str | None` UnionType in option registration, Pydantic Literal mismatches, and option key writer/reader mismatches.
 
-Large PRs (≥10 files or ≥400 churn) account for 13.6% of PRs but hit the high-friction quartile **57.4%** of the time — nearly 6x the rate of tiny PRs (9.8%). Feature PRs (`feat`) have a **38.6%** high-friction rate, nearly double fix PRs (17.6%).
+**Decision**: Concrete callable types in option registration; typed key constants in a single registry; `None` defaults require semantic explanation; conflicting options rejected at validation time.
 
-The [abandoned PR analysis](./abandoned/) shows that approach disagreement — not PR size — drives abandonment, but large PRs make approach disagreement *more likely* because they bundle multiple decisions into a single review surface.
-
-### Decision
-
-PRs SHOULD stay within these soft limits:
-
-- **≤5 files changed** (median in our sample is 2)
-- **≤200 lines of churn** (P90 is 344, so this is the 75th-80th percentile)
-- **Single logical change** — one feature, one refactor, or one fix
-
-PRs exceeding these limits SHOULD include a "scope rationale" in the PR description explaining why they can't be split.
-
-### Rules
-
-- A CI check warns when a PR exceeds 10 files or 400 churn (the "large PR" threshold from our data)
-- PRs exceeding the threshold without a scope rationale get an automated comment requesting one
-- No hard block — some changes are inherently large (migrations, renames)
-
-### Evidence
-
-| Metric | Small PRs | Large PRs | Ratio |
-|--------|-----------|-----------|-------|
-| Median TTM | 1.66h | 22.52h | **13.6x** |
-| Median reviews | 1.0 | 5.0 | **5.0x** |
-| High-friction rate | 12.6% | 57.4% | **4.6x** |
-
-### Expected Impact
-
-If the 68 large PRs in our sample were split to stay within scope limits, assuming even a 50% reduction in their friction rates, that would move ~19 PRs out of the high-friction quartile — reducing total high-friction PRs by approximately 15%.
+**Rules** ([`BE-001-api-contract-evolution.rules.ts`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/BE-001-api-contract-evolution.rules.ts)):
+- `no-union-type-in-option-registration` — flags `type=str | None` patterns
+- `option-keys-must-use-constants` — flags string-literal option keys in `options.get/set` calls
+- `no-none-default-without-nullable-comment` — requires comment explaining `None` semantic
 
 ---
 
-## ADR 2: API Contract and Configuration Evolution
+### [GEN-002 — Test Evidence Matrix by Change Type](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/GEN-002-test-evidence-matrix.md)
 
-### Problem
+**Problem**: Test evidence is tied for the top discussion theme (38.3%). Reviewers and bots ask for *specific* tests (error paths, edge cases, sentinel values) — not just "more tests."
 
-**API design and defaults** is the top discussion theme, appearing in **38.3%** of high-friction PRs. Reviewers repeatedly debate:
+**Decision**: Per-change-type test matrix with explicit minimum scenarios for each change type (new endpoint, modified component, error handling, migration, etc.). PR description must include a Test Plan section mapping the change to matrix entries.
 
-- Whether values should be nullable vs. required with defaults
-- How defaults propagate across scopes (org → project → runtime)
-- Whether to force-overwrite conflicting options or reject at validation time
-
-From [#111697](https://github.com/getsentry/sentry/pull/111697):
-> *"Should we force overwrite if auto_open_prs and stopping point is not open_pr, or ignore an incorrect stopping point, or reject at validation time?"*
-
-From [#111723](https://github.com/getsentry/sentry/pull/111723):
-> *"Should we start this as `False`, then flip it on in prod?"*
-
-These questions recur because there's no explicit convention for how new configuration options should behave.
-
-### Decision
-
-New API fields and configuration options MUST follow these conventions:
-
-1. **Default values**: Every new field must have an explicit default. Document whether the default is "safe off" (feature disabled) or "safe on" (feature active). Prefer "safe off" for new features behind flags.
-
-2. **Nullability**: A field is nullable only if `null` has a distinct semantic meaning (e.g., "inherit from parent scope"). Document what `null` means in the field's docstring. If `null` just means "use the default," use the default directly instead.
-
-3. **Scope propagation**: When a setting exists at multiple scopes (org, project, user), document the resolution order explicitly. State whether child scopes can override, and what happens when parent and child conflict.
-
-4. **Validation**: Conflicting options MUST be rejected at validation time with a clear error message, not silently resolved. If silent resolution is necessary, document the resolution strategy in the serializer.
-
-### Rules
-
-- Serializer fields must include a docstring explaining the default and nullability semantics
-- PRs introducing multi-scope settings must include a "scope resolution" section in the PR description
-- Automated lint: flag `allow_null=True` without an accompanying comment explaining the null semantics
-
-### Evidence from Study
-
-- API design theme: 23/60 high-friction PRs (38.3%)
-- Co-occurs with state management (35.0%) and type safety (30.0%)
-- [#111697](https://github.com/getsentry/sentry/pull/111697): 47 review events, 118h TTM — dominated by nullability and default propagation debate
+**Rules** ([`GEN-002-test-evidence-matrix.rules.ts`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/GEN-002-test-evidence-matrix.rules.ts)):
+- `test-plan-section-required` — PR description must include `## Test Plan`
+- `test-plan-references-must-exist` — test names listed in the plan must be found in changed test files
+- `no-bare-except-pass-in-tests` — bare `except: pass` in test files indicates missing assertion
 
 ---
 
-## ADR 3: Test Evidence Matrix by Change Type
+### [FE-001 — Frontend Component and Styling Conventions](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/FE-001-frontend-component-conventions.md)
 
-### Problem
+**Problem**: Component patterns appear in 35.0% of high-friction PRs. The single most repeated review comment in the entire dataset — "can we avoid this inline style w/ prop of some kind?" — appeared **6 times in PR [#111529](https://github.com/getsentry/sentry/pull/111529)** alone.
 
-**Test evidence and coverage** is tied for the top discussion theme at **38.3%** of high-friction PRs. The pattern isn't "add more tests" — it's "add *these specific* tests." Reviewers request:
+**Decision**: No inline `style=` props (with escape hatch comment); design system first; layout component selection rules; `try/finally` for async loading state.
 
-- Rendering tests that verify provider context propagation
-- Error path tests for circuit breakers and exception handling
-- Edge case tests for specific input combinations
+**Rules** ([`FE-001-frontend-component-conventions.rules.ts`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/FE-001-frontend-component-conventions.rules.ts)):
+- `no-inline-style` — flags `style=` JSX without escape hatch comment
+- `no-stack-with-zero-gap` — flags `<Stack gap={0}>`
+- `async-state-try-finally` — warns when loading state setter resets in `try` but not `finally`
 
-From [#111554](https://github.com/getsentry/sentry/pull/111554):
-> *"There should probably be a test in here which mounts, renders, then confirms that the PageContextProvider is actually providing the page context."*
-
-From [#111723](https://github.com/getsentry/sentry/pull/111723):
-> *"Maybe worth adding a test for when the circuit breaker allows the request, but the HTTP request itself returns a failed status code?"*
-
-Each reviewer applies their own mental model of "sufficient" test evidence.
-
-### Decision
-
-Test expectations are tied to change type:
-
-| Change Type | Minimum Test Evidence |
-|-------------|----------------------|
-| **New API endpoint** | Happy path + auth failure + validation error + rate limit |
-| **New React component** | Mount/render + props variations + error state + accessibility |
-| **Provider/context change** | Nested consumer test + context propagation verification |
-| **Error handling change** | Each error path + recovery behavior + logging verification |
-| **Configuration/settings** | Default value + override + invalid value + scope resolution |
-| **Integration/webhook** | Success + auth failure + timeout + malformed payload |
-| **Migration** | Forward migration + rollback (if applicable) |
-| **Circuit breaker/resilience** | Open state + closed state + half-open + underlying failure |
-
-### Rules
-
-- PR description must include a "Test Plan" section mapping the change type to tests written
-- CI check: warn if a PR touches `src/` but adds no files under `tests/`
-- Review checklist includes "test evidence matches change type"
-
-### Evidence from Study
-
-- Test evidence theme: 23/60 high-friction PRs (38.3%)
-- Co-occurs with type safety (30.0%) — fragile error handling prompts test requests
-- [#111691](https://github.com/getsentry/sentry/pull/111691): reviewer asks for typed exceptions instead of string matching
+**Companion ESLint plugin** ([`eslint-frontend-conventions.js`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-lint-rules/eslint-frontend-conventions.js)) provides edit-time IDE feedback for the same patterns.
 
 ---
 
-## ADR 4: Frontend Component and Styling Conventions
+### [BE-002 — Security Review Protocol for Auth and Integration Changes](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/BE-002-security-review-protocol.md)
 
-### Problem
+**Problem**: Security discussion appears in 20% of high-friction PRs but with disproportionate stakes. The `github` scope has the highest median review count (5.5) of any scope due to OAuth pipeline security surface area.
 
-**Component patterns and styling** appears in **35.0%** of high-friction PRs. The single most repeated review comment in our dataset is:
+**Decision**: PRs touching auth/integration/API paths must include a Security Considerations section answering five required questions; CODEOWNERS-driven security reviewer assignment; no silent removal of defense-in-depth; user-supplied IDs validated before pipeline state binding.
 
-> *"Can we avoid this inline style w/ prop of some kind?"*
-
-This exact comment (or close variants) appeared **six times in one PR** ([#111529](https://github.com/getsentry/sentry/pull/111529)). Other recurring patterns:
-
-- Questions about when to use Stack vs. Container vs. Flex
-- Whether to use the design system vs. custom components
-- How to handle layout shifts from styling changes
-
-### Decision
-
-1. **No inline styles** in React components. Use component props, styled components, or design system tokens instead. If an inline style is truly necessary (dynamic values from props), add a code comment explaining why.
-
-2. **Design system first**: Before creating a custom styled component, check if a Scraps/design system component satisfies the need. If the design system component is insufficient, create a follow-up issue to extend it rather than building a one-off.
-
-3. **Layout components**: Use `Flex` for single-axis layouts, `Grid` for two-axis layouts. Use `Stack` only when children must stack vertically with consistent gaps. Do not use `Stack` with `gap={0}` — use a container instead.
-
-4. **Prop spreading**: Prefer `containerProps` spreading pattern for design system integration. Avoid extra wrapper elements when `containerProps` can achieve the same result.
-
-### Rules
-
-- ESLint rule: warn on `style=` attribute in JSX (with escape hatch comment `// inline-style: <reason>`)
-- PR review checklist: "no inline styles without justification"
-- Design system audit: quarterly review of custom styled components to identify candidates for design system promotion
-
-### Evidence from Study
-
-- Component patterns theme: 21/60 high-friction PRs (35.0%)
-- [#111529](https://github.com/getsentry/sentry/pull/111529): 37 review events, 123h TTM, 12 files — dominated by inline style and component pattern discussion
-- [#111490](https://github.com/getsentry/sentry/pull/111490): loading state and interactive behavior discussion
+**Rules** ([`BE-002-security-review-protocol.rules.ts`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/BE-002-security-review-protocol.rules.ts)):
+- `security-considerations-section-required` — PRs touching sensitive paths must have the section
+- `no-pipeline-bind-before-validation` — `pipeline.bind_state()` must follow authorization checks
+- `no-unscoped-model-get-in-api` — flags `Model.objects.get()` in API endpoints without org scoping
 
 ---
 
-## ADR 5: Security Review Protocol for Auth and Integration Changes
+### [GEN-003 — Convert Recurring Bot Findings to Deterministic Rules](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/GEN-003-bot-finding-promotion.md)
 
-### Problem
+**Problem**: Bot reviewers (`sentry[bot]`, `sentry-warden[bot]`, `cursor[bot]`) find real bugs but the **same bug categories repeat across PRs**. See the [Automated Review Friction page](./automated-review/) for the full pattern catalog.
 
-**Security and permissions** appears in **20.0%** of high-friction PRs — a lower frequency than other themes, but with disproportionately high stakes. The discussion themes are serious:
+**Decision**: Track bot finding categories. When a category accumulates ≥3 occurrences in 90 days, commit to promoting it to a deterministic check (mypy strict mode, AST lint rule, schema/registry validation, or test fixture). Suppress the bot category once the check ships, freeing the bot to find genuinely novel patterns.
 
-> *"Yeah I think this could be a valid attack since this is the first step in the pipeline. Like what if someone gives us someone else's installation_id?"*
-> — [#111728](https://github.com/getsentry/sentry/pull/111728)
-
-> *"Organization scoping removed from Group fetch — defense-in-depth weakened."*
-> — [#111663](https://github.com/getsentry/sentry/pull/111663)
-
-> *"Should we put some permissions checks around this? Only admins will be able to edit integrations."*
-> — [#111499](https://github.com/getsentry/sentry/pull/111499)
-
-The `github` scope has the highest median reviews (5.5) largely because of security surface area in OAuth/pipeline code.
-
-### Decision
-
-1. **Security-sensitive paths**: Changes to the following areas require explicit security consideration in the PR description:
-   - Authentication and OAuth flows
-   - Integration setup pipelines
-   - Permission checks and RBAC logic
-   - Multi-org data access patterns
-   - User-supplied data processing
-   - Defense-in-depth mechanisms (scoping, guards)
-
-2. **Security section in PR description**: PRs touching security-sensitive paths must include a "Security Considerations" section that addresses:
-   - What user-controlled inputs are accepted?
-   - What authorization checks are performed?
-   - Could this change weaken existing defense-in-depth?
-   - Is there a state-management window where invalid state could be exploited?
-
-3. **No silent scope removal**: Removing organization scoping, permission checks, or other defense-in-depth mechanisms requires explicit justification and reviewer acknowledgment in the PR thread.
-
-### Rules
-
-- CODEOWNERS: security-sensitive paths require review from a security-designated reviewer
-- CI check: warn when files in auth/integration/permission paths are modified without a "Security Considerations" section in the PR body
-- Automated label: add `security-review` label to PRs touching OAuth or pipeline code
-
-### Evidence from Study
-
-- Security theme: 12/60 high-friction PRs (20.0%)
-- `github` scope: highest median reviews (5.5) of any scope
-- [#111728](https://github.com/getsentry/sentry/pull/111728): 32 review events, 98h TTM — extensive security discussion about OAuth pipeline state
-- [#111663](https://github.com/getsentry/sentry/pull/111663): defense-in-depth weakening flagged by reviewer
-
----
-
----
-
-## ADR 6: Convert Recurring Bot Findings to Deterministic Rules
-
-### Problem
-
-Bot reviewers (`sentry[bot]`, `sentry-warden[bot]`, `cursor[bot]`) account for **23.7% of substantive review comments** in our sample, with **68.3% of high-friction PRs** containing bot activity. The bots are not noise — they find real bugs (missing exception handlers, type system misuse, key mismatches, security holes).
-
-The problem is **not the bots**. The problem is that **the bots find the same kinds of bugs over and over again**. From the [Automated Review Friction page](./automated-review/), we identified at least 10 recurring bot finding patterns in our 60-PR sample alone, including:
-
-- Missing `Model.DoesNotExist` handling on `.objects.get()` (≥3 PRs)
-- `.filter().first()` with unreachable `except DoesNotExist`
-- Direct dict access on external API responses
-- `str | None` UnionType used as a callable in serializers
-- Option key mismatch between writer and reader
-- Companion list updates missed (one PR had this finding **4 times** for 4 different lists)
-- High-cardinality metric tags
-- Form state not reset in error catch blocks
-
-Each pattern recurs across PRs. Each is detectable by a deterministic check (Ruff rule, Semgrep pattern, mypy strict mode, ESLint rule, schema validation, or refactor to a typed registry).
-
-**Running expensive agentic LLM review on every commit to catch a bug pattern that has already been identified is the wrong tool.** Agentic review is the right tool for *discovering* novel bug shapes. Once a pattern recurs, it should graduate to a cheap deterministic check that runs at edit time in the IDE — catching the bug before the PR is even opened.
-
-### Decision
-
-Establish a **bot finding promotion workflow**:
-
-1. **Track bot finding categories.** Each substantive bot finding is tagged with a category label (manual or semi-automated) — e.g., `missing-doesnotexist-handler`, `direct-dict-access`, `companion-list-miss`.
-
-2. **Recurrence triggers promotion.** When a category accumulates **≥3 occurrences across distinct PRs within 90 days**, the team commits to evaluating it for promotion to a deterministic check. The recurrence threshold is the trigger — not "is it possible to write a check?" but "is it economically justified yet?"
-
-3. **Promotion targets**, in order of preference:
-   - **Static type check** (mypy/pyright strict mode) if the pattern is type-system-detectable
-   - **AST lint rule** (Ruff custom rule, Semgrep pattern, ESLint rule) if the pattern is syntactically detectable
-   - **Schema/registry validation** (typed enum for option keys, single-source-of-truth for platform lists) if the pattern is data-driven
-   - **Test fixture** (assert that all writers and readers of an option key agree) if the pattern requires runtime introspection
-   - **ADR with PR description requirement** if the pattern is genuinely human-judgment-dependent
-
-4. **Track the conversion.** When a pattern is promoted to a deterministic check, the corresponding bot finding category is suppressed in agentic review (or the bot is told to no longer report that category). This prevents double-flagging and frees the bot's attention budget for novel patterns.
-
-5. **Bots stay focused on novel cases.** The explicit goal is that the bot's findings should shift over time toward patterns that **don't yet have a deterministic check** — first-time pattern discovery, cross-file semantic reasoning, novel attack surfaces. As deterministic coverage grows, the bot's per-PR finding count should drop.
-
-### Rules
-
-- A category tracker (issue tracker label, spreadsheet, or lightweight database) records bot findings by category and counts recurrence
-- A monthly review meeting evaluates categories that crossed the recurrence threshold and assigns promotion owners
-- A `bot-finding-promotion` Linear/Jira project tracks in-progress promotions
-- When a deterministic check ships, the corresponding bot review category is suppressed via bot configuration
-
-### Pilot Promotions (Quick Wins from This Study)
-
-The following promotions are directly justified by findings in our sample:
-
-| Bot Finding Category | Promotion Target | Cost |
-|----------------------|------------------|------|
-| Missing `DoesNotExist` handling | Custom Ruff rule | Low |
-| `.filter().first()` + unreachable except | Custom Ruff rule | Trivial |
-| `UnionType` not callable in option registration | mypy strict on options module | Low |
-| Pydantic `Literal` mismatch | mypy strict on relevant modules | Trivial |
-| Option key mismatch (writer/reader) | Typed `OrgOptionKey` enum + test fixture | Medium |
-| High-cardinality metric tags | Custom Ruff rule + allowlist | Low |
-| Form state not reset on error | ESLint rule requiring `try/finally` | Trivial |
-| Platform companion list miss | Refactor to single platform registry | Medium |
-
-These eight promotions alone could eliminate the majority of recurring substantive bot findings in our sample — without removing the bots themselves.
-
-### Evidence from Study
-
-- Bot share of substantive review: **23.7%** (139 of 587 substantive comments)
-- High-friction PRs with bot activity: **68.3%** (41 of 60)
-- Recurring patterns identified in sample: **10+** distinct categories
-- One PR ([#111522](https://github.com/getsentry/sentry/pull/111522)) had the same companion-list-miss finding **4 separate times** in a single review pass — exactly the case where a deterministic check is unambiguously cheaper
-- Bot-dominated PRs (≥50% bot reviews): **6**, including one PR ([#111689](https://github.com/getsentry/sentry/pull/111689)) with **100% bot reviews and zero human comments** — a signal that the deterministic-check coverage gap is currently filled entirely by agentic review
-
----
+**Rules**: This is a workflow ADR — no companion `.rules.ts`. Enforcement is procedural via the quarterly promotion review and the bot finding tracker. The other five ADRs above (BE-001, BE-002, FE-001) and the [proposed lint rules](https://github.com/archgate/studies/tree/main/studies/sentry-pr-review-friction/proposed-lint-rules) **are themselves the result of applying GEN-003** to the bot findings in this study.
 
 ## Impact Summary
 
-| ADR | Target Theme(s) | Frequency | Expected Mechanism |
-|-----|-----------------|-----------|-------------------|
-| 1. PR Scope Boundaries | Size-driven friction | 57.4% of large PRs | Reduce PR size → fewer discussion points per review |
-| 2. API Contract Evolution | API design (38.3%) + State mgmt (35.0%) | ~40% of high-friction PRs | Pre-decide nullability and propagation conventions |
-| 3. Test Evidence Matrix | Test evidence (38.3%) + Type safety (30.0%) | ~40% of high-friction PRs | Align reviewer expectations with explicit per-type matrix |
-| 4. Frontend Conventions | Component patterns (35.0%) + Naming (11.7%) | ~35% of high-friction PRs | Eliminate "inline style" comments with lint rule |
-| 5. Security Protocol | Security (20.0%) | ~20% of high-friction PRs | Front-load security discussion into PR description |
-| 6. Promote Bot Findings to Rules | Recurring bot findings | 68.3% of high-friction PRs | Convert recurring agentic findings into deterministic checks (lint/types/schema) so the bot's attention shifts to novel cases |
-
-Combined, these five ADRs target discussion themes that appear in the majority of high-friction PRs. The overlap between themes means a single ADR often addresses multiple friction sources — for example, ADR 2 (API Contracts) addresses both the API design theme and the state management theme.
+| ADR | Target Theme(s) | Coverage of High-Friction PRs | Mechanism |
+|-----|-----------------|-------------------------------|-----------|
+| GEN-001 | Size-driven friction | 57.4% of large PRs | Reduce PR size + force scope rationale |
+| BE-001 | API design (38.3%) + state mgmt (35.0%) | ~40% | Typed registries + concrete callable types |
+| GEN-002 | Test evidence (38.3%) + type safety (30.0%) | ~40% | Per-change-type test matrix in PR template |
+| FE-001 | Component patterns (35.0%) + naming (11.7%) | ~35% | ESLint rules eliminating recurring style comments |
+| BE-002 | Security (20.0%) | ~20% | Front-loaded security analysis + CODEOWNERS gating |
+| GEN-003 | Bot review friction (68.3%) | ~68% | Promote recurring agentic findings to deterministic checks |
 
 ## Implementation Priority
 
-1. **ADR 4 (Frontend Conventions)** — Lowest cost, highest immediate signal. An ESLint rule for inline styles would eliminate the single most repeated review comment in our dataset. Quick win.
+1. **FE-001 (Frontend Conventions)** — Lowest cost, highest immediate signal. The ESLint plugin for inline styles eliminates the single most repeated review comment in our dataset. Quick win.
 
-2. **ADR 1 (PR Scope Boundaries)** — High impact, moderate cost. A CI size check is easy to implement and directly targets the strongest friction predictor in our data.
+2. **GEN-001 (PR Scope Boundaries)** — High impact, moderate cost. The size warning rule is easy to implement and directly targets the strongest friction predictor.
 
-3. **ADR 3 (Test Evidence Matrix)** — Medium cost, high clarity impact. Publishing the matrix aligns expectations without requiring tooling changes.
+3. **GEN-003 + the lint rules** (Bot Finding Promotion) — Highest long-term leverage. The 4 Semgrep rules in `proposed-lint-rules/` could ship in days and immediately suppress the most common bot finding categories.
 
-4. **ADR 2 (API Contract Evolution)** — Higher cost, high long-term impact. Requires team alignment on conventions but prevents the most time-consuming debates.
+4. **GEN-002 (Test Evidence Matrix)** — Medium cost, high clarity impact. The matrix can be published as a PR template change and immediately referenced by reviewers.
 
-5. **ADR 5 (Security Protocol)** — Specialized but critical. Only affects ~20% of PRs but those PRs carry the highest risk of security oversight.
+5. **BE-001 (API Contract Evolution)** — Higher cost, high long-term impact. Migrating to a typed option key registry is a meaningful refactor but eliminates an entire bug class permanently.
 
-6. **ADR 6 (Promote Bot Findings to Rules)** — Highest long-term leverage. The pilot promotions table includes several "trivial" and "low" cost wins that could ship in days and immediately reduce bot review volume on common patterns. The medium-cost promotions (typed option registry, platform single-source-of-truth) are larger refactors but eliminate entire bug classes permanently.
+6. **BE-002 (Security Protocol)** — Specialized but critical. Affects ~20% of PRs but those PRs carry the highest risk of security oversight.
+
+## How to Use These ADRs
+
+If you run a Sentry-style codebase (Python backend + TypeScript frontend) and want to adopt these proposals:
+
+```bash
+# 1. Initialize archgate in your repo (if not already)
+cd your-repo
+archgate init
+
+# 2. Drop the ADR files into .archgate/adrs/
+cp /path/to/study/proposed-adrs/*.md .archgate/adrs/
+cp /path/to/study/proposed-adrs/*.rules.ts .archgate/adrs/
+
+# 3. Drop the lint rules into .archgate/lint/
+mkdir -p .archgate/lint/semgrep
+cp /path/to/study/proposed-lint-rules/eslint-frontend-conventions.js .archgate/lint/eslint.js
+cp /path/to/study/proposed-lint-rules/semgrep-*.yaml .archgate/lint/semgrep/
+
+# 4. Adjust the file globs in each ADR's frontmatter to match your repo layout
+
+# 5. Run the checks
+archgate check
+```
+
+Each ADR is independent — you can adopt them one at a time, in the priority order above, without committing to the full pack upfront.

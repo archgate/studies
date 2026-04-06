@@ -1,0 +1,37 @@
+# semgrep-filter-first-unreachable.yaml
+#
+# Detects the bug pattern where a try/except catches Model.DoesNotExist
+# but the try body uses .filter().first() — which never raises DoesNotExist.
+# The except block is dead code, and the .first() returning None will likely
+# cause an AttributeError downstream.
+#
+# Replaces the recurring `sentry-warden[bot]` finding from the Sentry PR
+# Friction Study (PR #111724):
+#   "AttributeError on None when Group is not found — The function uses
+#    .filter().first() which returns None when no record exists, but the
+#    `except Group.DoesNotExist` handler is unreachable."
+
+rules:
+  - id: filter-first-unreachable-doesnotexist
+    languages: [python]
+    severity: WARNING
+    message: |
+      `try` block uses `.filter(...).first()` but the `except` catches
+      `DoesNotExist`. `.filter().first()` returns None on no match — it
+      never raises DoesNotExist. The except block is unreachable and the
+      None return will likely cause an AttributeError downstream.
+
+      Either:
+      - Use `.get(...)` (which raises DoesNotExist on no match), OR
+      - Remove the `except DoesNotExist` and explicitly check `if obj is None`.
+    patterns:
+      - pattern: |
+          try:
+            ...
+            $X.filter(...).first()
+            ...
+          except $MODEL.DoesNotExist:
+            ...
+    paths:
+      include:
+        - "src/sentry/**/*.py"
