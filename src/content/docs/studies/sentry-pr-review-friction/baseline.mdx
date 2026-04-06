@@ -1,0 +1,88 @@
+---
+title: Baseline Metrics
+description: "Aggregate metrics across 500 merged PRs: time-to-merge, review events, size segmentation."
+sidebar:
+  order: 2
+---
+
+Computed from 500 merged PRs in `getsentry/sentry` over a 90-day window.
+
+## Time-to-Merge Distribution
+
+| Percentile | TTM (hours) |
+|------------|-------------|
+| Median (P50) | **4.98** |
+| P75 | 22.72 |
+| P90 | **70.54** |
+| Mean | 22.12 |
+
+The P90/median ratio of **14.2x** reveals a long tail: while most PRs merge within a few hours, the slowest 10% take nearly 3 days. The mean (22.12h) being pulled well above the median (4.98h) confirms this right skew.
+
+## Review Activity
+
+| Metric | Value |
+|--------|-------|
+| Median review events per PR | **2.0** |
+| Mean review events per PR | 3.46 |
+| Formal `CHANGES_REQUESTED` rate | **0.2%** |
+| Median review rounds | 0.0 |
+| Mean review rounds | 0.0 |
+
+The near-zero `CHANGES_REQUESTED` rate is notable. Sentry's review culture appears to favor inline comments and approval-with-comments rather than formal change requests. This means the review event count alone understates actual review friction — the real signal is in comment content, not review states.
+
+## PR Size Distribution
+
+| Metric | Value |
+|--------|-------|
+| Median files changed | **2.0** |
+| P90 files changed | 9.0 |
+| Median churn (lines) | **51.5** |
+| P90 churn (lines) | 344.0 |
+
+The majority of Sentry PRs are small: the median changes just 2 files with ~52 lines of churn.
+
+## Size Segmentation
+
+PRs are segmented into three buckets:
+
+| Segment | Definition | Count | Share | Median TTM | Median Reviews |
+|---------|------------|-------|-------|------------|----------------|
+| **Small** | ≤3 files AND ≤80 churn | 261 | 52.2% | **1.66h** | 1.0 |
+| **Large** | ≥10 files OR ≥400 churn | 68 | 13.6% | **22.52h** | 5.0 |
+
+Key observations:
+
+- **Large PRs take 13.6x longer to merge** than small PRs (22.52h vs 1.66h)
+- **Large PRs receive 5x more review events** (5.0 vs 1.0 median)
+- Over half (52.2%) of all PRs are small, suggesting that PR slicing is already common practice
+- The 13.6% of large PRs likely accounts for a disproportionate share of total review effort
+
+## Friction by Change Type
+
+Using conventional commit prefixes parsed from PR titles:
+
+| Type | Count | High-Friction Rate |
+|------|-------|--------------------|
+| `feat` | 166 | **38.6%** |
+| `perf` | 12 | 25.0% |
+| `ref` | 98 | 22.4% |
+| `fix` | 131 | **17.6%** |
+| `chore` | 42 | 14.3% |
+| `test` | 8 | 12.5% |
+
+Feature PRs are **2.2x more likely** to be high-friction than fix PRs. This aligns with the expectation that new features introduce more design discussion than targeted bug fixes.
+
+## Friction by Reviewer Engagement
+
+| Bucket | Count | High-Friction Rate |
+|--------|-------|--------------------|
+| 0-1 review events | varies | 9.8% |
+| 2-3 review events | varies | varies |
+| 4-6 review events | varies | varies |
+| 7+ review events | varies | highest |
+
+The relationship between review engagement and friction is mechanical (review count is a component of the friction score), but the segmentation by size shows that **size drives friction more than any other factor**: 57.4% of large PRs are high-friction vs only 9.8% of tiny PRs.
+
+## Summary
+
+The baseline tells a clear story: **Sentry's review process is efficient for small, well-scoped PRs** (median 1.66h TTM) **but struggles with large, complex changes** (median 22.52h TTM). The near-zero formal CHANGES_REQUESTED rate suggests friction manifests through comment threads rather than formal review states — which is why the [theme analysis](./themes/) of actual comment content is essential for understanding the real sources of review friction.

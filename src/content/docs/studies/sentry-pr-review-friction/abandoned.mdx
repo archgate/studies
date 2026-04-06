@@ -1,0 +1,103 @@
+---
+title: Abandoned & Stale PRs
+description: "Patterns in closed-unmerged and stale PRs — signals of unresolved decision ambiguity."
+sidebar:
+  order: 6
+---
+
+Merged PRs only tell part of the friction story. PRs that are closed without merging or left open for weeks represent failed consensus — unresolved discussion that burned reviewer time without producing a deliverable.
+
+## Closed-Unmerged PRs
+
+| Metric | Value |
+|--------|-------|
+| Closed-unmerged PRs sampled | 500 |
+| High-discussion abandoned (≥10 review events) | **12** (2.4%) |
+
+While 2.4% seems small, these 12 PRs represent concentrated, wasted review effort.
+
+### Top Abandoned PRs
+
+| PR | Review Events | TTM to Close (h) | Files | Churn |
+|----|---------------|-------------------|-------|-------|
+| [#109150](https://github.com/getsentry/sentry/pull/109150) | **42** | 47 | 7 | 907 |
+| [#109526](https://github.com/getsentry/sentry/pull/109526) | 23 | 170 | 22 | 1,269 |
+| [#109112](https://github.com/getsentry/sentry/pull/109112) | 19 | 214 | 3 | 53 |
+| [#111080](https://github.com/getsentry/sentry/pull/111080) | 17 | 91 | 3 | 79 |
+| [#111112](https://github.com/getsentry/sentry/pull/111112) | 16 | 124 | 20 | 1,979 |
+| [#110145](https://github.com/getsentry/sentry/pull/110145) | 16 | 430 | 25 | 3,236 |
+| [#110442](https://github.com/getsentry/sentry/pull/110442) | 14 | 137 | 4 | 285 |
+| [#110859](https://github.com/getsentry/sentry/pull/110859) | 12 | 339 | 8 | 118 |
+
+Notable patterns:
+
+- [#109150](https://github.com/getsentry/sentry/pull/109150) had **42 review events** before being closed — more than any merged PR in our sample's top list.
+- [#110145](https://github.com/getsentry/sentry/pull/110145) was open for **430 hours** (18 days) with 25 files changed and 3,236 lines of churn before abandonment.
+- [#109112](https://github.com/getsentry/sentry/pull/109112) is interesting: only 3 files and 53 lines of churn, yet 19 review events and 214 hours. Small PRs with high discussion usually indicate disagreement about *approach* rather than *implementation detail*.
+
+## Abandoned vs. Merged Friction: Comparison
+
+| Metric | Merged High-Friction (top 25%) | Closed High-Discussion (≥10 reviews) |
+|--------|-------------------------------|--------------------------------------|
+| Count | 125 | 12 |
+| Median TTM (hours) | 65.62 | **130.58** |
+| Median review events | 6.0 | **15.0** |
+| Median churn | 156.0 | **214.5** |
+| Median files | 4.0 | 4.0 |
+
+Key observations:
+
+- **Abandoned PRs take 2x longer** to reach closure than merged high-friction PRs take to merge (130.58h vs 65.62h)
+- **Abandoned PRs have 2.5x more review events** (15.0 vs 6.0 median) — the discussion volume is substantially higher
+- **Churn is ~40% higher** in abandoned PRs (214.5 vs 156.0)
+- **File count is the same** (4.0 median for both), suggesting that the difference isn't about PR size but about the complexity or contentiousness of the changes
+
+The file count parity is the most telling finding: abandoned high-discussion PRs aren't necessarily bigger — they're more *controversial*. The same 4-file PR can either merge with 6 review events or be abandoned after 15, depending on whether the approach has consensus.
+
+## Open Stale PRs
+
+| Metric | Value |
+|--------|-------|
+| Open PRs sampled | 251 |
+| Stale 14+ days | **92** (36.7%) |
+| Stale 30+ days | **33** (13.1%) |
+
+Over a third of open PRs are stale by the 14-day mark — a significant portion of work-in-progress that may never land.
+
+### Most-Discussed Stale PRs
+
+| PR | Review Events | Hours Open |
+|----|---------------|------------|
+| [#109819](https://github.com/getsentry/sentry/pull/109819) | **55** | 760 |
+| [#108533](https://github.com/getsentry/sentry/pull/108533) | **40** | 1,050 |
+| [#108409](https://github.com/getsentry/sentry/pull/108409) | 13 | 1,091 |
+| [#110820](https://github.com/getsentry/sentry/pull/110820) | 11 | 443 |
+| [#110808](https://github.com/getsentry/sentry/pull/110808) | 11 | 445 |
+
+[#109819](https://github.com/getsentry/sentry/pull/109819) has **55 review events** and has been open for over **31 days** — the single most-discussed PR across our entire dataset (merged, closed, or open). [#108533](https://github.com/getsentry/sentry/pull/108533) has been open for **43 days** with 40 review events.
+
+These represent significant ongoing review investment without resolution.
+
+## Interpretation
+
+Three patterns emerge from the abandoned and stale PR data:
+
+### 1. Approach Disagreement, Not Size
+
+Abandoned high-discussion PRs have the same median file count as merged ones (4 files) but 2.5x the review events. This strongly suggests the friction comes from **disagreement about the approach** rather than the volume of changes. An ADR that pre-decides the approach for common scenarios would short-circuit these debates.
+
+### 2. Unbounded Discussion Windows
+
+The stale PR data shows PRs with 40-55 review events still open after 30+ days. Without explicit policies for when to close or escalate, PRs can accumulate unbounded discussion without resolution. A "PR Review SLA" ADR could establish escalation triggers.
+
+### 3. Wasted Reviewer Effort
+
+The 12 abandoned PRs with ≥10 reviews represent a minimum of ~120 review events that produced no merged outcome. If we assume 10 minutes per review event on average, that's ~20 hours of reviewer time with zero deliverable. Early-stage approach validation (design docs, RFC, or quick ADR check) could catch approach misalignment before significant review investment.
+
+## Recommendations
+
+These patterns inform specific [ADR proposals](./adr-proposals/):
+
+- **PR Scope and Slicing ADR**: Pre-decide approach for common change patterns to reduce approach disagreement
+- **Review Escalation ADR**: Set time-based triggers for escalation when PRs stall
+- **Early Validation ADR**: Require approach agreement for changes above a complexity threshold before opening a PR

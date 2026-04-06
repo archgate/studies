@@ -1,0 +1,126 @@
+---
+title: Methodology
+description: "Data collection approach, tools, sample sizes, and limitations for the Sentry PR friction study."
+sidebar:
+  order: 1
+---
+
+## Data Sources
+
+All data is collected via the [GitHub CLI (`gh`)](https://cli.github.com/) authenticated against the GitHub API. No scraping, no third-party services, no LLMs in the data pipeline.
+
+### Phase 1: PR Collection
+
+| Dataset | Source Command | Fields | Count |
+|---------|---------------|--------|-------|
+| Merged PRs | `gh pr list --state merged` | number, title, createdAt, mergedAt, author, reviews, files, labels, url | 500 |
+| Closed-unmerged PRs | `gh pr list --state closed --search "is:unmerged"` | Same fields | 500 |
+| Open PRs | `gh pr list --state open` | Same fields | 251 |
+
+For each PR, the script computes:
+
+- **Time-to-merge (TTM)**: `(mergedAt - createdAt)` in hours
+- **Review events**: Count of `CHANGES_REQUESTED`, `COMMENTED`, `APPROVED` reviews
+- **Churn**: `additions + deletions` across all changed files
+- **File domains**: First two path segments of each changed file (e.g., `src/sentry` → domain `src/sentry`)
+- **Title scope**: Parsed from conventional commit format `type(scope): description`
+- **Review rounds**: Count of `CHANGES_REQUESTED` events (proxy for back-and-forth cycles)
+- **Friction score**: Composite `normalize(review_events) + normalize(TTM)`, where normalize maps to 0-1 range via min-max scaling
+
+### Phase 2: Deep Comment Collection
+
+For the top 50 merged PRs by friction score and top 10 closed-unmerged PRs by discussion volume:
+
+1. **Issue-level comments** via `gh pr view N --json comments` — general discussion on the PR
+2. **Review bodies** via `gh pr view N --json reviews` — top-level review summaries
+3. **Inline review comments** via `gh api repos/{owner}/{repo}/pulls/N/comments --paginate` — line-level code review comments
+
+Total collected: **965 comments** across 60 PRs, of which **604 are non-bot**.
+
+### Bot Comments as First-Class Signal
+
+Bot review comments are **not discarded**. Sentry uses automated review tooling extensively (`sentry[bot]`, `sentry-warden[bot]`, `cursor[bot]`), and these reviews cause real developer friction — they must be read, evaluated, and either addressed or dismissed. We analyze bot review activity as a separate dimension on the [Automated Review Friction page](./automated-review/).
+
+We do filter **automated noise** (CI failure reports, Linear linkback comments, Cursor BUGBOT_REVIEW template summaries) by content marker — these are non-substantive metadata, not review work. After filtering, the remaining bot comments are substantive line-level findings that the developer must address.
+
+### Phase 3: Theme Coding
+
+Comments are classified using a keyword-based theme dictionary ([`theme_dictionary.json`](https://github.com/rhuanbarreto/archgate-studies/blob/main/studies/sentry-pr-review-friction/theme_dictionary.json)). This is a deterministic, auditable approach:
+
+1. Filter out bot comments and automated messages (Linear links, CI failure reports, Cursor Bugbot reviews)
+2. Filter comments shorter than 20 characters
+3. For each remaining comment, check which theme keywords appear in the body
+4. Record matching quotes as evidence (first 300 characters)
+
+The theme dictionary is externalized as JSON so it can be reviewed, challenged, and refined independently of the analysis code.
+
+## Sample Selection
+
+### Merged PR Window
+
+PRs merged within the last 90 days, limited to 500 most recent. This captures Sentry's current review culture rather than historical patterns.
+
+### Deep Comment Selection
+
+Top 50 by **composite friction score** rather than a single dimension. This avoids over-indexing on either slow-but-quiet PRs or fast-but-noisy PRs. The friction score combines:
+
+- Normalized review event count (0-1)
+- Normalized TTM (0-1)
+
+A PR that is both heavily discussed AND slow to merge ranks highest.
+
+### Closed-Unmerged Extension
+
+500 closed-unmerged PRs in the same window, plus deep comments for the top 10 by discussion volume. These represent abandoned consensus attempts.
+
+## Limitations
+
+### Merge Bias
+
+The baseline metrics are computed from merged PRs only. PRs that were closed without merge or remain stale are analyzed separately but not included in the baseline. This means the baseline understates total review friction.
+
+### GitHub API Caps
+
+`gh pr list` returns a maximum of 500 PRs per query. For a repository as active as Sentry, 500 merged PRs covers approximately 2-3 weeks of activity, not the full 90-day window. The sample is biased toward more recent PRs.
+
+### Keyword Theme Coding
+
+Theme classification uses keyword matching, not semantic understanding. This means:
+
+- **False positives**: A comment containing "default" might be about a CSS default, not API defaults
+- **False negatives**: Discussions using synonyms or indirect language may be missed
+- **No sentiment**: We count theme presence but not whether the discussion was contentious vs. routine
+
+The theme dictionary was bootstrapped by reading a sample of actual comments and iterating on keyword lists. It is published for review and can be refined.
+
+### Review Events vs. Actual Discussion
+
+GitHub's "review" events include `APPROVED`, `COMMENTED`, and `CHANGES_REQUESTED`. A PR with 10 `APPROVED` reviews has the same review count as one with 10 `CHANGES_REQUESTED`. The deep comment analysis partially compensates by looking at actual comment content for high-friction PRs.
+
+### Bot Comment Prevalence
+
+Sentry PRs include significant bot activity (Cursor Bugbot, Linear linkback, CI failure reports). These are filtered from theme analysis but inflate the raw review event counts in the baseline metrics. We flag bots by login suffix (`[bot]`, `-bot`) and by content markers, but some automated messages from non-bot accounts may slip through.
+
+### Label Sparsity
+
+Sentry PRs primarily use only `Scope: Backend` and `Scope: Frontend` labels. The domain friction map relies more heavily on title scope parsing and file path prefixes than on labels.
+
+## Reproducibility
+
+The full pipeline can be reproduced with:
+
+```bash
+# Requires: Python 3.11+, GitHub CLI (gh) authenticated
+cd studies/sentry-pr-review-friction
+
+# Phase 1 + 2: Collect data (~2 minutes for deep comments)
+python analyze_sentry_prs.py collect --repo getsentry/sentry --days 90 --limit 500
+
+# Phase 3: Analyze
+python analyze_sentry_prs.py analyze
+
+# Phase 4: Generate narrative data
+python analyze_sentry_prs.py report
+```
+
+All JSON artifacts are written to `output/` with timestamps and methodology metadata.

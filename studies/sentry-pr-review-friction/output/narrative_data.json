@@ -1,0 +1,3405 @@
+{
+  "generated_at_utc": "2026-04-06T11:16:22.718457+00:00",
+  "pages": {
+    "index": {
+      "repo": "getsentry/sentry",
+      "window_days": 90,
+      "merged_sample": 500,
+      "closed_sample": 500,
+      "key_findings": {
+        "ttm_median_h": 4.98,
+        "ttm_p90_h": 70.54,
+        "reviews_median": 2.0,
+        "large_pr_ttm_median_h": 22.52,
+        "top_theme": {
+          "theme": "api_design_and_defaults",
+          "count": 23,
+          "description": "Debates about API surface design, default values, nullability, and contract semantics",
+          "share": 0.383
+        },
+        "abandoned_high_discussion": 12
+      }
+    },
+    "methodology": {
+      "repo": "getsentry/sentry",
+      "window_days": 90,
+      "query_limit": 500,
+      "generated_at_utc": "2026-04-06T11:16:22.558239+00:00",
+      "merged_sample": 500,
+      "closed_sample": 500,
+      "open_sample": 251,
+      "deep_comment_prs": 60
+    },
+    "baseline": {
+      "sample_size": 500,
+      "ttm_median_h": 4.98,
+      "ttm_p75_h": 22.72,
+      "ttm_p90_h": 70.54,
+      "ttm_mean_h": 22.12,
+      "reviews_median": 2.0,
+      "reviews_mean": 3.46,
+      "changes_requested_share": 0.002,
+      "review_rounds_median": 0.0,
+      "review_rounds_mean": 0.0,
+      "small_pr_count": 261,
+      "small_pr_share": 0.522,
+      "small_pr_ttm_median_h": 1.66,
+      "small_pr_reviews_median": 1.0,
+      "large_pr_count": 68,
+      "large_pr_share": 0.136,
+      "large_pr_ttm_median_h": 22.52,
+      "large_pr_reviews_median": 5.0,
+      "churn_median": 51.5,
+      "churn_p90": 344.0,
+      "files_median": 2.0,
+      "files_p90": 9.0
+    },
+    "friction_map": {
+      "by_scope": [
+        {
+          "scope": "github",
+          "count": 8,
+          "ttm_median_h": 15.27,
+          "reviews_median": 5.5,
+          "changes_requested_rate": 0.0,
+          "churn_median": 259.0,
+          "review_rounds_median": 0.0
+        },
+        {
+          "scope": "seer",
+          "count": 28,
+          "ttm_median_h": 1.69,
+          "reviews_median": 3.5,
+          "changes_requested_rate": 0.0,
+          "churn_median": 54.5,
+          "review_rounds_median": 0.0
+        },
+        {
+          "scope": "attachments",
+          "count": 5,
+          "ttm_median_h": 13.4,
+          "reviews_median": 3.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 73.0,
+          "review_rounds_median": 0.0
+        },
+        {
+          "scope": "onboarding",
+          "count": 7,
+          "ttm_median_h": 102.85,
+          "reviews_median": 3.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 325.0,
+          "review_rounds_median": 0.0
+        },
+        {
+          "scope": "workflows",
+          "count": 14,
+          "ttm_median_h": 18.64,
+          "reviews_median": 2.5,
+          "changes_requested_rate": 0.071,
+          "churn_median": 29.0,
+          "review_rounds_median": 0.0
+        },
+        {
+          "scope": "aci",
+          "count": 17,
+          "ttm_median_h": 18.72,
+          "reviews_median": 2.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 54.0,
+          "review_rounds_median": 0.0
+        },
+        {
+          "scope": "autofix",
+          "count": 29,
+          "ttm_median_h": 2.57,
+          "reviews_median": 2.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 61.0,
+          "review_rounds_median": 0.0
+        },
+        {
+          "scope": "dashboards",
+          "count": 23,
+          "ttm_median_h": 1.85,
+          "reviews_median": 2.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 44.0,
+          "review_rounds_median": 0.0
+        },
+        {
+          "scope": "nav",
+          "count": 5,
+          "ttm_median_h": 12.84,
+          "reviews_median": 2.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 39.0,
+          "review_rounds_median": 0.0
+        },
+        {
+          "scope": "occurrences on eap",
+          "count": 6,
+          "ttm_median_h": 24.35,
+          "reviews_median": 2.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 247.0,
+          "review_rounds_median": 0.0
+        },
+        {
+          "scope": "preprod",
+          "count": 29,
+          "ttm_median_h": 2.62,
+          "reviews_median": 2.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 61.0,
+          "review_rounds_median": 0.0
+        },
+        {
+          "scope": "ui",
+          "count": 10,
+          "ttm_median_h": 15.32,
+          "reviews_median": 2.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 45.0,
+          "review_rounds_median": 0.0
+        },
+        {
+          "scope": "unscoped",
+          "count": 43,
+          "ttm_median_h": 4.15,
+          "reviews_median": 2.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 77.0,
+          "review_rounds_median": 0.0
+        },
+        {
+          "scope": "ACI",
+          "count": 14,
+          "ttm_median_h": 4.98,
+          "reviews_median": 1.5,
+          "changes_requested_rate": 0.0,
+          "churn_median": 22.5,
+          "review_rounds_median": 0.0
+        },
+        {
+          "scope": "agents",
+          "count": 6,
+          "ttm_median_h": 0.63,
+          "reviews_median": 1.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 22.5,
+          "review_rounds_median": 0.0
+        },
+        {
+          "scope": "assisted-query",
+          "count": 6,
+          "ttm_median_h": 2.25,
+          "reviews_median": 1.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 51.0,
+          "review_rounds_median": 0.0
+        },
+        {
+          "scope": "cells",
+          "count": 32,
+          "ttm_median_h": 22.3,
+          "reviews_median": 1.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 29.0,
+          "review_rounds_median": 0.0
+        },
+        {
+          "scope": "ci",
+          "count": 7,
+          "ttm_median_h": 0.4,
+          "reviews_median": 1.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 8.0,
+          "review_rounds_median": 0.0
+        },
+        {
+          "scope": "grouping",
+          "count": 11,
+          "ttm_median_h": 17.08,
+          "reviews_median": 1.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 54.0,
+          "review_rounds_median": 0.0
+        },
+        {
+          "scope": "issues",
+          "count": 10,
+          "ttm_median_h": 12.12,
+          "reviews_median": 1.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 116.0,
+          "review_rounds_median": 0.0
+        },
+        {
+          "scope": "pipeline",
+          "count": 7,
+          "ttm_median_h": 2.81,
+          "reviews_median": 1.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 24.0,
+          "review_rounds_median": 0.0
+        },
+        {
+          "scope": "snapshots",
+          "count": 10,
+          "ttm_median_h": 1.23,
+          "reviews_median": 1.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 149.0,
+          "review_rounds_median": 0.0
+        },
+        {
+          "scope": "tracemetrics",
+          "count": 5,
+          "ttm_median_h": 25.05,
+          "reviews_median": 1.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 63.0,
+          "review_rounds_median": 0.0
+        }
+      ],
+      "by_file_domain": [
+        {
+          "domain": ".github/CODEOWNERS",
+          "count": 26,
+          "ttm_median_h": 13.98,
+          "reviews_median": 4.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 214.5
+        },
+        {
+          "domain": "migrations_lockfile.txt",
+          "count": 5,
+          "ttm_median_h": 16.14,
+          "reviews_median": 3.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 73.0
+        },
+        {
+          "domain": "static/gsApp",
+          "count": 13,
+          "ttm_median_h": 19.46,
+          "reviews_median": 3.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 241.0
+        },
+        {
+          "domain": "tests/js",
+          "count": 6,
+          "ttm_median_h": 2.47,
+          "reviews_median": 3.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 122.5
+        },
+        {
+          "domain": "tests/sentry",
+          "count": 137,
+          "ttm_median_h": 4.84,
+          "reviews_median": 3.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 104.0
+        },
+        {
+          "domain": "tests/snuba",
+          "count": 10,
+          "ttm_median_h": 44.93,
+          "reviews_median": 2.5,
+          "changes_requested_rate": 0.0,
+          "churn_median": 247.0
+        },
+        {
+          "domain": "pnpm-lock.yaml",
+          "count": 5,
+          "ttm_median_h": 14.51,
+          "reviews_median": 2.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 237.0
+        },
+        {
+          "domain": "pyproject.toml",
+          "count": 7,
+          "ttm_median_h": 1.21,
+          "reviews_median": 2.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 8.0
+        },
+        {
+          "domain": "src/sentry",
+          "count": 245,
+          "ttm_median_h": 6.62,
+          "reviews_median": 2.0,
+          "changes_requested_rate": 0.004,
+          "churn_median": 51.0
+        },
+        {
+          "domain": "static/app",
+          "count": 220,
+          "ttm_median_h": 10.35,
+          "reviews_median": 2.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 70.0
+        },
+        {
+          "domain": "package.json",
+          "count": 6,
+          "ttm_median_h": 9.67,
+          "reviews_median": 1.5,
+          "changes_requested_rate": 0.0,
+          "churn_median": 182.5
+        },
+        {
+          "domain": "uv.lock",
+          "count": 6,
+          "ttm_median_h": 8.97,
+          "reviews_median": 1.5,
+          "changes_requested_rate": 0.0,
+          "churn_median": 8.0
+        },
+        {
+          "domain": ".agents/skills",
+          "count": 8,
+          "ttm_median_h": 19.69,
+          "reviews_median": 1.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 55.0
+        },
+        {
+          "domain": ".github/codeowners-coverage-baseline.txt",
+          "count": 8,
+          "ttm_median_h": 0.72,
+          "reviews_median": 1.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 68.5
+        },
+        {
+          "domain": ".github/workflows",
+          "count": 12,
+          "ttm_median_h": 0.57,
+          "reviews_median": 1.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 5.0
+        },
+        {
+          "domain": "static/gsAdmin",
+          "count": 5,
+          "ttm_median_h": 25.79,
+          "reviews_median": 1.0,
+          "changes_requested_rate": 0.0,
+          "churn_median": 263.0
+        }
+      ],
+      "by_label": [
+        {
+          "label": "Trigger: Revert",
+          "count": 6,
+          "ttm_median_h": 9.86,
+          "reviews_median": 5.0
+        },
+        {
+          "label": "Scope: Backend",
+          "count": 274,
+          "ttm_median_h": 5.09,
+          "reviews_median": 2.0
+        },
+        {
+          "label": "Scope: Frontend",
+          "count": 239,
+          "ttm_median_h": 11.77,
+          "reviews_median": 2.0
+        }
+      ]
+    },
+    "themes": {
+      "theme_frequency": [
+        {
+          "theme": "api_design_and_defaults",
+          "count": 23,
+          "description": "Debates about API surface design, default values, nullability, and contract semantics",
+          "share": 0.383
+        },
+        {
+          "theme": "test_evidence_and_coverage",
+          "count": 23,
+          "description": "Requests for test evidence, coverage gaps, test methodology discussions",
+          "share": 0.383
+        },
+        {
+          "theme": "component_patterns_and_styling",
+          "count": 21,
+          "description": "Frontend component usage patterns, styling approaches, design system compliance",
+          "share": 0.35
+        },
+        {
+          "theme": "state_management_and_data_flow",
+          "count": 21,
+          "description": "State management, data flow between components/services, migration safety",
+          "share": 0.35
+        },
+        {
+          "theme": "code_documentation",
+          "count": 19,
+          "description": "Requests for code documentation, explanations of behavior, and clarifying intent",
+          "share": 0.317
+        },
+        {
+          "theme": "type_safety_and_error_handling",
+          "count": 18,
+          "description": "Type correctness, type annotations, error handling patterns, and exception safety",
+          "share": 0.3
+        },
+        {
+          "theme": "followup_and_scope_creep",
+          "count": 15,
+          "description": "Discussions about deferring work, scope boundaries, and follow-up tracking",
+          "share": 0.25
+        },
+        {
+          "theme": "security_and_permissions",
+          "count": 12,
+          "description": "Security implications, permission models, authentication flows, and attack surface discussions",
+          "share": 0.2
+        },
+        {
+          "theme": "naming_and_consistency",
+          "count": 7,
+          "description": "Naming choices, consistency between APIs, normalization of terminology",
+          "share": 0.117
+        }
+      ],
+      "pr_themes": [
+        {
+          "pr_number": 111697,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111697",
+          "pr_title": "feat(seer): Add org-level default stopping point and wire coding agent defaults into project creation",
+          "total_comments": 63,
+          "non_bot_comments": 25,
+          "themes": [
+            "api_design_and_defaults",
+            "naming_and_consistency",
+            "state_management_and_data_flow",
+            "followup_and_scope_creep",
+            "code_documentation"
+          ],
+          "evidence": {
+            "api_design_and_defaults": [
+              "Not sure if this is the right move. Should we force overwrite if auto_open_prs and stopping point is not open_pr, or ignore an incorrect stopping point, or reject at validation time? Imo, I don't like the idea of conflicting options.",
+              "We'll have to figure out why there are two names for things in different apis and consolidate. as a follow up",
+              "I think keeping the org-level and project-level as 1:1 as possible will be a benefit, even if it doesn't make sense. \r\n\r\nLet me contextualize that though with a train of thought:\r\n- At the org-level validation will be hard, or at least annoying to resolve, as people typically push values up one fiel...",
+              "Normalizing \"seer\" to None coding agent makes most sense to me, but happy to allow \"seer\" as well.\n\nFor context we don't allow \"seer\" or \"seer_coding_agent\" as a handoff target in [Sentry](https://github.com/getsentry/sentry/blob/ecb1c2553334f26c4dbb4d42ccb4e6f2d8c36cbd/src/sentry/seer/models/seer_a...",
+              "There are no `sentry:seer_default_coding_agent` values in prod. We're good"
+            ],
+            "naming_and_consistency": [
+              "We'll have to figure out why there are two names for things in different apis and consolidate. as a follow up",
+              "I think keeping the org-level and project-level as 1:1 as possible will be a benefit, even if it doesn't make sense. \r\n\r\nLet me contextualize that though with a train of thought:\r\n- At the org-level validation will be hard, or at least annoying to resolve, as people typically push values up one fiel...",
+              "Normalize None to \"seer\" so that we always have an explicit default coding agent",
+              "Rename them how? It is a bit confusing but this follows naming convention",
+              "Is it better to just rename this and use it? Having two identical constant will get confusing."
+            ],
+            "state_management_and_data_flow": [
+              "I think keeping the org-level and project-level as 1:1 as possible will be a benefit, even if it doesn't make sense. \r\n\r\nLet me contextualize that though with a train of thought:\r\n- At the org-level validation will be hard, or at least annoying to resolve, as people typically push values up one fiel...",
+              "There are no rows in prod"
+            ],
+            "followup_and_scope_creep": [
+              "We'll have to figure out why there are two names for things in different apis and consolidate. as a follow up"
+            ],
+            "code_documentation": [
+              "See https://github.com/getsentry/sentry/pull/111366#issuecomment-4128980705 for reference on what the frontend will send",
+              "I think keeping the org-level and project-level as 1:1 as possible will be a benefit, even if it doesn't make sense. \r\n\r\nLet me contextualize that though with a train of thought:\r\n- At the org-level validation will be hard, or at least annoying to resolve, as people typically push values up one fiel...",
+              "Normalizing \"seer\" to None coding agent makes most sense to me, but happy to allow \"seer\" as well.\n\nFor context we don't allow \"seer\" or \"seer_coding_agent\" as a handoff target in [Sentry](https://github.com/getsentry/sentry/blob/ecb1c2553334f26c4dbb4d42ccb4e6f2d8c36cbd/src/sentry/seer/models/seer_a..."
+            ]
+          }
+        },
+        {
+          "pr_number": 111529,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111529",
+          "pr_title": "feat(onboarding): SCM platform features step UI polish and analytics",
+          "total_comments": 41,
+          "non_bot_comments": 27,
+          "themes": [
+            "api_design_and_defaults",
+            "naming_and_consistency",
+            "component_patterns_and_styling",
+            "type_safety_and_error_handling",
+            "state_management_and_data_flow",
+            "code_documentation"
+          ],
+          "evidence": {
+            "api_design_and_defaults": [
+              "got it, does stack have a default gap? is it required?"
+            ],
+            "naming_and_consistency": [
+              "possible to have more semantic names for these?"
+            ],
+            "component_patterns_and_styling": [
+              "can we avoid this inline style w/ prop of some kind?",
+              "can we avoid this inline style w/ prop of some kind?",
+              "can we avoid this inline style w/ prop of some kind?",
+              "can we avoid this inline style w/ prop of some kind?",
+              "can we avoid this inline style w/ prop of some kind?"
+            ],
+            "type_safety_and_error_handling": [
+              "do we need the cast for reactnode?  seeing this multiple x in this file"
+            ],
+            "state_management_and_data_flow": [
+              "Size shift is caused by changing the border-bottom width from 1px (selected style) to 3px (unselected style), using `box-sizing: border-box` will not prevent the overall height change here because the element is not of fixed size.\r\n\r\nThis is basically a crude style replication of the Button componen..."
+            ],
+            "code_documentation": [
+              "what is causing the size shift?"
+            ]
+          }
+        },
+        {
+          "pr_number": 111728,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111728",
+          "pr_title": "feat(github): Add API-driven GitHub integration setup",
+          "total_comments": 57,
+          "non_bot_comments": 42,
+          "themes": [
+            "api_design_and_defaults",
+            "security_and_permissions",
+            "component_patterns_and_styling",
+            "test_evidence_and_coverage",
+            "type_safety_and_error_handling",
+            "state_management_and_data_flow",
+            "followup_and_scope_creep",
+            "code_documentation"
+          ],
+          "evidence": {
+            "api_design_and_defaults": [
+              "We actually do here https://github.com/getsentry/sentry/pull/111728/changes#diff-b517da9f8145142071b7180613fc7d96383b7213f6be500fd29baa261e81cdb4R1094-R1099\n\nWhat type of validation were you thinking?",
+              "So, I'll update the comment but it's basically this.\n\nThere's some frontend work I'll need to do to make starting from the github side work I think\n\n```\n    If installation_id is present in the callback, it is bound to pipeline\n    state early. This handles the case where the user started from GitHu...",
+              "we should already be doing some validation on the `installation_id` if it's given via chosen_installation_id via [checking if it belongs to the installing org and is valid](https://github.com/getsentry/sentry/pull/111728/changes#diff-b517da9f8145142071b7180613fc7d96383b7213f6be500fd29baa261e81cdb4R1...",
+              "So I think we were guarded against this vulnerability via the [get_installation_info](https://github.com/getsentry/sentry/blob/evanpurkhiser/feat-github-add-api-driven-github-integration-setup/src/sentry/integrations/github/integration.py#L807) check, that would fail if you tried to get an installat...",
+              "Here's the API version of the step [https://github.com/getsentry/sentry/blob/5bddca5beb29a1874d54f0e0969d8638fe1958dd/src/sentry/identity/oauth2.py#L249](<https://github.com/getsentry/sentry/blob/5bddca5beb29a1874d54f0e0969d8638fe1958dd/src/sentry/identity/oauth2.py#L249>)<br><br>it doesn't have to..."
+            ],
+            "security_and_permissions": [
+              "I'm not actually sure why this doesn't use the generic OAuth login step that we have defined in identity.",
+              "Same Q. Why is this optionally expected? Does this mean the GitHub org already has a Sentry installation? Does this mean we're in a multi-org setup flow?",
+              "Why do we bind here if the pipeline already has an organization slug on it?",
+              "If this is multi-org I assume we're safe because GitHub auth has us covered. But it would be nice to think-about/document security implications here (if this actually is multi-org support).",
+              "Why do we bind before checking the `state` parameter? Could this leave us in a weird state where on a subsequent request an `installation_id` is not specified but still set in the pipeline? Not sure if this opens us up to attacks or anything like that. Just an observation."
+            ],
+            "component_patterns_and_styling": [
+              "If we aren't already, would like to test to disprove this? Like checking that the SLO/context manager is properly capturing the error message/detail"
+            ],
+            "test_evidence_and_coverage": [
+              "Just a few comments for now. Your test coverage looks good.",
+              "It looks reasonably similar to what we have. So hopefully no regression. I've gone through it twice and haven't found an issue.\n\nI won't block on nitpicks but code comments are nice to explain certain behaviors.",
+              "Why do we bind before checking the `state` parameter? Could this leave us in a weird state where on a subsequent request an `installation_id` is not specified but still set in the pipeline? Not sure if this opens us up to attacks or anything like that. Just an observation.",
+              "Because this is user-specified data should we validate this?",
+              "👀 what's the name of the generic Oauthlogin step we have? Like the original OAuthLoginView does a few extra steps with the personal/user access token for multi org and security purposes. Idk if that other one should be chained or something to the github integration installation specific steps? (Not..."
+            ],
+            "type_safety_and_error_handling": [
+              "Same Q. Why is this optionally expected? Does this mean the GitHub org already has a Sentry installation? Does this mean we're in a multi-org setup flow?",
+              "If we aren't already, would like to test to disprove this? Like checking that the SLO/context manager is properly capturing the error message/detail",
+              "It'd be nice if we had typeddicts for these api calls, although it's something that could be a followup"
+            ],
+            "state_management_and_data_flow": [
+              "Why do we bind here if the pipeline already has an organization slug on it?",
+              "Why do we bind before checking the `state` parameter? Could this leave us in a weird state where on a subsequent request an `installation_id` is not specified but still set in the pipeline? Not sure if this opens us up to attacks or anything like that. Just an observation.",
+              "Also here. State is bound to the pipeline but we can fail. Maybe it should be moved after?",
+              "So, I'll update the comment but it's basically this.\n\nThere's some frontend work I'll need to do to make starting from the github side work I think\n\n```\n    If installation_id is present in the callback, it is bound to pipeline\n    state early. This handles the case where the user started from GitHu...",
+              "If we aren't already, would like to test to disprove this? Like checking that the SLO/context manager is properly capturing the error message/detail"
+            ],
+            "followup_and_scope_creep": [
+              "Yeah you're right this seems wrong. I can follow up [VDY-53](https://linear.app/getsentry/issue/VDY-53/fix-pending-deletion-install-blocking-logic)",
+              "It'd be nice if we had typeddicts for these api calls, although it's something that could be a followup"
+            ],
+            "code_documentation": [
+              "Just a few comments for now. Your test coverage looks good.",
+              "It looks reasonably similar to what we have. So hopefully no regression. I've gone through it twice and haven't found an issue.\n\nI won't block on nitpicks but code comments are nice to explain certain behaviors.",
+              "Under what conditions would there not be an installation id?",
+              "Why do we bind here if the pipeline already has an organization slug on it?",
+              "If this is multi-org I assume we're safe because GitHub auth has us covered. But it would be nice to think-about/document security implications here (if this actually is multi-org support)."
+            ]
+          }
+        },
+        {
+          "pr_number": 111490,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111490",
+          "pr_title": "fix(aci): Standardize monitor/alert form behavior on save",
+          "total_comments": 9,
+          "non_bot_comments": 5,
+          "themes": [
+            "component_patterns_and_styling",
+            "state_management_and_data_flow",
+            "code_documentation"
+          ],
+          "evidence": {
+            "component_patterns_and_styling": [
+              "neat that we have a loading indicator prop now! i was checking it out on scraps, but it seems like the button is still clickable. does the callback get invoked still or is that handled with this state?",
+              "🤔 should we be adding another mobx use case? could we use react-query or react context instead or is this because of also using the legacy form component?",
+              "Yeah I was delighted to see the loading indicator get added!\r\n\r\nThe button component does ignore clicks while busy: https://github.com/getsentry/sentry/blob/230c1c18647d4711d7553f603aa3c1421ccd9e12/static/app/components/core/button/useButtonFunctionality.tsx#L28-L33",
+              "This is unfortunately just the way the old form components are meant to be used 😞"
+            ],
+            "state_management_and_data_flow": [
+              "neat that we have a loading indicator prop now! i was checking it out on scraps, but it seems like the button is still clickable. does the callback get invoked still or is that handled with this state?"
+            ],
+            "code_documentation": [
+              "🤔 should we be adding another mobx use case? could we use react-query or react context instead or is this because of also using the legacy form component?"
+            ]
+          }
+        },
+        {
+          "pr_number": 111554,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111554",
+          "pr_title": "feat(seer): Add structured LLM context system for Seer Explorer",
+          "total_comments": 25,
+          "non_bot_comments": 14,
+          "themes": [
+            "naming_and_consistency",
+            "component_patterns_and_styling",
+            "test_evidence_and_coverage",
+            "type_safety_and_error_handling",
+            "state_management_and_data_flow",
+            "code_documentation"
+          ],
+          "evidence": {
+            "naming_and_consistency": [
+              "I think it would be a good idea to idea to strictly type this, that way developers would get a better typeahead experience + we would probably avoid some subtle naming differences from creeping in"
+            ],
+            "component_patterns_and_styling": [
+              "I don't think we need the third prop here per previous conversations. I'd mostly use the register function just to wrap + name and make the third prop optional (we might want to use it for filtering data later or some such)",
+              "there should probably be a test in here which mounts, renders, then confirms that the PageContextProvider is actually providing the page context for sending to the AI. I'd also add a test with a nested case so we can test that DummyChart in DummyWidget in DummyDashboard (or something similar) nests...",
+              "```suggestion\n  context: Record<string, unknown> | undefined\n```\n\nUnless we expect anyone to call `useSeerContext` without any arguments, I think it's might be worth forcing folks to always pass something to this hook\n\nOn a slightly related note, but the current type forces callers to pass an object..."
+            ],
+            "test_evidence_and_coverage": [
+              "there should probably be a test in here which mounts, renders, then confirms that the PageContextProvider is actually providing the page context for sending to the AI. I'd also add a test with a nested case so we can test that DummyChart in DummyWidget in DummyDashboard (or something similar) nests...",
+              "Should we just call this LLMContext? Seems like it could be used by others, and there isn't really anything that is seer specific here?"
+            ],
+            "type_safety_and_error_handling": [
+              "I don't think we need the third prop here per previous conversations. I'd mostly use the register function just to wrap + name and make the third prop optional (we might want to use it for filtering data later or some such)"
+            ],
+            "state_management_and_data_flow": [
+              "Reading the comment on L116-118, it makes me wonder if we actually need state reactivity, or could we write directly to a ref?\n\n```tsx\nconst stateRef = useRef(INITIAL_STATE)\n\nconst register = (action) => {\n  stateRef.current = reducer(state, action);\n}\n```"
+            ],
+            "code_documentation": [
+              "I think this would be better served using the hook escape hatch (`usePageContext({ title: 'Error Rate'});`) or whatever it should be called to dedupe the \"context\" overloading",
+              "there should probably be a test in here which mounts, renders, then confirms that the PageContextProvider is actually providing the page context for sending to the AI. I'd also add a test with a nested case so we can test that DummyChart in DummyWidget in DummyDashboard (or something similar) nests...",
+              "Should we just call this LLMContext? Seems like it could be used by others, and there isn't really anything that is seer specific here?",
+              "We can modify useSeerContextRegistry to throw if called outside of Seer context (since it exists at the root of the app, it should always be defined anyways and we can treat this as an error path)",
+              "```suggestion\n  context: Record<string, unknown> | undefined\n```\n\nUnless we expect anyone to call `useSeerContext` without any arguments, I think it's might be worth forcing folks to always pass something to this hook\n\nOn a slightly related note, but the current type forces callers to pass an object..."
+            ]
+          }
+        },
+        {
+          "pr_number": 111691,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111691",
+          "pr_title": "fix(coding integrations): add catching for integration not found error",
+          "total_comments": 23,
+          "non_bot_comments": 11,
+          "themes": [
+            "security_and_permissions",
+            "test_evidence_and_coverage",
+            "type_safety_and_error_handling",
+            "state_management_and_data_flow",
+            "followup_and_scope_creep",
+            "code_documentation"
+          ],
+          "evidence": {
+            "security_and_permissions": [
+              "@JoshFerge No I wrote the helpers separately (various reasons--more control over exception handling, transactions, test coverage), here's what we can add:\r\n\r\n```\r\nset_project_seer_preference(updated_preference)\r\n\r\nif features.has(\"organizations:seer-project-settings-dual-write\", organization):...",
+              "Nit\n```suggestion\n                        resolved_pref = resolve_repository_ids(organization.id, [validated_pref])[0]\n                        write_preference_to_sentry_db(project, resolved_pref)\n```"
+            ],
+            "test_evidence_and_coverage": [
+              "Seems like quite a few paths simply do `raise NotFound(...)` and you're simply matching on the hard coded string here which seems rather fragile. Thoughts on updating the sources to raise a more specific error maybe `IntegrationNotFound` that can be caught instead of comparing strings?",
+              "@JoshFerge No I wrote the helpers separately (various reasons--more control over exception handling, transactions, test coverage), here's what we can add:\r\n\r\n```\r\nset_project_seer_preference(updated_preference)\r\n\r\nif features.has(\"organizations:seer-project-settings-dual-write\", organization):...",
+              "Following Tony's comment I will specify the errors from where they bubble up, but the issue was that we only throw NotFound for multiple different types (integrations, states, organizations, etc)"
+            ],
+            "type_safety_and_error_handling": [
+              "Seems like quite a few paths simply do `raise NotFound(...)` and you're simply matching on the hard coded string here which seems rather fragile. Thoughts on updating the sources to raise a more specific error maybe `IntegrationNotFound` that can be caught instead of comparing strings?",
+              "@JoshFerge No I wrote the helpers separately (various reasons--more control over exception handling, transactions, test coverage), here's what we can add:\r\n\r\n```\r\nset_project_seer_preference(updated_preference)\r\n\r\nif features.has(\"organizations:seer-project-settings-dual-write\", organization):..."
+            ],
+            "state_management_and_data_flow": [
+              "Following Tony's comment I will specify the errors from where they bubble up, but the issue was that we only throw NotFound for multiple different types (integrations, states, organizations, etc)"
+            ],
+            "followup_and_scope_creep": [
+              "Lgtm, just some followups to think about in case you happen to touch this code again!"
+            ],
+            "code_documentation": [
+              "Following Tony's comment I will specify the errors from where they bubble up, but the issue was that we only throw NotFound for multiple different types (integrations, states, organizations, etc)"
+            ]
+          }
+        },
+        {
+          "pr_number": 111723,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111723",
+          "pr_title": "feat(sentry apps): Add circuit breaker into webhook code",
+          "total_comments": 32,
+          "non_bot_comments": 16,
+          "themes": [
+            "api_design_and_defaults",
+            "component_patterns_and_styling",
+            "test_evidence_and_coverage",
+            "type_safety_and_error_handling",
+            "state_management_and_data_flow",
+            "code_documentation"
+          ],
+          "evidence": {
+            "api_design_and_defaults": [
+              "Should we start this as `False`, then flip it on in prod? Might be slightly easier to ensure it's off by default."
+            ],
+            "component_patterns_and_styling": [
+              "I wonder if this is an expensive tag to emit cardinality-wise?"
+            ],
+            "test_evidence_and_coverage": [
+              "Hmm, when I was writing this I was thinking basically any failure would count toward the broken o' meter. Also that we'd retry in both error cases (500 from integrator, and timeout/connection errors). Though I guess from an infra perspective the dns timeouts/connection errors are the more costly fai...",
+              "maybe worth adding a test for when the circuit breaker allows the request, but the HTTP request itself returns a failed status code? so circuit breaker records success but the usual request error handling kicks in?"
+            ],
+            "type_safety_and_error_handling": [
+              "maybe worth adding a test for when the circuit breaker allows the request, but the HTTP request itself returns a failed status code? so circuit breaker records success but the usual request error handling kicks in?",
+              "typing is wrong anyway"
+            ],
+            "state_management_and_data_flow": [
+              "yeah this function is doing alotttt, but the understanding is correct that there's three 'gates'\r\n1. Check if circuit FF is enabled, then check if we should even send the webhook based on the circuit breaker state.\r\n    -   If not, now do the dry run option check to see if we should block the reques..."
+            ],
+            "code_documentation": [
+              "LGTM, left a couple minor comments",
+              "yeah this function is doing alotttt, but the understanding is correct that there's three 'gates'\r\n1. Check if circuit FF is enabled, then check if we should even send the webhook based on the circuit breaker state.\r\n    -   If not, now do the dry run option check to see if we should block the reques..."
+            ]
+          }
+        },
+        {
+          "pr_number": 111745,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111745",
+          "pr_title": "chore(seer-slack): Allow for a slack-staging provider",
+          "total_comments": 29,
+          "non_bot_comments": 14,
+          "themes": [
+            "test_evidence_and_coverage",
+            "followup_and_scope_creep"
+          ],
+          "evidence": {
+            "test_evidence_and_coverage": [
+              "Amazing! Just one small point to change the `get_integration` calls in the recent mention handling codes...\n\nTested locally and seems like alerts from both staging and non-staging can be sent just fine:\n\n<img width=\"513\" height=\"508\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/56f9ec...",
+              "I don't see any usage of SlackStagingMessagingSpec other than `sentry/integrations/slack/__init__.py`. \n\nI see that `SlackMessagingSpec` is used in a lot of metrics in `MessagingInteractionEvent`. I guess it's fine if we don't release the staging app to a lot of people..."
+            ],
+            "followup_and_scope_creep": [
+              "I thought about it, but I didn't want to modify the slack logo since their QA team will interface with this -- though we can follow up if necessary"
+            ]
+          }
+        },
+        {
+          "pr_number": 111674,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111674",
+          "pr_title": "feat(notifications): Add notification data and renderer for metric alerts",
+          "total_comments": 28,
+          "non_bot_comments": 12,
+          "themes": [
+            "api_design_and_defaults",
+            "component_patterns_and_styling",
+            "test_evidence_and_coverage",
+            "type_safety_and_error_handling",
+            "state_management_and_data_flow",
+            "code_documentation"
+          ],
+          "evidence": {
+            "api_design_and_defaults": [
+              "The eventstore querying piece specifically. The instance checks and type validations are fine. I think we want to minimize the queries and lookups we do in these data objects since the end goal is for them to be fully self-contained serializable objects with all the primitives required to render a t..."
+            ],
+            "component_patterns_and_styling": [
+              "ugh yes sadly we can't really do @cached_property on a pydantic model",
+              "nit: Properties like these are a little bit of an antipattern. I think it's fine in the short-term just to get the wrapper renderer across the line, but ideally Data objects should only be data carriers, not business logic carriers.",
+              "Business logic in this case as in the event/instance checks? I'm down to remove those, imo the data object containing/being able to do the dynamic property lookup is nice so we don't have to query in the platform flow."
+            ],
+            "test_evidence_and_coverage": [
+              "The eventstore querying piece specifically. The instance checks and type validations are fine. I think we want to minimize the queries and lookups we do in these data objects since the end goal is for them to be fully self-contained serializable objects with all the primitives required to render a t..."
+            ],
+            "type_safety_and_error_handling": [
+              "I've been waffling between handling/not handling these exceptions in the issue alerting code as well. What are your thoughts here?",
+              "Yeah agreed, I don't think we'd want to retry on these either. It's more of a question of: should we handle this gracefully and maybe log/create a sentry issue, or should we let this raise and hit the taskbroker handling/let the caller handle this instead? Maybe it'd be good to let the service handl..."
+            ],
+            "state_management_and_data_flow": [
+              "Normally I'd agree that touching the underlying layer is tricky, but in this case (iirc the history behind this), it's meant to be a DTO-esque object for carrying state across action -> notification code already."
+            ],
+            "code_documentation": [
+              "This may be a silly question, but is there a reason we couldn't just make `OpenPeriodContext` a pydantic serializable class itself? It doesn't look like there's very much to it. Same thing with AlertContext, I think both could easily be converted over to avoid having to repopulate these."
+            ]
+          }
+        },
+        {
+          "pr_number": 111522,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111522",
+          "pr_title": "feat(onboarding): Add Litestar as a Python onboarding platform (BE)",
+          "total_comments": 11,
+          "non_bot_comments": 5,
+          "themes": [],
+          "evidence": {}
+        },
+        {
+          "pr_number": 111714,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111714",
+          "pr_title": "fix(workflows): add detector group caching in ensure_association_with_detector",
+          "total_comments": 13,
+          "non_bot_comments": 8,
+          "themes": [
+            "api_design_and_defaults"
+          ],
+          "evidence": {
+            "api_design_and_defaults": [
+              "is default ttl 60min?"
+            ]
+          }
+        },
+        {
+          "pr_number": 111499,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111499",
+          "pr_title": "feat(seer agent): add integration button to handoff dropdown",
+          "total_comments": 4,
+          "non_bot_comments": 4,
+          "themes": [
+            "security_and_permissions"
+          ],
+          "evidence": {
+            "security_and_permissions": [
+              "Should we put some permissions checks around this? only admins will be able to edit integrations... I think we should hide or disable this button for regular users.\n\nIf a regular users clicks this they they'll endup at a page where they can't take any action, and they'll be take away from the issue..."
+            ]
+          }
+        },
+        {
+          "pr_number": 111724,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111724",
+          "pr_title": "feat(explore): Add issue post processor on occurrences dataset",
+          "total_comments": 7,
+          "non_bot_comments": 1,
+          "themes": [
+            "naming_and_consistency"
+          ],
+          "evidence": {
+            "naming_and_consistency": [
+              "lgtm but as discussed irl\n- Let's make sure to pass org_id to the groups query to be safe\n- nit: rename `process_a_column_values` to `process_column_values` 🤷"
+            ]
+          }
+        },
+        {
+          "pr_number": 111607,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111607",
+          "pr_title": "feat(onboarding): Add Litestar as a Python onboarding platform (FE)",
+          "total_comments": 1,
+          "non_bot_comments": 1,
+          "themes": [],
+          "evidence": {}
+        },
+        {
+          "pr_number": 111539,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111539",
+          "pr_title": "feat(pipeline): Add OrganizationPipelineEndpoint for API-driven pipelines",
+          "total_comments": 37,
+          "non_bot_comments": 19,
+          "themes": [
+            "api_design_and_defaults",
+            "security_and_permissions",
+            "test_evidence_and_coverage",
+            "state_management_and_data_flow"
+          ],
+          "evidence": {
+            "api_design_and_defaults": [
+              "Yeah the OAuth flows are `IdentityPipeline`. There's a _different_ endpoint we'll need for login auth though (also oauth flows, I assume these are the ones you're talking about)\r\n\r\nIdentityPipeline is for users to link identities like slack / github / etc"
+            ],
+            "security_and_permissions": [
+              "Just for my understanding, this will allow us to support the oauth flows too?",
+              "If I understand right, we have only one state for integration pipelines and one state for auth pipelines. So if a user stats an integration pipeline (say github), then part way through abandons it and starts another (say gitlab), is there any way that cause this to have problems?",
+              "Should we have a guard against this in the pipeline so that it can't use keys that we rely on? Or is it not too important?",
+              "Yeah the OAuth flows are `IdentityPipeline`. There's a _different_ endpoint we'll need for login auth though (also oauth flows, I assume these are the ones you're talking about)\r\n\r\nIdentityPipeline is for users to link identities like slack / github / etc",
+              "https://github.com/getsentry/sentry/pull/111680 The right thing to do is capture the not found higher up in the pipeline"
+            ],
+            "test_evidence_and_coverage": [
+              "This seems valid? Or if the test is passing, then there's something wrong with the test?"
+            ],
+            "state_management_and_data_flow": [
+              "If I understand right, we have only one state for integration pipelines and one state for auth pipelines. So if a user stats an integration pipeline (say github), then part way through abandons it and starts another (say gitlab), is there any way that cause this to have problems?",
+              "I guess maybe this answers my question from before - I assume this overwrites the stored state?",
+              "Should we have a guard against this in the pipeline so that it can't use keys that we rely on? Or is it not too important?",
+              "Yeah the OAuth flows are `IdentityPipeline`. There's a _different_ endpoint we'll need for login auth though (also oauth flows, I assume these are the ones you're talking about)\r\n\r\nIdentityPipeline is for users to link identities like slack / github / etc",
+              "https://github.com/getsentry/sentry/pull/111680 The right thing to do is capture the not found higher up in the pipeline"
+            ]
+          }
+        },
+        {
+          "pr_number": 111775,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111775",
+          "pr_title": "ref(nav): Remove Layout.Page usage from individual views",
+          "total_comments": 32,
+          "non_bot_comments": 25,
+          "themes": [
+            "component_patterns_and_styling",
+            "test_evidence_and_coverage",
+            "state_management_and_data_flow",
+            "followup_and_scope_creep",
+            "code_documentation"
+          ],
+          "evidence": {
+            "component_patterns_and_styling": [
+              "We want primary to indicate page contents, else we end up with a border around an element that has the same background color as it's parent",
+              "Requires needs Flex={1} at each call site or wrapping it inside a fn",
+              "Requires Stack, padding, but secondary background should be removed if org has page-frame feature",
+              "The footer change referenced from the PR description - without it, children are no longer siblings of the `Outlet` (hard to see here given the indentation, but those wrappers only render fragments and conditional children)",
+              "Call sites need to use flex={1}"
+            ],
+            "test_evidence_and_coverage": [
+              "`<main>` is no longer rendered by this component, it now lives in `Layout.Page` at the org layout level. The test renders in isolation without the org layout, so the element doesn't exist. The remaining assertions (banner, loading placeholders) still cover the component's actual behavior",
+              "@priscilawebdev I will likely revert this as I'm not comfortable with the risk here. \n\nThis needs a more careful investigation, but I suspect that the issues is that the children components (Layout.Header) are in some cases styled to have a background color property which causes this overflow.\n\nIf t..."
+            ],
+            "state_management_and_data_flow": [
+              "background should only be secondary if org has page-frame feature flag, else it should be undefined"
+            ],
+            "followup_and_scope_creep": [
+              "Hey @JonasBa, great work! 🚀 I think that was a good call. I did a visual check and didn't notice anything off . Ok except for the widget creation in a dashboard, but that is also in production and we can address in a follow up."
+            ],
+            "code_documentation": [
+              "Same comment as above",
+              "I'm not a huge fan of overflow: clip but it's the only approach that reliably works now that Layout.Page is centralized. The original `> :first-child { border-top-left-radius }` rule breaks at the org layout level because the first child varies per page and may not have a visible background. Since a..."
+            ]
+          }
+        },
+        {
+          "pr_number": 111864,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111864",
+          "pr_title": "feat(github): Handle installation_repositories webhook ",
+          "total_comments": 19,
+          "non_bot_comments": 7,
+          "themes": [
+            "api_design_and_defaults",
+            "test_evidence_and_coverage",
+            "type_safety_and_error_handling",
+            "state_management_and_data_flow"
+          ],
+          "evidence": {
+            "api_design_and_defaults": [
+              "It doesn't really matter - github's api contract is that these keys will always be provided. Probably if anything we could remove the KeyError handing from the other place"
+            ],
+            "test_evidence_and_coverage": [
+              "We just didn't have any tests for this file before?",
+              "Yeah, although maybe we tested outside the impl instead? Not sure"
+            ],
+            "type_safety_and_error_handling": [
+              "nit: `total=False` makes every field optional here, but only `installation` actually is. Could use `NotRequired[str]` on just that one field instead.",
+              "This was flagged a few times and resolved but the code looks unchanged. Should the `repos_removed` path have the same KeyError handling as `repos_added`? Right now a single malformed entry would fail the whole batch since KeyError is excluded from retry."
+            ],
+            "state_management_and_data_flow": [
+              "This was flagged a few times and resolved but the code looks unchanged. Should the `repos_removed` path have the same KeyError handling as `repos_added`? Right now a single malformed entry would fail the whole batch since KeyError is excluded from retry."
+            ]
+          }
+        },
+        {
+          "pr_number": 111689,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111689",
+          "pr_title": "fix(np): Updates IssueNotificationData, render logic to correctly extract action data",
+          "total_comments": 15,
+          "non_bot_comments": 0,
+          "themes": [],
+          "evidence": {}
+        },
+        {
+          "pr_number": 111663,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111663",
+          "pr_title": "feat(autofix): Update seer explorer autofix last triggered on completion",
+          "total_comments": 16,
+          "non_bot_comments": 5,
+          "themes": [
+            "api_design_and_defaults",
+            "security_and_permissions",
+            "test_evidence_and_coverage",
+            "type_safety_and_error_handling",
+            "state_management_and_data_flow",
+            "followup_and_scope_creep"
+          ],
+          "evidence": {
+            "api_design_and_defaults": [
+              "**Organization scoping removed from Group fetch - defense-in-depth weakened** (`src/sentry/seer/autofix/on_completion_hook.py:238`)\n\nThe code change removes organization scoping from the Group.objects.get() call. Previously in `_maybe_continue_pipeline`, the group was fetched with `Group.objects.get..."
+            ],
+            "security_and_permissions": [
+              "**Organization scoping removed from Group fetch - defense-in-depth weakened** (`src/sentry/seer/autofix/on_completion_hook.py:238`)\n\nThe code change removes organization scoping from the Group.objects.get() call. Previously in `_maybe_continue_pipeline`, the group was fetched with `Group.objects.get..."
+            ],
+            "test_evidence_and_coverage": [
+              "**Organization scoping removed from Group fetch - defense-in-depth weakened** (`src/sentry/seer/autofix/on_completion_hook.py:238`)\n\nThe code change removes organization scoping from the Group.objects.get() call. Previously in `_maybe_continue_pipeline`, the group was fetched with `Group.objects.get..."
+            ],
+            "type_safety_and_error_handling": [
+              "**Organization scoping removed from Group fetch - defense-in-depth weakened** (`src/sentry/seer/autofix/on_completion_hook.py:238`)\n\nThe code change removes organization scoping from the Group.objects.get() call. Previously in `_maybe_continue_pipeline`, the group was fetched with `Group.objects.get..."
+            ],
+            "state_management_and_data_flow": [
+              "**Organization scoping removed from Group fetch - defense-in-depth weakened** (`src/sentry/seer/autofix/on_completion_hook.py:238`)\n\nThe code change removes organization scoping from the Group.objects.get() call. Previously in `_maybe_continue_pipeline`, the group was fetched with `Group.objects.get..."
+            ],
+            "followup_and_scope_creep": [
+              "**Organization scoping removed from Group fetch - defense-in-depth weakened** (`src/sentry/seer/autofix/on_completion_hook.py:238`)\n\nThe code change removes organization scoping from the Group.objects.get() call. Previously in `_maybe_continue_pipeline`, the group was fetched with `Group.objects.get..."
+            ]
+          }
+        },
+        {
+          "pr_number": 111623,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111623",
+          "pr_title": "feat(onboarding): SCM project details step UI polish and analytics",
+          "total_comments": 9,
+          "non_bot_comments": 6,
+          "themes": [
+            "api_design_and_defaults",
+            "component_patterns_and_styling",
+            "followup_and_scope_creep"
+          ],
+          "evidence": {
+            "api_design_and_defaults": [
+              "Text renders as a `span` (inline) by default. As a direct flex child it gets blockified, which activates the `text-box-trim: trim-both` CSS on the Text component. That trims the half-leading from `line-height: 1.4` (`density=\"comfortable\"`), reducing the element's height. Wrapping in Container keeps..."
+            ],
+            "component_patterns_and_styling": [
+              "Text renders as a `span` (inline) by default. As a direct flex child it gets blockified, which activates the `text-box-trim: trim-both` CSS on the Text component. That trims the half-leading from `line-height: 1.4` (`density=\"comfortable\"`), reducing the element's height. Wrapping in Container keeps...",
+              "It's not possible to render the component as a child of `tct` is it?\n\nIt's difficult for translators to translate this string, since the grammar might change and the select box might need to be soemwhere else.\n\nNot really a huge deal, just curious if it might be possible.\n\nIt would probably be somet...",
+              "That seems like it is worth doing, the existing IssueAlertOptions does this with tct and inline controls.\r\n\r\nThe stacked layout doesn't lend itself to that approach without rethinking the design. Created [VDY-51 ](https://linear.app/getsentry/issue/VDY-51)to revisit once designs are finalized."
+            ],
+            "followup_and_scope_creep": [
+              "That seems like it is worth doing, the existing IssueAlertOptions does this with tct and inline controls.\r\n\r\nThe stacked layout doesn't lend itself to that approach without rethinking the design. Created [VDY-51 ](https://linear.app/getsentry/issue/VDY-51)to revisit once designs are finalized."
+            ]
+          }
+        },
+        {
+          "pr_number": 111500,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111500",
+          "pr_title": "ref(preprod): Restructure commit_comparison conditional to if/else",
+          "total_comments": 1,
+          "non_bot_comments": 0,
+          "themes": [],
+          "evidence": {}
+        },
+        {
+          "pr_number": 111599,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111599",
+          "pr_title": "ref(cells): clean up temporary aliases needed for getsentry",
+          "total_comments": 10,
+          "non_bot_comments": 5,
+          "themes": [
+            "type_safety_and_error_handling"
+          ],
+          "evidence": {
+            "type_safety_and_error_handling": [
+              "lgtm other than the typing issues"
+            ]
+          }
+        },
+        {
+          "pr_number": 111668,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111668",
+          "pr_title": "feat(search): Switch filter operator from contains to is on dropdown selection",
+          "total_comments": 5,
+          "non_bot_comments": 0,
+          "themes": [],
+          "evidence": {}
+        },
+        {
+          "pr_number": 111753,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111753",
+          "pr_title": "feat(wmak): Use non strings in group by",
+          "total_comments": 5,
+          "non_bot_comments": 0,
+          "themes": [],
+          "evidence": {}
+        },
+        {
+          "pr_number": 111513,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111513",
+          "pr_title": "feat(tracemetrics): Display metric name in aggregates table when no group by selected",
+          "total_comments": 3,
+          "non_bot_comments": 0,
+          "themes": [],
+          "evidence": {}
+        },
+        {
+          "pr_number": 111565,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111565",
+          "pr_title": "feat(autofix): Handle PR creation in group ai autofix endpoint",
+          "total_comments": 24,
+          "non_bot_comments": 5,
+          "themes": [
+            "api_design_and_defaults",
+            "component_patterns_and_styling",
+            "type_safety_and_error_handling",
+            "followup_and_scope_creep"
+          ],
+          "evidence": {
+            "api_design_and_defaults": [
+              "The caller in `on_completion_hook.py:_push_changes` (lines 418-424) already wraps this in a try/except with proper logging. The endpoint caller is a user-initiated action where unhandled exceptions are caught by the global error handler. Adding redundant error handling here would obscure failures un..."
+            ],
+            "component_patterns_and_styling": [
+              "The caller in `on_completion_hook.py:_push_changes` (lines 418-424) already wraps this in a try/except with proper logging. The endpoint caller is a user-initiated action where unhandled exceptions are caught by the global error handler. Adding redundant error handling here would obscure failures un..."
+            ],
+            "type_safety_and_error_handling": [
+              "The caller in `on_completion_hook.py:_push_changes` (lines 418-424) already wraps this in a try/except with proper logging. The endpoint caller is a user-initiated action where unhandled exceptions are caught by the global error handler. Adding redundant error handling here would obscure failures un..."
+            ],
+            "followup_and_scope_creep": [
+              "will update this in another follow up"
+            ]
+          }
+        },
+        {
+          "pr_number": 111667,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111667",
+          "pr_title": "feat(dashboards): Adds `dashboards-ai-generate` flag to Seer Explorer access list",
+          "total_comments": 9,
+          "non_bot_comments": 3,
+          "themes": [
+            "api_design_and_defaults",
+            "test_evidence_and_coverage",
+            "state_management_and_data_flow"
+          ],
+          "evidence": {
+            "api_design_and_defaults": [
+              "I think this would enable the `explorer/chat/` endpoint for everyone, which we wouldn't want to do! We might need to be a little more surgical about this"
+            ],
+            "test_evidence_and_coverage": [
+              "I'd add some tests to catch regressions, but otherwise LGTM"
+            ],
+            "state_management_and_data_flow": [
+              "I think this should be fine? They have no way to create non-dashboards runs anyways. I could only see this happening if we ever took someone off the Seer Explorer feature flag."
+            ]
+          }
+        },
+        {
+          "pr_number": 111557,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111557",
+          "pr_title": "ci(backend): enable xdist on PRs with 2 workers",
+          "total_comments": 6,
+          "non_bot_comments": 4,
+          "themes": [
+            "test_evidence_and_coverage"
+          ],
+          "evidence": {
+            "test_evidence_and_coverage": [
+              "In general, I prefer a script that can be run locally for testing purposes rather than write the script directly in the action and always needing to run the script via GH actions."
+            ]
+          }
+        },
+        {
+          "pr_number": 111518,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111518",
+          "pr_title": "ref(tracemetrics): Remove unsortable telemetry columns behind feature flag",
+          "total_comments": 1,
+          "non_bot_comments": 0,
+          "themes": [],
+          "evidence": {}
+        },
+        {
+          "pr_number": 112032,
+          "pr_url": "https://github.com/getsentry/sentry/pull/112032",
+          "pr_title": "feat(scraps): Add slot component",
+          "total_comments": 27,
+          "non_bot_comments": 11,
+          "themes": [
+            "component_patterns_and_styling",
+            "type_safety_and_error_handling",
+            "followup_and_scope_creep",
+            "code_documentation"
+          ],
+          "evidence": {
+            "component_patterns_and_styling": [
+              "really like the slot concept here 👏 \n\none thing I was wondering is if we need the counter, because right now we can register multiple elements into the same slot, which I don’t think is something that we want? They would just be appended with no gaps as it’s just an empty `Flex`.\n\nI _think_ what we’...",
+              "Did you consider baking this functionality into a `Slot.Fallback` component?"
+            ],
+            "type_safety_and_error_handling": [
+              "really like the slot concept here 👏 \n\none thing I was wondering is if we need the counter, because right now we can register multiple elements into the same slot, which I don’t think is something that we want? They would just be appended with no gaps as it’s just an empty `Flex`.\n\nI _think_ what we’...",
+              "note: the value passed to a context must be stable, so this array needs memoization.\n\nnit: With React19 we can do <TopBarSlotContext>` instead of `<TopBarSlotContext.Provider>` as the whole context _is_ a Provider. This should probably be linted against.",
+              "The slots are rendered inside of `<Outlet />`, not as children of `<TopBar />`, which does makes sense but I worry this kind of system becomes challenging to trace.",
+              "Did you consider baking this functionality into a `Slot.Fallback` component?",
+              "ooh, the slots use them, and they are not part of the TopBar itself. Got it."
+            ],
+            "followup_and_scope_creep": [
+              "Awesome stuff! Let's add a new doc page in a follow-up?"
+            ],
+            "code_documentation": [
+              "note: the value passed to a context must be stable, so this array needs memoization.\n\nnit: With React19 we can do <TopBarSlotContext>` instead of `<TopBarSlotContext.Provider>` as the whole context _is_ a Provider. This should probably be linted against."
+            ]
+          }
+        },
+        {
+          "pr_number": 111532,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111532",
+          "pr_title": "ref(metrics): Tidy up metrics UI for refresh layout",
+          "total_comments": 2,
+          "non_bot_comments": 0,
+          "themes": [],
+          "evidence": {}
+        },
+        {
+          "pr_number": 111525,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111525",
+          "pr_title": "ref(explore): Remove sticky last column from aggregates tab",
+          "total_comments": 0,
+          "non_bot_comments": 0,
+          "themes": [],
+          "evidence": {}
+        },
+        {
+          "pr_number": 111639,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111639",
+          "pr_title": "fix(cells) Don't record proxied request failures towards circuit breaker",
+          "total_comments": 9,
+          "non_bot_comments": 4,
+          "themes": [
+            "api_design_and_defaults",
+            "component_patterns_and_styling",
+            "type_safety_and_error_handling"
+          ],
+          "evidence": {
+            "api_design_and_defaults": [
+              "I would rather keep >= 502\n\n```suggestion\n    if resp.status_code >= 502 and circuit_breaker is not None:\n        metrics.incr(\"apigateway.proxy.request_failed\", tags=metric_tags)\n        circuit_breaker.record_error()\n```"
+            ],
+            "component_patterns_and_styling": [
+              "the try/except seems like it's not needed by all users of the circuit breaker? it seems like it's already logged and exceptions handled properly in the `record_error()` function, so users of the function don't have to worry about it"
+            ],
+            "type_safety_and_error_handling": [
+              "the try/except seems like it's not needed by all users of the circuit breaker? it seems like it's already logged and exceptions handled properly in the `record_error()` function, so users of the function don't have to worry about it"
+            ]
+          }
+        },
+        {
+          "pr_number": 111657,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111657",
+          "pr_title": "fix(ui): Prevent code block overflow in GuidedSteps onboarding",
+          "total_comments": 2,
+          "non_bot_comments": 1,
+          "themes": [
+            "component_patterns_and_styling"
+          ],
+          "evidence": {
+            "component_patterns_and_styling": [
+              "## Pull request overview\n\nFixes a GuidedSteps onboarding layout issue where long intrinsic-width content (e.g., code blocks) in the step details column can force the CSS grid to overflow and overlap the adjacent preview column.\n\n**Changes:**\n- Add `min-width: 0` to the `StepDetails` grid item so it..."
+            ]
+          }
+        },
+        {
+          "pr_number": 111704,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111704",
+          "pr_title": "feat(code-mappings): Allow multiple source roots per stack root",
+          "total_comments": 9,
+          "non_bot_comments": 5,
+          "themes": [
+            "component_patterns_and_styling",
+            "state_management_and_data_flow"
+          ],
+          "evidence": {
+            "component_patterns_and_styling": [
+              "This PR has a migration; here is the generated SQL for  `src/sentry/migrations/1058_change_code_mapping_unique_constraint.py`\n\n**for `1058_change_code_mapping_unique_constraint` in `sentry`**\n\n~~~sql\n--\n-- Custom state/database change combination\n--\nCREATE UNIQUE INDEX CONCURRENTLY \"sentry_repositor...",
+              "Let's write this step like \n```\n    operations = [\n        migrations.SeparateDatabaseAndState(\n            database_operations=[\n                migrations.AddConstraint(\n                    model_name=\"repositoryprojectpathconfig\",\n                    constraint=models.UniqueConstraint(..."
+            ],
+            "state_management_and_data_flow": [
+              "This PR has a migration; here is the generated SQL for  `src/sentry/migrations/1058_change_code_mapping_unique_constraint.py`\n\n**for `1058_change_code_mapping_unique_constraint` in `sentry`**\n\n~~~sql\n--\n-- Custom state/database change combination\n--\nCREATE UNIQUE INDEX CONCURRENTLY \"sentry_repositor...",
+              "Let's write this step like \n```\n    operations = [\n        migrations.SeparateDatabaseAndState(\n            database_operations=[\n                migrations.AddConstraint(\n                    model_name=\"repositoryprojectpathconfig\",\n                    constraint=models.UniqueConstraint(..."
+            ]
+          }
+        },
+        {
+          "pr_number": 111976,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111976",
+          "pr_title": "feat(preprod): Add approval API endpoint and approval info in snapshot response",
+          "total_comments": 24,
+          "non_bot_comments": 15,
+          "themes": [
+            "api_design_and_defaults",
+            "component_patterns_and_styling",
+            "code_documentation"
+          ],
+          "evidence": {
+            "api_design_and_defaults": [
+              "decided to add this to match the deletion and approval endpoints",
+              "Seems we're falling back to empty strings here, I think it would be safer to make this field nullable and handle null values from the frontend to conditionally render these. Should be rare but safer than empty strings",
+              "Looks like no, we don't get that for GitHub. Would suggest we make these nullable instead of passing an empty string",
+              "Any chance we get this from the extras? Not the biggest fan of constructing this even if it's simple.\n\nAlso would suggets extracting the id. If id is not found, set avatar_url to None, otherwise construct the URL. We don't want to pass an invalid URL to the client if id isn't found",
+              "- Fixed: Extract gh_id first; if None, avatar_url is None. Note: avatar_url isn't stored in extras (only id and login per github_check_run.py:125), so we still construct it — but now safely."
+            ],
+            "component_patterns_and_styling": [
+              "* **#112037** <a href=\"https://app.graphite.com/github/pr/getsentry/sentry/112037?utm_source=stack-comment-icon\" target=\"_blank\"><img src=\"https://static.graphite.dev/graphite-32x32-black.png\" alt=\"Graphite\" width=\"10px\" height=\"10px\"/></a>\n* **#111977** <a href=\"https://app.graphite.com/github/pr/g...",
+              "I think these are from the PR below it in the stack, so make sure to restack before merging"
+            ],
+            "code_documentation": [
+              "* **#112037** <a href=\"https://app.graphite.com/github/pr/getsentry/sentry/112037?utm_source=stack-comment-icon\" target=\"_blank\"><img src=\"https://static.graphite.dev/graphite-32x32-black.png\" alt=\"Graphite\" width=\"10px\" height=\"10px\"/></a>\n* **#111977** <a href=\"https://app.graphite.com/github/pr/g..."
+            ]
+          }
+        },
+        {
+          "pr_number": 111696,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111696",
+          "pr_title": "feat(cells): Support multi-cell jira integration",
+          "total_comments": 8,
+          "non_bot_comments": 2,
+          "themes": [
+            "api_design_and_defaults",
+            "test_evidence_and_coverage",
+            "followup_and_scope_creep"
+          ],
+          "evidence": {
+            "api_design_and_defaults": [
+              "This looks reasonable to me. This endpoint was added in #98324 with the intention of replacing the region scoped endpoint, but the transition work wasn't completed."
+            ],
+            "test_evidence_and_coverage": [
+              "I don't know if Jira snapshots this into the Jira instances when the extension is added. We might need to keep the old URL around as well."
+            ],
+            "followup_and_scope_creep": [
+              "This looks reasonable to me. This endpoint was added in #98324 with the intention of replacing the region scoped endpoint, but the transition work wasn't completed."
+            ]
+          }
+        },
+        {
+          "pr_number": 111706,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111706",
+          "pr_title": "feat(core-ui): Add ClearButton to CompositeSelect",
+          "total_comments": 5,
+          "non_bot_comments": 1,
+          "themes": [
+            "test_evidence_and_coverage"
+          ],
+          "evidence": {
+            "test_evidence_and_coverage": [
+              "looks good, I just saw that in your `aggregateDropdown`, there are a lot of type assertions in `CompositeSelect.Region`. I just removed them all and there’s no error:\n\n```\nif (isMulti) {\n  return (\n    <CompositeSelect.Region\n      key={groupKey}\n      label={group.label}\n      multiple\n      option..."
+            ]
+          }
+        },
+        {
+          "pr_number": 111730,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111730",
+          "pr_title": "feat(logs): add inline JSON syntax highlighting for log attributes",
+          "total_comments": 9,
+          "non_bot_comments": 5,
+          "themes": [],
+          "evidence": {}
+        },
+        {
+          "pr_number": 111701,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111701",
+          "pr_title": "feat(admin): Replace startup program notes field with program dropdown",
+          "total_comments": 1,
+          "non_bot_comments": 0,
+          "themes": [],
+          "evidence": {}
+        },
+        {
+          "pr_number": 111760,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111760",
+          "pr_title": "chore(ACI): Add/update detectors to a workflow in the WorkflowValidator",
+          "total_comments": 10,
+          "non_bot_comments": 6,
+          "themes": [],
+          "evidence": {}
+        },
+        {
+          "pr_number": 111647,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111647",
+          "pr_title": "feat(nav): Add icon-only Feedback button to top navigation bar",
+          "total_comments": 2,
+          "non_bot_comments": 2,
+          "themes": [
+            "api_design_and_defaults",
+            "state_management_and_data_flow"
+          ],
+          "evidence": {
+            "api_design_and_defaults": [
+              "seems like `null` as children is needed because we default to `t('Give Feedback')` if no children are passed. Not an ideal api :/"
+            ],
+            "state_management_and_data_flow": [
+              "Yeah, a tad unfortunate. What I'm going to do is remove all give feedback buttons from the product when page-frame feature flag is enabled so that we can delete them later and make this a tad less painful of a change :)"
+            ]
+          }
+        },
+        {
+          "pr_number": 112007,
+          "pr_url": "https://github.com/getsentry/sentry/pull/112007",
+          "pr_title": "ref(cmdk) improve searching",
+          "total_comments": 21,
+          "non_bot_comments": 2,
+          "themes": [],
+          "evidence": {}
+        },
+        {
+          "pr_number": 111768,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111768",
+          "pr_title": "feat(perforce): Implement get_file() for source context",
+          "total_comments": 6,
+          "non_bot_comments": 0,
+          "themes": [],
+          "evidence": {}
+        },
+        {
+          "pr_number": 111766,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111766",
+          "pr_title": "chore(eco): Adds new CLI command for creating projects",
+          "total_comments": 10,
+          "non_bot_comments": 2,
+          "themes": [
+            "type_safety_and_error_handling",
+            "code_documentation"
+          ],
+          "evidence": {
+            "type_safety_and_error_handling": [
+              "I don't know if this is required for a new project, so maybe optional?\n\nAlso this might be okay to skip but just calling out that we aren't validating that the platform text matches an existing expected sdk names,  e.g. `--platform=JS` vs `--platform=javascript`"
+            ],
+            "code_documentation": [
+              "Yeah that's true, let me refine this a bit and handle the cursor comment above. Thanks for taking a look in the meantime!"
+            ]
+          }
+        },
+        {
+          "pr_number": 111693,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111693",
+          "pr_title": "feat(codeowners): Optimize DB query construction for building CODEOWNERS associations",
+          "total_comments": 0,
+          "non_bot_comments": 0,
+          "themes": [],
+          "evidence": {}
+        },
+        {
+          "pr_number": 111655,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111655",
+          "pr_title": "feat(oauth): Show public app device flow URLs",
+          "total_comments": 0,
+          "non_bot_comments": 0,
+          "themes": [],
+          "evidence": {}
+        },
+        {
+          "pr_number": 111892,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111892",
+          "pr_title": "fix(github): Add accessibleOnly param to scope repo search to installation repos",
+          "total_comments": 12,
+          "non_bot_comments": 2,
+          "themes": [
+            "state_management_and_data_flow"
+          ],
+          "evidence": {
+            "state_management_and_data_flow": [
+              "feels like it might be better to add a `accessible_only` flag to this method"
+            ]
+          }
+        },
+        {
+          "pr_number": 111676,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111676",
+          "pr_title": "feat(metric-issues): Use placeholder loaders for attribute comparison…",
+          "total_comments": 0,
+          "non_bot_comments": 0,
+          "themes": [],
+          "evidence": {}
+        },
+        {
+          "pr_number": 112079,
+          "pr_url": "https://github.com/getsentry/sentry/pull/112079",
+          "pr_title": "feat(np): Adds Discord issue renderer, updates Slack renderer tagging extraction",
+          "total_comments": 18,
+          "non_bot_comments": 7,
+          "themes": [
+            "api_design_and_defaults",
+            "security_and_permissions",
+            "test_evidence_and_coverage",
+            "type_safety_and_error_handling"
+          ],
+          "evidence": {
+            "api_design_and_defaults": [
+              "can event be None? Should we throw an error? Also I don't think you need this guard for an isinstance check",
+              "dont think you need or None since your original setting already puts None",
+              "It _can_ be, and the default behavior in the underlying slack block renderer is to attempt another query for latest event. Sort of weird, but I think this is an allowed case 😓"
+            ],
+            "security_and_permissions": [
+              "it would be good to validate the contents of the notification"
+            ],
+            "test_evidence_and_coverage": [
+              "perhaps another test for how the notes render out?",
+              "It _can_ be, and the default behavior in the underlying slack block renderer is to attempt another query for latest event. Sort of weird, but I think this is an allowed case 😓"
+            ],
+            "type_safety_and_error_handling": [
+              "can event be None? Should we throw an error? Also I don't think you need this guard for an isinstance check"
+            ]
+          }
+        },
+        {
+          "pr_number": 109150,
+          "pr_url": "https://github.com/getsentry/sentry/pull/109150",
+          "pr_title": "feat(preprod): Add snapshot image comparison task with odiff",
+          "total_comments": 59,
+          "non_bot_comments": 20,
+          "themes": [
+            "api_design_and_defaults",
+            "security_and_permissions",
+            "component_patterns_and_styling",
+            "test_evidence_and_coverage",
+            "type_safety_and_error_handling",
+            "state_management_and_data_flow",
+            "followup_and_scope_creep",
+            "code_documentation"
+          ],
+          "evidence": {
+            "api_design_and_defaults": [
+              "My (very) limited understanding is that Pydantic is important for data models used within APIs boundaries because Pydantic validates and coerces incoming data at runtime (like when you receive a JSON), with things like type coercion (string \"42\" → int 42), required/optional field enforcement, custom...",
+              "`image_file_name` is the identity of a snapshot image — it represents a unique screen in the manifest. Duplicate filenames within a single manifest would be malformed input (the client uploaded the same screen twice), and keeping the last entry is reasonable behavior in that case.\n\nIf we want to har...",
+              "Fixed — both error handlers now explicitly `process.kill()` + `process.wait()` before nulling the reference, preventing orphaned subprocesses.\n\n- Claude Code"
+            ],
+            "security_and_permissions": [
+              "My (very) limited understanding is that Pydantic is important for data models used within APIs boundaries because Pydantic validates and coerces incoming data at runtime (like when you receive a JSON), with things like type coercion (string \"42\" → int 42), required/optional field enforcement, custom..."
+            ],
+            "component_patterns_and_styling": [
+              "* **#109151** <a href=\"https://app.graphite.com/github/pr/getsentry/sentry/109151?utm_source=stack-comment-icon\" target=\"_blank\"><img src=\"https://static.graphite.dev/graphite-32x32-black.png\" alt=\"Graphite\" width=\"10px\" height=\"10px\"/></a>\n* **#109150** <a href=\"https://app.graphite.com/github/pr/g..."
+            ],
+            "test_evidence_and_coverage": [
+              "What is this/why don't we try to use an absolute path or move into the backend if these are backend-specific tests?",
+              "Addressed in 2eb8356f244 — added DoesNotExist handling for PreprodSnapshotMetrics lookups, matching the pattern used for PreprodArtifact above.",
+              "`image_file_name` is the identity of a snapshot image — it represents a unique screen in the manifest. Duplicate filenames within a single manifest would be malformed input (the client uploaded the same screen twice), and keeping the last entry is reasonable behavior in that case.\n\nIf we want to har...",
+              "This is a false positive. `get_or_create` is backed by a unique constraint on `(head_snapshot_metrics, base_snapshot_metrics)`, so only one worker can ever get `created=True` — the other will either get `created=False` or hit the `IntegrityError` handler, both of which route through the atomic `filt..."
+            ],
+            "type_safety_and_error_handling": [
+              "My (very) limited understanding is that Pydantic is important for data models used within APIs boundaries because Pydantic validates and coerces incoming data at runtime (like when you receive a JSON), with things like type coercion (string \"42\" → int 42), required/optional field enforcement, custom..."
+            ],
+            "state_management_and_data_flow": [
+              "My (very) limited understanding is that Pydantic is important for data models used within APIs boundaries because Pydantic validates and coerces incoming data at runtime (like when you receive a JSON), with things like type coercion (string \"42\" → int 42), required/optional field enforcement, custom..."
+            ],
+            "followup_and_scope_creep": [
+              "Already addressed — queries are scoped with `project__organization_id=org_id` and `project_id=project_id` (lines 42-51)."
+            ],
+            "code_documentation": [
+              "* **#109151** <a href=\"https://app.graphite.com/github/pr/getsentry/sentry/109151?utm_source=stack-comment-icon\" target=\"_blank\"><img src=\"https://static.graphite.dev/graphite-32x32-black.png\" alt=\"Graphite\" width=\"10px\" height=\"10px\"/></a>\n* **#109150** <a href=\"https://app.graphite.com/github/pr/g...",
+              "What is this/why don't we try to use an absolute path or move into the backend if these are backend-specific tests?",
+              "Already addressed — the process check is now inside `self._lock` (lines 78-80 in the current code). This comment is outdated.",
+              "This is a false positive. `get_or_create` is backed by a unique constraint on `(head_snapshot_metrics, base_snapshot_metrics)`, so only one worker can ever get `created=True` — the other will either get `created=False` or hit the `IntegrityError` handler, both of which route through the atomic `filt..."
+            ]
+          }
+        },
+        {
+          "pr_number": 109526,
+          "pr_url": "https://github.com/getsentry/sentry/pull/109526",
+          "pr_title": "feat(seer): claude agent handoff integration",
+          "total_comments": 30,
+          "non_bot_comments": 14,
+          "themes": [
+            "api_design_and_defaults",
+            "security_and_permissions",
+            "naming_and_consistency",
+            "test_evidence_and_coverage",
+            "type_safety_and_error_handling",
+            "state_management_and_data_flow",
+            "followup_and_scope_creep"
+          ],
+          "evidence": {
+            "api_design_and_defaults": [
+              "Thanks for putting this up! Overall the shape and structure of the integration looks great. For a more detailed review, I'm wondering if we could split this up into:\n\n  1. Base class refactor — CodingAgentIntegration/CodingAgentIntegrationProvider -- land this first so next PRs only touch new behavi...",
+              "should we encrypt this api key? mind seeing if we do for the cursor integration, and if we do so for other integrations generally? 🙏🏼",
+              "I believe so because we can still make an environment. The API is validated separately from this, so leaving in the option of creating a default one should still be okay."
+            ],
+            "security_and_permissions": [
+              "Thanks for putting this up! Overall the shape and structure of the integration looks great. For a more detailed review, I'm wondering if we could split this up into:\n\n  1. Base class refactor — CodingAgentIntegration/CodingAgentIntegrationProvider -- land this first so next PRs only touch new behavi...",
+              "I believe so because we can still make an environment. The API is validated separately from this, so leaving in the option of creating a default one should still be okay.",
+              "because in legacy autofix, autofix_state contains the coding agents and org id, but with explorer autofix (following the copilot implementation) we supply the org id and coding agents explicitly. So no parameters are required. However, all are validated with error throwing."
+            ],
+            "naming_and_consistency": [
+              "```suggestion\nfrom enum import StrEnum\n\nclass ClaudeSessionStatus(StrEnum):\n    PENDING = \"pending\"\n    RUNNING = \"running\"\n    IDLE = \"idle\"\n    CLOSED = \"closed\"\n\nclass NormalizedStatus(StrEnum):\n    PENDING = \"pending\"\n    RUNNING = \"running\"\n    COMPLETED = \"completed\"\n\ndef map_session_status(cl..."
+            ],
+            "test_evidence_and_coverage": [
+              "could you rebase this on latest master? 🙏🏼",
+              "Thanks for putting this up! Overall the shape and structure of the integration looks great. For a more detailed review, I'm wondering if we could split this up into:\n\n  1. Base class refactor — CodingAgentIntegration/CodingAgentIntegrationProvider -- land this first so next PRs only touch new behavi..."
+            ],
+            "type_safety_and_error_handling": [
+              "if an exception is raised does it still make sense to return below?"
+            ],
+            "state_management_and_data_flow": [
+              "Thanks for putting this up! Overall the shape and structure of the integration looks great. For a more detailed review, I'm wondering if we could split this up into:\n\n  1. Base class refactor — CodingAgentIntegration/CodingAgentIntegrationProvider -- land this first so next PRs only touch new behavi...",
+              "because in legacy autofix, autofix_state contains the coding agents and org id, but with explorer autofix (following the copilot implementation) we supply the org id and coding agents explicitly. So no parameters are required. However, all are validated with error throwing.",
+              "Yes, moved it up, so we aren't running polling unnecessarily, but still left the if in the polling functions as a safety thing because if we run two different coding agents we append to the state instead of replacing. Meaning there is the possibility of a state having multiple providers and each pol..."
+            ],
+            "followup_and_scope_creep": [
+              "Thanks for putting this up! Overall the shape and structure of the integration looks great. For a more detailed review, I'm wondering if we could split this up into:\n\n  1. Base class refactor — CodingAgentIntegration/CodingAgentIntegrationProvider -- land this first so next PRs only touch new behavi..."
+            ]
+          }
+        },
+        {
+          "pr_number": 109112,
+          "pr_url": "https://github.com/getsentry/sentry/pull/109112",
+          "pr_title": "ref(preprod): Remove projectId from URL path utilities",
+          "total_comments": 26,
+          "non_bot_comments": 14,
+          "themes": [
+            "api_design_and_defaults",
+            "component_patterns_and_styling",
+            "type_safety_and_error_handling",
+            "followup_and_scope_creep",
+            "code_documentation"
+          ],
+          "evidence": {
+            "api_design_and_defaults": [
+              "False positive — `version` and `buildNumber` are typed as `string | null | undefined`. The string `'0'` is truthy in JavaScript, so the `&&` check handles it correctly. Only the numeric `0` would be falsy, but these fields are always strings from the API.",
+              "Fixed — replaced `return null` with an `<Alert variant=\"danger\">` wrapped in proper layout, so users see an explicit error message instead of a blank page when projectId can't be resolved.",
+              "Fixed — `useResolveProjectFromArtifact` now returns `project_slug` from the API response instead of `project_id.toString()`, so `downloadPreprodArtifact` receives the correct slug.",
+              "The root cause here was that `useResolveProjectFromArtifact` returned `project_id.toString()` (a numeric ID like `\"123\"`) instead of `project_slug`. This meant `projectId` would resolve to the wrong type of identifier, causing downstream lookups and API calls to fail. Fixed by returning `project_slu...",
+              "False positive — this is intentional. The stacked PR B (#109154) updates all views to resolve project from API responses via `useResolveProjectFromArtifact` instead of the URL query param."
+            ],
+            "component_patterns_and_styling": [
+              "> [!WARNING]\n> <b>This pull request is not mergeable via GitHub because a downstack PR is open. Once all requirements are satisfied, merge this PR as a stack <a href=\"https://app.graphite.com/github/pr/getsentry/sentry/109112?utm_source=stack-comment-downstack-mergeability-warning\" >on Graphite</a>....",
+              "Fixed — replaced `return null` with an `<Alert variant=\"danger\">` wrapped in proper layout, so users see an explicit error message instead of a blank page when projectId can't be resolved.",
+              "False positive — this is intentional. The stacked PR B (#109154) updates all views to resolve project from API responses via `useResolveProjectFromArtifact` instead of the URL query param.",
+              "False positive — this is intentional. The stacked PR B (#109154) updates all consuming views to resolve the project from the org-scoped API response via `useResolveProjectFromArtifact` hook instead of the URL query param."
+            ],
+            "type_safety_and_error_handling": [
+              "Fixed — split the single guard into two checks: `isLoading` shows a loading indicator, while `isError || !projectId` now shows an `<Alert variant=\"danger\">` with the error message instead of an infinite spinner.",
+              "Fixed — replaced `return null` with an `<Alert variant=\"danger\">` wrapped in proper layout, so users see an explicit error message instead of a blank page when projectId can't be resolved."
+            ],
+            "followup_and_scope_creep": [
+              "False positive — this is intentional. The stacked PR B (#109154) updates all consuming views to resolve the project from the org-scoped API response via `useResolveProjectFromArtifact` hook instead of the URL query param."
+            ],
+            "code_documentation": [
+              "> [!WARNING]\n> <b>This pull request is not mergeable via GitHub because a downstack PR is open. Once all requirements are satisfied, merge this PR as a stack <a href=\"https://app.graphite.com/github/pr/getsentry/sentry/109112?utm_source=stack-comment-downstack-mergeability-warning\" >on Graphite</a>...."
+            ]
+          }
+        },
+        {
+          "pr_number": 111080,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111080",
+          "pr_title": "perf(issues): Add Snuba columns to GroupEventsEndpoint to avoid nodestore",
+          "total_comments": 21,
+          "non_bot_comments": 14,
+          "themes": [
+            "api_design_and_defaults",
+            "naming_and_consistency",
+            "component_patterns_and_styling",
+            "test_evidence_and_coverage",
+            "state_management_and_data_flow",
+            "followup_and_scope_creep",
+            "code_documentation"
+          ],
+          "evidence": {
+            "api_design_and_defaults": [
+              "Looks good to me. But I'm not well versed in the edge cases this endpoint has.",
+              "Good catch — fixed. The `_build_snuba_data()` helper now only includes keys whose values are not `None`. When the EAP experimental path returns data with only 4 columns, the missing columns simply won't be in `_snuba_data`, so Event property accessors correctly fall through to nodestore (or to the b...",
+              "Good catch — fixed. `_build_snuba_data` now excludes both `None` and empty strings (`value is not None and value != \"\"`). This prevents ClickHouse's default empty strings for unset columns from being treated as real values, so `get_minimal_user()` correctly falls through to nodestore/interface when...",
+              "Fair point on the naming. The option was created in #110981 specifically for `GroupEventsEndpoint`, but moving the `bind_nodes` call into `SimpleEventSerializer.get_attrs()` broadened the scope. The name is now slightly misleading but still functionally correct as a killswitch — toggling it off disa...",
+              "You're right — this PR doesn't actually help performance.\n\n`bind_nodes` in `get_attrs()` already batch-fetches ALL 100 event bodies in a single `get_multi` call. Since `message` and `metadata` have no Snuba fallback and must read from nodestore, `bind_nodes` can't be skipped. And once it runs, every..."
+            ],
+            "naming_and_consistency": [
+              "Fair point on the naming. The option was created in #110981 specifically for `GroupEventsEndpoint`, but moving the `bind_nodes` call into `SimpleEventSerializer.get_attrs()` broadened the scope. The name is now slightly misleading but still functionally correct as a killswitch — toggling it off disa..."
+            ],
+            "component_patterns_and_styling": [
+              "Good catch — fixed. The `_build_snuba_data()` helper now only includes keys whose values are not `None`. When the EAP experimental path returns data with only 4 columns, the missing columns simply won't be in `_snuba_data`, so Event property accessors correctly fall through to nodestore (or to the b...",
+              "You're right — this PR doesn't actually help performance.\n\n`bind_nodes` in `get_attrs()` already batch-fetches ALL 100 event bodies in a single `get_multi` call. Since `message` and `metadata` have no Snuba fallback and must read from nodestore, `bind_nodes` can't be skipped. And once it runs, every..."
+            ],
+            "test_evidence_and_coverage": [
+              "Fair point on the naming. The option was created in #110981 specifically for `GroupEventsEndpoint`, but moving the `bind_nodes` call into `SimpleEventSerializer.get_attrs()` broadened the scope. The name is now slightly misleading but still functionally correct as a killswitch — toggling it off disa..."
+            ],
+            "state_management_and_data_flow": [
+              "Re: should we remove the previous `bind_nodes`/option from #110981?\n\n**No — it's still needed.** The `bind_nodes` pre-fetch actually *did* work (eliminated the N+1, replaced 100 sequential `nodestore.get` with 1 batched `get_multi`). The remaining ~8-10s was irreducible Bigtable I/O for fetching 100...",
+              "Closing — as Josh pointed out, this PR doesn't provide incremental performance benefit since `bind_nodes` already batch-fetches all event data. The Snuba columns are redundant when nodestore data is loaded. The `bind_nodes` fix in #110981 is the right stopping point.",
+              "Fixed — reverted `metadata` back to `obj.get_event_metadata()`. The `bind_nodes` pre-fetch from #110981 ensures nodestore data is already loaded, so this call just reads from the in-memory `_node_data` without triggering additional RPCs.",
+              "Good catch — fixed. The `_build_snuba_data()` helper now only includes keys whose values are not `None`. When the EAP experimental path returns data with only 4 columns, the missing columns simply won't be in `_snuba_data`, so Event property accessors correctly fall through to nodestore (or to the b...",
+              "Fair point on the naming. The option was created in #110981 specifically for `GroupEventsEndpoint`, but moving the `bind_nodes` call into `SimpleEventSerializer.get_attrs()` broadened the scope. The name is now slightly misleading but still functionally correct as a killswitch — toggling it off disa..."
+            ],
+            "followup_and_scope_creep": [
+              "Fair point on the naming. The option was created in #110981 specifically for `GroupEventsEndpoint`, but moving the `bind_nodes` call into `SimpleEventSerializer.get_attrs()` broadened the scope. The name is now slightly misleading but still functionally correct as a killswitch — toggling it off disa..."
+            ],
+            "code_documentation": [
+              "left one comment -- if we still have to hit nodestore b.c. snuba doesn't have message, then doesn't that mean this PR doesn't help the performance concern?",
+              "Great catch — confirmed. The Snuba `message` column stores `event.search_message` (logentry + metadata values + culprit), not the raw `logentry.formatted`/`logentry.message` that `BaseEvent.message` returns. Fixed — reverted to `obj.message` and removed `message` from both the Snuba query columns an..."
+            ]
+          }
+        },
+        {
+          "pr_number": 111112,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111112",
+          "pr_title": "feat(preprod): Add size_analysis.completed and build_distribution.completed webhooks for Sentry Apps",
+          "total_comments": 23,
+          "non_bot_comments": 11,
+          "themes": [
+            "api_design_and_defaults",
+            "security_and_permissions",
+            "naming_and_consistency",
+            "component_patterns_and_styling",
+            "test_evidence_and_coverage",
+            "type_safety_and_error_handling",
+            "state_management_and_data_flow",
+            "code_documentation"
+          ],
+          "evidence": {
+            "api_design_and_defaults": [
+              "Closing in favour of a Graphite stacked PR series for easier review:\n\n1. **#111472** — Webhook infrastructure (register `preprod_artifact` resource + event types)\n2. **#111473** — Size analysis webhook (TypedDict refactor, webhook module, task integration, tests)\n3. **#111474** — Build distribution...",
+              "This is a false positive. The `finally` at line 614 belongs to the `try` at line 441, not the artifact lookup `try` at line 410.\n\nIf the artifact lookup fails (`DoesNotExist`), the `raise Exception(...)` at line 434 propagates out of the function entirely — the processing `try/except/finally` block...",
+              "Fixed — updated patch paths to target the consuming modules (`sentry.preprod.api.endpoints.project_preprod_distribution` and `sentry.preprod.tasks`) instead of the definition module. Both tests now pass locally.\n\n*— Claude Code*"
+            ],
+            "security_and_permissions": [
+              "Valid observation. `build_comparison_summary_data` delegates to `build_comparison_data` which reads the full comparison file (including `diffItems` and `insightDiffItems`) from blob storage, then discards the heavy fields. However, the `sizeMetricDiff` data needed by the summary is only available in..."
+            ],
+            "naming_and_consistency": [
+              "I think the name `build_upload` needs some reconsideration since this will show in our public docs and I don't think makes sense for BYO snapshots. We haven't been super consistent with some our terminology so far since we interchangeably use artifact/build 😅 but I was thinking perhaps `preprod_arti..."
+            ],
+            "component_patterns_and_styling": [
+              "Closing in favour of a Graphite stacked PR series for easier review:\n\n1. **#111472** — Webhook infrastructure (register `preprod_artifact` resource + event types)\n2. **#111473** — Size analysis webhook (TypedDict refactor, webhook module, task integration, tests)\n3. **#111474** — Build distribution...",
+              "Valid observation. `build_comparison_summary_data` delegates to `build_comparison_data` which reads the full comparison file (including `diffItems` and `insightDiffItems`) from blob storage, then discards the heavy fields. However, the `sizeMetricDiff` data needed by the summary is only available in...",
+              "This is a false positive. The `finally` at line 614 belongs to the `try` at line 441, not the artifact lookup `try` at line 410.\n\nIf the artifact lookup fails (`DoesNotExist`), the `raise Exception(...)` at line 434 propagates out of the function entirely — the processing `try/except/finally` block..."
+            ],
+            "test_evidence_and_coverage": [
+              "Closing in favour of a Graphite stacked PR series for easier review:\n\n1. **#111472** — Webhook infrastructure (register `preprod_artifact` resource + event types)\n2. **#111473** — Size analysis webhook (TypedDict refactor, webhook module, task integration, tests)\n3. **#111474** — Build distribution...",
+              "Fixed — reverted the test to the original version from master. The partial metric matching code change was reverted but the test was not updated to match.\n\n*— Claude Code*",
+              "I think the name `build_upload` needs some reconsideration since this will show in our public docs and I don't think makes sense for BYO snapshots. We haven't been super consistent with some our terminology so far since we interchangeably use artifact/build 😅 but I was thinking perhaps `preprod_arti...",
+              "Fixed — updated patch paths to target the consuming modules (`sentry.preprod.api.endpoints.project_preprod_distribution` and `sentry.preprod.tasks`) instead of the definition module. Both tests now pass locally.\n\n*— Claude Code*"
+            ],
+            "type_safety_and_error_handling": [
+              "Closing in favour of a Graphite stacked PR series for easier review:\n\n1. **#111472** — Webhook infrastructure (register `preprod_artifact` resource + event types)\n2. **#111473** — Size analysis webhook (TypedDict refactor, webhook module, task integration, tests)\n3. **#111474** — Build distribution...",
+              "Good catch — wrapped the `ErrorCode` enum conversion in try/except ValueError, consistent with the `SizeAnalysisState` handling at line 331. Raises `SizeAnalysisSummaryBuildError` on invalid values so the caller handles it cleanly.\n\nFixed in bd11dd75937.",
+              "Valid finding — `build_webhook_payload` could raise unhandled exceptions (e.g. DB connection errors in `_resolve_base_artifact`) that would mask original task errors in the `finally` block. Wrapped the entire `send_size_analysis_webhook` body in a top-level try/except Exception to make it truly fire...",
+              "Good find. When `metrics_committed_successfully` is True but a later operation fails (e.g. the extras update), the exception re-raises and line 675 (`compare_preprod_artifact_size_analysis.apply_async`) is never reached — so the comparison task's `finally`-based webhook never fires either.\n\nAdded an...",
+              "This is a false positive. The `finally` at line 614 belongs to the `try` at line 441, not the artifact lookup `try` at line 410.\n\nIf the artifact lookup fails (`DoesNotExist`), the `raise Exception(...)` at line 434 propagates out of the function entirely — the processing `try/except/finally` block..."
+            ],
+            "state_management_and_data_flow": [
+              "Valid observation. `build_comparison_summary_data` delegates to `build_comparison_data` which reads the full comparison file (including `diffItems` and `insightDiffItems`) from blob storage, then discards the heavy fields. However, the `sizeMetricDiff` data needed by the summary is only available in...",
+              "Good catch — wrapped the `ErrorCode` enum conversion in try/except ValueError, consistent with the `SizeAnalysisState` handling at line 331. Raises `SizeAnalysisSummaryBuildError` on invalid values so the caller handles it cleanly.\n\nFixed in bd11dd75937.",
+              "Good find. When `metrics_committed_successfully` is True but a later operation fails (e.g. the extras update), the exception re-raises and line 675 (`compare_preprod_artifact_size_analysis.apply_async`) is never reached — so the comparison task's `finally`-based webhook never fires either.\n\nAdded an..."
+            ],
+            "code_documentation": [
+              "Valid finding — `build_webhook_payload` could raise unhandled exceptions (e.g. DB connection errors in `_resolve_base_artifact`) that would mask original task errors in the `finally` block. Wrapped the entire `send_size_analysis_webhook` body in a top-level try/except Exception to make it truly fire..."
+            ]
+          }
+        },
+        {
+          "pr_number": 110145,
+          "pr_url": "https://github.com/getsentry/sentry/pull/110145",
+          "pr_title": "ref(issues): Remove useHasStreamlinedUI from GroupDetails and GroupEventDetails",
+          "total_comments": 15,
+          "non_bot_comments": 9,
+          "themes": [
+            "test_evidence_and_coverage",
+            "code_documentation"
+          ],
+          "evidence": {
+            "test_evidence_and_coverage": [
+              "i imagine we had tests for this? that need to be cleaned up",
+              "Looks like this wasn't tested 🤔"
+            ],
+            "code_documentation": [
+              "or i guess something new exists? maybe i'm missing context https://github.com/getsentry/sentry/pull/89986/changes"
+            ]
+          }
+        },
+        {
+          "pr_number": 110442,
+          "pr_url": "https://github.com/getsentry/sentry/pull/110442",
+          "pr_title": "fix(dif): Allow reuploading DIFs with different Debug ID",
+          "total_comments": 26,
+          "non_bot_comments": 16,
+          "themes": [
+            "api_design_and_defaults",
+            "security_and_permissions",
+            "test_evidence_and_coverage",
+            "followup_and_scope_creep",
+            "code_documentation"
+          ],
+          "evidence": {
+            "api_design_and_defaults": [
+              "I would already include the debug_id in the construction of `checksums_to_check`:\n\n```python\nchecksums_to_check = {(checksum, file[checksum].get(\"debug_id\")) for checksum, file in files.items()}\n```\n\nThen `debug_file_query` becomes\n\n```python\ndebug_file_query = Q()\nfor checksum, debug_id in checksum...",
+              "Doesn't this call `create_dif_from_path` with a random temporary filename, i.e. it cannot actually run any useful business logic on the path.\n\nI would skip the temp file generation and the copy, and call `create_dif_from_file` with `path=None` instead.",
+              "Unfortunately, I don't think we can call `create_dif_from_file` with `path=None`, because [`detect_dif_from_path`](https://github.com/getsentry/sentry/blob/706dd09f8f8ab8ab89f69f4605e8a9735f2a828b/src/sentry/models/debugfile.py#L526) expects a real path, and it also reads from the path to validate t..."
+            ],
+            "security_and_permissions": [
+              "Unfortunately, I don't think we can call `create_dif_from_file` with `path=None`, because [`detect_dif_from_path`](https://github.com/getsentry/sentry/blob/706dd09f8f8ab8ab89f69f4605e8a9735f2a828b/src/sentry/models/debugfile.py#L526) expects a real path, and it also reads from the path to validate t..."
+            ],
+            "test_evidence_and_coverage": [
+              "@jjbayer this is ready for review; I have tested locally, and it seems to work! I have also updated the PR description; please check that as well, as it includes some info about a limitation with the creation dates"
+            ],
+            "followup_and_scope_creep": [
+              "Unfortunately, I don't think we can call `create_dif_from_file` with `path=None`, because [`detect_dif_from_path`](https://github.com/getsentry/sentry/blob/706dd09f8f8ab8ab89f69f4605e8a9735f2a828b/src/sentry/models/debugfile.py#L526) expects a real path, and it also reads from the path to validate t..."
+            ],
+            "code_documentation": [
+              "@jjbayer only just now saw your comments; I was still working on this so some things may have moved around. I'll reply to the comments that are still relevant and resolve the ones that might not be",
+              "Why do we have to copy the contents of the file here? Isnt' the benefit of reusing the existing file that we do not need to duplicate the contents?"
+            ]
+          }
+        },
+        {
+          "pr_number": 110859,
+          "pr_url": "https://github.com/getsentry/sentry/pull/110859",
+          "pr_title": "feat(dashboards): Add auto height mode for full-width table widgets",
+          "total_comments": 20,
+          "non_bot_comments": 9,
+          "themes": [
+            "component_patterns_and_styling",
+            "test_evidence_and_coverage"
+          ],
+          "evidence": {
+            "component_patterns_and_styling": [
+              "@gggritso \r\n> Cursor has a good point that if the tables were editable (they're actually not, right?)\r\n\r\nYup, not editable, prebuilt only, making this work in editable widget is scary and would require more considerations and testing as you mentioned (one of the reasons why we're trying this is preb...",
+              "decided to omit this, there's too many edge cases with layout and not much customer feedback indicating this is even an issue.",
+              "🤔 the code is reasonable enough, but it's still kind of a hack. \n\nCursor has a good point that if the tables were editable (they're actually not, right?) this would break in a very surprising way. \n\nMy take is that this is not worth the risk, it just breaks too many assumptions that static grid layo...",
+              "Does `WIDGET_MARGINS[1]` only get applied once to the widget height, regardless of the number of rows?\n\nI could be wrong, but I think this would count the `WIDGET_MARGINS` multiple times in the divisor when it should only be one time. \n\nie, should the formula just be:\n```\nconst gridH = Math.ceil(...",
+              "wrt to `const gridH = Math.ceil(measuredHeight / ROW_HEIGHT) + WIDGET_MARGINS[1];`\r\n\r\nHmm, gridH should be a layout height, from 0-6, by adding `WIDGET_MARGINS[1]` we're immediately way over 6.\r\n\r\nI think the formula is fine? We're determining the final height in grid units accounting for the margin..."
+            ],
+            "test_evidence_and_coverage": [
+              "@gggritso \r\n> Cursor has a good point that if the tables were editable (they're actually not, right?)\r\n\r\nYup, not editable, prebuilt only, making this work in editable widget is scary and would require more considerations and testing as you mentioned (one of the reasons why we're trying this is preb...",
+              "🤔 the code is reasonable enough, but it's still kind of a hack. \n\nCursor has a good point that if the tables were editable (they're actually not, right?) this would break in a very surprising way. \n\nMy take is that this is not worth the risk, it just breaks too many assumptions that static grid layo...",
+              "Good point, I need to use the minimum between 2 and the minH (or maybe always respect `minH`)"
+            ]
+          }
+        },
+        {
+          "pr_number": 111878,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111878",
+          "pr_title": "feat(consumer): use `gen_ai.function_id` as a fallback for `gen_ai.agent.name`",
+          "total_comments": 13,
+          "non_bot_comments": 5,
+          "themes": [
+            "security_and_permissions",
+            "component_patterns_and_styling",
+            "state_management_and_data_flow",
+            "code_documentation"
+          ],
+          "evidence": {
+            "security_and_permissions": [
+              "why is this not done in relay?\n\nThis now becomes quite complex logic where we traverse the span tree for both agent name and function id, and it would be better if we do this mapping in relay on the spans that don't have agent name, and then downstream we only deal with the agent name. The whole pip...",
+              "> doing this in the consumer is way easier than in Relay, but I see why this would be preferred\r\n\r\nI disagree with this, we have already done similar things in Relay, and this is a critical pipeline where every change has a performance cost. This is a change that doesn't require the full segment con..."
+            ],
+            "component_patterns_and_styling": [
+              "This is intended as a simple stop gap solution until the SDK properly maps `gen_ai.function_id` to `gen_ai.agent.name` itself.\r\n\r\nSimple answer: doing this in the consumer is way easier than in Relay, but I see why this would be preferred."
+            ],
+            "state_management_and_data_flow": [
+              "why is this not done in relay?\n\nThis now becomes quite complex logic where we traverse the span tree for both agent name and function id, and it would be better if we do this mapping in relay on the spans that don't have agent name, and then downstream we only deal with the agent name. The whole pip...",
+              "> doing this in the consumer is way easier than in Relay, but I see why this would be preferred\r\n\r\nI disagree with this, we have already done similar things in Relay, and this is a critical pipeline where every change has a performance cost. This is a change that doesn't require the full segment con..."
+            ],
+            "code_documentation": [
+              "> doing this in the consumer is way easier than in Relay, but I see why this would be preferred\r\n\r\nI disagree with this, we have already done similar things in Relay, and this is a critical pipeline where every change has a performance cost. This is a change that doesn't require the full segment con..."
+            ]
+          }
+        },
+        {
+          "pr_number": 111407,
+          "pr_url": "https://github.com/getsentry/sentry/pull/111407",
+          "pr_title": "feat(github): Add fetching issue types from GitHub orgs",
+          "total_comments": 22,
+          "non_bot_comments": 7,
+          "themes": [
+            "security_and_permissions",
+            "component_patterns_and_styling",
+            "test_evidence_and_coverage"
+          ],
+          "evidence": {
+            "security_and_permissions": [
+              "@cvxluo Sorry for the ping, would you be able to re-add the tag so the selective workflows properly trigger, and possibly auth the other stuff, this is my first PR so I'm not too sure how stuff goes here haha.\r\n\r\nAlso apologies for the mess that this PR is, I've been trying to fix damn test issues :...",
+              "> @cvxluo Sorry for the ping, would you be able to re-add the tag so the selective workflows properly trigger, and possibly auth the other stuff, this is my first PR so I'm not too sure how stuff goes here haha.\r\n> \r\n> Also apologies for the mess that this PR is, I've been trying to fix damn test is..."
+            ],
+            "component_patterns_and_styling": [
+              "@cvxluo Sorry for the ping, would you be able to re-add the tag so the selective workflows properly trigger, and possibly auth the other stuff, this is my first PR so I'm not too sure how stuff goes here haha.\r\n\r\nAlso apologies for the mess that this PR is, I've been trying to fix damn test issues :...",
+              "> @cvxluo Sorry for the ping, would you be able to re-add the tag so the selective workflows properly trigger, and possibly auth the other stuff, this is my first PR so I'm not too sure how stuff goes here haha.\r\n> \r\n> Also apologies for the mess that this PR is, I've been trying to fix damn test is..."
+            ],
+            "test_evidence_and_coverage": [
+              "> @cvxluo Any idea if this is meant to fail or not, since this is a PR from a fork: https://github.com/getsentry/sentry/actions/runs/23500374996/job/68393568539?pr=111407\r\n\r\nit's our system for running a subset of our tests to reduce CI times. it's not required, and fails for all external contributo...",
+              "@cvxluo Sorry for the ping, would you be able to re-add the tag so the selective workflows properly trigger, and possibly auth the other stuff, this is my first PR so I'm not too sure how stuff goes here haha.\r\n\r\nAlso apologies for the mess that this PR is, I've been trying to fix damn test issues :...",
+              "> @cvxluo Sorry for the ping, would you be able to re-add the tag so the selective workflows properly trigger, and possibly auth the other stuff, this is my first PR so I'm not too sure how stuff goes here haha.\r\n> \r\n> Also apologies for the mess that this PR is, I've been trying to fix damn test is..."
+            ]
+          }
+        }
+      ]
+    },
+    "abandoned": {
+      "closed_unmerged_total": 500,
+      "closed_high_discussion": {
+        "count": 12,
+        "threshold": "≥10 review events",
+        "share": 0.024,
+        "top_examples": [
+          {
+            "number": 109150,
+            "title": "feat(preprod): Add snapshot image comparison task with odiff",
+            "url": "https://github.com/getsentry/sentry/pull/109150",
+            "reviews_total": 42,
+            "ttm_h": 47.42,
+            "files": 7,
+            "churn": 907
+          },
+          {
+            "number": 109526,
+            "title": "feat(seer): claude agent handoff integration",
+            "url": "https://github.com/getsentry/sentry/pull/109526",
+            "reviews_total": 23,
+            "ttm_h": 169.76,
+            "files": 22,
+            "churn": 1269
+          },
+          {
+            "number": 109112,
+            "title": "ref(preprod): Remove projectId from URL path utilities",
+            "url": "https://github.com/getsentry/sentry/pull/109112",
+            "reviews_total": 19,
+            "ttm_h": 214.18,
+            "files": 3,
+            "churn": 53
+          },
+          {
+            "number": 111080,
+            "title": "perf(issues): Add Snuba columns to GroupEventsEndpoint to avoid nodestore",
+            "url": "https://github.com/getsentry/sentry/pull/111080",
+            "reviews_total": 17,
+            "ttm_h": 91.24,
+            "files": 3,
+            "churn": 79
+          },
+          {
+            "number": 111112,
+            "title": "feat(preprod): Add size_analysis.completed and build_distribution.completed webhooks for Sentry Apps",
+            "url": "https://github.com/getsentry/sentry/pull/111112",
+            "reviews_total": 16,
+            "ttm_h": 124.02,
+            "files": 20,
+            "churn": 1979
+          },
+          {
+            "number": 110145,
+            "title": "ref(issues): Remove useHasStreamlinedUI from GroupDetails and GroupEventDetails",
+            "url": "https://github.com/getsentry/sentry/pull/110145",
+            "reviews_total": 16,
+            "ttm_h": 430.03,
+            "files": 25,
+            "churn": 3236
+          },
+          {
+            "number": 110442,
+            "title": "fix(dif): Allow reuploading DIFs with different Debug ID",
+            "url": "https://github.com/getsentry/sentry/pull/110442",
+            "reviews_total": 14,
+            "ttm_h": 137.14,
+            "files": 4,
+            "churn": 285
+          },
+          {
+            "number": 110859,
+            "title": "feat(dashboards): Add auto height mode for full-width table widgets",
+            "url": "https://github.com/getsentry/sentry/pull/110859",
+            "reviews_total": 12,
+            "ttm_h": 338.96,
+            "files": 8,
+            "churn": 118
+          },
+          {
+            "number": 111878,
+            "title": "feat(consumer): use `gen_ai.function_id` as a fallback for `gen_ai.agent.name`",
+            "url": "https://github.com/getsentry/sentry/pull/111878",
+            "reviews_total": 11,
+            "ttm_h": 0.27,
+            "files": 2,
+            "churn": 184
+          },
+          {
+            "number": 111407,
+            "title": "feat(github): Add fetching issue types from GitHub orgs",
+            "url": "https://github.com/getsentry/sentry/pull/111407",
+            "reviews_total": 10,
+            "ttm_h": 8.28,
+            "files": 3,
+            "churn": 74
+          },
+          {
+            "number": 110990,
+            "title": "perf(group-events): Include platform in Snuba query to avoid nodestore N+1",
+            "url": "https://github.com/getsentry/sentry/pull/110990",
+            "reviews_total": 10,
+            "ttm_h": 113.2,
+            "files": 4,
+            "churn": 204
+          },
+          {
+            "number": 109624,
+            "title": "feat(perf-detectors): Complete PERFORMANCE_DETECTOR_CONFIG_MAPPINGS",
+            "url": "https://github.com/getsentry/sentry/pull/109624",
+            "reviews_total": 10,
+            "ttm_h": 847.48,
+            "files": 2,
+            "churn": 225
+          }
+        ]
+      },
+      "comparison": {
+        "merged_high_friction": {
+          "count": 125,
+          "ttm_median_h": 65.62,
+          "reviews_median": 6.0,
+          "churn_median": 156.0,
+          "files_median": 4.0,
+          "review_rounds_median": 0.0
+        },
+        "closed_high_discussion": {
+          "count": 12,
+          "ttm_median_h": 130.58,
+          "reviews_median": 15.0,
+          "churn_median": 214.5,
+          "files_median": 4.0,
+          "review_rounds_median": 0.0
+        }
+      },
+      "stale": {
+        "open_total": 251,
+        "stale_14d": 92,
+        "stale_30d": 33,
+        "stale_high_discussion": [
+          {
+            "number": 109819,
+            "title": "feat(logs): moved LogsInfiniteTable inline with expand/contract button",
+            "url": "https://github.com/getsentry/sentry/pull/109819",
+            "reviews_total": 55,
+            "ttm_h": 759.71
+          },
+          {
+            "number": 108533,
+            "title": "feat(code-review): Add backend logic for PR Review Dashboard [internal]",
+            "url": "https://github.com/getsentry/sentry/pull/108533",
+            "reviews_total": 40,
+            "ttm_h": 1050.1
+          },
+          {
+            "number": 108409,
+            "title": "feat(support): Add Intercom support widget frontend integration",
+            "url": "https://github.com/getsentry/sentry/pull/108409",
+            "reviews_total": 13,
+            "ttm_h": 1091.08
+          },
+          {
+            "number": 110820,
+            "title": "fix(digests): Migrate digests serialization from pickle to JSON",
+            "url": "https://github.com/getsentry/sentry/pull/110820",
+            "reviews_total": 11,
+            "ttm_h": 443.46
+          },
+          {
+            "number": 110808,
+            "title": "feat(dev): replace pre-commit with prek --quiet",
+            "url": "https://github.com/getsentry/sentry/pull/110808",
+            "reviews_total": 11,
+            "ttm_h": 444.58
+          },
+          {
+            "number": 111231,
+            "title": "ref(nav) cleanup stories",
+            "url": "https://github.com/getsentry/sentry/pull/111231",
+            "reviews_total": 6,
+            "ttm_h": 351.89
+          },
+          {
+            "number": 107216,
+            "title": ":sparkles: feat(gitlab): add issue sync outbound support",
+            "url": "https://github.com/getsentry/sentry/pull/107216",
+            "reviews_total": 6,
+            "ttm_h": 1565.37
+          },
+          {
+            "number": 111143,
+            "title": "ref: Use EAP for sessions read query",
+            "url": "https://github.com/getsentry/sentry/pull/111143",
+            "reviews_total": 5,
+            "ttm_h": 374.09
+          },
+          {
+            "number": 111043,
+            "title": "feat(search): Add experimental \"recommended\" issue sort",
+            "url": "https://github.com/getsentry/sentry/pull/111043",
+            "reviews_total": 5,
+            "ttm_h": 396.02
+          },
+          {
+            "number": 110743,
+            "title": "feat(performance): Add Apdex chart to EAP transaction summary sidebar",
+            "url": "https://github.com/getsentry/sentry/pull/110743",
+            "reviews_total": 5,
+            "ttm_h": 450.44
+          }
+        ]
+      }
+    },
+    "top_lists": {
+      "by_review_volume": [
+        {
+          "number": 111697,
+          "title": "feat(seer): Add org-level default stopping point and wire coding agent defaults into project creation",
+          "url": "https://github.com/getsentry/sentry/pull/111697",
+          "ttm_h": 118.43,
+          "reviews_total": 47,
+          "changes_requested": 0,
+          "commented": 45,
+          "approvals": 2,
+          "files": 10,
+          "churn": 467,
+          "labels": [
+            "Scope: Backend"
+          ],
+          "title_scope": "seer",
+          "title_type": "feat",
+          "file_domains": [
+            "src/sentry",
+            "tests/sentry"
+          ],
+          "review_rounds": 0,
+          "friction_score": 1.5558,
+          "author": "srest2021",
+          "state": "merged"
+        },
+        {
+          "number": 111529,
+          "title": "feat(onboarding): SCM platform features step UI polish and analytics",
+          "url": "https://github.com/getsentry/sentry/pull/111529",
+          "ttm_h": 123.88,
+          "reviews_total": 37,
+          "changes_requested": 0,
+          "commented": 36,
+          "approvals": 1,
+          "files": 12,
+          "churn": 773,
+          "labels": [
+            "Scope: Frontend"
+          ],
+          "title_scope": "onboarding",
+          "title_type": "feat",
+          "file_domains": [
+            "static/app"
+          ],
+          "review_rounds": 0,
+          "friction_score": 1.364,
+          "author": "jaydgoss",
+          "state": "merged"
+        },
+        {
+          "number": 111728,
+          "title": "feat(github): Add API-driven GitHub integration setup",
+          "url": "https://github.com/getsentry/sentry/pull/111728",
+          "ttm_h": 98.12,
+          "reviews_total": 32,
+          "changes_requested": 0,
+          "commented": 31,
+          "approvals": 1,
+          "files": 2,
+          "churn": 1119,
+          "labels": [
+            "Scope: Backend"
+          ],
+          "title_scope": "github",
+          "title_type": "feat",
+          "file_domains": [
+            "src/sentry",
+            "tests/sentry"
+          ],
+          "review_rounds": 0,
+          "friction_score": 1.1344,
+          "author": "evanpurkhiser",
+          "state": "merged"
+        },
+        {
+          "number": 111775,
+          "title": "ref(nav): Remove Layout.Page usage from individual views",
+          "url": "https://github.com/getsentry/sentry/pull/111775",
+          "ttm_h": 42.91,
+          "reviews_total": 27,
+          "changes_requested": 0,
+          "commented": 26,
+          "approvals": 1,
+          "files": 81,
+          "churn": 601,
+          "labels": [
+            "Scope: Frontend"
+          ],
+          "title_scope": "nav",
+          "title_type": "ref",
+          "file_domains": [
+            "static/app"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.7665,
+          "author": "JonasBa",
+          "state": "merged"
+        },
+        {
+          "number": 111539,
+          "title": "feat(pipeline): Add OrganizationPipelineEndpoint for API-driven pipelines",
+          "url": "https://github.com/getsentry/sentry/pull/111539",
+          "ttm_h": 47.89,
+          "reviews_total": 26,
+          "changes_requested": 0,
+          "commented": 25,
+          "approvals": 1,
+          "files": 5,
+          "churn": 406,
+          "labels": [
+            "Scope: Frontend",
+            "Scope: Backend"
+          ],
+          "title_scope": "pipeline",
+          "title_type": "feat",
+          "file_domains": [
+            "src/sentry",
+            "static/app",
+            "tests/sentry"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.7682,
+          "author": "evanpurkhiser",
+          "state": "merged"
+        },
+        {
+          "number": 111976,
+          "title": "feat(preprod): Add approval API endpoint and approval info in snapshot response",
+          "url": "https://github.com/getsentry/sentry/pull/111976",
+          "ttm_h": 20.73,
+          "reviews_total": 22,
+          "changes_requested": 0,
+          "commented": 21,
+          "approvals": 1,
+          "files": 5,
+          "churn": 208,
+          "labels": [
+            "Scope: Frontend",
+            "Scope: Backend"
+          ],
+          "title_scope": "preprod",
+          "title_type": "feat",
+          "file_domains": [
+            "src/sentry",
+            "static/app"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.5537,
+          "author": "NicoHinderling",
+          "state": "merged"
+        },
+        {
+          "number": 111723,
+          "title": "feat(sentry apps): Add circuit breaker into webhook code",
+          "url": "https://github.com/getsentry/sentry/pull/111723",
+          "ttm_h": 97.21,
+          "reviews_total": 22,
+          "changes_requested": 0,
+          "commented": 19,
+          "approvals": 3,
+          "files": 11,
+          "churn": 446,
+          "labels": [
+            "Scope: Backend"
+          ],
+          "title_scope": "sentry apps",
+          "title_type": "feat",
+          "file_domains": [
+            ".github/CODEOWNERS",
+            "src/sentry",
+            "tests/sentry"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.9127,
+          "author": "Christinarlong",
+          "state": "merged"
+        },
+        {
+          "number": 111674,
+          "title": "feat(notifications): Add notification data and renderer for metric alerts",
+          "url": "https://github.com/getsentry/sentry/pull/111674",
+          "ttm_h": 98.94,
+          "reviews_total": 20,
+          "changes_requested": 0,
+          "commented": 19,
+          "approvals": 1,
+          "files": 12,
+          "churn": 903,
+          "labels": [
+            "Scope: Backend"
+          ],
+          "title_scope": "notifications",
+          "title_type": "feat",
+          "file_domains": [
+            "src/sentry",
+            "tests/sentry"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.8773,
+          "author": "Christinarlong",
+          "state": "merged"
+        },
+        {
+          "number": 111565,
+          "title": "feat(autofix): Handle PR creation in group ai autofix endpoint",
+          "url": "https://github.com/getsentry/sentry/pull/111565",
+          "ttm_h": 43.32,
+          "reviews_total": 19,
+          "changes_requested": 0,
+          "commented": 18,
+          "approvals": 1,
+          "files": 6,
+          "churn": 236,
+          "labels": [
+            "Scope: Backend"
+          ],
+          "title_scope": "autofix",
+          "title_type": "feat",
+          "file_domains": [
+            "src/sentry",
+            "tests/sentry"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.5945,
+          "author": "Zylphrex",
+          "state": "merged"
+        },
+        {
+          "number": 111540,
+          "title": "ref(cmdk) enable modal toggle behavior",
+          "url": "https://github.com/getsentry/sentry/pull/111540",
+          "ttm_h": 5.11,
+          "reviews_total": 19,
+          "changes_requested": 0,
+          "commented": 17,
+          "approvals": 2,
+          "files": 13,
+          "churn": 137,
+          "labels": [
+            "Scope: Frontend",
+            "Scope: Backend"
+          ],
+          "title_scope": "unscoped",
+          "title_type": "unknown",
+          "file_domains": [
+            ".github/CODEOWNERS",
+            "static/app"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.4152,
+          "author": "JonasBa",
+          "state": "merged"
+        },
+        {
+          "number": 112032,
+          "title": "feat(scraps): Add slot component",
+          "url": "https://github.com/getsentry/sentry/pull/112032",
+          "ttm_h": 49.98,
+          "reviews_total": 17,
+          "changes_requested": 0,
+          "commented": 16,
+          "approvals": 1,
+          "files": 7,
+          "churn": 677,
+          "labels": [
+            "Scope: Frontend"
+          ],
+          "title_scope": "scraps",
+          "title_type": "feat",
+          "file_domains": [
+            "static/app",
+            "tests/js"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.5823,
+          "author": "JonasBa",
+          "state": "merged"
+        },
+        {
+          "number": 111864,
+          "title": "feat(github): Handle installation_repositories webhook ",
+          "url": "https://github.com/getsentry/sentry/pull/111864",
+          "ttm_h": 88.47,
+          "reviews_total": 17,
+          "changes_requested": 0,
+          "commented": 15,
+          "approvals": 2,
+          "files": 24,
+          "churn": 1020,
+          "labels": [
+            "Scope: Backend",
+            "Trigger: Revert"
+          ],
+          "title_scope": "github",
+          "title_type": "feat",
+          "file_domains": [
+            "src/sentry",
+            "tests/sentry"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.763,
+          "author": "wedamija",
+          "state": "merged"
+        },
+        {
+          "number": 112007,
+          "title": "ref(cmdk) improve searching",
+          "url": "https://github.com/getsentry/sentry/pull/112007",
+          "ttm_h": 29.12,
+          "reviews_total": 16,
+          "changes_requested": 0,
+          "commented": 15,
+          "approvals": 1,
+          "files": 7,
+          "churn": 947,
+          "labels": [
+            "Scope: Frontend"
+          ],
+          "title_scope": "unscoped",
+          "title_type": "unknown",
+          "file_domains": [
+            "static/app"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.4627,
+          "author": "JonasBa",
+          "state": "merged"
+        },
+        {
+          "number": 112181,
+          "title": "feat(seer): Convert structured LLMContext JSON to markdown for on_page_context",
+          "url": "https://github.com/getsentry/sentry/pull/112181",
+          "ttm_h": 17.31,
+          "reviews_total": 14,
+          "changes_requested": 0,
+          "commented": 13,
+          "approvals": 1,
+          "files": 4,
+          "churn": 155,
+          "labels": [
+            "Scope: Backend"
+          ],
+          "title_scope": "seer",
+          "title_type": "feat",
+          "file_domains": [
+            "src/sentry",
+            "tests/sentry"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.3638,
+          "author": "Mihir-Mavalankar",
+          "state": "merged"
+        },
+        {
+          "number": 111691,
+          "title": "fix(coding integrations): add catching for integration not found error",
+          "url": "https://github.com/getsentry/sentry/pull/111691",
+          "ttm_h": 138.3,
+          "reviews_total": 14,
+          "changes_requested": 0,
+          "commented": 13,
+          "approvals": 1,
+          "files": 8,
+          "churn": 384,
+          "labels": [
+            "Scope: Backend"
+          ],
+          "title_scope": "coding integrations",
+          "title_type": "fix",
+          "file_domains": [
+            "src/sentry",
+            "tests/sentry"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.9317,
+          "author": "sehr-m",
+          "state": "merged"
+        }
+      ],
+      "by_ttm": [
+        {
+          "number": 111490,
+          "title": "fix(aci): Standardize monitor/alert form behavior on save",
+          "url": "https://github.com/getsentry/sentry/pull/111490",
+          "ttm_h": 213.07,
+          "reviews_total": 6,
+          "changes_requested": 0,
+          "commented": 5,
+          "approvals": 1,
+          "files": 9,
+          "churn": 70,
+          "labels": [
+            "Scope: Frontend"
+          ],
+          "title_scope": "aci",
+          "title_type": "fix",
+          "file_domains": [
+            "static/app"
+          ],
+          "review_rounds": 0,
+          "friction_score": 1.1087,
+          "author": "malwilley",
+          "state": "merged"
+        },
+        {
+          "number": 111499,
+          "title": "feat(seer agent): add integration button to handoff dropdown",
+          "url": "https://github.com/getsentry/sentry/pull/111499",
+          "ttm_h": 166.16,
+          "reviews_total": 4,
+          "changes_requested": 0,
+          "commented": 3,
+          "approvals": 1,
+          "files": 2,
+          "churn": 42,
+          "labels": [
+            "Scope: Frontend"
+          ],
+          "title_scope": "seer agent",
+          "title_type": "feat",
+          "file_domains": [
+            "static/app"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.845,
+          "author": "sehr-m",
+          "state": "merged"
+        },
+        {
+          "number": 111607,
+          "title": "feat(onboarding): Add Litestar as a Python onboarding platform (FE)",
+          "url": "https://github.com/getsentry/sentry/pull/111607",
+          "ttm_h": 164.84,
+          "reviews_total": 1,
+          "changes_requested": 0,
+          "commented": 0,
+          "approvals": 1,
+          "files": 8,
+          "churn": 342,
+          "labels": [
+            "Scope: Frontend"
+          ],
+          "title_scope": "onboarding",
+          "title_type": "feat",
+          "file_domains": [
+            "static/app"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.7736,
+          "author": "sentrivana",
+          "state": "merged"
+        },
+        {
+          "number": 111522,
+          "title": "feat(onboarding): Add Litestar as a Python onboarding platform (BE)",
+          "url": "https://github.com/getsentry/sentry/pull/111522",
+          "ttm_h": 159.19,
+          "reviews_total": 6,
+          "changes_requested": 0,
+          "commented": 5,
+          "approvals": 1,
+          "files": 2,
+          "churn": 2,
+          "labels": [
+            "Scope: Frontend",
+            "Scope: Backend"
+          ],
+          "title_scope": "onboarding",
+          "title_type": "feat",
+          "file_domains": [
+            "src/sentry"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.8558,
+          "author": "sentrivana",
+          "state": "merged"
+        },
+        {
+          "number": 111554,
+          "title": "feat(seer): Add structured LLM context system for Seer Explorer",
+          "url": "https://github.com/getsentry/sentry/pull/111554",
+          "ttm_h": 147.1,
+          "reviews_total": 13,
+          "changes_requested": 0,
+          "commented": 12,
+          "approvals": 1,
+          "files": 7,
+          "churn": 740,
+          "labels": [
+            "Scope: Frontend",
+            "Scope: Backend"
+          ],
+          "title_scope": "seer",
+          "title_type": "feat",
+          "file_domains": [
+            ".github/CODEOWNERS",
+            "knip.config.ts",
+            "static/app"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.9512,
+          "author": "Mihir-Mavalankar",
+          "state": "merged"
+        },
+        {
+          "number": 111724,
+          "title": "feat(explore): Add issue post processor on occurrences dataset",
+          "url": "https://github.com/getsentry/sentry/pull/111724",
+          "ttm_h": 145.57,
+          "reviews_total": 6,
+          "changes_requested": 0,
+          "commented": 5,
+          "approvals": 1,
+          "files": 4,
+          "churn": 172,
+          "labels": [
+            "Scope: Backend"
+          ],
+          "title_scope": "explore",
+          "title_type": "feat",
+          "file_domains": [
+            "src/sentry",
+            "tests/snuba"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.7919,
+          "author": "manessaraj",
+          "state": "merged"
+        },
+        {
+          "number": 111714,
+          "title": "fix(workflows): add detector group caching in ensure_association_with_detector",
+          "url": "https://github.com/getsentry/sentry/pull/111714",
+          "ttm_h": 144.92,
+          "reviews_total": 9,
+          "changes_requested": 0,
+          "commented": 8,
+          "approvals": 1,
+          "files": 2,
+          "churn": 10,
+          "labels": [
+            "Scope: Backend"
+          ],
+          "title_scope": "workflows",
+          "title_type": "fix",
+          "file_domains": [
+            "src/sentry"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.854,
+          "author": "klochek",
+          "state": "merged"
+        },
+        {
+          "number": 111745,
+          "title": "chore(seer-slack): Allow for a slack-staging provider",
+          "url": "https://github.com/getsentry/sentry/pull/111745",
+          "ttm_h": 139.65,
+          "reviews_total": 12,
+          "changes_requested": 0,
+          "commented": 10,
+          "approvals": 2,
+          "files": 57,
+          "churn": 638,
+          "labels": [
+            "Scope: Frontend",
+            "Scope: Backend"
+          ],
+          "title_scope": "seer-slack",
+          "title_type": "chore",
+          "file_domains": [
+            "src/sentry",
+            "static/app",
+            "tests/sentry"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.8945,
+          "author": "leeandher",
+          "state": "merged"
+        },
+        {
+          "number": 111691,
+          "title": "fix(coding integrations): add catching for integration not found error",
+          "url": "https://github.com/getsentry/sentry/pull/111691",
+          "ttm_h": 138.3,
+          "reviews_total": 14,
+          "changes_requested": 0,
+          "commented": 13,
+          "approvals": 1,
+          "files": 8,
+          "churn": 384,
+          "labels": [
+            "Scope: Backend"
+          ],
+          "title_scope": "coding integrations",
+          "title_type": "fix",
+          "file_domains": [
+            "src/sentry",
+            "tests/sentry"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.9317,
+          "author": "sehr-m",
+          "state": "merged"
+        },
+        {
+          "number": 111500,
+          "title": "ref(preprod): Restructure commit_comparison conditional to if/else",
+          "url": "https://github.com/getsentry/sentry/pull/111500",
+          "ttm_h": 134.8,
+          "reviews_total": 1,
+          "changes_requested": 0,
+          "commented": 0,
+          "approvals": 1,
+          "files": 1,
+          "churn": 342,
+          "labels": [
+            "Scope: Backend"
+          ],
+          "title_scope": "preprod",
+          "title_type": "ref",
+          "file_domains": [
+            "src/sentry"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.6326,
+          "author": "mtopo27",
+          "state": "merged"
+        },
+        {
+          "number": 111518,
+          "title": "ref(tracemetrics): Remove unsortable telemetry columns behind feature flag",
+          "url": "https://github.com/getsentry/sentry/pull/111518",
+          "ttm_h": 124.17,
+          "reviews_total": 1,
+          "changes_requested": 0,
+          "commented": 0,
+          "approvals": 1,
+          "files": 3,
+          "churn": 63,
+          "labels": [
+            "Scope: Frontend"
+          ],
+          "title_scope": "tracemetrics",
+          "title_type": "ref",
+          "file_domains": [
+            "static/app"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.5827,
+          "author": "nsdeschenes",
+          "state": "merged"
+        },
+        {
+          "number": 111529,
+          "title": "feat(onboarding): SCM platform features step UI polish and analytics",
+          "url": "https://github.com/getsentry/sentry/pull/111529",
+          "ttm_h": 123.88,
+          "reviews_total": 37,
+          "changes_requested": 0,
+          "commented": 36,
+          "approvals": 1,
+          "files": 12,
+          "churn": 773,
+          "labels": [
+            "Scope: Frontend"
+          ],
+          "title_scope": "onboarding",
+          "title_type": "feat",
+          "file_domains": [
+            "static/app"
+          ],
+          "review_rounds": 0,
+          "friction_score": 1.364,
+          "author": "jaydgoss",
+          "state": "merged"
+        },
+        {
+          "number": 111513,
+          "title": "feat(tracemetrics): Display metric name in aggregates table when no group by selected",
+          "url": "https://github.com/getsentry/sentry/pull/111513",
+          "ttm_h": 123.6,
+          "reviews_total": 2,
+          "changes_requested": 0,
+          "commented": 1,
+          "approvals": 1,
+          "files": 2,
+          "churn": 121,
+          "labels": [
+            "Scope: Frontend"
+          ],
+          "title_scope": "tracemetrics",
+          "title_type": "feat",
+          "file_domains": [
+            "static/app"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.6018,
+          "author": "nsdeschenes",
+          "state": "merged"
+        },
+        {
+          "number": 111525,
+          "title": "ref(explore): Remove sticky last column from aggregates tab",
+          "url": "https://github.com/getsentry/sentry/pull/111525",
+          "ttm_h": 122.18,
+          "reviews_total": 1,
+          "changes_requested": 0,
+          "commented": 0,
+          "approvals": 1,
+          "files": 1,
+          "churn": 21,
+          "labels": [
+            "Scope: Frontend"
+          ],
+          "title_scope": "explore",
+          "title_type": "ref",
+          "file_domains": [
+            "static/app"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.5734,
+          "author": "nsdeschenes",
+          "state": "merged"
+        },
+        {
+          "number": 111532,
+          "title": "ref(metrics): Tidy up metrics UI for refresh layout",
+          "url": "https://github.com/getsentry/sentry/pull/111532",
+          "ttm_h": 119.38,
+          "reviews_total": 2,
+          "changes_requested": 0,
+          "commented": 1,
+          "approvals": 1,
+          "files": 2,
+          "churn": 48,
+          "labels": [
+            "Scope: Frontend"
+          ],
+          "title_scope": "metrics",
+          "title_type": "ref",
+          "file_domains": [
+            "static/app"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.582,
+          "author": "nsdeschenes",
+          "state": "merged"
+        }
+      ],
+      "by_friction_score": [
+        {
+          "number": 111697,
+          "title": "feat(seer): Add org-level default stopping point and wire coding agent defaults into project creation",
+          "url": "https://github.com/getsentry/sentry/pull/111697",
+          "ttm_h": 118.43,
+          "reviews_total": 47,
+          "changes_requested": 0,
+          "commented": 45,
+          "approvals": 2,
+          "files": 10,
+          "churn": 467,
+          "labels": [
+            "Scope: Backend"
+          ],
+          "title_scope": "seer",
+          "title_type": "feat",
+          "file_domains": [
+            "src/sentry",
+            "tests/sentry"
+          ],
+          "review_rounds": 0,
+          "friction_score": 1.5558,
+          "author": "srest2021",
+          "state": "merged"
+        },
+        {
+          "number": 111529,
+          "title": "feat(onboarding): SCM platform features step UI polish and analytics",
+          "url": "https://github.com/getsentry/sentry/pull/111529",
+          "ttm_h": 123.88,
+          "reviews_total": 37,
+          "changes_requested": 0,
+          "commented": 36,
+          "approvals": 1,
+          "files": 12,
+          "churn": 773,
+          "labels": [
+            "Scope: Frontend"
+          ],
+          "title_scope": "onboarding",
+          "title_type": "feat",
+          "file_domains": [
+            "static/app"
+          ],
+          "review_rounds": 0,
+          "friction_score": 1.364,
+          "author": "jaydgoss",
+          "state": "merged"
+        },
+        {
+          "number": 111728,
+          "title": "feat(github): Add API-driven GitHub integration setup",
+          "url": "https://github.com/getsentry/sentry/pull/111728",
+          "ttm_h": 98.12,
+          "reviews_total": 32,
+          "changes_requested": 0,
+          "commented": 31,
+          "approvals": 1,
+          "files": 2,
+          "churn": 1119,
+          "labels": [
+            "Scope: Backend"
+          ],
+          "title_scope": "github",
+          "title_type": "feat",
+          "file_domains": [
+            "src/sentry",
+            "tests/sentry"
+          ],
+          "review_rounds": 0,
+          "friction_score": 1.1344,
+          "author": "evanpurkhiser",
+          "state": "merged"
+        },
+        {
+          "number": 111490,
+          "title": "fix(aci): Standardize monitor/alert form behavior on save",
+          "url": "https://github.com/getsentry/sentry/pull/111490",
+          "ttm_h": 213.07,
+          "reviews_total": 6,
+          "changes_requested": 0,
+          "commented": 5,
+          "approvals": 1,
+          "files": 9,
+          "churn": 70,
+          "labels": [
+            "Scope: Frontend"
+          ],
+          "title_scope": "aci",
+          "title_type": "fix",
+          "file_domains": [
+            "static/app"
+          ],
+          "review_rounds": 0,
+          "friction_score": 1.1087,
+          "author": "malwilley",
+          "state": "merged"
+        },
+        {
+          "number": 111554,
+          "title": "feat(seer): Add structured LLM context system for Seer Explorer",
+          "url": "https://github.com/getsentry/sentry/pull/111554",
+          "ttm_h": 147.1,
+          "reviews_total": 13,
+          "changes_requested": 0,
+          "commented": 12,
+          "approvals": 1,
+          "files": 7,
+          "churn": 740,
+          "labels": [
+            "Scope: Frontend",
+            "Scope: Backend"
+          ],
+          "title_scope": "seer",
+          "title_type": "feat",
+          "file_domains": [
+            ".github/CODEOWNERS",
+            "knip.config.ts",
+            "static/app"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.9512,
+          "author": "Mihir-Mavalankar",
+          "state": "merged"
+        },
+        {
+          "number": 111691,
+          "title": "fix(coding integrations): add catching for integration not found error",
+          "url": "https://github.com/getsentry/sentry/pull/111691",
+          "ttm_h": 138.3,
+          "reviews_total": 14,
+          "changes_requested": 0,
+          "commented": 13,
+          "approvals": 1,
+          "files": 8,
+          "churn": 384,
+          "labels": [
+            "Scope: Backend"
+          ],
+          "title_scope": "coding integrations",
+          "title_type": "fix",
+          "file_domains": [
+            "src/sentry",
+            "tests/sentry"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.9317,
+          "author": "sehr-m",
+          "state": "merged"
+        },
+        {
+          "number": 111723,
+          "title": "feat(sentry apps): Add circuit breaker into webhook code",
+          "url": "https://github.com/getsentry/sentry/pull/111723",
+          "ttm_h": 97.21,
+          "reviews_total": 22,
+          "changes_requested": 0,
+          "commented": 19,
+          "approvals": 3,
+          "files": 11,
+          "churn": 446,
+          "labels": [
+            "Scope: Backend"
+          ],
+          "title_scope": "sentry apps",
+          "title_type": "feat",
+          "file_domains": [
+            ".github/CODEOWNERS",
+            "src/sentry",
+            "tests/sentry"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.9127,
+          "author": "Christinarlong",
+          "state": "merged"
+        },
+        {
+          "number": 111745,
+          "title": "chore(seer-slack): Allow for a slack-staging provider",
+          "url": "https://github.com/getsentry/sentry/pull/111745",
+          "ttm_h": 139.65,
+          "reviews_total": 12,
+          "changes_requested": 0,
+          "commented": 10,
+          "approvals": 2,
+          "files": 57,
+          "churn": 638,
+          "labels": [
+            "Scope: Frontend",
+            "Scope: Backend"
+          ],
+          "title_scope": "seer-slack",
+          "title_type": "chore",
+          "file_domains": [
+            "src/sentry",
+            "static/app",
+            "tests/sentry"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.8945,
+          "author": "leeandher",
+          "state": "merged"
+        },
+        {
+          "number": 111674,
+          "title": "feat(notifications): Add notification data and renderer for metric alerts",
+          "url": "https://github.com/getsentry/sentry/pull/111674",
+          "ttm_h": 98.94,
+          "reviews_total": 20,
+          "changes_requested": 0,
+          "commented": 19,
+          "approvals": 1,
+          "files": 12,
+          "churn": 903,
+          "labels": [
+            "Scope: Backend"
+          ],
+          "title_scope": "notifications",
+          "title_type": "feat",
+          "file_domains": [
+            "src/sentry",
+            "tests/sentry"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.8773,
+          "author": "Christinarlong",
+          "state": "merged"
+        },
+        {
+          "number": 111522,
+          "title": "feat(onboarding): Add Litestar as a Python onboarding platform (BE)",
+          "url": "https://github.com/getsentry/sentry/pull/111522",
+          "ttm_h": 159.19,
+          "reviews_total": 6,
+          "changes_requested": 0,
+          "commented": 5,
+          "approvals": 1,
+          "files": 2,
+          "churn": 2,
+          "labels": [
+            "Scope: Frontend",
+            "Scope: Backend"
+          ],
+          "title_scope": "onboarding",
+          "title_type": "feat",
+          "file_domains": [
+            "src/sentry"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.8558,
+          "author": "sentrivana",
+          "state": "merged"
+        },
+        {
+          "number": 111714,
+          "title": "fix(workflows): add detector group caching in ensure_association_with_detector",
+          "url": "https://github.com/getsentry/sentry/pull/111714",
+          "ttm_h": 144.92,
+          "reviews_total": 9,
+          "changes_requested": 0,
+          "commented": 8,
+          "approvals": 1,
+          "files": 2,
+          "churn": 10,
+          "labels": [
+            "Scope: Backend"
+          ],
+          "title_scope": "workflows",
+          "title_type": "fix",
+          "file_domains": [
+            "src/sentry"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.854,
+          "author": "klochek",
+          "state": "merged"
+        },
+        {
+          "number": 111499,
+          "title": "feat(seer agent): add integration button to handoff dropdown",
+          "url": "https://github.com/getsentry/sentry/pull/111499",
+          "ttm_h": 166.16,
+          "reviews_total": 4,
+          "changes_requested": 0,
+          "commented": 3,
+          "approvals": 1,
+          "files": 2,
+          "churn": 42,
+          "labels": [
+            "Scope: Frontend"
+          ],
+          "title_scope": "seer agent",
+          "title_type": "feat",
+          "file_domains": [
+            "static/app"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.845,
+          "author": "sehr-m",
+          "state": "merged"
+        },
+        {
+          "number": 111724,
+          "title": "feat(explore): Add issue post processor on occurrences dataset",
+          "url": "https://github.com/getsentry/sentry/pull/111724",
+          "ttm_h": 145.57,
+          "reviews_total": 6,
+          "changes_requested": 0,
+          "commented": 5,
+          "approvals": 1,
+          "files": 4,
+          "churn": 172,
+          "labels": [
+            "Scope: Backend"
+          ],
+          "title_scope": "explore",
+          "title_type": "feat",
+          "file_domains": [
+            "src/sentry",
+            "tests/snuba"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.7919,
+          "author": "manessaraj",
+          "state": "merged"
+        },
+        {
+          "number": 111607,
+          "title": "feat(onboarding): Add Litestar as a Python onboarding platform (FE)",
+          "url": "https://github.com/getsentry/sentry/pull/111607",
+          "ttm_h": 164.84,
+          "reviews_total": 1,
+          "changes_requested": 0,
+          "commented": 0,
+          "approvals": 1,
+          "files": 8,
+          "churn": 342,
+          "labels": [
+            "Scope: Frontend"
+          ],
+          "title_scope": "onboarding",
+          "title_type": "feat",
+          "file_domains": [
+            "static/app"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.7736,
+          "author": "sentrivana",
+          "state": "merged"
+        },
+        {
+          "number": 111539,
+          "title": "feat(pipeline): Add OrganizationPipelineEndpoint for API-driven pipelines",
+          "url": "https://github.com/getsentry/sentry/pull/111539",
+          "ttm_h": 47.89,
+          "reviews_total": 26,
+          "changes_requested": 0,
+          "commented": 25,
+          "approvals": 1,
+          "files": 5,
+          "churn": 406,
+          "labels": [
+            "Scope: Frontend",
+            "Scope: Backend"
+          ],
+          "title_scope": "pipeline",
+          "title_type": "feat",
+          "file_domains": [
+            "src/sentry",
+            "static/app",
+            "tests/sentry"
+          ],
+          "review_rounds": 0,
+          "friction_score": 0.7682,
+          "author": "evanpurkhiser",
+          "state": "merged"
+        }
+      ]
+    },
+    "friction_predictors": {
+      "high_friction_threshold": "top 25% by composite friction score",
+      "high_friction_count": 125,
+      "by_size": [
+        {
+          "bucket": "tiny (1-2 files, ≤30 churn)",
+          "count": 173,
+          "high_friction_rate": 0.098
+        },
+        {
+          "bucket": "small (≤3 files, ≤80 churn)",
+          "count": 261,
+          "high_friction_rate": 0.126
+        },
+        {
+          "bucket": "medium (4-9 files, 81-399 churn)",
+          "count": 65,
+          "high_friction_rate": 0.4
+        },
+        {
+          "bucket": "large (≥10 files OR ≥400 churn)",
+          "count": 68,
+          "high_friction_rate": 0.574
+        }
+      ],
+      "by_reviewer_count": [
+        {
+          "bucket": "0-1 reviewers",
+          "count": 221,
+          "high_friction_rate": 0.09
+        },
+        {
+          "bucket": "2-3 reviewers",
+          "count": 135,
+          "high_friction_rate": 0.156
+        },
+        {
+          "bucket": "4-6 reviewers",
+          "count": 75,
+          "high_friction_rate": 0.333
+        },
+        {
+          "bucket": "7+ reviewers",
+          "count": 69,
+          "high_friction_rate": 0.855
+        }
+      ],
+      "by_title_type": [
+        {
+          "type": "feat",
+          "count": 166,
+          "high_friction_rate": 0.386
+        },
+        {
+          "type": "perf",
+          "count": 12,
+          "high_friction_rate": 0.25
+        },
+        {
+          "type": "ref",
+          "count": 98,
+          "high_friction_rate": 0.224
+        },
+        {
+          "type": "fix",
+          "count": 131,
+          "high_friction_rate": 0.176
+        },
+        {
+          "type": "ci",
+          "count": 6,
+          "high_friction_rate": 0.167
+        },
+        {
+          "type": "unknown",
+          "count": 28,
+          "high_friction_rate": 0.143
+        },
+        {
+          "type": "chore",
+          "count": 42,
+          "high_friction_rate": 0.143
+        },
+        {
+          "type": "test",
+          "count": 8,
+          "high_friction_rate": 0.125
+        }
+      ],
+      "by_scope": [
+        {
+          "scope": "unscoped",
+          "count": 43,
+          "high_friction_rate": 0.163
+        },
+        {
+          "scope": "cells",
+          "count": 32,
+          "high_friction_rate": 0.375
+        },
+        {
+          "scope": "autofix",
+          "count": 29,
+          "high_friction_rate": 0.103
+        },
+        {
+          "scope": "preprod",
+          "count": 29,
+          "high_friction_rate": 0.241
+        },
+        {
+          "scope": "seer",
+          "count": 28,
+          "high_friction_rate": 0.286
+        },
+        {
+          "scope": "dashboards",
+          "count": 23,
+          "high_friction_rate": 0.087
+        },
+        {
+          "scope": "aci",
+          "count": 17,
+          "high_friction_rate": 0.235
+        },
+        {
+          "scope": "ACI",
+          "count": 14,
+          "high_friction_rate": 0.214
+        },
+        {
+          "scope": "workflows",
+          "count": 14,
+          "high_friction_rate": 0.286
+        },
+        {
+          "scope": "grouping",
+          "count": 11,
+          "high_friction_rate": 0.0
+        },
+        {
+          "scope": "snapshots",
+          "count": 10,
+          "high_friction_rate": 0.0
+        },
+        {
+          "scope": "issues",
+          "count": 10,
+          "high_friction_rate": 0.3
+        },
+        {
+          "scope": "ui",
+          "count": 10,
+          "high_friction_rate": 0.1
+        },
+        {
+          "scope": "github",
+          "count": 8,
+          "high_friction_rate": 0.5
+        },
+        {
+          "scope": "pipeline",
+          "count": 7,
+          "high_friction_rate": 0.286
+        }
+      ]
+    }
+  }
+}

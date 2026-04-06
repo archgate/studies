@@ -1,0 +1,49 @@
+# semgrep-doesnotexist.yaml
+#
+# Detects calls to Django's Model.objects.get() (and get_from_cache) that are
+# NOT wrapped in a try/except handling Model.DoesNotExist.
+#
+# Implements GEN-003 (Bot Finding Promotion) by replacing the recurring
+# `sentry-warden[bot]` and `sentry[bot]` finding category:
+#   "QuerySubscription.DoesNotExist not handled in get_metric_issue_context"
+#   "If project_id is None in trigger_coding_agent_launch, Project.objects.get_from_cache fails silently"
+#   (and several similar instances across the Sentry PR Friction Study sample)
+#
+# Source: https://studies.archgate.dev/studies/sentry-pr-review-friction/automated-review/
+
+rules:
+  - id: missing-doesnotexist-handler
+    languages: [python]
+    severity: WARNING
+    message: |
+      Model.objects.get() / get_from_cache() called without a `try/except Model.DoesNotExist`
+      block. The call will raise an unhandled exception when the object is missing.
+      Wrap in try/except, or use `.filter(...).first()` if a missing result is expected.
+    patterns:
+      - pattern-either:
+          - pattern: $MODEL.objects.get(...)
+          - pattern: $MODEL.objects.get_from_cache(...)
+      - pattern-not-inside: |
+          try:
+            ...
+            $MODEL.objects.get(...)
+            ...
+          except $MODEL.DoesNotExist:
+            ...
+      - pattern-not-inside: |
+          try:
+            ...
+            $MODEL.objects.get_from_cache(...)
+            ...
+          except $MODEL.DoesNotExist:
+            ...
+      # Allow the pattern in test files
+      - pattern-not-inside: |
+          def test_$NAME(...):
+            ...
+    paths:
+      include:
+        - "src/sentry/**/*.py"
+      exclude:
+        - "src/sentry/**/tests/**"
+        - "tests/**"

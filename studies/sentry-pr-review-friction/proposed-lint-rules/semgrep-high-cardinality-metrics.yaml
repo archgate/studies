@@ -1,0 +1,41 @@
+# semgrep-high-cardinality-metrics.yaml
+#
+# Detects metrics.incr() / metrics.timing() / metrics.gauge() calls that
+# include high-cardinality tag values (per-app slugs, user IDs, group IDs)
+# without an explicit `metrics_key` override.
+#
+# Replaces the recurring `sentry[bot]` finding from PR #111723:
+#   "The circuit breaker for Sentry App webhooks uses a per-app slug for
+#    its metrics key, creating high-cardinality data because a metrics_key
+#    override is not provided."
+
+rules:
+  - id: high-cardinality-metrics-tag
+    languages: [python]
+    severity: WARNING
+    message: |
+      Metric tag includes a high-cardinality value (slug, id, name) without
+      an explicit `metrics_key` override or an allowlist comment. High-
+      cardinality metrics blow up the time-series database and cause
+      ingestion costs to scale with usage.
+
+      Either:
+      - Use a low-cardinality bucket (e.g., the integration provider name
+        instead of the per-installation slug)
+      - Add an explicit `metrics_key=<bucketed-value>` argument
+      - Add an allowlist comment: `# high-cardinality-ok: <reason>`
+    patterns:
+      - pattern-either:
+          - pattern: metrics.incr(..., tags={..., $KEY: $X.slug, ...}, ...)
+          - pattern: metrics.incr(..., tags={..., $KEY: $X.id, ...}, ...)
+          - pattern: metrics.timing(..., tags={..., $KEY: $X.slug, ...}, ...)
+          - pattern: metrics.timing(..., tags={..., $KEY: $X.id, ...}, ...)
+          - pattern: metrics.gauge(..., tags={..., $KEY: $X.slug, ...}, ...)
+      - pattern-not: metrics.incr(..., metrics_key=..., ...)
+      - pattern-not: metrics.timing(..., metrics_key=..., ...)
+      - pattern-not: metrics.gauge(..., metrics_key=..., ...)
+    paths:
+      include:
+        - "src/sentry/**/*.py"
+      exclude:
+        - "src/sentry/**/tests/**"

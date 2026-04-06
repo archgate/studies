@@ -1,0 +1,6282 @@
+{
+  "methodology": {
+    "repo": "getsentry/sentry",
+    "state": "open",
+    "generated_at_utc": "2026-04-04T10:26:36.990762+00:00"
+  },
+  "count": 251,
+  "stale_14d": 92,
+  "stale_30d": 33,
+  "prs": [
+    {
+      "number": 112251,
+      "title": "fix(profiling): Query `spans` instead of `discover` on landing page",
+      "url": "https://github.com/getsentry/sentry/pull/112251",
+      "ttm_h": 8.35,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 4,
+      "churn": 14,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "profiling",
+      "title_type": "fix",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "mjq",
+      "state": "open"
+    },
+    {
+      "number": 112250,
+      "title": "feat(seer): Enable sorting seer autofix project list",
+      "url": "https://github.com/getsentry/sentry/pull/112250",
+      "ttm_h": 10.75,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 0,
+      "files": 6,
+      "churn": 224,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "seer",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app",
+        "static/gsApp"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "ryan953",
+      "state": "open"
+    },
+    {
+      "number": 112249,
+      "title": "feat(seer): Setup Agent bulk-edit on the Seer Autofix list page, and bring back Create PR bulk edits",
+      "url": "https://github.com/getsentry/sentry/pull/112249",
+      "ttm_h": 10.76,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 0,
+      "files": 6,
+      "churn": 88,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "seer",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app",
+        "static/gsApp"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "ryan953",
+      "state": "open"
+    },
+    {
+      "number": 112248,
+      "title": "feat(hybridcloud): Propagate ViewerContext through cross-silo RPC",
+      "url": "https://github.com/getsentry/sentry/pull/112248",
+      "ttm_h": 10.77,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 0,
+      "files": 4,
+      "churn": 137,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "hybridcloud",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "gricha",
+      "state": "open"
+    },
+    {
+      "number": 112247,
+      "title": "feat(repos): Activate repo webhook and syncing task for GHE",
+      "url": "https://github.com/getsentry/sentry/pull/112247",
+      "ttm_h": 10.8,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 0,
+      "files": 4,
+      "churn": 117,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "repos",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "wedamija",
+      "state": "open"
+    },
+    {
+      "number": 112246,
+      "title": "ref(workflow_engine): Cleanup some of our code",
+      "url": "https://github.com/getsentry/sentry/pull/112246",
+      "ttm_h": 10.94,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 0,
+      "files": 11,
+      "churn": 745,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "workflow_engine",
+      "title_type": "ref",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "saponifi3d",
+      "state": "open"
+    },
+    {
+      "number": 112245,
+      "title": "feat(github-enterprise): Route installation_repositories to control silo",
+      "url": "https://github.com/getsentry/sentry/pull/112245",
+      "ttm_h": 11.0,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 0,
+      "files": 1,
+      "churn": 10,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "github-enterprise",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "wedamija",
+      "state": "open"
+    },
+    {
+      "number": 112244,
+      "title": "feat(cmdk): Add admin actions group for staff users",
+      "url": "https://github.com/getsentry/sentry/pull/112244",
+      "ttm_h": 11.36,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 1,
+      "files": 1,
+      "churn": 53,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "cmdk",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JonasBa",
+      "state": "open"
+    },
+    {
+      "number": 112243,
+      "title": "feat(alerts): Set up prune_old_open_period_activity",
+      "url": "https://github.com/getsentry/sentry/pull/112243",
+      "ttm_h": 11.64,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 4,
+      "churn": 106,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "alerts",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "kcons",
+      "state": "open"
+    },
+    {
+      "number": 112242,
+      "title": "ref(issues): Remove streamlined UI from stack trace files",
+      "url": "https://github.com/getsentry/sentry/pull/112242",
+      "ttm_h": 12.03,
+      "reviews_total": 4,
+      "changes_requested": 0,
+      "commented": 4,
+      "approvals": 0,
+      "files": 10,
+      "churn": 236,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "issues",
+      "title_type": "ref",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "malwilley",
+      "state": "open"
+    },
+    {
+      "number": 112241,
+      "title": "feat(incidents): Add is_metric_subscription_allowed; use it",
+      "url": "https://github.com/getsentry/sentry/pull/112241",
+      "ttm_h": 12.04,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 4,
+      "churn": 291,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "incidents",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "kcons",
+      "state": "open"
+    },
+    {
+      "number": 112240,
+      "title": "feat(assisted-query): Add metrics search feature flag and forward options",
+      "url": "https://github.com/getsentry/sentry/pull/112240",
+      "ttm_h": 12.04,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 0,
+      "files": 3,
+      "churn": 29,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "assisted-query",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "isaacwang-sentry",
+      "state": "open"
+    },
+    {
+      "number": 112239,
+      "title": "feat(llm-detection): Accept additional_attributes param in get_trace_waterfall",
+      "url": "https://github.com/getsentry/sentry/pull/112239",
+      "ttm_h": 12.09,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 1,
+      "files": 2,
+      "churn": 46,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "llm-detection",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "nora-shap",
+      "state": "open"
+    },
+    {
+      "number": 112237,
+      "title": "feat(aci): Add issue preview to cron monitor form",
+      "url": "https://github.com/getsentry/sentry/pull/112237",
+      "ttm_h": 12.23,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 3,
+      "churn": 68,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "aci",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "malwilley",
+      "state": "open"
+    },
+    {
+      "number": 112234,
+      "title": "fix(webhooks): New task for metric alerts to fire in process",
+      "url": "https://github.com/getsentry/sentry/pull/112234",
+      "ttm_h": 13.0,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 1,
+      "files": 11,
+      "churn": 580,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "webhooks",
+      "title_type": "fix",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "Christinarlong",
+      "state": "open"
+    },
+    {
+      "number": 112232,
+      "title": "feat(seer): Add the stopping-point field to project-specific seer settings",
+      "url": "https://github.com/getsentry/sentry/pull/112232",
+      "ttm_h": 13.12,
+      "reviews_total": 5,
+      "changes_requested": 0,
+      "commented": 5,
+      "approvals": 0,
+      "files": 4,
+      "churn": 217,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "seer",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app",
+        "static/gsApp"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "ryan953",
+      "state": "open"
+    },
+    {
+      "number": 112230,
+      "title": "chore(ACI): Add a flag to incident details GET method",
+      "url": "https://github.com/getsentry/sentry/pull/112230",
+      "ttm_h": 13.9,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 11,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "ACI",
+      "title_type": "chore",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "ceorourke",
+      "state": "open"
+    },
+    {
+      "number": 112229,
+      "title": "feat(seer): Add lightweight RCA clustering endpoint integration",
+      "url": "https://github.com/getsentry/sentry/pull/112229",
+      "ttm_h": 14.07,
+      "reviews_total": 7,
+      "changes_requested": 0,
+      "commented": 7,
+      "approvals": 0,
+      "files": 11,
+      "churn": 275,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "seer",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "yuvmen",
+      "state": "open"
+    },
+    {
+      "number": 112227,
+      "title": "feat(github): Handle installation_repositories webhook",
+      "url": "https://github.com/getsentry/sentry/pull/112227",
+      "ttm_h": 14.15,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 0,
+      "files": 24,
+      "churn": 1009,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "github",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "wedamija",
+      "state": "open"
+    },
+    {
+      "number": 112224,
+      "title": "feat(aci): Add issue preview to uptime monitor form",
+      "url": "https://github.com/getsentry/sentry/pull/112224",
+      "ttm_h": 14.54,
+      "reviews_total": 3,
+      "changes_requested": 0,
+      "commented": 3,
+      "approvals": 0,
+      "files": 3,
+      "churn": 52,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "aci",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "malwilley",
+      "state": "open"
+    },
+    {
+      "number": 112220,
+      "title": "fix(aci): Handle invalid project IDs in monitor form",
+      "url": "https://github.com/getsentry/sentry/pull/112220",
+      "ttm_h": 14.78,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 39,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "aci",
+      "title_type": "fix",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "malwilley",
+      "state": "open"
+    },
+    {
+      "number": 112219,
+      "title": "ref(seer): Remove should_run_automation from get_issue_summary",
+      "url": "https://github.com/getsentry/sentry/pull/112219",
+      "ttm_h": 14.82,
+      "reviews_total": 18,
+      "changes_requested": 0,
+      "commented": 18,
+      "approvals": 0,
+      "files": 11,
+      "churn": 294,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "seer",
+      "title_type": "ref",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "trevor-e",
+      "state": "open"
+    },
+    {
+      "number": 112217,
+      "title": "feat(taskworker): Add ViewerContext propagation via context hooks",
+      "url": "https://github.com/getsentry/sentry/pull/112217",
+      "ttm_h": 15.1,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 0,
+      "files": 3,
+      "churn": 130,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "taskworker",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "gricha",
+      "state": "open"
+    },
+    {
+      "number": 112216,
+      "title": "feat(supergroups): Add status filter to supergroups by-group endpoint",
+      "url": "https://github.com/getsentry/sentry/pull/112216",
+      "ttm_h": 15.62,
+      "reviews_total": 3,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 2,
+      "files": 2,
+      "churn": 82,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "supergroups",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "scttcper",
+      "state": "open"
+    },
+    {
+      "number": 112215,
+      "title": "feat(supergroups): Show filtered vs total events in supergroup chart",
+      "url": "https://github.com/getsentry/sentry/pull/112215",
+      "ttm_h": 15.62,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 9,
+      "churn": 334,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "supergroups",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "scttcper",
+      "state": "open"
+    },
+    {
+      "number": 112214,
+      "title": "feat(billing): Add get orgs with usage endpoint",
+      "url": "https://github.com/getsentry/sentry/pull/112214",
+      "ttm_h": 15.82,
+      "reviews_total": 4,
+      "changes_requested": 0,
+      "commented": 4,
+      "approvals": 0,
+      "files": 3,
+      "churn": 365,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "billing",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "brendanhsentry",
+      "state": "open"
+    },
+    {
+      "number": 112213,
+      "title": "ref(experiments): Gate useExperiment on organization.features",
+      "url": "https://github.com/getsentry/sentry/pull/112213",
+      "ttm_h": 16.07,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 4,
+      "churn": 59,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "experiments",
+      "title_type": "ref",
+      "file_domains": [
+        "static/app",
+        "static/gsApp"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "jaydgoss",
+      "state": "open"
+    },
+    {
+      "number": 112212,
+      "title": "feat(seer): Wrap the seat-based wizard in a feature flag",
+      "url": "https://github.com/getsentry/sentry/pull/112212",
+      "ttm_h": 16.25,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 0,
+      "files": 2,
+      "churn": 17,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "seer",
+      "title_type": "feat",
+      "file_domains": [
+        "static/gsApp"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "ryan953",
+      "state": "open"
+    },
+    {
+      "number": 112209,
+      "title": "ref(cells): Remove deprecated settings from server.py",
+      "url": "https://github.com/getsentry/sentry/pull/112209",
+      "ttm_h": 16.65,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 4,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "cells",
+      "title_type": "ref",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "lynnagara",
+      "state": "open"
+    },
+    {
+      "number": 112206,
+      "title": "feat(onboarding): Gate SCM onboarding flow with useExperiment hook",
+      "url": "https://github.com/getsentry/sentry/pull/112206",
+      "ttm_h": 17.14,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 27,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "onboarding",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "jaydgoss",
+      "state": "open"
+    },
+    {
+      "number": 112205,
+      "title": "feat(aci): Update all monitor forms use more consistent wording and a combined assign/describe section",
+      "url": "https://github.com/getsentry/sentry/pull/112205",
+      "ttm_h": 17.16,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 0,
+      "files": 12,
+      "churn": 250,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "aci",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "malwilley",
+      "state": "open"
+    },
+    {
+      "number": 112204,
+      "title": "chore(ACI): Add a flag to metric alert rule details GET method",
+      "url": "https://github.com/getsentry/sentry/pull/112204",
+      "ttm_h": 17.32,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 0,
+      "files": 3,
+      "churn": 15,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "ACI",
+      "title_type": "chore",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "ceorourke",
+      "state": "open"
+    },
+    {
+      "number": 112196,
+      "title": "fix(test): open overlays immediately when in test mode",
+      "url": "https://github.com/getsentry/sentry/pull/112196",
+      "ttm_h": 20.32,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 1,
+      "files": 7,
+      "churn": 118,
+      "labels": [
+        "Scope: Frontend",
+        "Frontend: Rerun Flaky Tests"
+      ],
+      "title_scope": "test",
+      "title_type": "fix",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JoshuaKGoldberg",
+      "state": "open"
+    },
+    {
+      "number": 112194,
+      "title": "ref(preprod): Add organization_slug to size analysis log",
+      "url": "https://github.com/getsentry/sentry/pull/112194",
+      "ttm_h": 33.98,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 1,
+      "files": 1,
+      "churn": 1,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "preprod",
+      "title_type": "ref",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "NicoHinderling",
+      "state": "open"
+    },
+    {
+      "number": 112193,
+      "title": "ref(dashboards): Consolidate Seer dashboard utils and extract session polling hook",
+      "url": "https://github.com/getsentry/sentry/pull/112193",
+      "ttm_h": 34.01,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 0,
+      "files": 5,
+      "churn": 634,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "dashboards",
+      "title_type": "ref",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "edwardgou-sentry",
+      "state": "open"
+    },
+    {
+      "number": 112192,
+      "title": "fix(ACI): Handle missing sentry app installation",
+      "url": "https://github.com/getsentry/sentry/pull/112192",
+      "ttm_h": 34.61,
+      "reviews_total": 7,
+      "changes_requested": 0,
+      "commented": 7,
+      "approvals": 0,
+      "files": 2,
+      "churn": 103,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "ACI",
+      "title_type": "fix",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "ceorourke",
+      "state": "open"
+    },
+    {
+      "number": 112187,
+      "title": "test(uptime): Fix flaky tooltip hover test in percent.spec",
+      "url": "https://github.com/getsentry/sentry/pull/112187",
+      "ttm_h": 35.11,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 13,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "uptime",
+      "title_type": "test",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "hubertdeng123",
+      "state": "open"
+    },
+    {
+      "number": 112186,
+      "title": "feat(dashboards): Add ESC key to dismiss widget builder slideout",
+      "url": "https://github.com/getsentry/sentry/pull/112186",
+      "ttm_h": 35.12,
+      "reviews_total": 3,
+      "changes_requested": 0,
+      "commented": 3,
+      "approvals": 0,
+      "files": 1,
+      "churn": 12,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "dashboards",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "NicoHinderling",
+      "state": "open"
+    },
+    {
+      "number": 112183,
+      "title": "ref(aq): Replace feedbackSource prop with analyticsArea",
+      "url": "https://github.com/getsentry/sentry/pull/112183",
+      "ttm_h": 35.65,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 8,
+      "churn": 40,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "aq",
+      "title_type": "ref",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "aliu39",
+      "state": "open"
+    },
+    {
+      "number": 112179,
+      "title": "feat(seer): Thread short-lived API token to Explorer MCP tools",
+      "url": "https://github.com/getsentry/sentry/pull/112179",
+      "ttm_h": 35.93,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 3,
+      "churn": 63,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "seer",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "azulus",
+      "state": "open"
+    },
+    {
+      "number": 112174,
+      "title": "test(onboarding): Add acceptance tests for SCM onboarding flow",
+      "url": "https://github.com/getsentry/sentry/pull/112174",
+      "ttm_h": 36.58,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 140,
+      "labels": [],
+      "title_scope": "onboarding",
+      "title_type": "test",
+      "file_domains": [
+        "tests/acceptance"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "jaydgoss",
+      "state": "open"
+    },
+    {
+      "number": 112169,
+      "title": "feat(data_export): add logging for data-export-failure",
+      "url": "https://github.com/getsentry/sentry/pull/112169",
+      "ttm_h": 37.4,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 30,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "data_export",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JoshuaKGoldberg",
+      "state": "open"
+    },
+    {
+      "number": 112168,
+      "title": "fix(objectstore): Set auth token in proxy endpoint, preprod task",
+      "url": "https://github.com/getsentry/sentry/pull/112168",
+      "ttm_h": 37.41,
+      "reviews_total": 7,
+      "changes_requested": 0,
+      "commented": 7,
+      "approvals": 0,
+      "files": 3,
+      "churn": 64,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "objectstore",
+      "title_type": "fix",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "matt-codecov",
+      "state": "open"
+    },
+    {
+      "number": 112166,
+      "title": "fix(controlsilo) Don't include internal endpoints in controlsilourls",
+      "url": "https://github.com/getsentry/sentry/pull/112166",
+      "ttm_h": 37.47,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 1,
+      "files": 7,
+      "churn": 33,
+      "labels": [
+        "Scope: Frontend",
+        "Scope: Backend"
+      ],
+      "title_scope": "unscoped",
+      "title_type": "unknown",
+      "file_domains": [
+        "src/sentry",
+        "static/app",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "markstory",
+      "state": "open"
+    },
+    {
+      "number": 112165,
+      "title": "[DNM] - testing snapshot testing",
+      "url": "https://github.com/getsentry/sentry/pull/112165",
+      "ttm_h": 37.47,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 5,
+      "churn": 134,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "unscoped",
+      "title_type": "unknown",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "mtopo27",
+      "state": "open"
+    },
+    {
+      "number": 112163,
+      "title": "ref(profiling): Remove profile summary page",
+      "url": "https://github.com/getsentry/sentry/pull/112163",
+      "ttm_h": 37.5,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 0,
+      "files": 15,
+      "churn": 3331,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "profiling",
+      "title_type": "ref",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "mjq",
+      "state": "open"
+    },
+    {
+      "number": 112162,
+      "title": "feat(scm): Add multiline review comments",
+      "url": "https://github.com/getsentry/sentry/pull/112162",
+      "ttm_h": 37.53,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 0,
+      "files": 8,
+      "churn": 373,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "scm",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "cmanallen",
+      "state": "open"
+    },
+    {
+      "number": 112153,
+      "title": "feat(gitlab): Add frontend implementation for GitLab integration pipeline",
+      "url": "https://github.com/getsentry/sentry/pull/112153",
+      "ttm_h": 38.31,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 0,
+      "files": 2,
+      "churn": 296,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "gitlab",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "evanpurkhiser",
+      "state": "open"
+    },
+    {
+      "number": 112150,
+      "title": "feat(dashboards): allow dashboard generation to filter for project and env",
+      "url": "https://github.com/getsentry/sentry/pull/112150",
+      "ttm_h": 38.47,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 0,
+      "files": 2,
+      "churn": 17,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "dashboards",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "edwardgou-sentry",
+      "state": "open"
+    },
+    {
+      "number": 112147,
+      "title": "ref(dashboards): Replace internal sqlish module with @sentry/sqlish",
+      "url": "https://github.com/getsentry/sentry/pull/112147",
+      "ttm_h": 38.74,
+      "reviews_total": 3,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 1,
+      "files": 21,
+      "churn": 811,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "dashboards",
+      "title_type": "ref",
+      "file_domains": [
+        "jest.config.ts",
+        "package.json",
+        "pnpm-lock.yaml",
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "gggritso",
+      "state": "open"
+    },
+    {
+      "number": 112146,
+      "title": "feat(dashboards): Add performance_score and opportunity_score to Explore",
+      "url": "https://github.com/getsentry/sentry/pull/112146",
+      "ttm_h": 38.77,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 0,
+      "files": 8,
+      "churn": 143,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "dashboards",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "DominikB2014",
+      "state": "open"
+    },
+    {
+      "number": 112139,
+      "title": "feat(errors): main body content sections",
+      "url": "https://github.com/getsentry/sentry/pull/112139",
+      "ttm_h": 39.2,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 0,
+      "files": 10,
+      "churn": 260,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "errors",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "nikkikapadia",
+      "state": "open"
+    },
+    {
+      "number": 112137,
+      "title": "ref(cells): Organization invites go the correct org scoped routes",
+      "url": "https://github.com/getsentry/sentry/pull/112137",
+      "ttm_h": 39.29,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 3,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "cells",
+      "title_type": "ref",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "lynnagara",
+      "state": "open"
+    },
+    {
+      "number": 112136,
+      "title": "feat: Add repo indexing job",
+      "url": "https://github.com/getsentry/sentry/pull/112136",
+      "ttm_h": 39.43,
+      "reviews_total": 5,
+      "changes_requested": 0,
+      "commented": 5,
+      "approvals": 0,
+      "files": 6,
+      "churn": 228,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "unscoped",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "shruthilayaj",
+      "state": "open"
+    },
+    {
+      "number": 112135,
+      "title": "ref(cells): Remove the legacy org invite route",
+      "url": "https://github.com/getsentry/sentry/pull/112135",
+      "ttm_h": 39.5,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 0,
+      "files": 2,
+      "churn": 6,
+      "labels": [
+        "Scope: Frontend",
+        "Scope: Backend"
+      ],
+      "title_scope": "cells",
+      "title_type": "ref",
+      "file_domains": [
+        "src/sentry",
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "lynnagara",
+      "state": "open"
+    },
+    {
+      "number": 112132,
+      "title": "feat(dashboards): Add text widget support to generated dashboards",
+      "url": "https://github.com/getsentry/sentry/pull/112132",
+      "ttm_h": 39.73,
+      "reviews_total": 4,
+      "changes_requested": 0,
+      "commented": 4,
+      "approvals": 0,
+      "files": 1,
+      "churn": 83,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "dashboards",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "edwardgou-sentry",
+      "state": "open"
+    },
+    {
+      "number": 112127,
+      "title": "test(onboarding): Add tests for useScmRepoSearch and ScmRepoSelector",
+      "url": "https://github.com/getsentry/sentry/pull/112127",
+      "ttm_h": 40.41,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 399,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "onboarding",
+      "title_type": "test",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "jaydgoss",
+      "state": "open"
+    },
+    {
+      "number": 112119,
+      "title": "build(deps): bump lodash from 4.17.23 to 4.18.1",
+      "url": "https://github.com/getsentry/sentry/pull/112119",
+      "ttm_h": 41.75,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 20,
+      "labels": [
+        "Scope: Frontend",
+        "Trigger: getsentry tests",
+        "dependencies",
+        "javascript"
+      ],
+      "title_scope": "deps",
+      "title_type": "build",
+      "file_domains": [
+        "package.json",
+        "pnpm-lock.yaml"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "app/dependabot",
+      "state": "open"
+    },
+    {
+      "number": 112118,
+      "title": "ref(slack): Remove slack-compact-alerts flag usage",
+      "url": "https://github.com/getsentry/sentry/pull/112118",
+      "ttm_h": 41.79,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 8,
+      "churn": 395,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "slack",
+      "title_type": "ref",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "leeandher",
+      "state": "open"
+    },
+    {
+      "number": 112114,
+      "title": "ref(autofix): Unnest if",
+      "url": "https://github.com/getsentry/sentry/pull/112114",
+      "ttm_h": 42.01,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 2,
+      "files": 1,
+      "churn": 19,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "autofix",
+      "title_type": "ref",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "chromy",
+      "state": "open"
+    },
+    {
+      "number": 112110,
+      "title": "build(deps): bump lodash from 4.17.23 to 4.18.1 in /api-docs",
+      "url": "https://github.com/getsentry/sentry/pull/112110",
+      "ttm_h": 42.46,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 14,
+      "labels": [
+        "dependencies",
+        "javascript"
+      ],
+      "title_scope": "deps",
+      "title_type": "build",
+      "file_domains": [
+        "api-docs/package.json",
+        "api-docs/pnpm-lock.yaml"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "app/dependabot",
+      "state": "open"
+    },
+    {
+      "number": 112109,
+      "title": "DNM - Forcing a snapshot diff",
+      "url": "https://github.com/getsentry/sentry/pull/112109",
+      "ttm_h": 42.61,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 0,
+      "files": 1,
+      "churn": 6,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "unscoped",
+      "title_type": "unknown",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "rbro112",
+      "state": "open"
+    },
+    {
+      "number": 112105,
+      "title": "chore(tracemetrics): Cleanup side panel feature flag",
+      "url": "https://github.com/getsentry/sentry/pull/112105",
+      "ttm_h": 43.55,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 0,
+      "files": 4,
+      "churn": 202,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "tracemetrics",
+      "title_type": "chore",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "nsdeschenes",
+      "state": "open"
+    },
+    {
+      "number": 112098,
+      "title": "feat(autofix): Add analytics events for autofix phase start and completion",
+      "url": "https://github.com/getsentry/sentry/pull/112098",
+      "ttm_h": 45.12,
+      "reviews_total": 4,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 2,
+      "files": 4,
+      "churn": 171,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "autofix",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "chromy",
+      "state": "open"
+    },
+    {
+      "number": 112095,
+      "title": "perf(attachments): Speed up date_expires backfill with PK cursor approach",
+      "url": "https://github.com/getsentry/sentry/pull/112095",
+      "ttm_h": 46.12,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 0,
+      "files": 1,
+      "churn": 43,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "attachments",
+      "title_type": "perf",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "jan-auer",
+      "state": "open"
+    },
+    {
+      "number": 112094,
+      "title": "ref: migrate externalIssues to scrapsForm",
+      "url": "https://github.com/getsentry/sentry/pull/112094",
+      "ttm_h": 46.46,
+      "reviews_total": 9,
+      "changes_requested": 0,
+      "commented": 9,
+      "approvals": 0,
+      "files": 19,
+      "churn": 2844,
+      "labels": [
+        "Scope: Frontend",
+        "Scope: Backend"
+      ],
+      "title_scope": "unscoped",
+      "title_type": "ref",
+      "file_domains": [
+        ".github/CODEOWNERS",
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "TkDodo",
+      "state": "open"
+    },
+    {
+      "number": 112093,
+      "title": "chore(dynamic-sampling): remove CustomDynamicSamplingRule models & mark tables for deletion",
+      "url": "https://github.com/getsentry/sentry/pull/112093",
+      "ttm_h": 47.03,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 2,
+      "files": 7,
+      "churn": 156,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "dynamic-sampling",
+      "title_type": "chore",
+      "file_domains": [
+        "migrations_lockfile.txt",
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "shellmayr",
+      "state": "open"
+    },
+    {
+      "number": 112091,
+      "title": "feat(source-map-config-issues): Logging extra data on occurrence trigger for UI validation",
+      "url": "https://github.com/getsentry/sentry/pull/112091",
+      "ttm_h": 48.02,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 2,
+      "files": 1,
+      "churn": 14,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "source-map-config-issues",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "Abdkhan14",
+      "state": "open"
+    },
+    {
+      "number": 112090,
+      "title": "feat(snuba): add a metric in `query_trace_data` to see what spans report `span.status` \"ok\" but have an associated error",
+      "url": "https://github.com/getsentry/sentry/pull/112090",
+      "ttm_h": 48.7,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 1,
+      "files": 2,
+      "churn": 67,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "snuba",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/snuba"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "constantinius",
+      "state": "open"
+    },
+    {
+      "number": 112086,
+      "title": "fix(admin): Use supported Sentry app badge variant",
+      "url": "https://github.com/getsentry/sentry/pull/112086",
+      "ttm_h": 55.35,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 1,
+      "files": 3,
+      "churn": 50,
+      "labels": [
+        "Scope: Frontend",
+        "Scope: Backend"
+      ],
+      "title_scope": "admin",
+      "title_type": "fix",
+      "file_domains": [
+        ".github/CODEOWNERS",
+        "static/gsAdmin"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "dcramer",
+      "state": "open"
+    },
+    {
+      "number": 112082,
+      "title": "ref(preprod): Set odiff threshold to 0.001",
+      "url": "https://github.com/getsentry/sentry/pull/112082",
+      "ttm_h": 57.27,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 4,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "preprod",
+      "title_type": "ref",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "NicoHinderling",
+      "state": "open"
+    },
+    {
+      "number": 112073,
+      "title": "ref(issue-ownership): consolidate issue assignment permission ",
+      "url": "https://github.com/getsentry/sentry/pull/112073",
+      "ttm_h": 58.41,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 163,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "issue-ownership",
+      "title_type": "ref",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "cvxluo",
+      "state": "open"
+    },
+    {
+      "number": 112070,
+      "title": "fix(aci): Gracefully handle missing actions in Alerts UI",
+      "url": "https://github.com/getsentry/sentry/pull/112070",
+      "ttm_h": 58.69,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 0,
+      "files": 2,
+      "churn": 53,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "aci",
+      "title_type": "fix",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "malwilley",
+      "state": "open"
+    },
+    {
+      "number": 112056,
+      "title": "feat(repos): Add audit logs when auto syncing repositories",
+      "url": "https://github.com/getsentry/sentry/pull/112056",
+      "ttm_h": 60.3,
+      "reviews_total": 5,
+      "changes_requested": 0,
+      "commented": 4,
+      "approvals": 1,
+      "files": 8,
+      "churn": 182,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "repos",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "wedamija",
+      "state": "open"
+    },
+    {
+      "number": 112053,
+      "title": "ref(cells): clean up dead is_historical_monolith region handling",
+      "url": "https://github.com/getsentry/sentry/pull/112053",
+      "ttm_h": 60.58,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 0,
+      "files": 2,
+      "churn": 82,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "cells",
+      "title_type": "ref",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "lynnagara",
+      "state": "open"
+    },
+    {
+      "number": 112045,
+      "title": "fix(stories): adjust search scroll behavior",
+      "url": "https://github.com/getsentry/sentry/pull/112045",
+      "ttm_h": 61.23,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 17,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "stories",
+      "title_type": "fix",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "natemoo-re",
+      "state": "open"
+    },
+    {
+      "number": 112043,
+      "title": "feat(repos): Add task to periodically sync repos from github",
+      "url": "https://github.com/getsentry/sentry/pull/112043",
+      "ttm_h": 61.54,
+      "reviews_total": 8,
+      "changes_requested": 0,
+      "commented": 8,
+      "approvals": 0,
+      "files": 6,
+      "churn": 428,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "repos",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "wedamija",
+      "state": "open"
+    },
+    {
+      "number": 112041,
+      "title": "feat(detectors): Add preprod_size_analysis to detector filter types",
+      "url": "https://github.com/getsentry/sentry/pull/112041",
+      "ttm_h": 61.64,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 2,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "detectors",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "chromy",
+      "state": "open"
+    },
+    {
+      "number": 112033,
+      "title": "feat(workflows): add a detector_id cache, used during process_workflows",
+      "url": "https://github.com/getsentry/sentry/pull/112033",
+      "ttm_h": 62.88,
+      "reviews_total": 6,
+      "changes_requested": 0,
+      "commented": 6,
+      "approvals": 0,
+      "files": 2,
+      "churn": 19,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "workflows",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "klochek",
+      "state": "open"
+    },
+    {
+      "number": 112027,
+      "title": "feat(tracemetrics): Add new and reorder columns",
+      "url": "https://github.com/getsentry/sentry/pull/112027",
+      "ttm_h": 63.66,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 0,
+      "files": 14,
+      "churn": 583,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "tracemetrics",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "nsdeschenes",
+      "state": "open"
+    },
+    {
+      "number": 112025,
+      "title": "feat(tracemetrics): Add feature flag for equations in metrics explorer",
+      "url": "https://github.com/getsentry/sentry/pull/112025",
+      "ttm_h": 63.99,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 2,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "tracemetrics",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "narsaynorath",
+      "state": "open"
+    },
+    {
+      "number": 112024,
+      "title": "feat(spans): Skip enrichment when message contains skip_enrichment=True flag",
+      "url": "https://github.com/getsentry/sentry/pull/112024",
+      "ttm_h": 64.08,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 1,
+      "files": 3,
+      "churn": 53,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "spans",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "lvthanh03",
+      "state": "open"
+    },
+    {
+      "number": 112022,
+      "title": "feat(explore) Add export functionality to export logs as JSON lines. ",
+      "url": "https://github.com/getsentry/sentry/pull/112022",
+      "ttm_h": 64.44,
+      "reviews_total": 7,
+      "changes_requested": 0,
+      "commented": 7,
+      "approvals": 0,
+      "files": 11,
+      "churn": 901,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "unscoped",
+      "title_type": "unknown",
+      "file_domains": [
+        "migrations_lockfile.txt",
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "manessaraj",
+      "state": "open"
+    },
+    {
+      "number": 112020,
+      "title": "feat(slack): Unfurl Explore Traces URLs with chart previews",
+      "url": "https://github.com/getsentry/sentry/pull/112020",
+      "ttm_h": 64.85,
+      "reviews_total": 6,
+      "changes_requested": 0,
+      "commented": 6,
+      "approvals": 0,
+      "files": 7,
+      "churn": 522,
+      "labels": [
+        "Scope: Frontend",
+        "Scope: Backend"
+      ],
+      "title_scope": "slack",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "DominikB2014",
+      "state": "open"
+    },
+    {
+      "number": 112019,
+      "title": "chore(deps): update baseline-browser-mapping",
+      "url": "https://github.com/getsentry/sentry/pull/112019",
+      "ttm_h": 65.14,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 28,
+      "labels": [],
+      "title_scope": "deps",
+      "title_type": "chore",
+      "file_domains": [
+        "pnpm-lock.yaml"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "app/github-actions",
+      "state": "open"
+    },
+    {
+      "number": 112016,
+      "title": "feat(metrcis): Add formula -if combinators",
+      "url": "https://github.com/getsentry/sentry/pull/112016",
+      "ttm_h": 65.3,
+      "reviews_total": 5,
+      "changes_requested": 0,
+      "commented": 4,
+      "approvals": 1,
+      "files": 5,
+      "churn": 331,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "metrcis",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/snuba"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "wmak",
+      "state": "open"
+    },
+    {
+      "number": 112015,
+      "title": "feat(cmdk): New CmdK action pattern and support Async actions",
+      "url": "https://github.com/getsentry/sentry/pull/112015",
+      "ttm_h": 65.34,
+      "reviews_total": 7,
+      "changes_requested": 0,
+      "commented": 7,
+      "approvals": 0,
+      "files": 9,
+      "churn": 531,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "cmdk",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "rbro112",
+      "state": "open"
+    },
+    {
+      "number": 112013,
+      "title": "feat(notifications): Run Metric Alerts for Slack through Notification Platform",
+      "url": "https://github.com/getsentry/sentry/pull/112013",
+      "ttm_h": 65.51,
+      "reviews_total": 5,
+      "changes_requested": 0,
+      "commented": 5,
+      "approvals": 0,
+      "files": 3,
+      "churn": 356,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "notifications",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "Christinarlong",
+      "state": "open"
+    },
+    {
+      "number": 112002,
+      "title": "fix(test): stabilize flaky tests in trace.spec.tsx",
+      "url": "https://github.com/getsentry/sentry/pull/112002",
+      "ttm_h": 66.49,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 189,
+      "labels": [
+        "Scope: Frontend",
+        "Frontend: Rerun Flaky Tests"
+      ],
+      "title_scope": "test",
+      "title_type": "fix",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JoshuaKGoldberg",
+      "state": "open"
+    },
+    {
+      "number": 112000,
+      "title": "fix(tests): stabilize flaky React Native metrics onboarding test",
+      "url": "https://github.com/getsentry/sentry/pull/112000",
+      "ttm_h": 66.99,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 0,
+      "files": 1,
+      "churn": 13,
+      "labels": [
+        "Scope: Frontend",
+        "Frontend: Rerun Flaky Tests"
+      ],
+      "title_scope": "tests",
+      "title_type": "fix",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JoshuaKGoldberg",
+      "state": "open"
+    },
+    {
+      "number": 111990,
+      "title": "feat(eslint): Add prefer-find-by rule for react-testing-library ",
+      "url": "https://github.com/getsentry/sentry/pull/111990",
+      "ttm_h": 69.86,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 100,
+      "churn": 1620,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "eslint",
+      "title_type": "feat",
+      "file_domains": [
+        "eslint.config.ts",
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JoshuaKGoldberg",
+      "state": "open"
+    },
+    {
+      "number": 111984,
+      "title": "fix(seer-explorer): Memoize repoNames to stabilize useMemo dependencies",
+      "url": "https://github.com/getsentry/sentry/pull/111984",
+      "ttm_h": 73.84,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 68,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "seer-explorer",
+      "title_type": "fix",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "vaind",
+      "state": "open"
+    },
+    {
+      "number": 111956,
+      "title": "feat(tracemetrics): Update ArithmeticBuilder to allow for REFERENCE tokens",
+      "url": "https://github.com/getsentry/sentry/pull/111956",
+      "ttm_h": 84.95,
+      "reviews_total": 30,
+      "changes_requested": 0,
+      "commented": 29,
+      "approvals": 1,
+      "files": 20,
+      "churn": 1031,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "tracemetrics",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "narsaynorath",
+      "state": "open"
+    },
+    {
+      "number": 111955,
+      "title": "fix(attachments): Delete based on date_expires in cleanup job",
+      "url": "https://github.com/getsentry/sentry/pull/111955",
+      "ttm_h": 85.0,
+      "reviews_total": 4,
+      "changes_requested": 1,
+      "commented": 2,
+      "approvals": 1,
+      "files": 2,
+      "churn": 115,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "attachments",
+      "title_type": "fix",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 1,
+      "friction_score": 0.0,
+      "author": "matt-codecov",
+      "state": "open"
+    },
+    {
+      "number": 111954,
+      "title": "fix(replays): Use Dataset enum instead of string comparisons in replay counts",
+      "url": "https://github.com/getsentry/sentry/pull/111954",
+      "ttm_h": 85.01,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 10,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "replays",
+      "title_type": "fix",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "scttcper",
+      "state": "open"
+    },
+    {
+      "number": 111946,
+      "title": "feat(ourlogs): Switch needle in haystack to time based ",
+      "url": "https://github.com/getsentry/sentry/pull/111946",
+      "ttm_h": 85.61,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 0,
+      "files": 3,
+      "churn": 71,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "ourlogs",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "k-fish",
+      "state": "open"
+    },
+    {
+      "number": 111939,
+      "title": "chore(code-mappings): Move code mapping CODEOWNERS to coding-workflows",
+      "url": "https://github.com/getsentry/sentry/pull/111939",
+      "ttm_h": 86.89,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 1,
+      "files": 1,
+      "churn": 22,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "code-mappings",
+      "title_type": "chore",
+      "file_domains": [
+        ".github/CODEOWNERS"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "roggenkemper",
+      "state": "open"
+    },
+    {
+      "number": 111935,
+      "title": "fix(api): allow read-only tokens to list org access requests",
+      "url": "https://github.com/getsentry/sentry/pull/111935",
+      "ttm_h": 87.57,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 76,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "api",
+      "title_type": "fix",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "moleus",
+      "state": "open"
+    },
+    {
+      "number": 111920,
+      "title": "feat(tracemetrics): Refresh the metrics refresh",
+      "url": "https://github.com/getsentry/sentry/pull/111920",
+      "ttm_h": 88.7,
+      "reviews_total": 4,
+      "changes_requested": 0,
+      "commented": 4,
+      "approvals": 0,
+      "files": 11,
+      "churn": 542,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "tracemetrics",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "nsdeschenes",
+      "state": "open"
+    },
+    {
+      "number": 111917,
+      "title": "fix(test): stabilize flaky trace view keyboard navigation test",
+      "url": "https://github.com/getsentry/sentry/pull/111917",
+      "ttm_h": 89.04,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 37,
+      "labels": [
+        "Scope: Frontend",
+        "Frontend: Rerun Flaky Tests"
+      ],
+      "title_scope": "test",
+      "title_type": "fix",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JoshuaKGoldberg",
+      "state": "open"
+    },
+    {
+      "number": 111916,
+      "title": "fix(test): stabilize flaky ResultsSearchQueryBuilder spec",
+      "url": "https://github.com/getsentry/sentry/pull/111916",
+      "ttm_h": 89.07,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 36,
+      "labels": [
+        "Scope: Frontend",
+        "Frontend: Rerun Flaky Tests"
+      ],
+      "title_scope": "test",
+      "title_type": "fix",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JoshuaKGoldberg",
+      "state": "open"
+    },
+    {
+      "number": 111915,
+      "title": "fix(test): stabilize flaky ResultsSearchQueryBuilder spec",
+      "url": "https://github.com/getsentry/sentry/pull/111915",
+      "ttm_h": 89.09,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 12,
+      "labels": [
+        "Scope: Frontend",
+        "Frontend: Rerun Flaky Tests"
+      ],
+      "title_scope": "test",
+      "title_type": "fix",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JoshuaKGoldberg",
+      "state": "open"
+    },
+    {
+      "number": 111914,
+      "title": "fix(test): stabilize flaky ResultsSearchQueryBuilder spec",
+      "url": "https://github.com/getsentry/sentry/pull/111914",
+      "ttm_h": 89.11,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 91,
+      "labels": [
+        "Scope: Frontend",
+        "Frontend: Rerun Flaky Tests"
+      ],
+      "title_scope": "test",
+      "title_type": "fix",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JoshuaKGoldberg",
+      "state": "open"
+    },
+    {
+      "number": 111909,
+      "title": "fix(test): stabilize flaky MetricsTabContent sidebar toggle test",
+      "url": "https://github.com/getsentry/sentry/pull/111909",
+      "ttm_h": 89.2,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 9,
+      "labels": [
+        "Scope: Frontend",
+        "Frontend: Rerun Flaky Tests"
+      ],
+      "title_scope": "test",
+      "title_type": "fix",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JoshuaKGoldberg",
+      "state": "open"
+    },
+    {
+      "number": 111904,
+      "title": "fix(test): stabilize flaky SpansSearchBar onSearch test",
+      "url": "https://github.com/getsentry/sentry/pull/111904",
+      "ttm_h": 89.26,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 0,
+      "files": 1,
+      "churn": 13,
+      "labels": [
+        "Scope: Frontend",
+        "Frontend: Rerun Flaky Tests"
+      ],
+      "title_scope": "test",
+      "title_type": "fix",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JoshuaKGoldberg",
+      "state": "open"
+    },
+    {
+      "number": 111903,
+      "title": "fix(test): stabilize flaky EventsSearchBar has: dropdown test",
+      "url": "https://github.com/getsentry/sentry/pull/111903",
+      "ttm_h": 89.3,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 30,
+      "labels": [
+        "Scope: Frontend",
+        "Frontend: Rerun Flaky Tests"
+      ],
+      "title_scope": "test",
+      "title_type": "fix",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JoshuaKGoldberg",
+      "state": "open"
+    },
+    {
+      "number": 111902,
+      "title": "fix(test): stabilize flaky EventReplay inline onboarding test",
+      "url": "https://github.com/getsentry/sentry/pull/111902",
+      "ttm_h": 89.32,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 14,
+      "labels": [
+        "Scope: Frontend",
+        "Frontend: Rerun Flaky Tests"
+      ],
+      "title_scope": "test",
+      "title_type": "fix",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JoshuaKGoldberg",
+      "state": "open"
+    },
+    {
+      "number": 111901,
+      "title": "fix(test): stabilize flaky allMonitors select all query results test",
+      "url": "https://github.com/getsentry/sentry/pull/111901",
+      "ttm_h": 89.35,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 8,
+      "labels": [
+        "Scope: Frontend",
+        "Frontend: Rerun Flaky Tests"
+      ],
+      "title_scope": "test",
+      "title_type": "fix",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JoshuaKGoldberg",
+      "state": "open"
+    },
+    {
+      "number": 111900,
+      "title": "fix(test): stabilize flaky StackTrace URL link tooltip test",
+      "url": "https://github.com/getsentry/sentry/pull/111900",
+      "ttm_h": 89.38,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 2,
+      "labels": [
+        "Scope: Frontend",
+        "Frontend: Rerun Flaky Tests"
+      ],
+      "title_scope": "test",
+      "title_type": "fix",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JoshuaKGoldberg",
+      "state": "open"
+    },
+    {
+      "number": 111899,
+      "title": "fix(test): stabilize flaky useReplaysFromIssue assertion test",
+      "url": "https://github.com/getsentry/sentry/pull/111899",
+      "ttm_h": 89.4,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 21,
+      "labels": [
+        "Scope: Frontend",
+        "Frontend: Rerun Flaky Tests"
+      ],
+      "title_scope": "test",
+      "title_type": "fix",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JoshuaKGoldberg",
+      "state": "open"
+    },
+    {
+      "number": 111891,
+      "title": "fix(performance): Restore feature parity on EAP Sampled Events tab",
+      "url": "https://github.com/getsentry/sentry/pull/111891",
+      "ttm_h": 90.21,
+      "reviews_total": 3,
+      "changes_requested": 0,
+      "commented": 3,
+      "approvals": 0,
+      "files": 11,
+      "churn": 1531,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "performance",
+      "title_type": "fix",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "mjq",
+      "state": "open"
+    },
+    {
+      "number": 111886,
+      "title": "fix(ui): shift Seer floating button up on footer hover",
+      "url": "https://github.com/getsentry/sentry/pull/111886",
+      "ttm_h": 91.41,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 0,
+      "files": 6,
+      "churn": 262,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "ui",
+      "title_type": "fix",
+      "file_domains": [
+        ".github/CODEOWNERS",
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JoshuaKGoldberg",
+      "state": "open"
+    },
+    {
+      "number": 111883,
+      "title": "feat(explore): add a prebuilt-query for AI Spans",
+      "url": "https://github.com/getsentry/sentry/pull/111883",
+      "ttm_h": 92.48,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 80,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "explore",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "constantinius",
+      "state": "open"
+    },
+    {
+      "number": 111875,
+      "title": "feat(attributes): Build out better suited validator endpoint",
+      "url": "https://github.com/getsentry/sentry/pull/111875",
+      "ttm_h": 95.39,
+      "reviews_total": 12,
+      "changes_requested": 0,
+      "commented": 12,
+      "approvals": 0,
+      "files": 16,
+      "churn": 923,
+      "labels": [
+        "Scope: Frontend",
+        "Scope: Backend"
+      ],
+      "title_scope": "attributes",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "static/app",
+        "tests/sentry",
+        "tests/snuba"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "nsdeschenes",
+      "state": "open"
+    },
+    {
+      "number": 111871,
+      "title": "fix(attr-breakdowns): Tooltip data disappears on click",
+      "url": "https://github.com/getsentry/sentry/pull/111871",
+      "ttm_h": 100.17,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 110,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "attr-breakdowns",
+      "title_type": "fix",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "Abdkhan14",
+      "state": "open"
+    },
+    {
+      "number": 111860,
+      "title": "feat(test): add `it.isKnownFlake` for opt-in stress-testing flaky Jest fixes",
+      "url": "https://github.com/getsentry/sentry/pull/111860",
+      "ttm_h": 107.38,
+      "reviews_total": 5,
+      "changes_requested": 0,
+      "commented": 4,
+      "approvals": 1,
+      "files": 17,
+      "churn": 304,
+      "labels": [
+        "Scope: Frontend",
+        "Frontend: Rerun Flaky Tests"
+      ],
+      "title_scope": "test",
+      "title_type": "feat",
+      "file_domains": [
+        ".github/workflows",
+        "eslint.config.ts",
+        "static/app",
+        "static/gsAdmin",
+        "tests/js"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JoshuaKGoldberg",
+      "state": "open"
+    },
+    {
+      "number": 111826,
+      "title": "ref(navigation): Hide page-level FeedbackButtons when page-frame is enabled",
+      "url": "https://github.com/getsentry/sentry/pull/111826",
+      "ttm_h": 109.56,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 39,
+      "churn": 442,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "navigation",
+      "title_type": "ref",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JonasBa",
+      "state": "open"
+    },
+    {
+      "number": 111820,
+      "title": "feat(spans): Flush oversized segments in chunks",
+      "url": "https://github.com/getsentry/sentry/pull/111820",
+      "ttm_h": 110.05,
+      "reviews_total": 10,
+      "changes_requested": 1,
+      "commented": 6,
+      "approvals": 3,
+      "files": 4,
+      "churn": 270,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "spans",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 1,
+      "friction_score": 0.0,
+      "author": "lvthanh03",
+      "state": "open"
+    },
+    {
+      "number": 111802,
+      "title": "feat(seer): new copilot integration",
+      "url": "https://github.com/getsentry/sentry/pull/111802",
+      "ttm_h": 112.61,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 17,
+      "churn": 519,
+      "labels": [
+        "Scope: Frontend",
+        "Scope: Backend"
+      ],
+      "title_scope": "seer",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "static/app",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "sehr-m",
+      "state": "open"
+    },
+    {
+      "number": 111797,
+      "title": "feat(assisted-query): Add AI search bar to metrics tab",
+      "url": "https://github.com/getsentry/sentry/pull/111797",
+      "ttm_h": 113.2,
+      "reviews_total": 8,
+      "changes_requested": 0,
+      "commented": 8,
+      "approvals": 0,
+      "files": 5,
+      "churn": 450,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "assisted-query",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "isaacwang-sentry",
+      "state": "open"
+    },
+    {
+      "number": 111787,
+      "title": "feat(dashboards): Add (no value) option to global filters",
+      "url": "https://github.com/getsentry/sentry/pull/111787",
+      "ttm_h": 115.19,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 0,
+      "files": 3,
+      "churn": 306,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "dashboards",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "DominikB2014",
+      "state": "open"
+    },
+    {
+      "number": 111784,
+      "title": "ref: Migrate create_or_update to update_or_create in five modules",
+      "url": "https://github.com/getsentry/sentry/pull/111784",
+      "ttm_h": 115.87,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 6,
+      "churn": 33,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "unscoped",
+      "title_type": "ref",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "vgrozdanic",
+      "state": "open"
+    },
+    {
+      "number": 111770,
+      "title": "feat(stacktrace): Wire SCM source context into new stack trace",
+      "url": "https://github.com/getsentry/sentry/pull/111770",
+      "ttm_h": 156.94,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 8,
+      "churn": 128,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "stacktrace",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "scttcper",
+      "state": "open"
+    },
+    {
+      "number": 111757,
+      "title": "prototype(dashboards): Heatmap",
+      "url": "https://github.com/getsentry/sentry/pull/111757",
+      "ttm_h": 181.32,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 0,
+      "files": 10,
+      "churn": 531,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "dashboards",
+      "title_type": "prototype",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "marthalyndon",
+      "state": "open"
+    },
+    {
+      "number": 111725,
+      "title": "feat(eslint): Add prefer-additional-wrapper-render ESLint rule",
+      "url": "https://github.com/getsentry/sentry/pull/111725",
+      "ttm_h": 184.84,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 69,
+      "churn": 5441,
+      "labels": [
+        "Scope: Frontend",
+        "Scope: Backend"
+      ],
+      "title_scope": "eslint",
+      "title_type": "feat",
+      "file_domains": [
+        "eslint.config.ts",
+        "package.json",
+        "static/app",
+        "static/eslint",
+        "static/gsApp"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JoshuaKGoldberg",
+      "state": "open"
+    },
+    {
+      "number": 111687,
+      "title": "feat(integrations): slack staging app sidegrade",
+      "url": "https://github.com/getsentry/sentry/pull/111687",
+      "ttm_h": 204.72,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 7,
+      "churn": 516,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "integrations",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "alexsohn1126",
+      "state": "open"
+    },
+    {
+      "number": 111686,
+      "title": "feat(issues): New stack trace on shared issues",
+      "url": "https://github.com/getsentry/sentry/pull/111686",
+      "ttm_h": 204.91,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 341,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "issues",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "scttcper",
+      "state": "open"
+    },
+    {
+      "number": 111675,
+      "title": "feat(insights): Use prebuilt dashboard URLs for platformized insights",
+      "url": "https://github.com/getsentry/sentry/pull/111675",
+      "ttm_h": 206.02,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 0,
+      "files": 3,
+      "churn": 144,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "insights",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "DominikB2014",
+      "state": "open"
+    },
+    {
+      "number": 111670,
+      "title": "NodeStore: Install nodestore in docker image similar to as in getsentry/self-hosted",
+      "url": "https://github.com/getsentry/sentry/pull/111670",
+      "ttm_h": 206.13,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 0,
+      "files": 1,
+      "churn": 2,
+      "labels": [],
+      "title_scope": "unscoped",
+      "title_type": "nodestore",
+      "file_domains": [
+        "self-hosted/Dockerfile"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "lfritz-seweurodrive",
+      "state": "open"
+    },
+    {
+      "number": 111627,
+      "title": "fix(billing): Change partner plan ending modal button to \"Upgrade to a Paid Plan\"",
+      "url": "https://github.com/getsentry/sentry/pull/111627",
+      "ttm_h": 210.85,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 0,
+      "files": 4,
+      "churn": 239,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "billing",
+      "title_type": "fix",
+      "file_domains": [
+        "static/gsApp"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "dashed",
+      "state": "open"
+    },
+    {
+      "number": 111625,
+      "title": "perf(code-mappings): Use bulk queries for code mapping upserts",
+      "url": "https://github.com/getsentry/sentry/pull/111625",
+      "ttm_h": 211.03,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 3,
+      "churn": 222,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "code-mappings",
+      "title_type": "perf",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "romtsn",
+      "state": "open"
+    },
+    {
+      "number": 111594,
+      "title": "feat(seer): Read Seer project preferences from Sentry DB in Sentry endpoints",
+      "url": "https://github.com/getsentry/sentry/pull/111594",
+      "ttm_h": 226.1,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 11,
+      "churn": 442,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "seer",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "srest2021",
+      "state": "open"
+    },
+    {
+      "number": 111592,
+      "title": "feat(issues): Use new stack trace in stack trace preview",
+      "url": "https://github.com/getsentry/sentry/pull/111592",
+      "ttm_h": 226.62,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 4,
+      "churn": 65,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "issues",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "scttcper",
+      "state": "open"
+    },
+    {
+      "number": 111591,
+      "title": "feat(seer): Add dual-read helpers for Seer project preferences from Sentry DB",
+      "url": "https://github.com/getsentry/sentry/pull/111591",
+      "ttm_h": 226.81,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 4,
+      "churn": 294,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "seer",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "srest2021",
+      "state": "open"
+    },
+    {
+      "number": 111579,
+      "title": "ref(settings): update project settings to new form system",
+      "url": "https://github.com/getsentry/sentry/pull/111579",
+      "ttm_h": 228.16,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 906,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "settings",
+      "title_type": "ref",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "natemoo-re",
+      "state": "open"
+    },
+    {
+      "number": 111546,
+      "title": "feat(metrics): Enable AI searchbar on metrics explorer filter",
+      "url": "https://github.com/getsentry/sentry/pull/111546",
+      "ttm_h": 231.36,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 0,
+      "files": 2,
+      "churn": 224,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "metrics",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "isaacwang-sentry",
+      "state": "open"
+    },
+    {
+      "number": 111544,
+      "title": "chore: Consolidate circuit breaker implementations",
+      "url": "https://github.com/getsentry/sentry/pull/111544",
+      "ttm_h": 231.82,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 6,
+      "churn": 185,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "unscoped",
+      "title_type": "chore",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "markstory",
+      "state": "open"
+    },
+    {
+      "number": 111511,
+      "title": "fix(preprod): Allow org auth tokens to access build install-details",
+      "url": "https://github.com/getsentry/sentry/pull/111511",
+      "ttm_h": 239.12,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 23,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "preprod",
+      "title_type": "fix",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "runningcode",
+      "state": "open"
+    },
+    {
+      "number": 111501,
+      "title": "feat(github): Add issue types support for Sentry issues",
+      "url": "https://github.com/getsentry/sentry/pull/111501",
+      "ttm_h": 249.86,
+      "reviews_total": 6,
+      "changes_requested": 0,
+      "commented": 6,
+      "approvals": 0,
+      "files": 3,
+      "churn": 74,
+      "labels": [
+        "Scope: Backend",
+        "Trigger: getsentry tests"
+      ],
+      "title_scope": "github",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "Asynchronite",
+      "state": "open"
+    },
+    {
+      "number": 111496,
+      "title": "ref(cmdk): Update DSN actions to use new dynamic actions",
+      "url": "https://github.com/getsentry/sentry/pull/111496",
+      "ttm_h": 251.15,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 80,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "cmdk",
+      "title_type": "ref",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "rbro112",
+      "state": "open"
+    },
+    {
+      "number": 111495,
+      "title": "feat(cmdk): Create dynamic command palette action registration",
+      "url": "https://github.com/getsentry/sentry/pull/111495",
+      "ttm_h": 251.16,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 0,
+      "files": 9,
+      "churn": 387,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "cmdk",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "rbro112",
+      "state": "open"
+    },
+    {
+      "number": 111445,
+      "title": "fix(nav): Restore focus to previous element after closing command palette",
+      "url": "https://github.com/getsentry/sentry/pull/111445",
+      "ttm_h": 255.03,
+      "reviews_total": 2,
+      "changes_requested": 1,
+      "commented": 0,
+      "approvals": 1,
+      "files": 1,
+      "churn": 8,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "nav",
+      "title_type": "fix",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 1,
+      "friction_score": 0.0,
+      "author": "jshchnz",
+      "state": "open"
+    },
+    {
+      "number": 111443,
+      "title": "fix(nav): Use capture-phase listener so Cmd+K works when inputs have focus",
+      "url": "https://github.com/getsentry/sentry/pull/111443",
+      "ttm_h": 255.22,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 0,
+      "files": 3,
+      "churn": 63,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "nav",
+      "title_type": "fix",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "jshchnz",
+      "state": "open"
+    },
+    {
+      "number": 111441,
+      "title": "feat(nav): Allow Cmd+K to toggle command palette open and closed",
+      "url": "https://github.com/getsentry/sentry/pull/111441",
+      "ttm_h": 255.47,
+      "reviews_total": 5,
+      "changes_requested": 0,
+      "commented": 5,
+      "approvals": 0,
+      "files": 2,
+      "churn": 54,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "nav",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "jshchnz",
+      "state": "open"
+    },
+    {
+      "number": 111435,
+      "title": "[DRAFT] SCM settings refactor",
+      "url": "https://github.com/getsentry/sentry/pull/111435",
+      "ttm_h": 256.02,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 0,
+      "files": 4,
+      "churn": 1481,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "unscoped",
+      "title_type": "unknown",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "itsdangold",
+      "state": "open"
+    },
+    {
+      "number": 111432,
+      "title": "cleanup(slack): Seer Explorer Slack integration improvements",
+      "url": "https://github.com/getsentry/sentry/pull/111432",
+      "ttm_h": 256.16,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 17,
+      "churn": 999,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "slack",
+      "title_type": "cleanup",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "alexsohn1126",
+      "state": "open"
+    },
+    {
+      "number": 111427,
+      "title": "ref: Remove dead code after continuous-profiling-beta ff removal",
+      "url": "https://github.com/getsentry/sentry/pull/111427",
+      "ttm_h": 256.28,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 1,
+      "files": 2,
+      "churn": 72,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "unscoped",
+      "title_type": "ref",
+      "file_domains": [
+        "static/gsApp"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "elramen",
+      "state": "open"
+    },
+    {
+      "number": 111421,
+      "title": "test(snuba): Update tests for removal of boolean double-writing",
+      "url": "https://github.com/getsentry/sentry/pull/111421",
+      "ttm_h": 256.62,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 1,
+      "files": 1,
+      "churn": 10,
+      "labels": [],
+      "title_scope": "snuba",
+      "title_type": "test",
+      "file_domains": [
+        "tests/snuba"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "volokluev",
+      "state": "open"
+    },
+    {
+      "number": 111418,
+      "title": "feat(dashboards): Use new loader visual in dashboard generation loading page",
+      "url": "https://github.com/getsentry/sentry/pull/111418",
+      "ttm_h": 256.9,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 4,
+      "churn": 175,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "dashboards",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "edwardgou-sentry",
+      "state": "open"
+    },
+    {
+      "number": 111410,
+      "title": "fix(seer): Update no-repo warning to error severity",
+      "url": "https://github.com/getsentry/sentry/pull/111410",
+      "ttm_h": 257.85,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 6,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "seer",
+      "title_type": "fix",
+      "file_domains": [
+        "static/gsApp"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "chromy",
+      "state": "open"
+    },
+    {
+      "number": 111394,
+      "title": "ref: Remove unused continuous-profiling-beta feature flag",
+      "url": "https://github.com/getsentry/sentry/pull/111394",
+      "ttm_h": 263.64,
+      "reviews_total": 4,
+      "changes_requested": 0,
+      "commented": 3,
+      "approvals": 1,
+      "files": 1,
+      "churn": 2,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "unscoped",
+      "title_type": "ref",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "elramen",
+      "state": "open"
+    },
+    {
+      "number": 111382,
+      "title": "feat(processing_errors): Add native/proguard configuration issue detection",
+      "url": "https://github.com/getsentry/sentry/pull/111382",
+      "ttm_h": 274.24,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 0,
+      "files": 6,
+      "churn": 297,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "processing_errors",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "wedamija",
+      "state": "open"
+    },
+    {
+      "number": 111362,
+      "title": "fix(github-copilot): Truncate problem_statement to stay within 30k char API limit",
+      "url": "https://github.com/getsentry/sentry/pull/111362",
+      "ttm_h": 277.03,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 22,
+      "labels": [],
+      "title_scope": "github-copilot",
+      "title_type": "fix",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "app/copilot-swe-agent",
+      "state": "open"
+    },
+    {
+      "number": 111348,
+      "title": "feat(spans-migration): self-hosted migration for transaction alerts",
+      "url": "https://github.com/getsentry/sentry/pull/111348",
+      "ttm_h": 277.72,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 0,
+      "files": 3,
+      "churn": 550,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "spans-migration",
+      "title_type": "feat",
+      "file_domains": [
+        "migrations_lockfile.txt",
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "nikkikapadia",
+      "state": "open"
+    },
+    {
+      "number": 111337,
+      "title": "feat(dashboards): Adds history/audit panel to Dashboard page",
+      "url": "https://github.com/getsentry/sentry/pull/111337",
+      "ttm_h": 278.7,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 14,
+      "churn": 758,
+      "labels": [
+        "Scope: Frontend",
+        "Scope: Backend"
+      ],
+      "title_scope": "dashboards",
+      "title_type": "feat",
+      "file_domains": [
+        "migrations_lockfile.txt",
+        "src/sentry",
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "edwardgou-sentry",
+      "state": "open"
+    },
+    {
+      "number": 111331,
+      "title": "feat(project-filters): Simplify All/My Projects toggle",
+      "url": "https://github.com/getsentry/sentry/pull/111331",
+      "ttm_h": 279.64,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 1,
+      "files": 2,
+      "churn": 106,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "project-filters",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JonasBa",
+      "state": "open"
+    },
+    {
+      "number": 111328,
+      "title": "feat(scm): Add `create_review` GitLab impl",
+      "url": "https://github.com/getsentry/sentry/pull/111328",
+      "ttm_h": 280.0,
+      "reviews_total": 3,
+      "changes_requested": 0,
+      "commented": 3,
+      "approvals": 0,
+      "files": 4,
+      "churn": 384,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "scm",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "billyvg",
+      "state": "open"
+    },
+    {
+      "number": 111309,
+      "title": "test(regression): Add failing test for stale current_release_version causing false regression",
+      "url": "https://github.com/getsentry/sentry/pull/111309",
+      "ttm_h": 281.63,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 41,
+      "labels": [],
+      "title_scope": "regression",
+      "title_type": "test",
+      "file_domains": [
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "mrduncan",
+      "state": "open"
+    },
+    {
+      "number": 111292,
+      "title": "fix(metrics): Prevent metric selector hover from stealing search input focus",
+      "url": "https://github.com/getsentry/sentry/pull/111292",
+      "ttm_h": 283.69,
+      "reviews_total": 7,
+      "changes_requested": 0,
+      "commented": 7,
+      "approvals": 0,
+      "files": 2,
+      "churn": 288,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "metrics",
+      "title_type": "fix",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "nsdeschenes",
+      "state": "open"
+    },
+    {
+      "number": 111270,
+      "title": "  Remove the projects:first-event-severity-calculation feature flag and all associated severity score calculation code.",
+      "url": "https://github.com/getsentry/sentry/pull/111270",
+      "ttm_h": 345.7,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 0,
+      "files": 7,
+      "churn": 884,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "unscoped",
+      "title_type": "unknown",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "wedamija",
+      "state": "open"
+    },
+    {
+      "number": 111246,
+      "title": "ref(⚡️): remove `stylelint`",
+      "url": "https://github.com/getsentry/sentry/pull/111246",
+      "ttm_h": 349.69,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 18,
+      "churn": 390,
+      "labels": [
+        "Scope: Frontend",
+        "Scope: Backend"
+      ],
+      "title_scope": "⚡️",
+      "title_type": "ref",
+      "file_domains": [
+        ".github/codeowners-coverage-baseline.txt",
+        ".pre-commit-config.yaml",
+        ".vercelignore",
+        "eslint.config.ts",
+        "package.json",
+        "pnpm-lock.yaml",
+        "static/AGENTS.md",
+        "static/app",
+        "stylelint.config.js"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "natemoo-re",
+      "state": "open"
+    },
+    {
+      "number": 111231,
+      "title": "ref(nav) cleanup stories",
+      "url": "https://github.com/getsentry/sentry/pull/111231",
+      "ttm_h": 351.89,
+      "reviews_total": 6,
+      "changes_requested": 0,
+      "commented": 5,
+      "approvals": 1,
+      "files": 8,
+      "churn": 545,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "unscoped",
+      "title_type": "unknown",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JonasBa",
+      "state": "open"
+    },
+    {
+      "number": 111190,
+      "title": "chore(devservices): Upgrade postgres to v17",
+      "url": "https://github.com/getsentry/sentry/pull/111190",
+      "ttm_h": 356.94,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 2,
+      "labels": [],
+      "title_scope": "devservices",
+      "title_type": "chore",
+      "file_domains": [
+        "devservices/config.yml"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "beezz",
+      "state": "open"
+    },
+    {
+      "number": 111175,
+      "title": "fix(processing_errors): Handle NoneType in processing errors list",
+      "url": "https://github.com/getsentry/sentry/pull/111175",
+      "ttm_h": 371.23,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 3,
+      "churn": 34,
+      "labels": [
+        "Scope: Backend",
+        "Trigger: getsentry tests"
+      ],
+      "title_scope": "processing_errors",
+      "title_type": "fix",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "app/sentry",
+      "state": "open"
+    },
+    {
+      "number": 111151,
+      "title": "ref(api): move relevant endpoint ownership from enterprise -> integrations ",
+      "url": "https://github.com/getsentry/sentry/pull/111151",
+      "ttm_h": 373.86,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 5,
+      "churn": 10,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "api",
+      "title_type": "ref",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "cvxluo",
+      "state": "open"
+    },
+    {
+      "number": 111147,
+      "title": "chore: Remove graduated feature flag performance-mep-bannerless-ui",
+      "url": "https://github.com/getsentry/sentry/pull/111147",
+      "ttm_h": 374.0,
+      "reviews_total": 4,
+      "changes_requested": 0,
+      "commented": 3,
+      "approvals": 1,
+      "files": 17,
+      "churn": 585,
+      "labels": [
+        "Scope: Frontend",
+        "Scope: Backend"
+      ],
+      "title_scope": "unscoped",
+      "title_type": "chore",
+      "file_domains": [
+        "src/sentry",
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "wedamija",
+      "state": "open"
+    },
+    {
+      "number": 111143,
+      "title": "ref: Use EAP for sessions read query",
+      "url": "https://github.com/getsentry/sentry/pull/111143",
+      "ttm_h": 374.09,
+      "reviews_total": 5,
+      "changes_requested": 0,
+      "commented": 5,
+      "approvals": 0,
+      "files": 5,
+      "churn": 1482,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "unscoped",
+      "title_type": "ref",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "noahsmartin",
+      "state": "open"
+    },
+    {
+      "number": 111121,
+      "title": "fix(environment): Handle IntegrityError on deleted projects",
+      "url": "https://github.com/getsentry/sentry/pull/111121",
+      "ttm_h": 376.03,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 30,
+      "labels": [
+        "Scope: Backend",
+        "Trigger: getsentry tests"
+      ],
+      "title_scope": "environment",
+      "title_type": "fix",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "app/sentry",
+      "state": "open"
+    },
+    {
+      "number": 111091,
+      "title": "fix(issues): Gracefully handle Snuba timeouts for group stats",
+      "url": "https://github.com/getsentry/sentry/pull/111091",
+      "ttm_h": 378.97,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 38,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "issues",
+      "title_type": "fix",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "app/sentry",
+      "state": "open"
+    },
+    {
+      "number": 111087,
+      "title": "ref(settings): Switch OwnerInput to useMutation with fetchMutation",
+      "url": "https://github.com/getsentry/sentry/pull/111087",
+      "ttm_h": 379.12,
+      "reviews_total": 3,
+      "changes_requested": 0,
+      "commented": 3,
+      "approvals": 0,
+      "files": 1,
+      "churn": 94,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "settings",
+      "title_type": "ref",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JoshuaKGoldberg",
+      "state": "open"
+    },
+    {
+      "number": 111071,
+      "title": "fix(webhooks): Batch UPDATE queries in drain_mailbox to fix N+1",
+      "url": "https://github.com/getsentry/sentry/pull/111071",
+      "ttm_h": 380.39,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 0,
+      "files": 1,
+      "churn": 66,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "webhooks",
+      "title_type": "fix",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "armenzg",
+      "state": "open"
+    },
+    {
+      "number": 111063,
+      "title": "feat(objectstore): Add CLI rate limiting to Objectstore endpoint",
+      "url": "https://github.com/getsentry/sentry/pull/111063",
+      "ttm_h": 383.61,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 2,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "objectstore",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "lcian",
+      "state": "open"
+    },
+    {
+      "number": 111043,
+      "title": "feat(search): Add experimental \"recommended\" issue sort",
+      "url": "https://github.com/getsentry/sentry/pull/111043",
+      "ttm_h": 396.02,
+      "reviews_total": 5,
+      "changes_requested": 0,
+      "commented": 4,
+      "approvals": 1,
+      "files": 3,
+      "churn": 416,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "search",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/snuba"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "mrduncan",
+      "state": "open"
+    },
+    {
+      "number": 111040,
+      "title": "fix(skills): Fix mismatched markdown fences in `sentry-security` skill",
+      "url": "https://github.com/getsentry/sentry/pull/111040",
+      "ttm_h": 396.21,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 6,
+      "labels": [],
+      "title_scope": "skills",
+      "title_type": "fix",
+      "file_domains": [
+        ".agents/skills"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "jonathanhefner",
+      "state": "open"
+    },
+    {
+      "number": 111002,
+      "title": "ref(api): mark previous enterprise endpoints as unowned",
+      "url": "https://github.com/getsentry/sentry/pull/111002",
+      "ttm_h": 400.83,
+      "reviews_total": 3,
+      "changes_requested": 0,
+      "commented": 3,
+      "approvals": 0,
+      "files": 53,
+      "churn": 106,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "api",
+      "title_type": "ref",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "cvxluo",
+      "state": "open"
+    },
+    {
+      "number": 110985,
+      "title": "fix(tagstore): Pass requested sort order to Snuba in tag value paginator",
+      "url": "https://github.com/getsentry/sentry/pull/110985",
+      "ttm_h": 403.81,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 77,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "tagstore",
+      "title_type": "fix",
+      "file_domains": [
+        "src/sentry",
+        "tests/snuba"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "SafinMahmud",
+      "state": "open"
+    },
+    {
+      "number": 110966,
+      "title": "ref(dynamic-sampling): Remove CustomDynamicSamplingRule model and table",
+      "url": "https://github.com/getsentry/sentry/pull/110966",
+      "ttm_h": 408.13,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 0,
+      "files": 8,
+      "churn": 178,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "dynamic-sampling",
+      "title_type": "ref",
+      "file_domains": [
+        "migrations_lockfile.txt",
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "shellmayr",
+      "state": "open"
+    },
+    {
+      "number": 110961,
+      "title": "do not merge: a test",
+      "url": "https://github.com/getsentry/sentry/pull/110961",
+      "ttm_h": 416.25,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 6,
+      "labels": [],
+      "title_scope": "unscoped",
+      "title_type": "unknown",
+      "file_domains": [
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "hubertdeng123",
+      "state": "open"
+    },
+    {
+      "number": 110870,
+      "title": "ref(api): Improve DifAssembleEndpoint typing",
+      "url": "https://github.com/getsentry/sentry/pull/110870",
+      "ttm_h": 425.86,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 89,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "api",
+      "title_type": "ref",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "szokeasaurusrex",
+      "state": "open"
+    },
+    {
+      "number": 110866,
+      "title": "fix(eap): Add defensive null-safety for contexts extraction in producer",
+      "url": "https://github.com/getsentry/sentry/pull/110866",
+      "ttm_h": 426.31,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 36,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "eap",
+      "title_type": "fix",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "app/cursor",
+      "state": "open"
+    },
+    {
+      "number": 110865,
+      "title": "fix(integrations): Handle None from IntegrationConfigSerializer in OrganizationIntegrationSerializer",
+      "url": "https://github.com/getsentry/sentry/pull/110865",
+      "ttm_h": 426.31,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 0,
+      "files": 2,
+      "churn": 54,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "integrations",
+      "title_type": "fix",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "ryan953",
+      "state": "open"
+    },
+    {
+      "number": 110849,
+      "title": "ref(workflow_engine): Drop environment FK on Workflow model",
+      "url": "https://github.com/getsentry/sentry/pull/110849",
+      "ttm_h": 428.04,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 0,
+      "files": 26,
+      "churn": 170,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "workflow_engine",
+      "title_type": "ref",
+      "file_domains": [
+        "migrations_lockfile.txt",
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "beezz",
+      "state": "open"
+    },
+    {
+      "number": 110820,
+      "title": "fix(digests): Migrate digests serialization from pickle to JSON",
+      "url": "https://github.com/getsentry/sentry/pull/110820",
+      "ttm_h": 443.46,
+      "reviews_total": 11,
+      "changes_requested": 0,
+      "commented": 11,
+      "approvals": 0,
+      "files": 4,
+      "churn": 239,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "digests",
+      "title_type": "fix",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "kcons",
+      "state": "open"
+    },
+    {
+      "number": 110808,
+      "title": "feat(dev): replace pre-commit with prek --quiet",
+      "url": "https://github.com/getsentry/sentry/pull/110808",
+      "ttm_h": 444.58,
+      "reviews_total": 11,
+      "changes_requested": 0,
+      "commented": 8,
+      "approvals": 3,
+      "files": 9,
+      "churn": 99,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "dev",
+      "title_type": "feat",
+      "file_domains": [
+        ".agents/skills",
+        ".cursor/rules",
+        ".envrc",
+        ".github/workflows",
+        ".pre-commit-config.yaml",
+        "AGENTS.md",
+        "devenv/sync.py",
+        "pyproject.toml",
+        "uv.lock"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "joshuarli",
+      "state": "open"
+    },
+    {
+      "number": 110804,
+      "title": "chore(codeowners): Remove @getsentry/enterprise team from CODEOWNERS",
+      "url": "https://github.com/getsentry/sentry/pull/110804",
+      "ttm_h": 445.14,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 46,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "codeowners",
+      "title_type": "chore",
+      "file_domains": [
+        ".github/CODEOWNERS"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "cvxluo",
+      "state": "open"
+    },
+    {
+      "number": 110780,
+      "title": "feat(oauth): Add Authorization Server Metadata endpoint (RFC 8414)",
+      "url": "https://github.com/getsentry/sentry/pull/110780",
+      "ttm_h": 447.6,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 4,
+      "churn": 135,
+      "labels": [
+        "Scope: Frontend",
+        "Scope: Backend"
+      ],
+      "title_scope": "oauth",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "static/app",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "dcramer",
+      "state": "open"
+    },
+    {
+      "number": 110768,
+      "title": "fix(pageFilters): Default to All Projects in open-membership orgs",
+      "url": "https://github.com/getsentry/sentry/pull/110768",
+      "ttm_h": 448.28,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 1,
+      "files": 2,
+      "churn": 200,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "pageFilters",
+      "title_type": "fix",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JonasBa",
+      "state": "open"
+    },
+    {
+      "number": 110743,
+      "title": "feat(performance): Add Apdex chart to EAP transaction summary sidebar",
+      "url": "https://github.com/getsentry/sentry/pull/110743",
+      "ttm_h": 450.44,
+      "reviews_total": 5,
+      "changes_requested": 0,
+      "commented": 5,
+      "approvals": 0,
+      "files": 2,
+      "churn": 101,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "performance",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "mjq",
+      "state": "open"
+    },
+    {
+      "number": 110729,
+      "title": "feat(supergroups): Add project filter to supergroups page",
+      "url": "https://github.com/getsentry/sentry/pull/110729",
+      "ttm_h": 461.11,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 175,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "supergroups",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "cvxluo",
+      "state": "open"
+    },
+    {
+      "number": 110724,
+      "title": "feat(occurrences on eap): Implement issue occurrence EAP query for organization events tracing",
+      "url": "https://github.com/getsentry/sentry/pull/110724",
+      "ttm_h": 465.24,
+      "reviews_total": 3,
+      "changes_requested": 0,
+      "commented": 3,
+      "approvals": 0,
+      "files": 2,
+      "churn": 134,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "occurrences on eap",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/snuba"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "shashjar",
+      "state": "open"
+    },
+    {
+      "number": 110722,
+      "title": "feat(occurrences on eap): Implement tracing performance issues query",
+      "url": "https://github.com/getsentry/sentry/pull/110722",
+      "ttm_h": 466.42,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 0,
+      "files": 3,
+      "churn": 575,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "occurrences on eap",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/snuba"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "shashjar",
+      "state": "open"
+    },
+    {
+      "number": 110703,
+      "title": "chore(deps): bump jsonrepair from 3.8.0 to 3.13.3",
+      "url": "https://github.com/getsentry/sentry/pull/110703",
+      "ttm_h": 515.54,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 15,
+      "labels": [
+        "Scope: Frontend",
+        "Stale",
+        "dependencies",
+        "javascript"
+      ],
+      "title_scope": "deps",
+      "title_type": "chore",
+      "file_domains": [
+        "package.json",
+        "pnpm-lock.yaml"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "app/dependabot",
+      "state": "open"
+    },
+    {
+      "number": 110699,
+      "title": "build(deps-dev): bump eslint-plugin-react-you-might-not-need-an-effect from 0.5.3 to 0.9.2",
+      "url": "https://github.com/getsentry/sentry/pull/110699",
+      "ttm_h": 515.81,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 33,
+      "labels": [
+        "Scope: Frontend",
+        "dependencies",
+        "javascript"
+      ],
+      "title_scope": "deps-dev",
+      "title_type": "build",
+      "file_domains": [
+        "package.json",
+        "pnpm-lock.yaml"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "app/dependabot",
+      "state": "open"
+    },
+    {
+      "number": 110698,
+      "title": "chore(deps): bump the spectrum-dependencies group across 1 directory with 4 updates",
+      "url": "https://github.com/getsentry/sentry/pull/110698",
+      "ttm_h": 515.82,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 614,
+      "labels": [
+        "Scope: Frontend",
+        "dependencies",
+        "javascript"
+      ],
+      "title_scope": "deps",
+      "title_type": "chore",
+      "file_domains": [
+        "package.json",
+        "pnpm-lock.yaml"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "app/dependabot",
+      "state": "open"
+    },
+    {
+      "number": 110697,
+      "title": "chore(deps): bump the sentry-dependencies group with 4 updates",
+      "url": "https://github.com/getsentry/sentry/pull/110697",
+      "ttm_h": 515.86,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 802,
+      "labels": [
+        "Scope: Frontend",
+        "dependencies",
+        "javascript"
+      ],
+      "title_scope": "deps",
+      "title_type": "chore",
+      "file_domains": [
+        "package.json",
+        "pnpm-lock.yaml"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "app/dependabot",
+      "state": "open"
+    },
+    {
+      "number": 110686,
+      "title": "feat(lint): add `no-styled-core` rule",
+      "url": "https://github.com/getsentry/sentry/pull/110686",
+      "ttm_h": 517.15,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 17,
+      "churn": 1099,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "lint",
+      "title_type": "feat",
+      "file_domains": [
+        ".agents/skills",
+        "eslint.config.ts",
+        "static/eslint"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "natemoo-re",
+      "state": "open"
+    },
+    {
+      "number": 110627,
+      "title": "Playback play pause",
+      "url": "https://github.com/getsentry/sentry/pull/110627",
+      "ttm_h": 524.49,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 4,
+      "churn": 279,
+      "labels": [
+        "Scope: Frontend",
+        "Stale"
+      ],
+      "title_scope": "unscoped",
+      "title_type": "unknown",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "jameskeane",
+      "state": "open"
+    },
+    {
+      "number": 110606,
+      "title": "Replace product-owners sync with Linear-based triaging workflow",
+      "url": "https://github.com/getsentry/sentry/pull/110606",
+      "ttm_h": 539.27,
+      "reviews_total": 3,
+      "changes_requested": 0,
+      "commented": 3,
+      "approvals": 0,
+      "files": 8,
+      "churn": 302,
+      "labels": [
+        "Scope: Backend",
+        "Stale"
+      ],
+      "title_scope": "unscoped",
+      "title_type": "unknown",
+      "file_domains": [
+        ".github/ISSUE_TEMPLATE",
+        ".github/workflows",
+        "bin/react-to-product-owners-yml-changes.py",
+        "bin/react-to-product-owners-yml-changes.sh"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "gaprl",
+      "state": "open"
+    },
+    {
+      "number": 110595,
+      "title": "Fix integration proxy returning 500 instead of proxying upstream API error codes",
+      "url": "https://github.com/getsentry/sentry/pull/110595",
+      "ttm_h": 540.4,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 53,
+      "labels": [
+        "Stale"
+      ],
+      "title_scope": "unscoped",
+      "title_type": "unknown",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "app/copilot-swe-agent",
+      "state": "open"
+    },
+    {
+      "number": 110583,
+      "title": "ref(preprod): Remove graduated preprod-frontend-routes feature flag",
+      "url": "https://github.com/getsentry/sentry/pull/110583",
+      "ttm_h": 541.44,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 32,
+      "churn": 441,
+      "labels": [
+        "Scope: Frontend",
+        "Scope: Backend"
+      ],
+      "title_scope": "preprod",
+      "title_type": "ref",
+      "file_domains": [
+        "src/sentry",
+        "static/app",
+        "tests/sentry",
+        "tests/snuba"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "NicoHinderling",
+      "state": "open"
+    },
+    {
+      "number": 110561,
+      "title": "Revise README for clarity and organization",
+      "url": "https://github.com/getsentry/sentry/pull/110561",
+      "ttm_h": 543.71,
+      "reviews_total": 3,
+      "changes_requested": 0,
+      "commented": 3,
+      "approvals": 0,
+      "files": 1,
+      "churn": 265,
+      "labels": [
+        "Stale"
+      ],
+      "title_scope": "unscoped",
+      "title_type": "unknown",
+      "file_domains": [
+        "README.md"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "Geneticscrol",
+      "state": "open"
+    },
+    {
+      "number": 110515,
+      "title": "feat(dashboards): Add prototype Seer-assisted dashboard creation flow",
+      "url": "https://github.com/getsentry/sentry/pull/110515",
+      "ttm_h": 548.52,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 6,
+      "churn": 319,
+      "labels": [
+        "WIP",
+        "Scope: Frontend",
+        "Scope: Backend"
+      ],
+      "title_scope": "dashboards",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "jameskeane",
+      "state": "open"
+    },
+    {
+      "number": 110510,
+      "title": "fix(ownership): Prevent TypeError when avatar name is null",
+      "url": "https://github.com/getsentry/sentry/pull/110510",
+      "ttm_h": 553.12,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 11,
+      "labels": [
+        "Scope: Frontend",
+        "Stale"
+      ],
+      "title_scope": "ownership",
+      "title_type": "fix",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "app/sentry",
+      "state": "open"
+    },
+    {
+      "number": 110502,
+      "title": "ref(settings): Migrate personal tokens pages to useScrapsForm",
+      "url": "https://github.com/getsentry/sentry/pull/110502",
+      "ttm_h": 558.64,
+      "reviews_total": 3,
+      "changes_requested": 0,
+      "commented": 3,
+      "approvals": 0,
+      "files": 6,
+      "churn": 623,
+      "labels": [
+        "Scope: Frontend",
+        "Stale"
+      ],
+      "title_scope": "settings",
+      "title_type": "ref",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JonasBa",
+      "state": "open"
+    },
+    {
+      "number": 110473,
+      "title": "build(deps-dev): bump pip from 23.3.1 to 26.0",
+      "url": "https://github.com/getsentry/sentry/pull/110473",
+      "ttm_h": 565.98,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 4,
+      "labels": [
+        "Scope: Backend",
+        "Trigger: getsentry tests",
+        "Stale",
+        "dependencies",
+        "python:uv"
+      ],
+      "title_scope": "deps-dev",
+      "title_type": "build",
+      "file_domains": [
+        "uv.lock"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "app/dependabot",
+      "state": "open"
+    },
+    {
+      "number": 110471,
+      "title": "feat(ci): Add CI failure RCA dispatch workflow",
+      "url": "https://github.com/getsentry/sentry/pull/110471",
+      "ttm_h": 566.48,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 5,
+      "churn": 944,
+      "labels": [
+        "Scope: Backend",
+        "Stale"
+      ],
+      "title_scope": "ci",
+      "title_type": "feat",
+      "file_domains": [
+        ".github/workflows",
+        "scripts/ci-rca"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "hubertdeng123",
+      "state": "open"
+    },
+    {
+      "number": 110467,
+      "title": "fix(spans): Prevent inflated drop counts from race condition in segment flushing",
+      "url": "https://github.com/getsentry/sentry/pull/110467",
+      "ttm_h": 567.23,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 1,
+      "files": 1,
+      "churn": 47,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "spans",
+      "title_type": "fix",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "victoria-yining-huang",
+      "state": "open"
+    },
+    {
+      "number": 110404,
+      "title": "fix(explore): add !has filter when drilling down into no value group",
+      "url": "https://github.com/getsentry/sentry/pull/110404",
+      "ttm_h": 574.96,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 1,
+      "files": 2,
+      "churn": 27,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "explore",
+      "title_type": "fix",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "SafinMahmud",
+      "state": "open"
+    },
+    {
+      "number": 110358,
+      "title": "xdist phase one",
+      "url": "https://github.com/getsentry/sentry/pull/110358",
+      "ttm_h": 589.54,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 9,
+      "churn": 223,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "unscoped",
+      "title_type": "unknown",
+      "file_domains": [
+        ".github/workflows",
+        "src/sentry",
+        "tests/conftest.py",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "mchen-sentry",
+      "state": "open"
+    },
+    {
+      "number": 110353,
+      "title": "feat(occurrences on eap): Implement issue platform timeseries query ",
+      "url": "https://github.com/getsentry/sentry/pull/110353",
+      "ttm_h": 590.31,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 213,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "occurrences on eap",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "shashjar",
+      "state": "open"
+    },
+    {
+      "number": 110347,
+      "title": "feat(lint): Add S015/S016 rules for Seer viewer_context enforcement",
+      "url": "https://github.com/getsentry/sentry/pull/110347",
+      "ttm_h": 590.62,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 3,
+      "churn": 125,
+      "labels": [
+        "Scope: Backend",
+        "Stale"
+      ],
+      "title_scope": "lint",
+      "title_type": "feat",
+      "file_domains": [
+        "setup.cfg",
+        "tests/tools",
+        "tools/flake8_plugin.py"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "azulus",
+      "state": "open"
+    },
+    {
+      "number": 110346,
+      "title": "ref: Add S015 flake8 rule for make_signed_seer_api_request viewer_con…",
+      "url": "https://github.com/getsentry/sentry/pull/110346",
+      "ttm_h": 590.63,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 3,
+      "churn": 49,
+      "labels": [
+        "Scope: Backend",
+        "Stale"
+      ],
+      "title_scope": "unscoped",
+      "title_type": "ref",
+      "file_domains": [
+        "setup.cfg",
+        "tests/tools",
+        "tools/flake8_plugin.py"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "azulus",
+      "state": "open"
+    },
+    {
+      "number": 110318,
+      "title": "feat(occurrences on eap): Implement issue platform query",
+      "url": "https://github.com/getsentry/sentry/pull/110318",
+      "ttm_h": 593.34,
+      "reviews_total": 3,
+      "changes_requested": 0,
+      "commented": 3,
+      "approvals": 0,
+      "files": 2,
+      "churn": 115,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "occurrences on eap",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "shashjar",
+      "state": "open"
+    },
+    {
+      "number": 110237,
+      "title": "Adds integration tests for the new `occurrences` EAP dataset ",
+      "url": "https://github.com/getsentry/sentry/pull/110237",
+      "ttm_h": 615.27,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 616,
+      "labels": [
+        "Stale"
+      ],
+      "title_scope": "unscoped",
+      "title_type": "unknown",
+      "file_domains": [
+        "tests/snuba"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "manessaraj",
+      "state": "open"
+    },
+    {
+      "number": 110199,
+      "title": "feat(onboarding): add agent-assisted setup for AI coding agents",
+      "url": "https://github.com/getsentry/sentry/pull/110199",
+      "ttm_h": 621.87,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 8,
+      "churn": 387,
+      "labels": [
+        "Scope: Frontend",
+        "Stale"
+      ],
+      "title_scope": "onboarding",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "HazAT",
+      "state": "open"
+    },
+    {
+      "number": 110174,
+      "title": "fix(api): Validate member_id in accept-invite URL patterns",
+      "url": "https://github.com/getsentry/sentry/pull/110174",
+      "ttm_h": 682.74,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 4,
+      "labels": [
+        "Scope: Backend",
+        "Trigger: getsentry tests",
+        "Stale"
+      ],
+      "title_scope": "api",
+      "title_type": "fix",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "app/sentry",
+      "state": "open"
+    },
+    {
+      "number": 110161,
+      "title": "feat(admin): Billing Plans Admin Redesign",
+      "url": "https://github.com/getsentry/sentry/pull/110161",
+      "ttm_h": 684.57,
+      "reviews_total": 4,
+      "changes_requested": 0,
+      "commented": 4,
+      "approvals": 0,
+      "files": 2,
+      "churn": 1146,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "admin",
+      "title_type": "feat",
+      "file_domains": [
+        "static/gsAdmin"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "swartzrock",
+      "state": "open"
+    },
+    {
+      "number": 110144,
+      "title": "feat(ui): Split Django template styles",
+      "url": "https://github.com/getsentry/sentry/pull/110144",
+      "ttm_h": 686.69,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 7,
+      "churn": 350,
+      "labels": [
+        "Scope: Frontend",
+        "Scope: Backend",
+        "Stale"
+      ],
+      "title_scope": "ui",
+      "title_type": "feat",
+      "file_domains": [
+        "rspack.config.ts",
+        "src/sentry",
+        "static/less"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "scttcper",
+      "state": "open"
+    },
+    {
+      "number": 109881,
+      "title": "fix(dashboards): Align time series X axis ticks to user timezone",
+      "url": "https://github.com/getsentry/sentry/pull/109881",
+      "ttm_h": 737.4,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 8,
+      "churn": 744,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "dashboards",
+      "title_type": "fix",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "gggritso",
+      "state": "open"
+    },
+    {
+      "number": 109843,
+      "title": "feat(occurrences on eap): Implement double-read query for calculating issue velocity",
+      "url": "https://github.com/getsentry/sentry/pull/109843",
+      "ttm_h": 755.97,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 225,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "occurrences on eap",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "shashjar",
+      "state": "open"
+    },
+    {
+      "number": 109819,
+      "title": "feat(logs): moved LogsInfiniteTable inline with expand/contract button",
+      "url": "https://github.com/getsentry/sentry/pull/109819",
+      "ttm_h": 759.71,
+      "reviews_total": 55,
+      "changes_requested": 0,
+      "commented": 54,
+      "approvals": 1,
+      "files": 26,
+      "churn": 513,
+      "labels": [
+        "Scope: Frontend",
+        "Scope: Backend"
+      ],
+      "title_scope": "logs",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JoshuaKGoldberg",
+      "state": "open"
+    },
+    {
+      "number": 109747,
+      "title": "feat(snuba): handle TOO_MANY_BYTES as clickhouse error instead of 429",
+      "url": "https://github.com/getsentry/sentry/pull/109747",
+      "ttm_h": 779.0,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 0,
+      "files": 2,
+      "churn": 15,
+      "labels": [
+        "Scope: Backend",
+        "Stale"
+      ],
+      "title_scope": "snuba",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "cvxluo",
+      "state": "open"
+    },
+    {
+      "number": 109746,
+      "title": "feat(project-filter): Add indeterminate states to All Projects and My Projects checkboxes",
+      "url": "https://github.com/getsentry/sentry/pull/109746",
+      "ttm_h": 779.34,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 1,
+      "files": 9,
+      "churn": 1478,
+      "labels": [
+        "Scope: Frontend",
+        "Stale"
+      ],
+      "title_scope": "project-filter",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app",
+        "tests/js"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JonasBa",
+      "state": "open"
+    },
+    {
+      "number": 109537,
+      "title": "build(deps): bump @tanstack/react-pacer from 0.17.0 to 0.20.0",
+      "url": "https://github.com/getsentry/sentry/pull/109537",
+      "ttm_h": 874.88,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 90,
+      "labels": [
+        "Scope: Frontend",
+        "dependencies",
+        "javascript"
+      ],
+      "title_scope": "deps",
+      "title_type": "build",
+      "file_domains": [
+        "package.json",
+        "pnpm-lock.yaml"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "app/dependabot",
+      "state": "open"
+    },
+    {
+      "number": 109532,
+      "title": "WIP - seer related apis",
+      "url": "https://github.com/getsentry/sentry/pull/109532",
+      "ttm_h": 875.92,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 0,
+      "files": 2,
+      "churn": 1198,
+      "labels": [
+        "Scope: Backend",
+        "Stale"
+      ],
+      "title_scope": "unscoped",
+      "title_type": "unknown",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "ryan953",
+      "state": "open"
+    },
+    {
+      "number": 109276,
+      "title": "chore(deps): bump react-router-dom from 6.30.3 to 7.13.1",
+      "url": "https://github.com/getsentry/sentry/pull/109276",
+      "ttm_h": 922.74,
+      "reviews_total": 3,
+      "changes_requested": 0,
+      "commented": 3,
+      "approvals": 0,
+      "files": 2,
+      "churn": 70,
+      "labels": [
+        "Scope: Frontend",
+        "dependencies",
+        "javascript"
+      ],
+      "title_scope": "deps",
+      "title_type": "chore",
+      "file_domains": [
+        "package.json",
+        "pnpm-lock.yaml"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "app/dependabot",
+      "state": "open"
+    },
+    {
+      "number": 109275,
+      "title": "chore(deps): bump focus-trap from 7.6.5 to 8.0.0",
+      "url": "https://github.com/getsentry/sentry/pull/109275",
+      "ttm_h": 922.75,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 31,
+      "labels": [
+        "Scope: Frontend",
+        "dependencies",
+        "javascript"
+      ],
+      "title_scope": "deps",
+      "title_type": "chore",
+      "file_domains": [
+        "package.json",
+        "pnpm-lock.yaml"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "app/dependabot",
+      "state": "open"
+    },
+    {
+      "number": 109274,
+      "title": "chore(deps-dev): bump terser from 5.40.0 to 5.46.0",
+      "url": "https://github.com/getsentry/sentry/pull/109274",
+      "ttm_h": 922.76,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 129,
+      "labels": [
+        "Scope: Frontend",
+        "dependencies",
+        "javascript"
+      ],
+      "title_scope": "deps-dev",
+      "title_type": "chore",
+      "file_domains": [
+        "package.json",
+        "pnpm-lock.yaml"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "app/dependabot",
+      "state": "open"
+    },
+    {
+      "number": 109273,
+      "title": "chore(deps): bump jsonrepair from 3.8.0 to 3.13.2",
+      "url": "https://github.com/getsentry/sentry/pull/109273",
+      "ttm_h": 922.77,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 0,
+      "files": 2,
+      "churn": 23,
+      "labels": [
+        "Scope: Frontend",
+        "dependencies",
+        "javascript"
+      ],
+      "title_scope": "deps",
+      "title_type": "chore",
+      "file_domains": [
+        "package.json",
+        "pnpm-lock.yaml"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "app/dependabot",
+      "state": "open"
+    },
+    {
+      "number": 109272,
+      "title": "chore(deps-dev): bump expect-type from 1.2.1 to 1.3.0",
+      "url": "https://github.com/getsentry/sentry/pull/109272",
+      "ttm_h": 922.78,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 23,
+      "labels": [
+        "Scope: Frontend",
+        "dependencies",
+        "javascript"
+      ],
+      "title_scope": "deps-dev",
+      "title_type": "chore",
+      "file_domains": [
+        "package.json",
+        "pnpm-lock.yaml"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "app/dependabot",
+      "state": "open"
+    },
+    {
+      "number": 109269,
+      "title": "chore(deps): bump @emotion/is-prop-valid from 1.3.1 to 1.4.0 in the emotion-dependencies group across 1 directory",
+      "url": "https://github.com/getsentry/sentry/pull/109269",
+      "ttm_h": 922.82,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 31,
+      "labels": [
+        "Scope: Frontend",
+        "dependencies",
+        "javascript"
+      ],
+      "title_scope": "deps",
+      "title_type": "chore",
+      "file_domains": [
+        "package.json",
+        "pnpm-lock.yaml"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "app/dependabot",
+      "state": "open"
+    },
+    {
+      "number": 109097,
+      "title": "fix(urls): Fix customer domain path regex rejecting org slugs starting with 'new'",
+      "url": "https://github.com/getsentry/sentry/pull/109097",
+      "ttm_h": 952.3,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 3,
+      "labels": [
+        "Scope: Backend",
+        "Stale",
+        "flaky-test"
+      ],
+      "title_scope": "urls",
+      "title_type": "fix",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "joshuarli",
+      "state": "open"
+    },
+    {
+      "number": 108774,
+      "title": "chore(flags): Remove GA-graduated mep-use-default-tags flag",
+      "url": "https://github.com/getsentry/sentry/pull/108774",
+      "ttm_h": 1019.63,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 0,
+      "files": 4,
+      "churn": 62,
+      "labels": [
+        "Scope: Frontend",
+        "Scope: Backend"
+      ],
+      "title_scope": "flags",
+      "title_type": "chore",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry",
+        "tests/snuba"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "wedamija",
+      "state": "open"
+    },
+    {
+      "number": 108534,
+      "title": "feat(code-review): Add PR Review Dashboard frontend [internal] ",
+      "url": "https://github.com/getsentry/sentry/pull/108534",
+      "ttm_h": 1050.04,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 0,
+      "files": 43,
+      "churn": 3395,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "code-review",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "static/app",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "vaind",
+      "state": "open"
+    },
+    {
+      "number": 108533,
+      "title": "feat(code-review): Add backend logic for PR Review Dashboard [internal]",
+      "url": "https://github.com/getsentry/sentry/pull/108533",
+      "ttm_h": 1050.1,
+      "reviews_total": 40,
+      "changes_requested": 0,
+      "commented": 40,
+      "approvals": 0,
+      "files": 34,
+      "churn": 2135,
+      "labels": [
+        "Scope: Frontend",
+        "Scope: Backend",
+        "Stale"
+      ],
+      "title_scope": "code-review",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "static/app",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "vaind",
+      "state": "open"
+    },
+    {
+      "number": 108409,
+      "title": "feat(support): Add Intercom support widget frontend integration",
+      "url": "https://github.com/getsentry/sentry/pull/108409",
+      "ttm_h": 1091.08,
+      "reviews_total": 13,
+      "changes_requested": 0,
+      "commented": 13,
+      "approvals": 0,
+      "files": 7,
+      "churn": 280,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "support",
+      "title_type": "feat",
+      "file_domains": [
+        "package.json",
+        "pnpm-lock.yaml",
+        "static/app",
+        "static/gsApp"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "sentaur-athena",
+      "state": "open"
+    },
+    {
+      "number": 107216,
+      "title": ":sparkles: feat(gitlab): add issue sync outbound support",
+      "url": "https://github.com/getsentry/sentry/pull/107216",
+      "ttm_h": 1565.37,
+      "reviews_total": 6,
+      "changes_requested": 0,
+      "commented": 6,
+      "approvals": 0,
+      "files": 9,
+      "churn": 689,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "unscoped",
+      "title_type": "unknown",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "iamrajjoshi",
+      "state": "open"
+    },
+    {
+      "number": 106492,
+      "title": "lint: Add lint rule for calls to renderHook and derivitives",
+      "url": "https://github.com/getsentry/sentry/pull/106492",
+      "ttm_h": 1856.32,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 1,
+      "files": 94,
+      "churn": 4211,
+      "labels": [
+        "Scope: Frontend"
+      ],
+      "title_scope": "unscoped",
+      "title_type": "lint",
+      "file_domains": [
+        "eslint.config.mjs",
+        "static/app",
+        "static/eslint",
+        "static/gsAdmin",
+        "static/gsApp"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "ryan953",
+      "state": "open"
+    },
+    {
+      "number": 106018,
+      "title": "feat(spans-migration): self hosted spans migration for discover saved queries",
+      "url": "https://github.com/getsentry/sentry/pull/106018",
+      "ttm_h": 2031.53,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 0,
+      "files": 3,
+      "churn": 200,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "spans-migration",
+      "title_type": "feat",
+      "file_domains": [
+        "migrations_lockfile.txt",
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "nikkikapadia",
+      "state": "open"
+    },
+    {
+      "number": 105564,
+      "title": "chore(tracing): update SDK onboarding pages",
+      "url": "https://github.com/getsentry/sentry/pull/105564",
+      "ttm_h": 2256.04,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 4,
+      "churn": 181,
+      "labels": [
+        "WIP",
+        "Scope: Frontend",
+        "Stale"
+      ],
+      "title_scope": "tracing",
+      "title_type": "chore",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "JoshuaMoelans",
+      "state": "open"
+    },
+    {
+      "number": 105489,
+      "title": "feat(i18n): add built-in shortcodes and type-safety",
+      "url": "https://github.com/getsentry/sentry/pull/105489",
+      "ttm_h": 2297.31,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 301,
+      "labels": [
+        "WIP",
+        "Scope: Frontend"
+      ],
+      "title_scope": "i18n",
+      "title_type": "feat",
+      "file_domains": [
+        "static/app"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "natemoo-re",
+      "state": "open"
+    },
+    {
+      "number": 105420,
+      "title": "feat(security): prepend API application client secrets with `sntrya_` prefix",
+      "url": "https://github.com/getsentry/sentry/pull/105420",
+      "ttm_h": 2443.62,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 0,
+      "files": 6,
+      "churn": 29,
+      "labels": [
+        "WIP",
+        "Scope: Backend",
+        "Stale"
+      ],
+      "title_scope": "security",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "oioki",
+      "state": "open"
+    },
+    {
+      "number": 104803,
+      "title": "feat(spans-migration): transactions to spans dashboard widget self hosted migration",
+      "url": "https://github.com/getsentry/sentry/pull/104803",
+      "ttm_h": 2725.95,
+      "reviews_total": 1,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 0,
+      "files": 3,
+      "churn": 362,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "spans-migration",
+      "title_type": "feat",
+      "file_domains": [
+        "migrations_lockfile.txt",
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "nikkikapadia",
+      "state": "open"
+    },
+    {
+      "number": 104612,
+      "title": "Make feature flags optional",
+      "url": "https://github.com/getsentry/sentry/pull/104612",
+      "ttm_h": 2773.84,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 119,
+      "labels": [
+        "WIP",
+        "Scope: Backend",
+        "Stale"
+      ],
+      "title_scope": "unscoped",
+      "title_type": "unknown",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "aayush-se",
+      "state": "open"
+    },
+    {
+      "number": 103034,
+      "title": "feat(audit_log): Introduce NewAuditLogEvent class and auditlog_class decorator",
+      "url": "https://github.com/getsentry/sentry/pull/103034",
+      "ttm_h": 3480.68,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 1,
+      "churn": 55,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "audit_log",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "constantinius",
+      "state": "open"
+    },
+    {
+      "number": 102653,
+      "title": "feat(grouping): Add better support for native fingerprinting/grouping use-cases",
+      "url": "https://github.com/getsentry/sentry/pull/102653",
+      "ttm_h": 3623.78,
+      "reviews_total": 3,
+      "changes_requested": 0,
+      "commented": 2,
+      "approvals": 1,
+      "files": 8,
+      "churn": 1203,
+      "labels": [
+        "Scope: Backend"
+      ],
+      "title_scope": "grouping",
+      "title_type": "feat",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "mujacica",
+      "state": "open"
+    },
+    {
+      "number": 97691,
+      "title": "[fix] Use Org Mapping when checking for org level AI PR review consent",
+      "url": "https://github.com/getsentry/sentry/pull/97691",
+      "ttm_h": 5632.92,
+      "reviews_total": 2,
+      "changes_requested": 0,
+      "commented": 1,
+      "approvals": 1,
+      "files": 2,
+      "churn": 335,
+      "labels": [
+        "WIP",
+        "Scope: Backend"
+      ],
+      "title_scope": "unscoped",
+      "title_type": "unknown",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "rohitvinnakota-codecov",
+      "state": "open"
+    },
+    {
+      "number": 94072,
+      "title": "feat(admin): Add button to remove UserEmail",
+      "url": "https://github.com/getsentry/sentry/pull/94072",
+      "ttm_h": 6832.51,
+      "reviews_total": 4,
+      "changes_requested": 0,
+      "commented": 3,
+      "approvals": 1,
+      "files": 3,
+      "churn": 157,
+      "labels": [
+        "WIP",
+        "Scope: Frontend"
+      ],
+      "title_scope": "admin",
+      "title_type": "feat",
+      "file_domains": [
+        "static/gsAdmin"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "leedongwei",
+      "state": "open"
+    },
+    {
+      "number": 91623,
+      "title": "Add logging for connection username in migrations",
+      "url": "https://github.com/getsentry/sentry/pull/91623",
+      "ttm_h": 7796.15,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 2,
+      "churn": 16,
+      "labels": [
+        "WIP",
+        "Scope: Backend"
+      ],
+      "title_scope": "unscoped",
+      "title_type": "unknown",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "mwarkentin",
+      "state": "open"
+    },
+    {
+      "number": 89498,
+      "title": "fix(Jira): Add issue delted webhook code",
+      "url": "https://github.com/getsentry/sentry/pull/89498",
+      "ttm_h": 8514.05,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 3,
+      "churn": 69,
+      "labels": [
+        "WIP",
+        "Scope: Backend"
+      ],
+      "title_scope": "Jira",
+      "title_type": "fix",
+      "file_domains": [
+        "src/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "Christinarlong",
+      "state": "open"
+    },
+    {
+      "number": 86811,
+      "title": "chore(ppf): Stop sending group states from the post process forwarder",
+      "url": "https://github.com/getsentry/sentry/pull/86811",
+      "ttm_h": 9329.64,
+      "reviews_total": 0,
+      "changes_requested": 0,
+      "commented": 0,
+      "approvals": 0,
+      "files": 6,
+      "churn": 47,
+      "labels": [
+        "WIP",
+        "Scope: Backend"
+      ],
+      "title_scope": "ppf",
+      "title_type": "chore",
+      "file_domains": [
+        "src/sentry",
+        "tests/sentry"
+      ],
+      "review_rounds": 0,
+      "friction_score": 0.0,
+      "author": "wedamija",
+      "state": "open"
+    }
+  ]
+}

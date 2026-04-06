@@ -1,0 +1,166 @@
+---
+title: ADR Proposals
+description: "Six archgate-format ADRs grounded in study evidence — with companion .rules.ts files and custom lint rules ready to drop into a Sentry-style codebase."
+sidebar:
+  order: 7
+---
+
+This page summarizes six [Architecture Decision Records](https://adr.github.io/) grounded in the study's findings. Each ADR is published as a complete artifact in the study repository, formatted to match the [archgate ADR convention](https://github.com/archgate/cli/blob/main/.archgate/adrs/) — frontmatter, sections, and (where applicable) a companion `.rules.ts` file that implements deterministic checks.
+
+## Why archgate format?
+
+Archgate is the project hosting this study. Its ADR convention is opinionated for a reason: every ADR has a parseable frontmatter (id, domain, scoped file globs), structured sections (Context with alternatives, Decision, Do's and Don'ts, Implementation Pattern, Consequences, Compliance and Enforcement), and an optional `.rules.ts` companion file that the `archgate check` engine can execute to enforce the rules automatically.
+
+By publishing the proposals in archgate format, the Sentry team (or any team running archgate) could literally drop these files into `.archgate/adrs/` and start enforcing them immediately.
+
+## The Files
+
+All ADR files live in [`studies/sentry-pr-review-friction/proposed-adrs/`](https://github.com/archgate/studies/tree/main/studies/sentry-pr-review-friction/proposed-adrs):
+
+| File | Domain | Has Rules |
+|------|--------|-----------|
+| [`GEN-001-pr-scope-boundaries.md`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/GEN-001-pr-scope-boundaries.md) + [`.rules.ts`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/GEN-001-pr-scope-boundaries.rules.ts) | general | Yes |
+| [`BE-001-api-contract-evolution.md`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/BE-001-api-contract-evolution.md) + [`.rules.ts`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/BE-001-api-contract-evolution.rules.ts) | backend | Yes |
+| [`GEN-002-test-evidence-matrix.md`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/GEN-002-test-evidence-matrix.md) + [`.rules.ts`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/GEN-002-test-evidence-matrix.rules.ts) | general | Yes |
+| [`FE-001-frontend-component-conventions.md`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/FE-001-frontend-component-conventions.md) + [`.rules.ts`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/FE-001-frontend-component-conventions.rules.ts) | frontend | Yes |
+| [`BE-002-security-review-protocol.md`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/BE-002-security-review-protocol.md) + [`.rules.ts`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/BE-002-security-review-protocol.rules.ts) | backend | Yes |
+| [`GEN-003-bot-finding-promotion.md`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/GEN-003-bot-finding-promotion.md) | general | No (workflow ADR) |
+
+Plus custom lint rules in [`proposed-lint-rules/`](https://github.com/archgate/studies/tree/main/studies/sentry-pr-review-friction/proposed-lint-rules):
+
+| File | Tool | Targets |
+|------|------|---------|
+| [`eslint-frontend-conventions.js`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-lint-rules/eslint-frontend-conventions.js) | ESLint | Inline styles, `Stack gap=0`, async state try/finally |
+| [`semgrep-doesnotexist.yaml`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-lint-rules/semgrep-doesnotexist.yaml) | Semgrep | Missing `Model.DoesNotExist` handling |
+| [`semgrep-filter-first-unreachable.yaml`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-lint-rules/semgrep-filter-first-unreachable.yaml) | Semgrep | `.filter().first()` with unreachable `except DoesNotExist` |
+| [`semgrep-high-cardinality-metrics.yaml`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-lint-rules/semgrep-high-cardinality-metrics.yaml) | Semgrep | High-cardinality metric tags |
+| [`semgrep-direct-dict-access-api.yaml`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-lint-rules/semgrep-direct-dict-access-api.yaml) | Semgrep | Direct dict access on external API responses |
+
+The lint rules are designed to be installed in `.archgate/lint/` per the [archgate lint folder convention](https://github.com/archgate/cli/blob/main/.archgate/lint/README.md).
+
+## Summary of Each ADR
+
+### [GEN-001 — PR Scope Boundaries and Size Budget](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/GEN-001-pr-scope-boundaries.md)
+
+**Problem**: Large PRs (≥10 files or ≥400 churn) hit the high-friction quartile **57.4%** of the time vs 9.8% for tiny PRs.
+
+**Decision**: Soft size limits (≤5 files, ≤200 churn) with mandatory "Scope Rationale" section in PR description for over-limit PRs. Hard threshold at the empirical large-PR cutoff.
+
+**Rules** ([`GEN-001-pr-scope-boundaries.rules.ts`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/GEN-001-pr-scope-boundaries.rules.ts)):
+- `pr-size-warning` — warns when soft or hard threshold is exceeded
+- `scope-rationale-required` — blocks merge if over-limit PR has no Scope Rationale section
+
+---
+
+### [BE-001 — API Contract and Configuration Evolution](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/BE-001-api-contract-evolution.md)
+
+**Problem**: API design and defaults is the top discussion theme (38.3% of high-friction PRs). Recurring bot findings include `str | None` UnionType in option registration, Pydantic Literal mismatches, and option key writer/reader mismatches.
+
+**Decision**: Concrete callable types in option registration; typed key constants in a single registry; `None` defaults require semantic explanation; conflicting options rejected at validation time.
+
+**Rules** ([`BE-001-api-contract-evolution.rules.ts`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/BE-001-api-contract-evolution.rules.ts)):
+- `no-union-type-in-option-registration` — flags `type=str | None` patterns
+- `option-keys-must-use-constants` — flags string-literal option keys in `options.get/set` calls
+- `no-none-default-without-nullable-comment` — requires comment explaining `None` semantic
+
+---
+
+### [GEN-002 — Test Evidence Matrix by Change Type](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/GEN-002-test-evidence-matrix.md)
+
+**Problem**: Test evidence is tied for the top discussion theme (38.3%). Reviewers and bots ask for *specific* tests (error paths, edge cases, sentinel values) — not just "more tests."
+
+**Decision**: Per-change-type test matrix with explicit minimum scenarios for each change type (new endpoint, modified component, error handling, migration, etc.). PR description must include a Test Plan section mapping the change to matrix entries.
+
+**Rules** ([`GEN-002-test-evidence-matrix.rules.ts`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/GEN-002-test-evidence-matrix.rules.ts)):
+- `test-plan-section-required` — PR description must include `## Test Plan`
+- `test-plan-references-must-exist` — test names listed in the plan must be found in changed test files
+- `no-bare-except-pass-in-tests` — bare `except: pass` in test files indicates missing assertion
+
+---
+
+### [FE-001 — Frontend Component and Styling Conventions](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/FE-001-frontend-component-conventions.md)
+
+**Problem**: Component patterns appear in 35.0% of high-friction PRs. The single most repeated review comment in the entire dataset — "can we avoid this inline style w/ prop of some kind?" — appeared **6 times in PR [#111529](https://github.com/getsentry/sentry/pull/111529)** alone.
+
+**Decision**: No inline `style=` props (with escape hatch comment); design system first; layout component selection rules; `try/finally` for async loading state.
+
+**Rules** ([`FE-001-frontend-component-conventions.rules.ts`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/FE-001-frontend-component-conventions.rules.ts)):
+- `no-inline-style` — flags `style=` JSX without escape hatch comment
+- `no-stack-with-zero-gap` — flags `<Stack gap={0}>`
+- `async-state-try-finally` — warns when loading state setter resets in `try` but not `finally`
+
+**Companion ESLint plugin** ([`eslint-frontend-conventions.js`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-lint-rules/eslint-frontend-conventions.js)) provides edit-time IDE feedback for the same patterns.
+
+---
+
+### [BE-002 — Security Review Protocol for Auth and Integration Changes](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/BE-002-security-review-protocol.md)
+
+**Problem**: Security discussion appears in 20% of high-friction PRs but with disproportionate stakes. The `github` scope has the highest median review count (5.5) of any scope due to OAuth pipeline security surface area.
+
+**Decision**: PRs touching auth/integration/API paths must include a Security Considerations section answering five required questions; CODEOWNERS-driven security reviewer assignment; no silent removal of defense-in-depth; user-supplied IDs validated before pipeline state binding.
+
+**Rules** ([`BE-002-security-review-protocol.rules.ts`](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/BE-002-security-review-protocol.rules.ts)):
+- `security-considerations-section-required` — PRs touching sensitive paths must have the section
+- `no-pipeline-bind-before-validation` — `pipeline.bind_state()` must follow authorization checks
+- `no-unscoped-model-get-in-api` — flags `Model.objects.get()` in API endpoints without org scoping
+
+---
+
+### [GEN-003 — Convert Recurring Bot Findings to Deterministic Rules](https://github.com/archgate/studies/blob/main/studies/sentry-pr-review-friction/proposed-adrs/GEN-003-bot-finding-promotion.md)
+
+**Problem**: Bot reviewers (`sentry[bot]`, `sentry-warden[bot]`, `cursor[bot]`) find real bugs but the **same bug categories repeat across PRs**. See the [Automated Review Friction page](./automated-review/) for the full pattern catalog.
+
+**Decision**: Track bot finding categories. When a category accumulates ≥3 occurrences in 90 days, commit to promoting it to a deterministic check (mypy strict mode, AST lint rule, schema/registry validation, or test fixture). Suppress the bot category once the check ships, freeing the bot to find genuinely novel patterns.
+
+**Rules**: This is a workflow ADR — no companion `.rules.ts`. Enforcement is procedural via the quarterly promotion review and the bot finding tracker. The other five ADRs above (BE-001, BE-002, FE-001) and the [proposed lint rules](https://github.com/archgate/studies/tree/main/studies/sentry-pr-review-friction/proposed-lint-rules) **are themselves the result of applying GEN-003** to the bot findings in this study.
+
+## Impact Summary
+
+| ADR | Target Theme(s) | Coverage of High-Friction PRs | Mechanism |
+|-----|-----------------|-------------------------------|-----------|
+| GEN-001 | Size-driven friction | 57.4% of large PRs | Reduce PR size + force scope rationale |
+| BE-001 | API design (38.3%) + state mgmt (35.0%) | ~40% | Typed registries + concrete callable types |
+| GEN-002 | Test evidence (38.3%) + type safety (30.0%) | ~40% | Per-change-type test matrix in PR template |
+| FE-001 | Component patterns (35.0%) + naming (11.7%) | ~35% | ESLint rules eliminating recurring style comments |
+| BE-002 | Security (20.0%) | ~20% | Front-loaded security analysis + CODEOWNERS gating |
+| GEN-003 | Bot review friction (68.3%) | ~68% | Promote recurring agentic findings to deterministic checks |
+
+## Implementation Priority
+
+1. **FE-001 (Frontend Conventions)** — Lowest cost, highest immediate signal. The ESLint plugin for inline styles eliminates the single most repeated review comment in our dataset. Quick win.
+
+2. **GEN-001 (PR Scope Boundaries)** — High impact, moderate cost. The size warning rule is easy to implement and directly targets the strongest friction predictor.
+
+3. **GEN-003 + the lint rules** (Bot Finding Promotion) — Highest long-term leverage. The 4 Semgrep rules in `proposed-lint-rules/` could ship in days and immediately suppress the most common bot finding categories.
+
+4. **GEN-002 (Test Evidence Matrix)** — Medium cost, high clarity impact. The matrix can be published as a PR template change and immediately referenced by reviewers.
+
+5. **BE-001 (API Contract Evolution)** — Higher cost, high long-term impact. Migrating to a typed option key registry is a meaningful refactor but eliminates an entire bug class permanently.
+
+6. **BE-002 (Security Protocol)** — Specialized but critical. Affects ~20% of PRs but those PRs carry the highest risk of security oversight.
+
+## How to Use These ADRs
+
+If you run a Sentry-style codebase (Python backend + TypeScript frontend) and want to adopt these proposals:
+
+```bash
+# 1. Initialize archgate in your repo (if not already)
+cd your-repo
+archgate init
+
+# 2. Drop the ADR files into .archgate/adrs/
+cp /path/to/study/proposed-adrs/*.md .archgate/adrs/
+cp /path/to/study/proposed-adrs/*.rules.ts .archgate/adrs/
+
+# 3. Drop the lint rules into .archgate/lint/
+mkdir -p .archgate/lint/semgrep
+cp /path/to/study/proposed-lint-rules/eslint-frontend-conventions.js .archgate/lint/eslint.js
+cp /path/to/study/proposed-lint-rules/semgrep-*.yaml .archgate/lint/semgrep/
+
+# 4. Adjust the file globs in each ADR's frontmatter to match your repo layout
+
+# 5. Run the checks
+archgate check
+```
+
+Each ADR is independent — you can adopt them one at a time, in the priority order above, without committing to the full pack upfront.

@@ -46,7 +46,8 @@ export default defineConfig({
             },
             {
               label: "Sentry PR Friction & ADR Standardization",
-              link: "/studies/sentry-pr-review-friction/",
+              collapsed: false,
+              autogenerate: { directory: "studies/sentry-pr-review-friction" },
             },
           ],
         },

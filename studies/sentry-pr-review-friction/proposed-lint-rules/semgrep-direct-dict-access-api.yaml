@@ -1,0 +1,45 @@
+# semgrep-direct-dict-access-api.yaml
+#
+# Detects direct dict[key] access on responses from external API calls.
+# These are KeyError waiting to happen when the API returns an error or
+# malformed response.
+#
+# Replaces the recurring `sentry-warden[bot]` finding from PR #111728:
+#   "KeyError when GitHub API response lacks 'installations' key — Line 908
+#    uses direct dict access installed_orgs['installations'] on the GitHub
+#    API response. If the API returns an error, malformed, or unexpected
+#    structure, this will raise KeyError."
+
+rules:
+  - id: direct-dict-access-on-api-response
+    languages: [python]
+    severity: WARNING
+    message: |
+      Direct dict[key] access on a value that came from an external API.
+      External APIs can return error responses or malformed payloads;
+      direct access will raise KeyError when the expected key is absent.
+
+      Use one of:
+      - `.get(key)` with explicit None handling
+      - A TypedDict or Pydantic model that validates the response shape
+      - A try/except KeyError block with a fallback
+    patterns:
+      - pattern-either:
+          - pattern: |
+              $RESP = $CLIENT.$METHOD(...).json()
+              ...
+              $RESP[$KEY]
+          - pattern: |
+              $RESP = requests.$METHOD(...).json()
+              ...
+              $RESP[$KEY]
+          - pattern: |
+              $RESP = $CLIENT.get_$NAME(...)
+              ...
+              $RESP[$KEY]
+    paths:
+      include:
+        - "src/sentry/integrations/**/*.py"
+        - "src/sentry/identity/**/*.py"
+      exclude:
+        - "src/sentry/**/tests/**"
