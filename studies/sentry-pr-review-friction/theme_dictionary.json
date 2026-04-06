@@ -1,0 +1,180 @@
+{
+  "api_design_and_defaults": {
+    "keywords": [
+      "default",
+      "allow_null",
+      "nullable",
+      "None",
+      "null",
+      "validation",
+      "required=False",
+      "ChoiceField",
+      "serializer",
+      "API",
+      "endpoint",
+      "schema",
+      "breaking change",
+      "backwards compat",
+      "deprecat",
+      ".get(",
+      "TypedDict",
+      "response format"
+    ],
+    "description": "Debates about API surface design, default values, nullability, and contract semantics"
+  },
+  "security_and_permissions": {
+    "keywords": [
+      "security",
+      "attack",
+      "vulnerability",
+      "permission",
+      "auth",
+      "authorization",
+      "access control",
+      "RBAC",
+      "privilege",
+      "user-specified data",
+      "validate",
+      "installation_id",
+      "multi-org",
+      "token",
+      "OAuth",
+      "pipeline",
+      "guarded against"
+    ],
+    "description": "Security implications, permission models, authentication flows, and attack surface discussions"
+  },
+  "naming_and_consistency": {
+    "keywords": [
+      "rename",
+      "naming",
+      "semantic name",
+      "consolidate",
+      "two names for",
+      "confusing",
+      "naming convention",
+      "1:1 as possible",
+      "normalize",
+      "alias"
+    ],
+    "description": "Naming choices, consistency between APIs, normalization of terminology"
+  },
+  "component_patterns_and_styling": {
+    "keywords": [
+      "inline style",
+      "prop",
+      "component",
+      "wrapper",
+      "Stack",
+      "Container",
+      "Flex",
+      "grid",
+      "layout",
+      "styled(",
+      "emotion",
+      "design system",
+      "card",
+      "animation",
+      "motion",
+      "border",
+      "spacing",
+      "gap"
+    ],
+    "description": "Frontend component usage patterns, styling approaches, design system compliance"
+  },
+  "test_evidence_and_coverage": {
+    "keywords": [
+      "test",
+      "coverage",
+      "assert",
+      "mock",
+      "fixture",
+      "snapshot",
+      "regression",
+      "test to disprove",
+      "test failure",
+      "Backend Test Failures",
+      "verify",
+      "spec"
+    ],
+    "description": "Requests for test evidence, coverage gaps, test methodology discussions"
+  },
+  "type_safety_and_error_handling": {
+    "keywords": [
+      "type error",
+      "mypy",
+      "type:",
+      "Optional",
+      "type ignore",
+      "typing",
+      "cast",
+      "isinstance",
+      "TypedDict",
+      "error handling",
+      "exception",
+      "try/except",
+      "raise",
+      "traceback",
+      "SLO",
+      "error message"
+    ],
+    "description": "Type correctness, type annotations, error handling patterns, and exception safety"
+  },
+  "state_management_and_data_flow": {
+    "keywords": [
+      "state",
+      "pipeline",
+      "bind",
+      "bound",
+      "bound to",
+      "weird state",
+      "subsequent request",
+      "context manager",
+      "migration",
+      "prod data",
+      "rows in prod",
+      "rollout",
+      "feature flag",
+      "flag"
+    ],
+    "description": "State management, data flow between components/services, migration safety"
+  },
+  "followup_and_scope_creep": {
+    "keywords": [
+      "follow up",
+      "follow-up",
+      "followup",
+      "as a follow up",
+      "could be a followup",
+      "separate PR",
+      "next PR",
+      "TODO",
+      "FIXME",
+      "out of scope",
+      "scope",
+      "linear.app",
+      "VDY-",
+      "CW-",
+      "ISWF-"
+    ],
+    "description": "Discussions about deferring work, scope boundaries, and follow-up tracking"
+  },
+  "code_documentation": {
+    "keywords": [
+      "comment",
+      "document",
+      "explain",
+      "nice to",
+      "context",
+      "code comment",
+      "docstring",
+      "what does",
+      "what is",
+      "why do we",
+      "under what conditions",
+      "significance",
+      "For context"
+    ],
+    "description": "Requests for code documentation, explanations of behavior, and clarifying intent"
+  }
+}

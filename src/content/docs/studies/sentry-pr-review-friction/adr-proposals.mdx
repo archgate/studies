@@ -1,0 +1,253 @@
+---
+title: ADR Proposals
+description: "Five evidence-grounded ADR proposals to reduce review friction in getsentry/sentry."
+sidebar:
+  order: 6
+---
+
+# Proposed ADR Pack
+
+These proposals are grounded in the [theme analysis](./themes/) and [friction map](./friction-map/) data from this study. Each proposal targets a specific pattern of recurring review friction, references the evidence that motivates it, and suggests an enforcement approach.
+
+---
+
+## ADR 1: PR Scope Boundaries and Size Budget
+
+### Problem
+
+Large PRs (≥10 files or ≥400 churn) account for 13.6% of PRs but hit the high-friction quartile **57.4%** of the time — nearly 6x the rate of tiny PRs (9.8%). Feature PRs (`feat`) have a **38.6%** high-friction rate, nearly double fix PRs (17.6%).
+
+The [abandoned PR analysis](./abandoned/) shows that approach disagreement — not PR size — drives abandonment, but large PRs make approach disagreement *more likely* because they bundle multiple decisions into a single review surface.
+
+### Decision
+
+PRs SHOULD stay within these soft limits:
+
+- **≤5 files changed** (median in our sample is 2)
+- **≤200 lines of churn** (P90 is 344, so this is the 75th-80th percentile)
+- **Single logical change** — one feature, one refactor, or one fix
+
+PRs exceeding these limits SHOULD include a "scope rationale" in the PR description explaining why they can't be split.
+
+### Rules
+
+- A CI check warns when a PR exceeds 10 files or 400 churn (the "large PR" threshold from our data)
+- PRs exceeding the threshold without a scope rationale get an automated comment requesting one
+- No hard block — some changes are inherently large (migrations, renames)
+
+### Evidence
+
+| Metric | Small PRs | Large PRs | Ratio |
+|--------|-----------|-----------|-------|
+| Median TTM | 1.66h | 22.52h | **13.6x** |
+| Median reviews | 1.0 | 5.0 | **5.0x** |
+| High-friction rate | 12.6% | 57.4% | **4.6x** |
+
+### Expected Impact
+
+If the 68 large PRs in our sample were split to stay within scope limits, assuming even a 50% reduction in their friction rates, that would move ~19 PRs out of the high-friction quartile — reducing total high-friction PRs by approximately 15%.
+
+---
+
+## ADR 2: API Contract and Configuration Evolution
+
+### Problem
+
+**API design and defaults** is the top discussion theme, appearing in **38.3%** of high-friction PRs. Reviewers repeatedly debate:
+
+- Whether values should be nullable vs. required with defaults
+- How defaults propagate across scopes (org → project → runtime)
+- Whether to force-overwrite conflicting options or reject at validation time
+
+From [#111697](https://github.com/getsentry/sentry/pull/111697):
+> *"Should we force overwrite if auto_open_prs and stopping point is not open_pr, or ignore an incorrect stopping point, or reject at validation time?"*
+
+From [#111723](https://github.com/getsentry/sentry/pull/111723):
+> *"Should we start this as `False`, then flip it on in prod?"*
+
+These questions recur because there's no explicit convention for how new configuration options should behave.
+
+### Decision
+
+New API fields and configuration options MUST follow these conventions:
+
+1. **Default values**: Every new field must have an explicit default. Document whether the default is "safe off" (feature disabled) or "safe on" (feature active). Prefer "safe off" for new features behind flags.
+
+2. **Nullability**: A field is nullable only if `null` has a distinct semantic meaning (e.g., "inherit from parent scope"). Document what `null` means in the field's docstring. If `null` just means "use the default," use the default directly instead.
+
+3. **Scope propagation**: When a setting exists at multiple scopes (org, project, user), document the resolution order explicitly. State whether child scopes can override, and what happens when parent and child conflict.
+
+4. **Validation**: Conflicting options MUST be rejected at validation time with a clear error message, not silently resolved. If silent resolution is necessary, document the resolution strategy in the serializer.
+
+### Rules
+
+- Serializer fields must include a docstring explaining the default and nullability semantics
+- PRs introducing multi-scope settings must include a "scope resolution" section in the PR description
+- Automated lint: flag `allow_null=True` without an accompanying comment explaining the null semantics
+
+### Evidence from Study
+
+- API design theme: 23/60 high-friction PRs (38.3%)
+- Co-occurs with state management (35.0%) and type safety (30.0%)
+- [#111697](https://github.com/getsentry/sentry/pull/111697): 47 review events, 118h TTM — dominated by nullability and default propagation debate
+
+---
+
+## ADR 3: Test Evidence Matrix by Change Type
+
+### Problem
+
+**Test evidence and coverage** is tied for the top discussion theme at **38.3%** of high-friction PRs. The pattern isn't "add more tests" — it's "add *these specific* tests." Reviewers request:
+
+- Rendering tests that verify provider context propagation
+- Error path tests for circuit breakers and exception handling
+- Edge case tests for specific input combinations
+
+From [#111554](https://github.com/getsentry/sentry/pull/111554):
+> *"There should probably be a test in here which mounts, renders, then confirms that the PageContextProvider is actually providing the page context."*
+
+From [#111723](https://github.com/getsentry/sentry/pull/111723):
+> *"Maybe worth adding a test for when the circuit breaker allows the request, but the HTTP request itself returns a failed status code?"*
+
+Each reviewer applies their own mental model of "sufficient" test evidence.
+
+### Decision
+
+Test expectations are tied to change type:
+
+| Change Type | Minimum Test Evidence |
+|-------------|----------------------|
+| **New API endpoint** | Happy path + auth failure + validation error + rate limit |
+| **New React component** | Mount/render + props variations + error state + accessibility |
+| **Provider/context change** | Nested consumer test + context propagation verification |
+| **Error handling change** | Each error path + recovery behavior + logging verification |
+| **Configuration/settings** | Default value + override + invalid value + scope resolution |
+| **Integration/webhook** | Success + auth failure + timeout + malformed payload |
+| **Migration** | Forward migration + rollback (if applicable) |
+| **Circuit breaker/resilience** | Open state + closed state + half-open + underlying failure |
+
+### Rules
+
+- PR description must include a "Test Plan" section mapping the change type to tests written
+- CI check: warn if a PR touches `src/` but adds no files under `tests/`
+- Review checklist includes "test evidence matches change type"
+
+### Evidence from Study
+
+- Test evidence theme: 23/60 high-friction PRs (38.3%)
+- Co-occurs with type safety (30.0%) — fragile error handling prompts test requests
+- [#111691](https://github.com/getsentry/sentry/pull/111691): reviewer asks for typed exceptions instead of string matching
+
+---
+
+## ADR 4: Frontend Component and Styling Conventions
+
+### Problem
+
+**Component patterns and styling** appears in **35.0%** of high-friction PRs. The single most repeated review comment in our dataset is:
+
+> *"Can we avoid this inline style w/ prop of some kind?"*
+
+This exact comment (or close variants) appeared **six times in one PR** ([#111529](https://github.com/getsentry/sentry/pull/111529)). Other recurring patterns:
+
+- Questions about when to use Stack vs. Container vs. Flex
+- Whether to use the design system vs. custom components
+- How to handle layout shifts from styling changes
+
+### Decision
+
+1. **No inline styles** in React components. Use component props, styled components, or design system tokens instead. If an inline style is truly necessary (dynamic values from props), add a code comment explaining why.
+
+2. **Design system first**: Before creating a custom styled component, check if a Scraps/design system component satisfies the need. If the design system component is insufficient, create a follow-up issue to extend it rather than building a one-off.
+
+3. **Layout components**: Use `Flex` for single-axis layouts, `Grid` for two-axis layouts. Use `Stack` only when children must stack vertically with consistent gaps. Do not use `Stack` with `gap={0}` — use a container instead.
+
+4. **Prop spreading**: Prefer `containerProps` spreading pattern for design system integration. Avoid extra wrapper elements when `containerProps` can achieve the same result.
+
+### Rules
+
+- ESLint rule: warn on `style=` attribute in JSX (with escape hatch comment `// inline-style: <reason>`)
+- PR review checklist: "no inline styles without justification"
+- Design system audit: quarterly review of custom styled components to identify candidates for design system promotion
+
+### Evidence from Study
+
+- Component patterns theme: 21/60 high-friction PRs (35.0%)
+- [#111529](https://github.com/getsentry/sentry/pull/111529): 37 review events, 123h TTM, 12 files — dominated by inline style and component pattern discussion
+- [#111490](https://github.com/getsentry/sentry/pull/111490): loading state and interactive behavior discussion
+
+---
+
+## ADR 5: Security Review Protocol for Auth and Integration Changes
+
+### Problem
+
+**Security and permissions** appears in **20.0%** of high-friction PRs — a lower frequency than other themes, but with disproportionately high stakes. The discussion themes are serious:
+
+> *"Yeah I think this could be a valid attack since this is the first step in the pipeline. Like what if someone gives us someone else's installation_id?"*
+> — [#111728](https://github.com/getsentry/sentry/pull/111728)
+
+> *"Organization scoping removed from Group fetch — defense-in-depth weakened."*
+> — [#111663](https://github.com/getsentry/sentry/pull/111663)
+
+> *"Should we put some permissions checks around this? Only admins will be able to edit integrations."*
+> — [#111499](https://github.com/getsentry/sentry/pull/111499)
+
+The `github` scope has the highest median reviews (5.5) largely because of security surface area in OAuth/pipeline code.
+
+### Decision
+
+1. **Security-sensitive paths**: Changes to the following areas require explicit security consideration in the PR description:
+   - Authentication and OAuth flows
+   - Integration setup pipelines
+   - Permission checks and RBAC logic
+   - Multi-org data access patterns
+   - User-supplied data processing
+   - Defense-in-depth mechanisms (scoping, guards)
+
+2. **Security section in PR description**: PRs touching security-sensitive paths must include a "Security Considerations" section that addresses:
+   - What user-controlled inputs are accepted?
+   - What authorization checks are performed?
+   - Could this change weaken existing defense-in-depth?
+   - Is there a state-management window where invalid state could be exploited?
+
+3. **No silent scope removal**: Removing organization scoping, permission checks, or other defense-in-depth mechanisms requires explicit justification and reviewer acknowledgment in the PR thread.
+
+### Rules
+
+- CODEOWNERS: security-sensitive paths require review from a security-designated reviewer
+- CI check: warn when files in auth/integration/permission paths are modified without a "Security Considerations" section in the PR body
+- Automated label: add `security-review` label to PRs touching OAuth or pipeline code
+
+### Evidence from Study
+
+- Security theme: 12/60 high-friction PRs (20.0%)
+- `github` scope: highest median reviews (5.5) of any scope
+- [#111728](https://github.com/getsentry/sentry/pull/111728): 32 review events, 98h TTM — extensive security discussion about OAuth pipeline state
+- [#111663](https://github.com/getsentry/sentry/pull/111663): defense-in-depth weakening flagged by reviewer
+
+---
+
+## Impact Summary
+
+| ADR | Target Theme(s) | Frequency | Expected Mechanism |
+|-----|-----------------|-----------|-------------------|
+| 1. PR Scope Boundaries | Size-driven friction | 57.4% of large PRs | Reduce PR size → fewer discussion points per review |
+| 2. API Contract Evolution | API design (38.3%) + State mgmt (35.0%) | ~40% of high-friction PRs | Pre-decide nullability and propagation conventions |
+| 3. Test Evidence Matrix | Test evidence (38.3%) + Type safety (30.0%) | ~40% of high-friction PRs | Align reviewer expectations with explicit per-type matrix |
+| 4. Frontend Conventions | Component patterns (35.0%) + Naming (11.7%) | ~35% of high-friction PRs | Eliminate "inline style" comments with lint rule |
+| 5. Security Protocol | Security (20.0%) | ~20% of high-friction PRs | Front-load security discussion into PR description |
+
+Combined, these five ADRs target discussion themes that appear in the majority of high-friction PRs. The overlap between themes means a single ADR often addresses multiple friction sources — for example, ADR 2 (API Contracts) addresses both the API design theme and the state management theme.
+
+## Implementation Priority
+
+1. **ADR 4 (Frontend Conventions)** — Lowest cost, highest immediate signal. An ESLint rule for inline styles would eliminate the single most repeated review comment in our dataset. Quick win.
+
+2. **ADR 1 (PR Scope Boundaries)** — High impact, moderate cost. A CI size check is easy to implement and directly targets the strongest friction predictor in our data.
+
+3. **ADR 3 (Test Evidence Matrix)** — Medium cost, high clarity impact. Publishing the matrix aligns expectations without requiring tooling changes.
+
+4. **ADR 2 (API Contract Evolution)** — Higher cost, high long-term impact. Requires team alignment on conventions but prevents the most time-consuming debates.
+
+5. **ADR 5 (Security Protocol)** — Specialized but critical. Only affects ~20% of PRs but those PRs carry the highest risk of security oversight.

@@ -1,0 +1,82 @@
+---
+title: Friction Map
+description: "Domain and area friction breakdown by title scope, file path prefix, and label."
+sidebar:
+  order: 3
+---
+
+# Friction Map
+
+This page breaks down review friction by code area — identifying which domains, file regions, and labels correlate with higher friction.
+
+## By Title Scope
+
+Parsed from conventional commit format `type(scope): description`. Only scopes with ≥5 PRs are shown.
+
+| Scope | PRs | Median Reviews | Median TTM (h) | Changes Requested Rate | Median Churn |
+|-------|-----|----------------|-----------------|------------------------|--------------|
+| **github** | 8 | **5.5** | 15.27 | 0.0% | 268.5 |
+| **seer** | 28 | 3.5 | 1.69 | 0.0% | 89.5 |
+| **attachments** | 5 | 3.0 | 13.40 | 0.0% | 113.0 |
+| **onboarding** | 7 | 3.0 | **102.85** | 0.0% | 266.0 |
+| **workflows** | 14 | 2.5 | 18.64 | 0.0% | 152.5 |
+| **aci** | 17 | 2.0 | 18.72 | 0.0% | 76.0 |
+| **autofix** | 29 | 2.0 | 2.57 | 0.0% | 50.0 |
+| **dashboards** | 23 | 2.0 | 1.85 | 0.0% | 55.0 |
+| **nav** | 5 | 2.0 | 12.84 | 0.0% | 52.0 |
+| **occurrences on eap** | 6 | 2.0 | 24.35 | 0.0% | 89.5 |
+
+### Observations
+
+- **`github` is the highest-friction scope** by median reviews (5.5). The GitHub integration domain involves OAuth flows, pipeline state management, and security considerations — themes we see recurring in the [discussion analysis](./themes/).
+- **`onboarding` has the longest TTM** at 102.85 hours median, despite moderate review counts. This suggests bottlenecks other than review discussion (perhaps waiting for design approval or cross-team coordination).
+- **`seer` and `autofix` are high-volume but relatively low-friction**, suggesting these areas have clearer conventions or dedicated reviewer familiarity.
+- **Zero formal `CHANGES_REQUESTED`** across all scopes reinforces that Sentry's friction manifests through comment threads, not formal review states.
+
+## By File Domain
+
+File domain is derived from the first two path segments of changed files. This captures which parts of the codebase generate the most review discussion.
+
+| Domain | PRs | Median Reviews | Median TTM (h) | Changes Requested Rate | Median Churn |
+|--------|-----|----------------|-----------------|------------------------|--------------|
+| **CODEOWNERS** | 26 | **4.0** | 13.98 | 0.0% | 164.0 |
+| **migrations lockfile** | 5 | 3.0 | 16.14 | 0.0% | 182.0 |
+| **static/gsApp** | 13 | 3.0 | 19.46 | 0.0% | 145.0 |
+| **tests/js** | 6 | 3.0 | 2.47 | 0.0% | 68.5 |
+| **tests/sentry** | 137 | 3.0 | 4.84 | 0.0% | 89.0 |
+| **tests/snuba** | 10 | 2.5 | 44.93 | 0.0% | 91.0 |
+| **src/sentry** | 245 | 2.0 | 6.62 | 0.0% | 74.0 |
+| **static/app** | 220 | 2.0 | 10.35 | 0.0% | 73.0 |
+
+### Observations
+
+- **PRs touching CODEOWNERS** have the highest median review count (4.0). These are cross-cutting changes that likely require approval from multiple code owners.
+- **`static/gsApp`** (legacy frontend namespace) has both high review counts and high TTM — possibly due to the complexity of maintaining legacy code alongside the newer `static/app` frontend.
+- **`tests/snuba`** has the highest TTM (44.93h) despite moderate review counts, suggesting these PRs involve complex data pipeline changes that take time to validate.
+- **`src/sentry`** (245 PRs, 49% of sample) and **`static/app`** (220 PRs, 44%) are the two dominant file domains, with relatively moderate friction levels.
+
+## By Label
+
+Sentry's label usage is sparse — most PRs carry only scope labels:
+
+| Label | PRs | Median Reviews | Median TTM (h) |
+|-------|-----|----------------|-----------------|
+| **Trigger: Revert** | 6 | **5.0** | varies |
+| **Scope: Backend** | 274 | 2.0 | varies |
+| **Scope: Frontend** | 239 | 2.0 | varies |
+
+The `Trigger: Revert` label is associated with the highest review counts. Revert PRs often signal a prior mistake that needs investigation, which drives additional discussion.
+
+The backend/frontend split is roughly even (274 vs 239), but labels alone don't provide enough granularity for meaningful friction segmentation. Title scope and file domain are more useful dimensions.
+
+## Friction Hotspots Summary
+
+The domains with consistently elevated friction are:
+
+1. **GitHub integration** (`github` scope) — complex OAuth/security flows
+2. **Onboarding** (`onboarding` scope) — longest TTM, cross-team coordination
+3. **Cross-cutting changes** (CODEOWNERS-touching PRs) — multi-owner approval
+4. **Legacy frontend** (`static/gsApp`) — maintaining old patterns alongside new
+5. **Snuba-related tests** (`tests/snuba`) — complex data pipeline validation
+
+These hotspots correlate with the [discussion themes](./themes/) identified from comment analysis: security, state management, and API design are the dominant themes in these high-friction domains.

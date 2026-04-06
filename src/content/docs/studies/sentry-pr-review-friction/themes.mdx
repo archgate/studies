@@ -1,0 +1,228 @@
+---
+title: Discussion Themes
+description: "Evidence-backed analysis of the 9 recurring themes in high-friction PR discussions."
+sidebar:
+  order: 4
+---
+
+# Discussion Themes
+
+We analyzed 604 non-bot comments across 60 high-friction PRs, classifying them into 9 themes using keyword-based coding. Each theme below includes its frequency across the analyzed PRs, a description of what it captures, and evidence quotes from real review discussions.
+
+## Theme Frequency Overview
+
+| Theme | PRs with Theme | Share of Analyzed PRs |
+|-------|----------------|-----------------------|
+| API design and defaults | 23 | **38.3%** |
+| Test evidence and coverage | 23 | **38.3%** |
+| Component patterns and styling | 21 | 35.0% |
+| State management and data flow | 21 | 35.0% |
+| Code documentation | 19 | 31.7% |
+| Type safety and error handling | 18 | 30.0% |
+| Follow-up and scope creep | 15 | 25.0% |
+| Security and permissions | 12 | 20.0% |
+| Naming and consistency | 7 | 11.7% |
+
+The top two themes — **API design** and **test evidence** — each appear in over a third of high-friction PRs. Every theme appears in at least 7 PRs, confirming these are systematic patterns rather than one-off discussions.
+
+---
+
+## 1. API Design and Defaults (38.3%)
+
+Debates about API surface design, default values, nullability, validation rules, and contract semantics.
+
+### Evidence
+
+> *"Not sure if this is the right move. Should we force overwrite if auto_open_prs and stopping point is not open_pr, or ignore an incorrect stopping point, or reject at validation time? Imo, I don't like the idea of conflicting options."*
+> — [#111697](https://github.com/getsentry/sentry/pull/111697), review comment
+
+> *"Should we start this as `False`, then flip it on in prod? Might be slightly easier to ensure it's off by default."*
+> — [#111723](https://github.com/getsentry/sentry/pull/111723), review comment
+
+> *"I think we want to minimize the queries and lookups we do in these data objects since the end goal is for them to be fully self-contained serializable objects with all the primitives required to render."*
+> — [#111674](https://github.com/getsentry/sentry/pull/111674), review comment
+
+### Pattern
+
+Reviewers frequently debate the "right" default value, whether options should be nullable, and how to handle conflicting configuration. Without an explicit contract for how defaults propagate (org-level → project-level → runtime), each PR that introduces a new setting reopens the same design debate.
+
+---
+
+## 2. Test Evidence and Coverage (38.3%)
+
+Requests for test evidence, discussion of test coverage gaps, and debates about testing methodology.
+
+### Evidence
+
+> *"There should probably be a test in here which mounts, renders, then confirms that the PageContextProvider is actually providing the page context for sending to the AI. I'd also add a test with a nested case so we can test that DummyChart in DummyWidget in DummyDashboard nests."*
+> — [#111554](https://github.com/getsentry/sentry/pull/111554), review comment
+
+> *"Seems like quite a few paths simply do `raise NotFound(...)` and you're simply matching on the hard coded string here which seems rather fragile. Thoughts on updating the sources to raise a more specific error maybe `IntegrationNotFound` that can be caught instead of comparing strings?"*
+> — [#111691](https://github.com/getsentry/sentry/pull/111691), review comment
+
+> *"Maybe worth adding a test for when the circuit breaker allows the request, but the HTTP request itself returns a failed status code? So circuit breaker records success but the usual request error handling kicks in?"*
+> — [#111723](https://github.com/getsentry/sentry/pull/111723), review comment
+
+### Pattern
+
+Reviewers ask for specific test scenarios that the author didn't anticipate — nested component cases, error path testing, edge cases for circuit breakers. The discussion is not about *whether* to test, but *what* to test. Without explicit per-change-type test expectations, each reviewer applies their own judgment about minimum test evidence.
+
+---
+
+## 3. Component Patterns and Styling (35.0%)
+
+Frontend component usage, styling approaches, and design system compliance.
+
+### Evidence
+
+> *"Can we avoid this inline style w/ prop of some kind?"*
+> — [#111529](https://github.com/getsentry/sentry/pull/111529), review comment (repeated 6 times in this PR)
+
+> *"Neat that we have a loading indicator prop now! I was checking it out on scraps, but it seems like the button is still clickable. Does the callback get invoked still or is that handled with this state?"*
+> — [#111490](https://github.com/getsentry/sentry/pull/111490), review comment
+
+> *"I don't think we need the third prop here per previous conversations. I'd mostly use the register function just to wrap + name and make the third prop optional."*
+> — [#111554](https://github.com/getsentry/sentry/pull/111554), review comment
+
+### Pattern
+
+The dominant pattern is repeated requests to avoid inline styles in favor of component props. In [#111529](https://github.com/getsentry/sentry/pull/111529), the *same reviewer* left "can we avoid this inline style w/ prop of some kind?" **six separate times** on different lines. This is exactly the kind of friction an ADR or lint rule could eliminate. Discussions also focus on whether components from the design system should be used vs. custom implementations.
+
+---
+
+## 4. State Management and Data Flow (35.0%)
+
+State management patterns, data flow between components and services, migration safety.
+
+### Evidence
+
+> *"I think keeping the org-level and project-level as 1:1 as possible will be a benefit, even if it doesn't make sense. At the org-level validation will be hard, or at least annoying to resolve, as people typically push values up one field at a time."*
+> — [#111697](https://github.com/getsentry/sentry/pull/111697), review comment
+
+> *"Why do we bind here if the pipeline already has an organization slug on it?"*
+> — [#111728](https://github.com/getsentry/sentry/pull/111728), review comment
+
+> *"Reading the comment on L116-118, it makes me wonder if we actually need state reactivity, or could we write directly to a ref?"*
+> — [#111554](https://github.com/getsentry/sentry/pull/111554), review comment
+
+### Pattern
+
+Reviewers probe the data flow model: why state is bound at certain points, whether reactivity is needed, and how configuration propagates across scopes. These discussions often reveal architectural assumptions that aren't documented — the reviewer has to infer the intended data flow from the code alone.
+
+---
+
+## 5. Code Documentation (31.7%)
+
+Requests for explanations, documentation of behavior, and clarifying intent.
+
+### Evidence
+
+> *"Under what conditions would there not be an installation id? ... Does this mean the GitHub org already has a Sentry installation? Does this mean we're in a multi-org setup flow?"*
+> — [#111728](https://github.com/getsentry/sentry/pull/111728), review comment
+
+> *"Should we be adding another mobx use case? Could we use react-query or react context instead, or is this because of also using the legacy form component?"*
+> — [#111490](https://github.com/getsentry/sentry/pull/111490), review comment
+
+> *"When is it equal to -1? What's the significance?"*
+> — [#111728](https://github.com/getsentry/sentry/pull/111728), review comment
+
+### Pattern
+
+Reviewers ask "why" and "under what conditions" questions that indicate missing code comments or documentation. The reviewer must ask the author to explain behavior that could have been captured in a comment or docstring.
+
+---
+
+## 6. Type Safety and Error Handling (30.0%)
+
+Type correctness, optional values, error handling patterns, and exception safety.
+
+### Evidence
+
+> *"Do we need the cast for ReactNode? Seeing this multiple times in this file."*
+> — [#111529](https://github.com/getsentry/sentry/pull/111529), review comment
+
+> *"Same Q. Why is this optionally expected? Does this mean the GitHub org already has a Sentry installation? Does this mean we're in a multi-org setup flow?"*
+> — [#111728](https://github.com/getsentry/sentry/pull/111728), review comment
+
+> *"Seems like quite a few paths simply do `raise NotFound(...)` and you're simply matching on the hard coded string here which seems rather fragile. Thoughts on updating the sources to raise a more specific error?"*
+> — [#111691](https://github.com/getsentry/sentry/pull/111691), review comment
+
+### Pattern
+
+Type safety discussions center on two sub-themes: (a) whether values should be optional/nullable and the implications of that choice, and (b) error handling patterns (string matching vs. typed exceptions). Both would benefit from explicit conventions documented in ADRs.
+
+---
+
+## 7. Follow-up and Scope Creep (25.0%)
+
+Discussions about deferring work, scope boundaries, and tracking follow-ups.
+
+### Evidence
+
+> *"We'll have to figure out why there are two names for things in different APIs and consolidate. As a follow up."*
+> — [#111697](https://github.com/getsentry/sentry/pull/111697), review comment
+
+> *"Yeah you're right this seems wrong. I can follow up VDY-53."*
+> — [#111728](https://github.com/getsentry/sentry/pull/111728), review comment
+
+> *"Great work! I did a visual check and didn't notice anything off. Ok except for the widget creation in a dashboard, but that is also in production and we can address in a follow up."*
+> — [#111775](https://github.com/getsentry/sentry/pull/111775), review comment
+
+### Pattern
+
+A quarter of high-friction PRs involve negotiating what's in scope vs. what should be deferred. Reviewers identify issues but accept "follow up" as resolution — creating implicit tech debt tracking distributed across PR comments rather than a centralized system.
+
+---
+
+## 8. Security and Permissions (20.0%)
+
+Security implications, permission models, authentication flows, and attack surface discussions.
+
+### Evidence
+
+> *"Should we put some permissions checks around this? Only admins will be able to edit integrations... I think we should hide or disable this button for regular users."*
+> — [#111499](https://github.com/getsentry/sentry/pull/111499), review comment
+
+> *"Organization scoping removed from Group fetch — defense-in-depth weakened."*
+> — [#111663](https://github.com/getsentry/sentry/pull/111663), review comment
+
+> *"Yeah I think this could be a valid attack since this is the first step in the pipeline. Like what if someone gives us someone else's installation_id?"*
+> — [#111728](https://github.com/getsentry/sentry/pull/111728), review comment
+
+### Pattern
+
+Security discussions surface as specific attack scenarios reviewers identify — permission bypass, missing authorization checks, weakened defense-in-depth. These are high-stakes observations that often require multiple rounds of discussion to resolve. The GitHub integration PRs ([#111728](https://github.com/getsentry/sentry/pull/111728)) are particularly security-heavy due to OAuth pipeline complexity.
+
+---
+
+## 9. Naming and Consistency (11.7%)
+
+Naming choices, consistency between APIs, and normalization of terminology.
+
+### Evidence
+
+> *"Possible to have more semantic names for these?"*
+> — [#111529](https://github.com/getsentry/sentry/pull/111529), review comment
+
+> *"I think it would be a good idea to strictly type this, that way developers would get a better typeahead experience + we would probably avoid some subtle naming differences from creeping in."*
+> — [#111554](https://github.com/getsentry/sentry/pull/111554), review comment
+
+> *"Let's make sure to pass org_id to the groups query to be safe — nit: rename `process_a_column_values` to `process_column_values`."*
+> — [#111724](https://github.com/getsentry/sentry/pull/111724), review comment
+
+### Pattern
+
+While the least frequent theme, naming discussions are almost always repeated across PRs. The same pattern of "can we use a more semantic/consistent name" recurs because there's no codified naming convention for the areas being discussed.
+
+---
+
+## Cross-Theme Analysis
+
+Several themes co-occur frequently:
+
+- **API design + State management**: When reviewers question API defaults, they often also probe the data flow that determines those defaults (seen in [#111697](https://github.com/getsentry/sentry/pull/111697))
+- **Security + State management**: OAuth pipeline discussions inherently involve both security and state flow concerns (seen in [#111728](https://github.com/getsentry/sentry/pull/111728))
+- **Test evidence + Type safety**: Requests for tests often accompany type safety concerns — "this error handling is fragile, add a test" (seen in [#111691](https://github.com/getsentry/sentry/pull/111691))
+- **Component patterns + Documentation**: "Can we avoid this inline style" is both a styling pattern and a documentation gap — the convention isn't written down
+
+These co-occurrences suggest that a small number of well-targeted ADRs could address multiple themes simultaneously. See [ADR Proposals](./adr-proposals/) for specific recommendations.

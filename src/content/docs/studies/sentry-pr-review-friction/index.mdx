@@ -1,0 +1,70 @@
+---
+title: "Sentry PR Review Friction"
+description: "Evidence-based analysis of review friction in getsentry/sentry — 500 PRs over 90 days, with deep comment analysis and ADR proposals."
+sidebar:
+  label: Overview
+  order: 0
+---
+
+# Sentry PR Review Friction Study
+
+## Abstract
+
+This study measures where code review friction concentrates in [`getsentry/sentry`](https://github.com/getsentry/sentry) and identifies which Architecture Decision Records (ADRs) could reduce repeated discussion cycles. Unlike a surface-level metric dump, we go beyond aggregate numbers: we read actual comment threads from high-friction PRs, classify recurring discussion themes with evidence, and propose ADRs grounded in real examples.
+
+## Scope
+
+| Parameter | Value |
+|-----------|-------|
+| Repository | `getsentry/sentry` |
+| Window | 90 days (ending April 2026) |
+| Merged PRs analyzed | 500 |
+| Closed-unmerged PRs analyzed | 500 |
+| Open PRs sampled | 251 |
+| Deep comment analysis | 60 high-friction PRs (50 merged + 10 closed-unmerged) |
+| Total comments analyzed | 965 (604 non-bot) |
+
+## Key Findings
+
+1. **Median time-to-merge is 4.98 hours**, but P90 reaches **70.54 hours** — a 14x multiplier. Large PRs (≥10 files or ≥400 churn) have a median TTM of **22.52 hours** vs **1.66 hours** for tiny PRs.
+
+2. **PR size is the strongest friction predictor.** Large PRs hit the high-friction quartile **57.4%** of the time. Tiny PRs hit it only **9.8%** of the time. Feature PRs (`feat`) have the highest friction rate at **38.6%**, nearly double fix PRs (**17.6%**).
+
+3. **The top 9 discussion themes** in high-friction PRs, identified from 604 non-bot comments across 60 PRs:
+   - **API design and defaults** — 38.3% of high-friction PRs
+   - **Test evidence and coverage** — 38.3%
+   - **Component patterns and styling** — 35.0%
+   - **State management and data flow** — 35.0%
+   - **Code documentation** — 31.7%
+   - **Type safety and error handling** — 30.0%
+   - **Follow-up and scope creep** — 25.0%
+   - **Security and permissions** — 20.0%
+   - **Naming and consistency** — 11.7%
+
+4. **Abandoned PRs signal unresolved decision ambiguity.** 12 closed-unmerged PRs (2.4%) had ≥10 discussion items. These abandoned PRs had **2x the median TTM** and **2.5x the median review events** compared to merged high-friction PRs.
+
+5. **92 open PRs are stale 14+ days**, with 33 stale 30+ days. The most-discussed stale PR has **55 review events** and has been open for over **760 hours**.
+
+## Study Structure
+
+- [**Methodology**](./methodology/) — Data collection, tools, sample sizes, and limitations
+- [**Baseline Metrics**](./baseline/) — Aggregate metrics, percentiles, and size segmentation
+- [**Friction Map**](./friction-map/) — Domain and area friction breakdown
+- [**Discussion Themes**](./themes/) — Evidence-backed theme analysis from real comment threads
+- [**Abandoned PRs**](./abandoned/) — Patterns in closed-unmerged and stale PRs
+- [**ADR Proposals**](./adr-proposals/) — Detailed proposals grounded in evidence
+
+## Reproducibility
+
+All data and scripts are published for audit:
+
+- **Study folder**: [`studies/sentry-pr-review-friction`](https://github.com/rhuanbarreto/archgate-studies/tree/main/studies/sentry-pr-review-friction)
+- **Method script**: [`analyze_sentry_prs.py`](https://github.com/rhuanbarreto/archgate-studies/blob/main/studies/sentry-pr-review-friction/analyze_sentry_prs.py)
+- **Data artifacts**: [`output/`](https://github.com/rhuanbarreto/archgate-studies/tree/main/studies/sentry-pr-review-friction/output)
+
+```bash
+# Reproduce the full pipeline
+python analyze_sentry_prs.py collect --repo getsentry/sentry --days 90 --limit 500
+python analyze_sentry_prs.py analyze
+python analyze_sentry_prs.py report
+```
