@@ -5,8 +5,6 @@ sidebar:
   order: 5
 ---
 
-# Automated Review Friction
-
 Sentry runs three automated reviewers on its PRs: `sentry[bot]` (bug prediction), `sentry-warden[bot]` (correctness/security checking), and `cursor[bot]` (Cursor's agentic review). Combined, they post **23.7% of all substantive review comments** in our high-friction sample, and **68.3% of high-friction PRs have bot review activity**.
 
 These bots **are not noise**. They find real bugs — Pydantic type errors, missing exception handlers, key mismatches, security holes. Every finding is something a developer must read, evaluate, and address.
