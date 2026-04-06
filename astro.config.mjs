@@ -10,7 +10,8 @@ export default defineConfig({
       locales: {
         root: { label: "English", lang: "en" },
       },
-      description: "Scientific-style studies about software governance and ADR enforcement.",
+      description:
+        "Reproducible, peer-reviewable studies on software governance and ADR enforcement.",
       favicon: "/favicon.svg",
       social: [
         {
@@ -19,14 +20,44 @@ export default defineConfig({
           href: "https://github.com/archgate/studies",
         },
       ],
+      customCss: [
+        "@fontsource/inter/400.css",
+        "@fontsource/inter/500.css",
+        "@fontsource/inter/600.css",
+        "@fontsource/inter/700.css",
+        "@fontsource/noto-serif/400.css",
+        "@fontsource/noto-serif/400-italic.css",
+        "@fontsource/noto-serif/500.css",
+        "@fontsource/noto-serif/600.css",
+        "@fontsource/noto-serif/700.css",
+        "./src/styles/custom.css",
+      ],
       sidebar: [
         {
-          label: "Studies",
+          label: "Home",
+          link: "/",
+        },
+        {
+          label: "Published Studies",
           items: [
             {
-              label: "Sentry PR Review Friction",
+              label: "All Studies",
+              link: "/studies/",
+            },
+            {
+              label: "Sentry PR Friction & ADR Standardization",
               collapsed: false,
               autogenerate: { directory: "studies/sentry-pr-review-friction" },
+            },
+          ],
+        },
+        {
+          label: "Resources",
+          items: [
+            {
+              label: "Source Repository",
+              link: "https://github.com/archgate/studies",
+              attrs: { target: "_blank" },
             },
           ],
         },

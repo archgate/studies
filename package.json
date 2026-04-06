@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@astrojs/starlight": "^0.38.2",
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/noto-serif": "^5.2.9",
     "astro": "^6.1.1"
   }
 }
