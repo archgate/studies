@@ -13,6 +13,7 @@ export default defineConfig({
       description:
         "Reproducible, peer-reviewable studies on software governance and ADR enforcement.",
       favicon: "/favicon.svg",
+      components: { Head: "./src/components/Head.astro" },
       social: [
         {
           icon: "github",
