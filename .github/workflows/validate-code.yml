@@ -6,6 +6,9 @@ on:
     branches:
       - main
 
+env:
+  ARCHGATE_TELEMETRY: "0"
+
 jobs:
   validate:
     name: Validate Code
