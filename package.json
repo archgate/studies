@@ -9,7 +9,7 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.38.2",
+    "@astrojs/starlight": "^0.39.0",
     "@fontsource/inter": "^5.2.8",
     "@fontsource/noto-serif": "^5.2.9",
     "astro": "^6.1.1",
