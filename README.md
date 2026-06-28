@@ -1,34 +1,12 @@
 # Archgate Studies
 
-Reproducible studies on architecture governance, review friction, and ADR-driven standardization.
+Source code, data artifacts, and proposed ADRs for Archgate's reproducible governance studies.
 
-## Website
-
-The studies website is published at:
-
-- https://studies.archgate.dev
-
-The site uses Astro + Starlight, so studies are written in Markdown/MDX instead of hand-crafted HTML.
-
-### Local development
-
-```bash
-npm install
-npm run dev
-```
-
-### Build
-
-```bash
-npm run build
-```
-
-Site source lives in `src/content/docs/` and deployment is handled externally via Cloudflare.
+The published narratives are at [docs.archgate.dev/studies/](https://docs.archgate.dev/studies/).
 
 ## Studies
 
-- `studies/sentry-pr-review-friction/` - methodology code and generated data artifacts for the Sentry PR friction study.
-- Published narrative: `src/content/docs/studies/sentry-pr-review-friction.mdx`
+- `studies/sentry-pr-review-friction/` — methodology code, generated data artifacts, proposed ADRs, and lint rules for the Sentry PR friction study.
 
 ## Peer review workflow
 
