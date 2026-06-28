@@ -8,7 +8,7 @@ files: []
 
 ## Context
 
-Sentry runs three automated reviewers on its PRs: `sentry[bot]` (bug prediction), `sentry-warden[bot]` (correctness/security checking), and `cursor[bot]` (Cursor's agentic review). The [Sentry PR Friction Study](https://studies.archgate.dev/studies/sentry-pr-review-friction/automated-review/) found that:
+Sentry runs three automated reviewers on its PRs: `sentry[bot]` (bug prediction), `sentry-warden[bot]` (correctness/security checking), and `cursor[bot]` (Cursor's agentic review). The [Sentry PR Friction Study](https://docs.archgate.dev/studies/sentry-pr-review-friction/automated-review/) found that:
 
 - Bot reviewers account for **23.7%** of substantive review comments
 - **68.3%** of high-friction PRs have bot review activity
@@ -88,7 +88,7 @@ A quarterly meeting reviews:
 - File a `bot-finding-promotion` ticket when a category crosses the recurrence threshold
 - Suppress the bot category when the deterministic check ships, to avoid double-flagging
 - Treat the bots as **discovery** tools, not as front-line review
-- Refer back to the [Sentry PR Friction Study automated review page](https://studies.archgate.dev/studies/sentry-pr-review-friction/automated-review/) for the initial pattern catalog
+- Refer back to the [Sentry PR Friction Study automated review page](https://docs.archgate.dev/studies/sentry-pr-review-friction/automated-review/) for the initial pattern catalog
 
 ### Don't
 
@@ -154,7 +154,7 @@ This ADR is a workflow ADR with no companion `.rules.ts` file. Enforcement is pr
 
 ## References
 
-- [Sentry PR Friction Study — Automated Review](https://studies.archgate.dev/studies/sentry-pr-review-friction/automated-review/) — Full pattern catalog and cost analysis
+- [Sentry PR Friction Study — Automated Review](https://docs.archgate.dev/studies/sentry-pr-review-friction/automated-review/) — Full pattern catalog and cost analysis
 - [BE-001 API Contract Evolution](./BE-001-api-contract-evolution.md) — Promotion target for option/serializer findings
 - [FE-001 Frontend Component Conventions](./FE-001-frontend-component-conventions.md) — Promotion target for inline-style and form-state findings
 - [BE-002 Security Review Protocol](./BE-002-security-review-protocol.md) — Promotion target for defense-in-depth findings

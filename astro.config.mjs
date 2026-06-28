@@ -2,7 +2,7 @@ import starlight from "@astrojs/starlight";
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  site: "https://studies.archgate.dev",
+  site: "https://docs.archgate.dev",
   integrations: [
     starlight({
       title: "Archgate Studies",

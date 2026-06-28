@@ -1,6 +1,6 @@
 # Proposed Lint Rules for Sentry
 
-This folder contains custom lint plugin rules that complement the [proposed ADRs](../proposed-adrs/). They target the recurring bot finding patterns identified in the [Sentry PR Friction Study](https://studies.archgate.dev/studies/sentry-pr-review-friction/automated-review/).
+This folder contains custom lint plugin rules that complement the [proposed ADRs](../proposed-adrs/). They target the recurring bot finding patterns identified in the [Sentry PR Friction Study](https://docs.archgate.dev/studies/sentry-pr-review-friction/automated-review/).
 
 ## Where these would live in Sentry
 

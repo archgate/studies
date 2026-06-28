@@ -8,14 +8,14 @@ files: ["**/*"]
 
 ## Context
 
-Analysis of 500 merged PRs in `getsentry/sentry` over a 90-day window (see the [Sentry PR Friction study](https://studies.archgate.dev/studies/sentry-pr-review-friction/baseline/)) shows that PR size is the strongest predictor of review friction:
+Analysis of 500 merged PRs in `getsentry/sentry` over a 90-day window (see the [Sentry PR Friction study](https://docs.archgate.dev/studies/sentry-pr-review-friction/baseline/)) shows that PR size is the strongest predictor of review friction:
 
 - **Small PRs** (≤3 files, ≤80 churn): median TTM 1.66h, median 1 review event, 12.6% high-friction rate
 - **Large PRs** (≥10 files OR ≥400 churn): median TTM 22.52h, median 5 review events, **57.4% high-friction rate**
 
 Large PRs are 13.6x slower to merge and 4.6x more likely to land in the high-friction quartile. Feature PRs (`feat`) compound this — they hit 38.6% high friction vs 17.6% for fix PRs.
 
-The [abandoned PR analysis](https://studies.archgate.dev/studies/sentry-pr-review-friction/abandoned/) further shows that abandoned high-discussion PRs and merged high-friction PRs have the same median file count (4 files). The friction comes from approach disagreement bundled into a single review surface, not from size alone — but size makes bundling more likely.
+The [abandoned PR analysis](https://docs.archgate.dev/studies/sentry-pr-review-friction/abandoned/) further shows that abandoned high-discussion PRs and merged high-friction PRs have the same median file count (4 files). The friction comes from approach disagreement bundled into a single review surface, not from size alone — but size makes bundling more likely.
 
 **Alternatives considered:**
 
@@ -142,6 +142,6 @@ Code reviewers MUST verify:
 
 ## References
 
-- [Sentry PR Friction Study — Baseline Metrics](https://studies.archgate.dev/studies/sentry-pr-review-friction/baseline/)
-- [Sentry PR Friction Study — Abandoned PRs](https://studies.archgate.dev/studies/sentry-pr-review-friction/abandoned/)
+- [Sentry PR Friction Study — Baseline Metrics](https://docs.archgate.dev/studies/sentry-pr-review-friction/baseline/)
+- [Sentry PR Friction Study — Abandoned PRs](https://docs.archgate.dev/studies/sentry-pr-review-friction/abandoned/)
 - [GEN-002 Test Evidence Matrix](./GEN-002-test-evidence-matrix.md) — Companion ADR for per-change-type test expectations

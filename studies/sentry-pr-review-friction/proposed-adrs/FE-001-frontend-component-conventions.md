@@ -8,7 +8,7 @@ files: ["static/app/**/*.tsx", "static/app/**/*.ts", "static/gsApp/**/*.tsx", "s
 
 ## Context
 
-The [Sentry PR Friction Study](https://studies.archgate.dev/studies/sentry-pr-review-friction/themes/) found that **component patterns and styling** appears in **35.0%** of high-friction PRs. The single most repeated review comment in the entire dataset is:
+The [Sentry PR Friction Study](https://docs.archgate.dev/studies/sentry-pr-review-friction/themes/) found that **component patterns and styling** appears in **35.0%** of high-friction PRs. The single most repeated review comment in the entire dataset is:
 
 > "Can we avoid this inline style w/ prop of some kind?"
 
@@ -247,7 +247,7 @@ Code reviewers MUST verify:
 
 ## References
 
-- [Sentry PR Friction Study — Themes (Component Patterns)](https://studies.archgate.dev/studies/sentry-pr-review-friction/themes/)
+- [Sentry PR Friction Study — Themes (Component Patterns)](https://docs.archgate.dev/studies/sentry-pr-review-friction/themes/)
 - [PR #111529](https://github.com/getsentry/sentry/pull/111529) — six identical "no inline style" review comments in one PR
 - [PR #111490](https://github.com/getsentry/sentry/pull/111490) — form state stuck in loading after error
 - [Custom ESLint plugin (proposed)](../proposed-lint-rules/eslint-frontend-conventions.js) — edit-time enforcement

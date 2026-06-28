@@ -6,7 +6,7 @@ Reproducible studies on architecture governance, review friction, and ADR-driven
 
 The studies website is published at:
 
-- https://studies.archgate.dev
+- https://docs.archgate.dev
 
 The site uses Astro + Starlight, so studies are written in Markdown/MDX instead of hand-crafted HTML.
 

@@ -8,7 +8,7 @@ files: ["src/**/*.py", "src/**/*.ts", "src/**/*.tsx", "static/**/*.tsx"]
 
 ## Context
 
-The [Sentry PR Friction Study](https://studies.archgate.dev/studies/sentry-pr-review-friction/themes/) found that **test evidence and coverage** is tied for the top discussion theme — appearing in **38.3%** of high-friction PRs. The pattern is striking: reviewers are not asking authors to "add more tests" in the abstract. They are asking for **specific tests** that the author didn't think to write:
+The [Sentry PR Friction Study](https://docs.archgate.dev/studies/sentry-pr-review-friction/themes/) found that **test evidence and coverage** is tied for the top discussion theme — appearing in **38.3%** of high-friction PRs. The pattern is striking: reviewers are not asking authors to "add more tests" in the abstract. They are asking for **specific tests** that the author didn't think to write:
 
 - Rendering tests that verify provider context propagation ([#111554](https://github.com/getsentry/sentry/pull/111554))
 - Error path tests for circuit breakers when the underlying request fails ([#111723](https://github.com/getsentry/sentry/pull/111723))
@@ -171,8 +171,8 @@ Code reviewers MUST verify:
 
 ## References
 
-- [Sentry PR Friction Study — Themes (Test Evidence)](https://studies.archgate.dev/studies/sentry-pr-review-friction/themes/)
-- [Sentry PR Friction Study — Automated Review Pattern 4 (Test correctness)](https://studies.archgate.dev/studies/sentry-pr-review-friction/automated-review/)
+- [Sentry PR Friction Study — Themes (Test Evidence)](https://docs.archgate.dev/studies/sentry-pr-review-friction/themes/)
+- [Sentry PR Friction Study — Automated Review Pattern 4 (Test correctness)](https://docs.archgate.dev/studies/sentry-pr-review-friction/automated-review/)
 - [PR #111554](https://github.com/getsentry/sentry/pull/111554) — context propagation test gap
 - [PR #111723](https://github.com/getsentry/sentry/pull/111723) — circuit breaker error path test gap
 - [PR #111697](https://github.com/getsentry/sentry/pull/111697) — test assertion mismatch (passing for wrong reason)

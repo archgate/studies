@@ -6,7 +6,7 @@ Evidence-based analysis of review friction in `getsentry/sentry`. This study col
 
 The study is published as a multi-page article at:
 
-- [studies.archgate.dev/studies/sentry-pr-review-friction](https://studies.archgate.dev/studies/sentry-pr-review-friction/)
+- [docs.archgate.dev/studies/sentry-pr-review-friction](https://docs.archgate.dev/studies/sentry-pr-review-friction/)
 
 Source files are in `src/content/docs/studies/sentry-pr-review-friction/`.
 

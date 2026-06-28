@@ -9,7 +9,7 @@
 #   "If project_id is None in trigger_coding_agent_launch, Project.objects.get_from_cache fails silently"
 #   (and several similar instances across the Sentry PR Friction Study sample)
 #
-# Source: https://studies.archgate.dev/studies/sentry-pr-review-friction/automated-review/
+# Source: https://docs.archgate.dev/studies/sentry-pr-review-friction/automated-review/
 
 rules:
   - id: missing-doesnotexist-handler

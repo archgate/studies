@@ -5,7 +5,7 @@
  * Styling Conventions) for the Sentry codebase.
  *
  * Implements the patterns that recur across PRs in the Sentry PR Friction
- * Study (https://studies.archgate.dev/studies/sentry-pr-review-friction/):
+ * Study (https://docs.archgate.dev/studies/sentry-pr-review-friction/):
  *
  *   - no-inline-style: forbids `style={...}` JSX attributes without an
  *     `// inline-style:` escape hatch comment

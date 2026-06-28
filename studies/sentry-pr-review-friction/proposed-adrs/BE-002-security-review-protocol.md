@@ -8,7 +8,7 @@ files: ["src/sentry/integrations/**/*.py", "src/sentry/identity/**/*.py", "src/s
 
 ## Context
 
-The [Sentry PR Friction Study](https://studies.archgate.dev/studies/sentry-pr-review-friction/themes/) found that **security and permissions** discussion appears in **20.0%** of high-friction PRs — a lower frequency than other themes, but with disproportionately high stakes. The `github` scope has the highest median review count (5.5) of any scope in the codebase, almost entirely due to security surface area in OAuth and pipeline code.
+The [Sentry PR Friction Study](https://docs.archgate.dev/studies/sentry-pr-review-friction/themes/) found that **security and permissions** discussion appears in **20.0%** of high-friction PRs — a lower frequency than other themes, but with disproportionately high stakes. The `github` scope has the highest median review count (5.5) of any scope in the codebase, almost entirely due to security surface area in OAuth and pipeline code.
 
 Specific bot and human findings from the study:
 
@@ -215,7 +215,7 @@ Code reviewers MUST verify:
 
 ## References
 
-- [Sentry PR Friction Study — Themes (Security)](https://studies.archgate.dev/studies/sentry-pr-review-friction/themes/)
+- [Sentry PR Friction Study — Themes (Security)](https://docs.archgate.dev/studies/sentry-pr-review-friction/themes/)
 - [PR #111728](https://github.com/getsentry/sentry/pull/111728) — primary evidence: 32 review events on GitHub OAuth pipeline security
 - [PR #111663](https://github.com/getsentry/sentry/pull/111663) — defense-in-depth weakening detection
 - [PR #111499](https://github.com/getsentry/sentry/pull/111499) — missing UI permission checks

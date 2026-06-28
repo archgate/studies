@@ -8,7 +8,7 @@ files: ["src/sentry/**/*.py", "src/sentry/options/**/*.py", "src/sentry/api/seri
 
 ## Context
 
-The [Sentry PR Friction Study](https://studies.archgate.dev/studies/sentry-pr-review-friction/themes/) identified **API design and defaults** as the top discussion theme — appearing in **38.3%** of high-friction PRs in the deep comment sample. Reviewers repeatedly debate:
+The [Sentry PR Friction Study](https://docs.archgate.dev/studies/sentry-pr-review-friction/themes/) identified **API design and defaults** as the top discussion theme — appearing in **38.3%** of high-friction PRs in the deep comment sample. Reviewers repeatedly debate:
 
 - Whether new fields should be nullable or required with defaults
 - How defaults propagate across scopes (org → project → runtime)
@@ -221,7 +221,7 @@ Code reviewers MUST verify:
 
 ## References
 
-- [Sentry PR Friction Study — Themes](https://studies.archgate.dev/studies/sentry-pr-review-friction/themes/)
-- [Sentry PR Friction Study — Automated Review (Pattern 4: Type System Misuse)](https://studies.archgate.dev/studies/sentry-pr-review-friction/automated-review/)
+- [Sentry PR Friction Study — Themes](https://docs.archgate.dev/studies/sentry-pr-review-friction/themes/)
+- [Sentry PR Friction Study — Automated Review (Pattern 4: Type System Misuse)](https://docs.archgate.dev/studies/sentry-pr-review-friction/automated-review/)
 - [PR #111697](https://github.com/getsentry/sentry/pull/111697) — primary evidence source: 47 review events, multiple bot findings about option keys and Pydantic Literals
 - [GEN-003 Bot Finding Promotion](./GEN-003-bot-finding-promotion.md) — Companion ADR establishing the workflow that produced this rule
