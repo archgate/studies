@@ -3,7 +3,7 @@
     {
       "source": "archgate/enterprise-adrs/packs/ci-runners",
       "version": "1.0.0",
-      "importedAt": "2026-11-09T14:05:35.716Z",
+      "importedAt": "2026-11-09T14:31:30.848Z",
       "adrIds": [
         "ARCH-001"
       ]
