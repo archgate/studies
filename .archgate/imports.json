@@ -1,7 +1,7 @@
 {
   "imports": [
     {
-      "source": "archgate/enterprise-adrs/packs/ci-runners",
+      "source": "BarretoTech/enterprise-adrs/packs/ci-runners",
       "version": "1.4.0",
       "importedAt": "2026-11-16T13:39:28.846Z",
       "adrIds": [
